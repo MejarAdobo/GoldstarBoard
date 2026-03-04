@@ -1,10 +1,7 @@
+# Task for the server
 
-This is for scraping each weather station in weatherunderground using python scraping hosted in Digital Ocean
-
-When a user add a Weather Station ID (IGABRI5)
-It then sent it to the python script
-then scrape this url: https://www.wunderground.com/dashboard/pws/<Weather Station ID>
-
-After scraping the needed information it will then sent the data into the postreSQL Database
-
-This script happen once a day(6:00 A.M)
+- Only run when there is weather station to scrape.
+- Get a list of weather station to scrape from getting the table of weather stations
+- Get the weather information of each weather station
+- Check if a weather station has a gold star
+  - If so have the server sent to the database that the weather station has a gold star for that day
