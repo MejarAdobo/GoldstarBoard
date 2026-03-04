@@ -7,6 +7,7 @@
   - Framework: React Native
   - Tooling: Expo
   - Styling: NativeWind or react-native-unistyles
+  - Icons: Lucide
   - Headless UI Components: gluestack-ui
   - Package Manager: Bun
 - Backend
@@ -20,4 +21,3 @@
 - react-native-unistyles
 - react-native-reanimated
 - expo-router
--
