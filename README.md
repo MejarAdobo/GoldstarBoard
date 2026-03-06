@@ -6,7 +6,9 @@
 - Mobile
   - Framework: React Native
   - Tooling: Expo
-  - Styling: NativeWind 
+  - Styling: NativeWind or react-native-unistyles
+  - Icons: Lucide
+  - Headless UI Components: gluestack-ui
   - Package Manager: Bun
 - Backend
   - Language: Python
@@ -14,3 +16,8 @@
   - PostgeSQl (Docker)
 - Hosting
   - Digital Ocean
+
+## React Libraries probably using
+- react-native-unistyles
+- react-native-reanimated
+- expo-router
