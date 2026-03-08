@@ -19,7 +19,8 @@ def gather_station_data():
 
 
 def main():
-    gather_station_data()
+    report = gather_station_data()
+    print(report)
 
 
 if __name__ == "__main__":
