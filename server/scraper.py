@@ -4,9 +4,9 @@ import requests
 def fetch_station(url: str) -> str | None:
     """Fetch a weather station from weatherunderground"""
 
-    print(50 * "=")
+    print(100 * "=")
     print(f"Attempting to fetch : [{url}]")
-    print(50 * "=")
+    print(100 * "=")
 
     try:
         resp = requests.get(url, timeout=10)

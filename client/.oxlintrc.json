@@ -1,0 +1,59 @@
+{
+	"plugins": ["react", "typescript", "import"],
+	"env": {
+		"browser": true
+	},
+	"globals": {
+		"__DEV__": "readonly"
+	},
+	"rules": {
+		"react/no-children-prop": "error",
+		"no-empty-character-class": "warn",
+		"no-empty-pattern": "warn",
+		"no-undef": "error",
+		"no-unreachable": "warn",
+		"no-unused-labels": "warn",
+		"no-unused-vars": "warn",
+		"react-hooks/exhaustive-deps": "warn",
+		"react-hooks/rules-of-hooks": "error",
+		"use-isnan": "error",
+		"react/jsx-key": "error",
+		"valid-typeof": "error",
+		"react/no-danger-with-children": "error",
+		"react/jsx-no-comment-textnodes": "error",
+		"eqeqeq": "warn",
+		"no-duplicate-case": "error",
+		"no-dupe-class-members": "error",
+		"react/jsx-no-duplicate-props": "error",
+		"no-dupe-keys": "error",
+		"no-redeclare": "warn",
+		"no-unsafe-negation": "warn",
+		"no-unused-expressions": "warn",
+		"no-var": "error",
+		"no-with": "warn"
+	},
+	"overrides": [
+		{
+			"files": ["**/*.d.ts"],
+			"rules": {}
+		},
+		{
+			"files": ["**/metro.config.js"],
+			"globals": {
+				"exports": "readonly"
+			}
+		},
+		{
+			"files": ["**/*.ts", "**/*.tsx", "**/*.d.ts"],
+			"rules": {
+				"no-useless-constructor": "warn",
+				"no-undef": "off",
+				"no-unused-vars": "warn",
+				"no-dupe-class-members": "error",
+				"no-redeclare": "warn",
+				"typescript/no-extra-non-null-assertion": "warn"
+			}
+		}
+	],
+	"ignorePatterns": ["android/app/build", "dist/*"]
+}

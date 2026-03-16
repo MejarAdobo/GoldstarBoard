@@ -6,8 +6,10 @@
 - Mobile
   - Framework: React Native
   - Tooling: Expo
-  - Styling: NativeWind or react-native-unistyles
-  - Icons: Lucide
+  - Styling: react-native-unistyles
+  - Icons: @expo/vector-icons
+    - MaterialIcons
+    - FontAwesome6
   - Headless UI Components: gluestack-ui
   - Package Manager: Bun
 - Backend

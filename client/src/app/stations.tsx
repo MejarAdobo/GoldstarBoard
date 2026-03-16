@@ -1,9 +1,9 @@
 import { Text, View } from "react-native";
 
-export default function Records() {
+export default function Stations() {
   return (
     <View>
-      <Text>Records</Text>
+      <Text>Station</Text>
     </View>
   );
 }

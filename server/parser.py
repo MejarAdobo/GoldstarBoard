@@ -41,14 +41,20 @@ def parse_station(html: str) -> dict:
 
     gold_star_found = bool(soup.find("img", class_="goldstar-station"))
 
+    station_name, station_id = soup.find("h1").get_text().split(" - ")
+
     script_tag = soup.find("script", id="app-root-state")
     summary = extract_summary(json.loads(script_tag.string)) if script_tag else None
 
     if summary:
         summary["gold_star"] = gold_star_found
+        summary["station_name"] = station_name
+        summary["station_id"] = station_id
         return summary
 
     return {
+        "station_name": station_name,
+        "station_id": station_id,
         "gold_star": gold_star_found,
         "temp_low": None,
         "temp_avg": None,
