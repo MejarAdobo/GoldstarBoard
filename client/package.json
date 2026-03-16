@@ -12,7 +12,8 @@
 		"lint": "bunx oxlint",
 		"format": "bunx oxfmt .",
 		"format:check": "bunx oxfmt --check .",
-		"check": "bunx oxlint && bunx oxfmt --check ."
+		"check": "bunx oxlint && bunx oxfmt --check . && tsc --noEmit",
+		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
 		"@expo/vector-icons": "^15.1.1",
