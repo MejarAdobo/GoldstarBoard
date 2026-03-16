@@ -13,6 +13,7 @@
   - Headless UI Components: gluestack-ui
   - Package Manager: Bun
 - Backend
+  - Framework: Django
   - Language: Python
 - Database
   - PostgeSQl (Docker)
