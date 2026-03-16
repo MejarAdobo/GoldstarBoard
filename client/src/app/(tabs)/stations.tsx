@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 
-export default function Leaderboard() {
+export default function Stations() {
   return (
     <View
       style={{
@@ -9,7 +9,7 @@ export default function Leaderboard() {
         alignItems: "center",
       }}
     >
-      <Text>Leaderboard</Text>
+      <Text>Stations</Text>
     </View>
   );
 }
