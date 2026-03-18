@@ -1,15 +1,18 @@
-import { Text, View } from "react-native";
+import { Text, View, ScrollView } from "react-native";
+import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function Leaderboard() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text className="text-2xl">Leaderboard</Text>
-    </View>
+    <SafeAreaProvider>
+      <View className="flex-1 px-6 py-4">
+        <ScrollView className="flex-1">
+          <SafeAreaView className="flex-1">
+            {/*Page Title*/}
+            <Text className="font-bold text-4xl">Leaderboard</Text>
+            <Text className="text-lg text-neutral-500 font-semibold">1 Stations</Text>
+          </SafeAreaView>
+        </ScrollView>
+      </View>
+    </SafeAreaProvider>
   );
 }

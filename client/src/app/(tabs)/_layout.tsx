@@ -29,12 +29,14 @@ export default function TabLayout() {
 					tabBarAccessibilityLabel: "Leaderboard",
 					tabBarIcon: ({ color }) => (
 						<SymbolView
-							name={{ android: "social_leaderboard", web: "social_leaderboard" }}
+							name={{
+								android: "social_leaderboard",
+								web: "social_leaderboard",
+							}}
 							size={28}
 							tintColor={color}
 						/>
 					),
-					// tabBarActiveTintColor: "red",
 				}}
 			/>
 			<Tabs.Screen
