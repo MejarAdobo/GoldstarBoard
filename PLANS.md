@@ -3,6 +3,7 @@
 ## Fonts
 
 - Bricolage Grotesque (Heading)
+- Fraunces
 
 ## Pages
 
