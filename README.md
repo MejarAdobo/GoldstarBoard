@@ -1,4 +1,5 @@
-# ITAS Weather Leaderboard (Title for now)
+# GoldStarboard
+
 ---
 
 ## Tech Stack
@@ -18,5 +19,6 @@
   - Digital Ocean
 
 ## React Libraries probably using
+
 - react-native-reanimated
 - expo-router
