@@ -1,5 +1,5 @@
 """
-URL configuration for iwl_server project.
+URL configuration for goldstarboard project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/6.0/topics/http/urls/
