@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres
+    container_name: iwl_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: iwl_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql
+volumes:
+  pgdata:
+    name: iwl_postgres_volume

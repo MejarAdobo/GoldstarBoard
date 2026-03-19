@@ -1,5 +1,5 @@
-from parser import parse_station
-from scraper import fetch_station
+from .parser import parse_station
+from .scraper import fetch_station
 
 station_list = ["INANAI157", "INANAI140", "IGABRI5", "INANAI114", "INANAI143"]
 
@@ -15,13 +15,5 @@ def gather_station_data():
             station_data = parse_station(html)
             station_report.append(station_data)
 
-    return station_report
-
-
-def main():
-    report = gather_station_data()
-    print(report)
-
-
-if __name__ == "__main__":
-    main()
+    print(station_report)
+    # return station_report
