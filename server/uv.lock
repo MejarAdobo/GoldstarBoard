@@ -15,6 +15,18 @@ wheels = [
 ]
 
 [[package]]
+name = "apscheduler"
+version = "3.11.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "tzlocal" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/07/12/3e4389e5920b4c1763390c6d371162f3784f86f85cd6d6c1bfe68eef14e2/apscheduler-3.11.2.tar.gz", hash = "sha256:2a9966b052ec805f020c8c4c3ae6e6a06e24b1bf19f2e11d91d8cca0473eef41", size = 108683, upload-time = "2025-12-22T00:39:34.884Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/9f/64/2e54428beba8d9992aa478bb8f6de9e4ecaa5f8f513bcfd567ed7fb0262d/apscheduler-3.11.2-py3-none-any.whl", hash = "sha256:ce005177f741409db4e4dd40a7431b76feb856b9dd69d57e0da49d6715bfd26d", size = 64439, upload-time = "2025-12-22T00:39:33.303Z" },
+]
+
+[[package]]
 name = "asgiref"
 version = "3.11.1"
 source = { registry = "https://pypi.org/simple" }
@@ -230,6 +242,19 @@ wheels = [
 ]
 
 [[package]]
+name = "django-crontask"
+version = "1.1.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "apscheduler" },
+    { name = "django" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/4b/0d/5cfa032e3fa03d4c17eb070735c26128866b522f869ed6e1fda880caff7e/django_crontask-1.1.3.tar.gz", hash = "sha256:0ac69ee9cf52d196112e54e92e19995ba2962c8f45a4c90b821b110facb4b043", size = 8583, upload-time = "2026-01-16T13:25:37.718Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ec/ea/e04f5959ad46c8fecac0012c23c90237d27d7406986872d0b9379259e0c9/django_crontask-1.1.3-py3-none-any.whl", hash = "sha256:60fc5eceaa159509372de7c82d07ae4540e1ff78ef4a482c6b87198760bfe468", size = 8948, upload-time = "2026-01-16T13:25:36.496Z" },
+]
+
+[[package]]
 name = "django-timezone-field"
 version = "7.2.1"
 source = { registry = "https://pypi.org/simple" }
@@ -376,6 +401,7 @@ dependencies = [
     { name = "beautifulsoup4" },
     { name = "django" },
     { name = "django-celery-beat" },
+    { name = "django-crontask" },
     { name = "psycopg", extra = ["binary"] },
     { name = "requests" },
 ]
@@ -385,6 +411,7 @@ requires-dist = [
     { name = "beautifulsoup4", specifier = ">=4.14.3" },
     { name = "django", specifier = ">=6.0.3" },
     { name = "django-celery-beat", specifier = ">=2.9.0" },
+    { name = "django-crontask", specifier = ">=1.1.3" },
     { name = "psycopg", extras = ["binary"], specifier = ">=3.3.3" },
     { name = "requests", specifier = ">=2.32.5" },
 ]
