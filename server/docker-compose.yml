@@ -1,16 +1,16 @@
 services:
   db:
     image: postgres
-    container_name: iwl_postgres
+    container_name: goldstarboard_postgres
     restart: always
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
-      POSTGRES_DB: iwl_db
+      POSTGRES_USER: goldstarboard_admin
+      POSTGRES_PASSWORD: nogoldforbrandon
+      POSTGRES_DB: goldstarboard_db
     ports:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql
 volumes:
   pgdata:
-    name: iwl_postgres_volume
+    name: goldstarboard_postgres_volume

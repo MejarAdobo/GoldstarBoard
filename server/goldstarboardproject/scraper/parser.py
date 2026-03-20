@@ -19,17 +19,8 @@ def extract_summary(data: dict) -> dict | None:
             imperial = summary.get("imperial", {})
 
             return {
-                "temp_low": imperial.get("tempLow"),
-                "temp_high": imperial.get("tempHigh"),
                 "temp_avg": imperial.get("tempAvg"),
                 "precip": imperial.get("precipTotal"),
-                "humidity_high": summary.get("humidityHigh"),
-                "humidity_low": summary.get("humidityLow"),
-                "humidity_avg": summary.get("humidityAvg"),
-                "windspeed_high": imperial.get("windspeedHigh"),
-                "windspeed_low": imperial.get("windspeedLow"),
-                "windspeed_avg": imperial.get("windspeedAvg"),
-                "wind_direction": summary.get("winddirAvg"),
             }
 
     return None
@@ -56,15 +47,6 @@ def parse_station(html: str) -> dict:
         "station_name": station_name,
         "station_id": station_id,
         "gold_star": gold_star_found,
-        "temp_low": None,
         "temp_avg": None,
-        "temp_high": None,
         "precip": None,
-        "humidity_high": None,
-        "humidity_low": None,
-        "humidity_avg": None,
-        "windspeed_high": None,
-        "windspeed_low": None,
-        "windspeed_avg": None,
-        "winddir_avg": None,
     }
