@@ -7,8 +7,8 @@ from .parser import parse_station
 from .scraper import fetch_station
 
 
-@cron("0 * * * *")  # every hour (for actual production)
-# @cron("* * * * *")  # every minute (for testing)
+# @cron("0 * * * *")  # every hour (for actual production)
+@cron("* * * * *")  # every minute (for testing)
 @task
 def gather_station_data():
     stations = Station.objects.all()

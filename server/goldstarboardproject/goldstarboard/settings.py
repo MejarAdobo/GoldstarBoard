@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "crontask",
+    "rest_framework",
     "scraper",
+    "api",
 ]
 
 MIDDLEWARE = [
@@ -122,3 +124,9 @@ USE_TZ = True
 STATIC_URL = "static/"
 
 TASKS = {"default": {"BACKEND": "django.tasks.backends.immediate.ImmediateBackend"}}
+
+REST_FRAMEWORK = {
+    "DEFAULT_RENDERER_CLASSES": [
+        "rest_framework.renderers.JSONRenderer",
+    ],
+}

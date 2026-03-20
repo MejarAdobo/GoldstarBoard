@@ -8,6 +8,7 @@ dependencies = [
     "django>=6.0.3",
     "django-celery-beat>=2.9.0",
     "django-crontask>=1.1.3",
+    "djangorestframework>=3.17.0",
     "psycopg[binary]>=3.3.3",
     "requests>=2.32.5",
 ]
