@@ -14,7 +14,7 @@ class Station(models.Model):
 
 
 class Streak(models.Model):
-    station = models.ForeignKey(
+    station = models.OneToOneField(
         Station, on_delete=models.CASCADE, related_name="streak"
     )
     longest_gold_star_streak = models.IntegerField(default=0)
