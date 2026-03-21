@@ -11,6 +11,13 @@ port=5432
 password=PASS
 ```
 
+Weather Station Ids:
+  ["Brandon"]="INANAI140"
+  ["Darren"]="IGABRI5"
+  ["David"]="INANAI114"
+  ["Graham"]="INANAI143"
+
+
 ---
 
 # Security Audit: API Directory
