@@ -1,18 +1,23 @@
 import { useState, useEffect } from "react";
 import { Text, View, FlatList } from "react-native";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
-import { fetchStations, Station } from "../../services/api";
+import { fetchStations, Station, fetchHourlyData, HourlyData } from "../../services/api";
 import StationCard from "../../components/stationCard";
 
 export default function Leaderboard() {
-  const [stations, setStations] = useState<Station[]>([]);
+	const [stations, setStations] = useState<Station[]>([]);
+  const [hourlyData, setHourlyData] = useState<HourlyData[]>([]);
   const [loading, setLoading] = useState(true);
+
+    const hourlyMap = new Map(hourlyData.map((h) => [h.station, h]));
 
   useEffect(() => {
     const loadStations = async () => {
       try {
-        const data = await fetchStations();
-        setStations(data);
+				const stationData = await fetchStations();
+				const hourlyData = await fetchHourlyData();
+				setStations(stationData);
+				setHourlyData(hourlyData);
       } catch (err) {
         console.error(err);
       } finally {
@@ -41,10 +46,7 @@ export default function Leaderboard() {
                 <StationCard
                   name={item.name}
                   wu_id={item.wu_id}
-                  wu_link={item.wu_link}
-                  total_yearly_gold_star={item.total_yearly_gold_star}
-                  last_day_since_gold_star={item.last_day_since_gold_star}
-                />
+                  has_gold_star={hourlyMap.get(item.id)?.has_gold_star ?? false}                />
 							)}
 							contentContainerStyle={{ paddingBottom: 50 }}
               className="mt-4"

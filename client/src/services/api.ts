@@ -33,8 +33,6 @@ export interface HourlyData {
 	station: number;
 	recorded_at: string;
 	has_gold_star: boolean;
-	temp_avg: number | null;
-	precip: number | null;
 }
 
 export const fetchStations = async (): Promise<Station[]> => {
