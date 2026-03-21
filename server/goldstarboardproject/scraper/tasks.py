@@ -22,7 +22,5 @@ def gather_station_data():
                 defaults={
                     "recorded_at": timezone.now(),
                     "has_gold_star": data["has_gold_star"],
-                    "temp_avg": data["temp_avg"],
-                    "precip": data["precip"],
                 },
             )

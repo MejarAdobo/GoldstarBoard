@@ -24,7 +24,7 @@ export default function Leaderboard() {
 
   return (
     <SafeAreaProvider>
-      <View className="flex-1 px-6 py-4">
+      <View className="flex-1 px-6 py-2 rounded-[2em]">
         <SafeAreaView className="flex-1">
           <Text className="font-bold text-4xl">Leaderboard</Text>
           <Text className="text-lg text-neutral-500 font-semibold">
@@ -45,7 +45,8 @@ export default function Leaderboard() {
                   total_yearly_gold_star={item.total_yearly_gold_star}
                   last_day_since_gold_star={item.last_day_since_gold_star}
                 />
-              )}
+							)}
+							contentContainerStyle={{ paddingBottom: 50 }}
               className="mt-4"
             />
           )}

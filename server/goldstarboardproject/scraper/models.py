@@ -34,8 +34,6 @@ class HourlyData(models.Model):
     )
     recorded_at = models.DateTimeField()
     has_gold_star = models.BooleanField(default=False)
-    temp_avg = models.FloatField(null=True, blank=True)
-    precip = models.FloatField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.station.name} - {self.recorded_at}"

@@ -11,6 +11,10 @@ port=5432
 password=PASS
 ```
 
+Also the ip are hardcoded so ensure to check your ip before testing it
+
+---
+
 Weather Station Ids:
   ["Brandon"]="INANAI140"
   ["Darren"]="IGABRI5"
