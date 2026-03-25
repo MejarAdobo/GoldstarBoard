@@ -12,7 +12,7 @@ RUN uv sync --no-dev
 
 COPY goldstarboardproject/ .
 
-EXPOSE 8000
+EXPOSE 8443
 
 RUN chmod +x /app/entrypoint.prod.sh
 
