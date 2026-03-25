@@ -37,3 +37,14 @@ class HourlyData(models.Model):
 
     def __str__(self):
         return f"{self.station.name} - {self.recorded_at}"
+
+
+class DailyData(models.Model):
+    station = models.OneToOneField(
+        Station, on_delete=models.CASCADE, related_name="daily_data"
+    )
+    recorded_at = models.DateField()
+    gold_star_status = models.CharField()
+
+    def __str__(self):
+        return f"{self.station.name} - {self.recorded_at}"
