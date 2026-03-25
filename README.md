@@ -10,6 +10,9 @@
   - Styling: Nativewind v4
   - Icons: Material Symbol
   - Package Manager: Bun
+  - Libraries
+	  - expo-router
+		- react-native-reanimated
 - Backend
   - Framework: Django
   - Language: Python
@@ -17,8 +20,3 @@
   - PostgeSQl (Docker)
 - Hosting
   - Digital Ocean
-
-## React Libraries probably using
-
-- react-native-reanimated
-- expo-router

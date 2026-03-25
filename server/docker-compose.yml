@@ -8,9 +8,46 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
     ports:
-      - "${PORT}:5432"
+      - "${DB_PORT:-5432}:5432"
     volumes:
-      - pgdata:/var/lib/postgresql
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build:
+      context: .
+      dockerfile: goldstarboardproject/Dockerfile
+    container_name: goldstarboard_web
+    restart: always
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      DB_HOST: db
+    depends_on:
+      db:
+        condition: service_healthy
+
+  cron:
+    build:
+      context: .
+      dockerfile: goldstarboardproject/Dockerfile
+    container_name: goldstarboard_cron
+    restart: always
+    env_file:
+      - .env
+    environment:
+      DB_HOST: db
+    command: ["uv", "run", "manage.py", "crontask"]
+    depends_on:
+      web:
+        condition: service_started
+
 volumes:
   pgdata:
     name: ${VOLUME_NAME}
