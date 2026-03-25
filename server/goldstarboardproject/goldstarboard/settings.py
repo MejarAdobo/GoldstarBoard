@@ -29,6 +29,7 @@ DEBUG = config("DJANGO_DEBUG")
 
 ALLOWED_HOSTS = config("DJANGO_ALLOWED_HOSTS", cast=Csv())
 
+CSRF_TRUSTED_ORIGINS = config("DJANGO_CSRF_TRUSTED_ORIGINS", cast=Csv())
 
 # Application definition
 
