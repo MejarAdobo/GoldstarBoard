@@ -8,6 +8,8 @@ class Station(models.Model):
     total_gold_star = models.IntegerField(default=0)
     total_yearly_gold_star = models.IntegerField(default=0)
     last_day_since_gold_star = models.DateField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
@@ -23,6 +25,8 @@ class Streak(models.Model):
     longest_cold_streak = models.IntegerField(default=0)
     longest_yearly_cold_streak = models.IntegerField(default=0)
     current_cold_streak = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.station.name
@@ -40,7 +44,7 @@ class HourlyData(models.Model):
 
 
 class DailyData(models.Model):
-    station = models.OneToOneField(
+    station = models.ForeignKey(
         Station, on_delete=models.CASCADE, related_name="daily_data"
     )
     recorded_at = models.DateField()
