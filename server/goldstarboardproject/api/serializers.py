@@ -24,9 +24,9 @@ class StreakSerializer(serializers.ModelSerializer):
         fields = "__all__"
         read_only_fields = (
             "station",
-            "longest_gold_star_streak",
-            "longest_yearly_gold_star_streak",
-            "current_gold_star_streak",
+            "longest_hot_streak",
+            "longest_yearly_hot_streak",
+            "current_hot_streak",
             "longest_cold_streak",
             "longest_yearly_cold_streak",
             "current_cold_streak",
@@ -46,4 +46,4 @@ class DailyDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = DailyData
         fields = "__all__"
-        read_only_fields = ("id", "station", "recorded_at", "has_gold_star")
+        read_only_fields = ("id", "station", "recorded_at", "gold_star_status")

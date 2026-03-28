@@ -19,9 +19,9 @@ class Streak(models.Model):
     station = models.OneToOneField(
         Station, on_delete=models.CASCADE, related_name="streak"
     )
-    longest_gold_star_streak = models.IntegerField(default=0)
-    longest_yearly_gold_star_streak = models.IntegerField(default=0)
-    current_gold_star_streak = models.IntegerField(default=0)
+    longest_hot_streak = models.IntegerField(default=0)
+    longest_yearly_hot_streak = models.IntegerField(default=0)
+    current_hot_streak = models.IntegerField(default=0)
     longest_cold_streak = models.IntegerField(default=0)
     longest_yearly_cold_streak = models.IntegerField(default=0)
     current_cold_streak = models.IntegerField(default=0)
@@ -33,7 +33,7 @@ class Streak(models.Model):
 
 
 class HourlyData(models.Model):
-    station = models.OneToOneField(
+    station = models.ForeignKey(
         Station, on_delete=models.CASCADE, related_name="hourly_data"
     )
     recorded_at = models.DateTimeField()
