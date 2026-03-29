@@ -39,6 +39,20 @@ export interface HourlyData {
 	has_gold_star: boolean;
 }
 
+export interface DailyData {
+	id: number;
+	station: number;
+	recorded_at: string;
+	gold_star_status: string;
+}
+
+export interface Award {
+	id: number;
+	station: number;
+	award_name: string;
+	year: number;
+}
+
 export const fetchStations = async (): Promise<Station[]> => {
 	const response = await api.get<Station[]>("/station/");
 	return response.data;
@@ -56,6 +70,16 @@ export const fetchHourlyData = async (): Promise<HourlyData[]> => {
 
 export const fetchStreaks = async (): Promise<Streak[]> => {
 	const response = await api.get<Streak[]>("/streak/");
+	return response.data;
+};
+
+export const fetchDailyData = async (): Promise<DailyData[]> => {
+	const response = await api.get<DailyData[]>("/dailydata/");
+	return response.data;
+};
+
+export const fetchAwards = async (): Promise<Award[]> => {
+	const response = await api.get<Award[]>("/award/");
 	return response.data;
 };
 

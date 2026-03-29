@@ -1,7 +1,13 @@
 from rest_framework import viewsets
-from scraper.models import HourlyData, Station, Streak
+from scraper.models import Award, DailyData, HourlyData, Station, Streak
 
-from .serializers import HourlyDataSerializer, StationSerializer, StreakSerializer
+from .serializers import (
+    AwardSerializer,
+    DailyDataSerializer,
+    HourlyDataSerializer,
+    StationSerializer,
+    StreakSerializer,
+)
 
 
 class HourlyDataViewSet(viewsets.ReadOnlyModelViewSet):
@@ -20,3 +26,13 @@ class StationViewSet(
 class StreakViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Streak.objects.all()
     serializer_class = StreakSerializer
+
+
+class DailyDataViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = DailyData.objects.all()
+    serializer_class = DailyDataSerializer
+
+
+class AwardViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Award.objects.all()
+    serializer_class = AwardSerializer
