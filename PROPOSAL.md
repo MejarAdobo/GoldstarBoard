@@ -33,3 +33,6 @@ Week 5 ──┴── Polishing and fixing bugs
 
 ## Problems that might occured
 ---
+ 
+- Server and Database might have some issues
+- Notifications are not being sent

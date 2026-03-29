@@ -36,7 +36,7 @@ def gather_hourly_data():
             )
 
 
-@cron("0 23 * * *")
+@cron("50 23 * * *")
 @task
 def gather_daily_data():
     """Gather daily data for all stations."""
@@ -83,7 +83,7 @@ def grant_yearly_awards():
     awards_dict = {
         "Longest Hot Streak": hot_streaks[0].station,
         "Longest Cold Streak": cold_streaks[0].station,
-        "Most Gold Star": total_gold_stars[0].station,
+        "Most Gold Stars": total_gold_stars[0].station,
     }
 
     for award, station in awards_dict.items():
