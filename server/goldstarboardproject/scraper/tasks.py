@@ -7,7 +7,6 @@ from .parser import parse_station
 from .scraper import fetch_station
 from .stats import (
     add_star_day,
-    grant_monthly_award,
     grant_yearly_award,
     reset_yearly_streak,
     reset_yearly_total_days,
@@ -73,29 +72,6 @@ def yearly_reset():
         reset_yearly_total_days(station)
 
 
-@cron("0 0 1 * *")
-@task
-def grant_monthly_awards():
-    """Grant monthly awards to stations."""
-    hot_streak = Streak.objects.all().order_by("current_hot_streak")
-    cold_streak = Streak.objects.all().order_by("current_cold_streak")
-
-    # made this so i can do a for loop
-    streak_dict = {
-        "Hot": hot_streak[0].station,
-        "Cold": cold_streak[0].station,
-    }
-
-    for award, station in streak_dict.items():
-        grant_monthly_award(
-            station,
-            "monthly",
-            f"Longest {award} Streak",
-            timezone.now().year,
-            timezone.now().strftime("%B"),
-        )
-
-
 @cron("0 0 25 12 *")
 @task
 def grant_yearly_awards():
@@ -113,7 +89,6 @@ def grant_yearly_awards():
     for award, station in awards_dict.items():
         grant_yearly_award(
             station,
-            "yearly",
             award,
             timezone.now().year,
         )

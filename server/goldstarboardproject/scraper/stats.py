@@ -64,26 +64,12 @@ def reset_yearly_streak(station):
 # Handle the Awards
 
 
-def grant_monthly_award(station, award_type, award_name, year, month):
-    """
-    Grants a monthly award for a given station.
-    """
-    Award.objects.create(
-        station=station,
-        award_type=award_type,
-        award_name=award_name,
-        year=year,
-        month=month,
-    )
-
-
-def grant_yearly_award(station, award_type, award_name, year):
+def grant_yearly_award(station, award_name, year):
     """
     Grants a yearly award for a given station.
     """
     Award.objects.create(
         station=station,
-        award_type=award_type,
         award_name=award_name,
         year=year,
     )
