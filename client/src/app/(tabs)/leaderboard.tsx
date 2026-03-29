@@ -3,6 +3,7 @@ import { Text, View, FlatList, ScrollView } from "react-native";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 
 import StationCard from "../../components/stationCard";
+import StationCardSkeleton from "../../components/stationCardSkeleton";
 import { fetchStations, Station, fetchHourlyData, HourlyData } from "../../services/api";
 
 export default function Leaderboard() {
@@ -57,39 +58,25 @@ export default function Leaderboard() {
 						<StationCard
 							rank={1}
 							name={"Brandon Britt"}
-							streak={12}
+							streak={17}
 							gold_stars={142}
 							gold_star_status={"Gained a Star Today"}
 						/>
-						<StationCard rank={2} name={"Test"} streak={12} gold_stars={142} />
 						<StationCard
-							rank={3}
+							rank={2}
 							name={"Darren"}
 							streak={12}
-							gold_stars={142}
+							gold_stars={67}
 							gold_star_status={"Last Star since March 12"}
 						/>
 						<StationCard
-							rank={4}
-							name={"Test"}
-							streak={12}
-							gold_stars={142}
+							rank={3}
+							name={"ITAS"}
+							streak={0}
+							gold_stars={43}
 							gold_star_status={"Lost a Star Today"}
 						/>
-						<StationCard
-							rank={1}
-							name={"Test"}
-							streak={12}
-							gold_stars={142}
-							gold_star_status={"Gained a Star Today"}
-						/>
-						<StationCard
-							rank={1}
-							name={"Test"}
-							streak={12}
-							gold_stars={142}
-							gold_star_status={"Gained a Star Today"}
-						/>
+						<StationCardSkeleton />
 					</ScrollView>
 				</SafeAreaView>
 			</View>

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from scraper.models import DailyData, HourlyData, Station, Streak
+from scraper.models import Award, DailyData, HourlyData, Station, Streak
 
 
 class StationSerializer(serializers.ModelSerializer):
@@ -39,11 +39,18 @@ class HourlyDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = HourlyData
         fields = "__all__"
-        read_only_fields = ("id", "station", "recorded_at", "has_gold_star")
+        read_only_fields = ("station", "recorded_at", "has_gold_star")
 
 
 class DailyDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = DailyData
         fields = "__all__"
-        read_only_fields = ("id", "station", "recorded_at", "gold_star_status")
+        read_only_fields = ("station", "recorded_at", "gold_star_status")
+
+
+class AwardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Award
+        fields = "__all__"
+        read_only_fields = ("station", "recorded_at", "gold_star_status")
