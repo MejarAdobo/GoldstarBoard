@@ -26,4 +26,4 @@ This is my final project for ITAS 274. It is a mobile application that ranks wea
   - Framework: Django
   - Language: Python
 - Database
-  - PostgeSQl (Docker)
+  - PostgeSQl
