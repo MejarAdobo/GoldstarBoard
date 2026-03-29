@@ -4,18 +4,17 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('scraper', '0002_remove_hourlydata_updated_at_and_more'),
+        ("scraper", "0002_remove_hourlydata_updated_at_and_more"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='hourlydata',
-            name='precip',
+            model_name="hourlydata",
+            name="precip",
         ),
         migrations.RemoveField(
-            model_name='hourlydata',
-            name='temp_avg',
+            model_name="hourlydata",
+            name="temp_avg",
         ),
     ]

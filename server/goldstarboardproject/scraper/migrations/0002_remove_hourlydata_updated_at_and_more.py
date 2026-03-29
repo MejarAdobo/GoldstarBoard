@@ -5,19 +5,22 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('scraper', '0001_initial'),
+        ("scraper", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='hourlydata',
-            name='updated_at',
+            model_name="hourlydata",
+            name="updated_at",
         ),
         migrations.AlterField(
-            model_name='hourlydata',
-            name='station',
-            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='hourly_data', to='scraper.station'),
+            model_name="hourlydata",
+            name="station",
+            field=models.OneToOneField(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="hourly_data",
+                to="scraper.station",
+            ),
         ),
     ]

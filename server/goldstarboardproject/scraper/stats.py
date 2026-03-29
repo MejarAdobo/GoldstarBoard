@@ -1,4 +1,22 @@
-from .models import Station, Streak
+from models import Award
+
+# This function handle the total stars
+
+
+def add_star_day(station):
+    """Add a star day to the total star days for a given station."""
+    station.total_star_days += 1
+    station.total_yearly_star_days += 1
+    station.save()
+
+
+def reset_yearly_total_days(station):
+    """Reset the yearly total star days for a given station."""
+    station.total_yearly_star_days = 0
+    station.save()
+
+
+# This functions handle the streak
 
 
 def update_hot_streak(station):
@@ -35,9 +53,37 @@ def update_cold_streak(station):
     streak.save()
 
 
-def reset_yearly_streal(station):
+def reset_yearly_streak(station):
     """Reset yearly streak to 0"""
     streak = station.streak
     streak.longest_yearly_cold_streak = 0
     streak.longest_yearly_hot_streak = 0
     streak.save()
+
+
+# Handle the Awards
+
+
+def grant_monthly_award(station, award_type, award_name, year, month):
+    """
+    Grants a monthly award for a given station.
+    """
+    Award.objects.create(
+        station=station,
+        award_type=award_type,
+        award_name=award_name,
+        year=year,
+        month=month,
+    )
+
+
+def grant_yearly_award(station, award_type, award_name, year):
+    """
+    Grants a yearly award for a given station.
+    """
+    Award.objects.create(
+        station=station,
+        award_type=award_type,
+        award_name=award_name,
+        year=year,
+    )

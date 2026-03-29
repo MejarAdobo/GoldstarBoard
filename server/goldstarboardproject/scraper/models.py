@@ -52,3 +52,29 @@ class DailyData(models.Model):
 
     def __str__(self):
         return f"{self.station.name} - {self.recorded_at}"
+
+
+class Award(models.Model):
+    AWARD_TYPES = [
+        ("yearly", "Yearly"),
+        ("monthly", "Monthly"),
+    ]
+
+    station = models.ForeignKey(Station, on_delete=models.CASCADE, related_name="award")
+    award_name = models.CharField(max_length=255)
+    award_type = models.CharField(max_length=10, choices=AWARD_TYPES, default="monthly")
+    year = models.IntegerField()
+    month = models.CharField(blank=True, null=True)
+
+    def clean(self):
+        from django.core.exceptions import ValidationError
+
+        if self.award_type == "monthly" and self.month is None:
+            raise ValidationError({"month": "Month is required for monthly awards."})
+        if self.award_type == "yearly":
+            self.month = None
+
+    def __str__(self):
+        if self.month:
+            return f"{self.station.name} - {self.year} - {self.month} {self.award_name}"
+        return f"{self.station.name} - {self.year} - {self.award_name}"

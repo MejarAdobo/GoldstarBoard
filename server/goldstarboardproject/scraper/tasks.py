@@ -5,7 +5,15 @@ from django.utils import timezone
 from .models import DailyData, HourlyData, Station, Streak
 from .parser import parse_station
 from .scraper import fetch_station
-from .streaks import update_cold_streak, update_hot_streak
+from .stats import (
+    add_star_day,
+    grant_monthly_award,
+    grant_yearly_award,
+    reset_yearly_streak,
+    reset_yearly_total_days,
+    update_cold_streak,
+    update_hot_streak,
+)
 
 wu_link = "https://www.wunderground.com/dashboard/pws/"
 
@@ -47,7 +55,65 @@ def gather_daily_data():
                 },
             )
 
+            # add a gold star to total count and the streak
             if data["has_gold_star"]:
+                add_star_day(station)
                 update_hot_streak(station)
             else:
                 update_cold_streak(station)
+
+
+@cron("50 23 31 12 *")
+@task
+def yearly_reset():
+    """Reset yearly streak to 0 and yearly total days to 0."""
+    stations = Station.objects.all()
+    for station in stations:
+        reset_yearly_streak(station)
+        reset_yearly_total_days(station)
+
+
+@cron("0 0 1 * *")
+@task
+def grant_monthly_awards():
+    """Grant monthly awards to stations."""
+    hot_streak = Streak.objects.all().order_by("current_hot_streak")
+    cold_streak = Streak.objects.all().order_by("current_cold_streak")
+
+    # made this so i can do a for loop
+    streak_dict = {
+        "Hot": hot_streak[0].station,
+        "Cold": cold_streak[0].station,
+    }
+
+    for award, station in streak_dict.items():
+        grant_monthly_award(
+            station,
+            "monthly",
+            f"Longest {award} Streak",
+            timezone.now().year,
+            timezone.now().strftime("%B"),
+        )
+
+
+@cron("0 0 25 12 *")
+@task
+def grant_yearly_awards():
+    """Grant yearly awards to stations."""
+    hot_streaks = Streak.objects.all().order_by("longest_yearly_hot_streak")
+    cold_streaks = Streak.objects.all().order_by("longest_yearly_cold_streak")
+    total_gold_stars = Station.objects.all().order_by("total_yearly_gold_star")
+
+    awards_dict = {
+        "Longest Hot Streak": hot_streaks[0].station,
+        "Longest Cold Streak": cold_streaks[0].station,
+        "Most Gold Star": total_gold_stars[0].station,
+    }
+
+    for award, station in awards_dict.items():
+        grant_yearly_award(
+            station,
+            "yearly",
+            award,
+            timezone.now().year,
+        )

@@ -5,15 +5,18 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('scraper', '0003_remove_hourlydata_precip_remove_hourlydata_temp_avg'),
+        ("scraper", "0003_remove_hourlydata_precip_remove_hourlydata_temp_avg"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='streak',
-            name='station',
-            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='streak', to='scraper.station'),
+            model_name="streak",
+            name="station",
+            field=models.OneToOneField(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="streak",
+                to="scraper.station",
+            ),
         ),
     ]
