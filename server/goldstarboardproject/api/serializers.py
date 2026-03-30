@@ -39,14 +39,29 @@ class HourlyDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = HourlyData
         fields = "__all__"
-        read_only_fields = ("station", "recorded_at", "has_gold_star")
+        read_only_fields = (
+            "station",
+            "recorded_at",
+            "temperature",
+            "dew_point",
+            "humidity",
+            "rainfall",
+            "wind_direction",
+            "wind_and_gust",
+            "has_gold_star",
+        )
 
 
 class DailyDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = DailyData
         fields = "__all__"
-        read_only_fields = ("station", "recorded_at", "gold_star_status")
+        read_only_fields = (
+            "station",
+            "recorded_at",
+            "has_gold_star",
+            "gold_star_status",
+        )
 
 
 class AwardSerializer(serializers.ModelSerializer):

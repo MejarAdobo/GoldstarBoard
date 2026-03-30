@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from crontask import cron
 from django.tasks import task
 from django.utils import timezone
@@ -46,13 +48,24 @@ def gather_daily_data():
         html = fetch_station(url)
         if html:
             data = parse_station(html)
-            DailyData.objects.create(
-                station=station,
-                defaults={
-                    "recorded_at": timezone.now(),
-                    "gold_star_status": data["gold_star_status"],
-                },
-            )
+
+            # logic for granting the status
+            previous_day = (timezone.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+            yday_data = DailyData.objects.filter(
+                station=station, recorded_at=previous_day
+            ).first()
+            gold_star_status = "N/A"
+
+            if yday_data.has_gold_star and not data["has_gold_star"]:
+                gold_star_status = "Streak Lost"
+                station.last_day_since_gold_star = timezone.now().strftime("%B %d")
+                station.save()
+
+            if not yday_data.has_gold_star and data["has_gold_star"]:
+                gold_star_status = "Gained"
+
+            if not yday_data.has_gold_star and not data["has_gold_star"]:
+                gold_star_status = f"Since {station.last_day_since_gold_star}"
 
             # add a gold star to total count and the streak
             if data["has_gold_star"]:
@@ -60,6 +73,16 @@ def gather_daily_data():
                 update_hot_streak(station)
             else:
                 update_cold_streak(station)
+
+            # create a new DailyData for the current day
+            DailyData.objects.create(
+                station=station,
+                defaults={
+                    "recorded_at": timezone.now().strftime("%Y-%m-%d"),
+                    "has_gold_star": data["has_gold_star"],
+                    "gold_star_status": gold_star_status,
+                },
+            )
 
 
 @cron("50 23 31 12 *")

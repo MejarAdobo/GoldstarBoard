@@ -37,6 +37,12 @@ class HourlyData(models.Model):
         Station, on_delete=models.CASCADE, related_name="hourly_data"
     )
     recorded_at = models.DateTimeField()
+    temperature = models.CharField()
+    dew_point = models.CharField()
+    humidity = models.CharField()
+    rainfall = models.CharField()
+    wind_direction = models.CharField()
+    wind_and_gust = models.CharField()
     has_gold_star = models.BooleanField(default=False)
 
     def __str__(self):
@@ -48,6 +54,7 @@ class DailyData(models.Model):
         Station, on_delete=models.CASCADE, related_name="daily_data"
     )
     recorded_at = models.DateField()
+    has_gold_star = models.BooleanField(default=False)
     gold_star_status = models.CharField()
 
     def __str__(self):
