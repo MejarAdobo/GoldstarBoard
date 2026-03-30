@@ -60,15 +60,17 @@ export default function Leaderboard() {
               rank={1}
               name={"Brandon Britt"}
               streak={17}
-              gold_stars={142}
-              gold_star_status={"Gained"}
+              goldStars={142}
+              goldStarStatus={"Gained"}
+              weatherData={{ temp: "13", humidity: "49 %", rainfall: "0.00 mm", dewpoint: "0.6" }}
             />
             <StationCard
               rank={2}
               name={"Brandon Britt"}
               streak={17}
-              gold_stars={142}
-              gold_star_status={"Gained"}
+              goldStars={142}
+              goldStarStatus={"Gained"}
+              weatherData={{ temp: "13", humidity: "49 %", rainfall: "0.00 mm", dewpoint: "0.6" }}
             />
           </ScrollView>
         </SafeAreaView>

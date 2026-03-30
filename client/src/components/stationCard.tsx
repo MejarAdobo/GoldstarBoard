@@ -7,8 +7,9 @@ type StationCardProps = {
   rank: number;
   name: string;
   streak: number;
-  gold_stars: number;
-  gold_star_status?: "Gained" | "Streak Lost" | `Since ${string}`;
+  goldStars: number;
+  goldStarStatus?: "Gained" | "Streak Lost" | `Since ${string}`;
+  weatherData: { temp: string; humidity: string; rainfall: string; dewpoint: string };
 };
 
 const statusConfig: Record<string, { bg: string; text: string; tint: string }> = {
@@ -39,16 +40,17 @@ export default function StationCard({
   rank,
   name,
   streak,
-  gold_stars,
-  gold_star_status,
+  goldStars,
+  goldStarStatus,
+  weatherData,
 }: StationCardProps) {
   const renderStatus = () => {
-    if (!gold_star_status) return null;
-    const config = statusConfig[gold_star_status] ?? statusConfig.default;
+    if (!goldStarStatus) return null;
+    const config = statusConfig[goldStarStatus] ?? statusConfig.default;
     return (
       <View className={`flex-row items-center ${config.bg} px-3 py-1 rounded-full gap-1`}>
         <SymbolView name={{ android: "star", web: "star" }} size={18} tintColor={config.tint} />
-        <Text className={`font-semibold text-sm ${config.text}`}>{gold_star_status}</Text>
+        <Text className={`font-semibold text-sm ${config.text}`}>{goldStarStatus}</Text>
       </View>
     );
   };
@@ -74,7 +76,7 @@ export default function StationCard({
         {/* Streak Container */}
         <StationInfoCard title="Streak" data={streak} rank={rank} />
         {/* Gold Star Container */}
-        <StationInfoCard title="Gold Stars" data={gold_stars} rank={rank} />
+        <StationInfoCard title="Gold Stars" data={goldStars} rank={rank} />
       </View>
 
       {/* Divider */}
@@ -87,14 +89,14 @@ export default function StationCard({
 
       {/* First Row */}
       <View className="flex-row gap-4 mb-2">
-        <StationInfoCard title="Temperature" data="13" rank={rank} />
-        <StationInfoCard title="Humidity" data="49 %" rank={rank} />
+        <StationInfoCard title="Temp" data={weatherData.temp} rank={rank} />
+        <StationInfoCard title="Humidity" data={weatherData.humidity} rank={rank} />
       </View>
 
       {/* Second Row */}
       <View className="flex-row gap-4 mb-1">
-        <StationInfoCard title="Rainfall" data="0.00 mm" rank={rank} />
-        <StationInfoCard title="Dewpoint" data="0.6" rank={rank} />
+        <StationInfoCard title="Rainfall" data={weatherData.rainfall} rank={rank} />
+        <StationInfoCard title="Dewpoint" data={weatherData.dewpoint} rank={rank} />
       </View>
     </View>
   );
