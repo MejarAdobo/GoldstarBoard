@@ -33,14 +33,15 @@ export default function Leaderboard() {
 		<SafeAreaProvider>
 			<View className="flex-1 px-4 py-2">
 				<SafeAreaView className="flex-1">
-					<Text className="font-bold text-4xl py-1">Leaderboard</Text>
-					<ScrollView contentContainerStyle={{ paddingBottom: 50 }}>
-						{/*<Text className="text-lg text-neutral-500 font-semibold">
-            {stations.length} Stations
-          </Text>
-
-          {loading ? (
-            <Text>Loading...</Text>
+					<View className="py-1">
+						<Text className="font-bold text-4xl py-1">Leaderboard</Text>
+						<Text className="text-lg text-neutral-500 font-semibold">
+							{/*{stations.length} Stations*/} 4 Stations
+						</Text>
+					</View>
+					<ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 50 }} className="rounded-[2em]">
+						{/*{loading ? (
+          	<StationCardSkeleton />
           ) : (
             <FlatList
               data={stations}
@@ -51,8 +52,6 @@ export default function Leaderboard() {
                   wu_id={item.wu_id}
                   has_gold_star={hourlyMap.get(item.id)?.has_gold_star ?? false}                />
 							)}
-							contentContainerStyle={{ paddingBottom: 50 }}
-              className="mt-4"
             />
           )}*/}
 						<StationCard
@@ -60,22 +59,23 @@ export default function Leaderboard() {
 							name={"Brandon Britt"}
 							streak={17}
 							gold_stars={142}
-							gold_star_status={"Gained a Star Today"}
+							gold_star_status={"Gained"}
 						/>
 						<StationCard
 							rank={2}
 							name={"Darren"}
 							streak={12}
 							gold_stars={67}
-							gold_star_status={"Last Star since March 12"}
+							gold_star_status={"Since March 12"}
 						/>
 						<StationCard
 							rank={3}
 							name={"ITAS"}
 							streak={0}
 							gold_stars={43}
-							gold_star_status={"Lost a Star Today"}
+							gold_star_status={"Lost"}
 						/>
+						<StationCard rank={4} name={"Test"} streak={0} gold_stars={43} />
 						<StationCardSkeleton />
 					</ScrollView>
 				</SafeAreaView>
