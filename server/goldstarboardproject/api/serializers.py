@@ -43,11 +43,9 @@ class HourlyDataSerializer(serializers.ModelSerializer):
             "station",
             "recorded_at",
             "temperature",
-            "dew_point",
+            "dewpoint",
             "humidity",
             "rainfall",
-            "wind_direction",
-            "wind_and_gust",
             "has_gold_star",
         )
 

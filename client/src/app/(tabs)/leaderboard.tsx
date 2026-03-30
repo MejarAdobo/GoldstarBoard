@@ -7,25 +7,25 @@ import StationCardSkeleton from "../../components/stationCardSkeleton";
 import { fetchStations, Station, fetchHourlyData, HourlyData } from "../../services/api";
 
 export default function Leaderboard() {
-  const [stations, setStations] = useState<Station[]>([]);
-  const [hourlyData, setHourlyData] = useState<HourlyData[]>([]);
-  const [loading, setLoading] = useState(true);
+  // const [stations, setStations] = useState<Station[]>([]);
+  // const [hourlyData, setHourlyData] = useState<HourlyData[]>([]);
+  // const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const loadStations = async () => {
-      try {
-        const stationData = await fetchStations();
-        const hourlyData = await fetchHourlyData();
-        setStations(stationData);
-        setHourlyData(hourlyData);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    loadStations();
-  }, []);
+  // useEffect(() => {
+  //   const loadStations = async () => {
+  //     try {
+  //       const stationData = await fetchStations();
+  //       const hourlyData = await fetchHourlyData();
+  //       setStations(stationData);
+  //       setHourlyData(hourlyData);
+  //     } catch (err) {
+  //       console.error(err);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   loadStations();
+  // }, []);
 
   return (
     <SafeAreaProvider>
@@ -58,6 +58,13 @@ export default function Leaderboard() {
           )}*/}
             <StationCard
               rank={1}
+              name={"Brandon Britt"}
+              streak={17}
+              gold_stars={142}
+              gold_star_status={"Gained"}
+            />
+            <StationCard
+              rank={2}
               name={"Brandon Britt"}
               streak={17}
               gold_stars={142}

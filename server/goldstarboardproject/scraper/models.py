@@ -38,11 +38,9 @@ class HourlyData(models.Model):
     )
     recorded_at = models.DateTimeField()
     temperature = models.CharField()
-    dew_point = models.CharField()
+    dewpoint = models.CharField()
     humidity = models.CharField()
     rainfall = models.CharField()
-    wind_direction = models.CharField()
-    wind_and_gust = models.CharField()
     has_gold_star = models.BooleanField(default=False)
 
     def __str__(self):

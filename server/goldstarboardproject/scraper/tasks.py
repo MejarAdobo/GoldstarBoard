@@ -33,6 +33,10 @@ def gather_hourly_data():
                 station=station,
                 defaults={
                     "recorded_at": timezone.now().strftime("%Y-%m-%d %H:00"),
+                    "temperature": data["temperature"],
+                    "dewpoint": data["dewpoint"],
+                    "humidity": data["humidity"],
+                    "rainfall": data["rainfall"],
                     "has_gold_star": data["has_gold_star"],
                 },
             )

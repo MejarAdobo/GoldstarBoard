@@ -1,6 +1,8 @@
 import { SymbolView } from "expo-symbols";
 import { Text, View } from "react-native";
 
+import StationInfoCard from "./stationInfoCard";
+
 type StationCardProps = {
   rank: number;
   name: string;
@@ -21,6 +23,12 @@ const rankColors: Record<number, string> = {
   3: "text-[#C48E5E]",
 };
 
+const rankBgColors: Record<number, string> = {
+  1: "bg-[#D4A827]",
+  2: "bg-[#8892A0]",
+  3: "bg-[#C48E5E]",
+};
+
 const rankBorderColors: Record<number, string> = {
   1: "border-[#D4A827]",
   2: "border-[#8892A0]",
@@ -34,7 +42,6 @@ export default function StationCard({
   gold_stars,
   gold_star_status,
 }: StationCardProps) {
-  // got claude to refactor it and this allow me to apply different style toward different status message
   const renderStatus = () => {
     if (!gold_star_status) return null;
     const config = statusConfig[gold_star_status] ?? statusConfig.default;
@@ -62,27 +69,32 @@ export default function StationCard({
         {renderStatus()}
       </View>
 
+      {/* Display Streak and Stars */}
       <View className="flex-row gap-4 my-1">
         {/* Streak Container */}
-        <View
-          className="bg-zinc-800 px-6 py-4 flex-col items-center rounded-[1.5em]"
-          style={{ flex: 1 }}
-        >
-          <Text className={`text-lg ${rankColors[rank] ?? "text-zinc-200"}`}>Streak</Text>
-          <Text className={`text-xl font-semibold ${rankColors[rank] ?? "text-zinc-200"}`}>
-            {streak}
-          </Text>
-        </View>
+        <StationInfoCard title="Streak" data={streak} rank={rank} />
         {/* Gold Star Container */}
-        <View
-          className="bg-zinc-800 px-6 py-4 flex-col items-center rounded-[1.5em]"
-          style={{ flex: 1 }}
-        >
-          <Text className={`text-lg ${rankColors[rank] ?? "text-zinc-200"}`}>Gold Stars</Text>
-          <Text className={`text-xl font-semibold ${rankColors[rank] ?? "text-zinc-200"}`}>
-            {gold_stars}
-          </Text>
-        </View>
+        <StationInfoCard title="Gold Stars" data={gold_stars} rank={rank} />
+      </View>
+
+      {/* Divider */}
+      <View className={`h-1 mt-4 mb-2 rounded ${rankBgColors[rank] ?? "bg-[#e7e2df]"}`} />
+      <Text className={`text-lg font-semibold mb-2 ${rankColors[rank] ?? "text-[#291334]"}`}>
+        Weather Conditions
+      </Text>
+
+      {/* Display Weather Data */}
+
+      {/* First Row */}
+      <View className="flex-row gap-4 mb-2">
+        <StationInfoCard title="Temperature" data="13" rank={rank} />
+        <StationInfoCard title="Humidity" data="49 %" rank={rank} />
+      </View>
+
+      {/* Second Row */}
+      <View className="flex-row gap-4 mb-1">
+        <StationInfoCard title="Rainfall" data="0.00 mm" rank={rank} />
+        <StationInfoCard title="Dewpoint" data="0.6" rank={rank} />
       </View>
     </View>
   );
