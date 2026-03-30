@@ -13,10 +13,9 @@ export default function TabLayout() {
 					height: 100,
 					paddingTop: 10,
 					backgroundColor: "#efeae6",
-					borderTopWidth: 0,
 					shadowColor: "#000",
 					shadowOffset: { width: 0, height: 4 },
-					shadowOpacity: 0.3,
+					shadowOpacity: 0.5,
 					shadowRadius: 8,
 					elevation: 8,
 				},
@@ -27,6 +26,7 @@ export default function TabLayout() {
 				options={{
 					title: "Leaderboard",
 					tabBarAccessibilityLabel: "Leaderboard",
+					tabBarActiveTintColor: "#291334",
 					tabBarIcon: ({ color }) => (
 						<SymbolView
 							name={{
@@ -44,6 +44,7 @@ export default function TabLayout() {
 				options={{
 					title: "Stations",
 					tabBarAccessibilityLabel: "Stations",
+					tabBarActiveTintColor: "#291334",
 					tabBarIcon: ({ color }) => (
 						<SymbolView
 							name={{ android: "location_on", web: "location_on" }}
@@ -58,6 +59,7 @@ export default function TabLayout() {
 				options={{
 					title: "Records",
 					tabBarAccessibilityLabel: "Records",
+					tabBarActiveTintColor: "#291334",
 					tabBarIcon: ({ color }) => (
 						<SymbolView
 							name={{ android: "leaderboard", web: "leaderboard" }}
@@ -72,6 +74,7 @@ export default function TabLayout() {
 				options={{
 					title: "Settings",
 					tabBarAccessibilityLabel: "Settings",
+					tabBarActiveTintColor: "#291334",
 					tabBarIcon: ({ color }) => (
 						<SymbolView
 							name={{ android: "settings", web: "settings" }}

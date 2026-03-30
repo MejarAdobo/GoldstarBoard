@@ -39,7 +39,11 @@ export default function Leaderboard() {
 							{/*{stations.length} Stations*/} 4 Stations
 						</Text>
 					</View>
-					<ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 50 }} className="rounded-[2em]">
+					<ScrollView
+						showsVerticalScrollIndicator={false}
+						contentContainerStyle={{ paddingBottom: 50 }}
+						className="rounded-[2em]"
+					>
 						{/*{loading ? (
           	<StationCardSkeleton />
           ) : (

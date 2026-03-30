@@ -17,7 +17,7 @@ export default function StationCardSkeleton() {
 			-1,
 			true,
 		);
-	}, []);
+	}, [opacity]);
 
 	const animatedStyle = useAnimatedStyle(() => ({
 		opacity: opacity.value,

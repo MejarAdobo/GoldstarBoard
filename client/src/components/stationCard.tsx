@@ -34,33 +34,30 @@ export default function StationCard({
 	gold_stars,
 	gold_star_status,
 }: StationCardProps) {
-
 	// got claude to refactor it and this allow me to apply different style toward different status message
 	const renderStatus = () => {
 		if (!gold_star_status) return null;
 		const config = statusConfig[gold_star_status] ?? statusConfig.default;
 		return (
 			<View className={`flex-row items-center ${config.bg} px-3 py-1 rounded-full gap-1`}>
-				<SymbolView
-					name={{ android: "star", web: "star" }}
-					size={18}
-					tintColor={config.tint}
-				/>
+				<SymbolView name={{ android: "star", web: "star" }} size={18} tintColor={config.tint} />
 				<Text className={`font-semibold text-sm ${config.text}`}>{gold_star_status}</Text>
 			</View>
 		);
 	};
 
 	return (
-		<View className={`py-4 px-5 bg-[#faf7f5] rounded-[2em] my-2 border-2 ${rankBorderColors[rank] ?? "border-[#e7e2df]"}`}>
+		<View
+			className={`py-4 px-5 bg-[#faf7f5] rounded-[2em] my-2 border-2 ${rankBorderColors[rank] ?? "border-[#e7e2df]"}`}
+		>
 			<View className="flex-row items-center justify-between">
 				<View className="flex-row items-center gap-4 mb-1">
-					<Text
-						className={`text-4xl font-bold ${rankColors[rank] ?? "text-[#291334]"}`}
-					>
+					<Text className={`text-4xl font-bold ${rankColors[rank] ?? "text-[#291334]"}`}>
 						{rank}
 					</Text>
-					<Text className={`text-xl font-semibold ${rankColors[rank] ?? "text-[#291334]"}`}>{name}</Text>
+					<Text className={`text-xl font-semibold ${rankColors[rank] ?? "text-[#291334]"}`}>
+						{name}
+					</Text>
 				</View>
 				{renderStatus()}
 			</View>
@@ -72,7 +69,9 @@ export default function StationCard({
 					style={{ flex: 1 }}
 				>
 					<Text className={`text-lg ${rankColors[rank] ?? "text-zinc-200"}`}>Streak</Text>
-					<Text className={`text-xl font-semibold ${rankColors[rank] ?? "text-zinc-200"}`}>{streak}</Text>
+					<Text className={`text-xl font-semibold ${rankColors[rank] ?? "text-zinc-200"}`}>
+						{streak}
+					</Text>
 				</View>
 				{/* Gold Star Container */}
 				<View
@@ -80,7 +79,9 @@ export default function StationCard({
 					style={{ flex: 1 }}
 				>
 					<Text className={`text-lg ${rankColors[rank] ?? "text-zinc-200"}`}>Gold Stars</Text>
-					<Text className={`text-xl font-semibold ${rankColors[rank] ?? "text-zinc-200"}`}>{gold_stars}</Text>
+					<Text className={`text-xl font-semibold ${rankColors[rank] ?? "text-zinc-200"}`}>
+						{gold_stars}
+					</Text>
 				</View>
 			</View>
 		</View>
