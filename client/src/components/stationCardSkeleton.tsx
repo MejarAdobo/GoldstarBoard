@@ -24,31 +24,31 @@ export default function StationCardSkeleton() {
 	}));
 
 	return (
-		<View className="py-4 px-5 bg-neutral-300 rounded-[2em] my-2">
+		<View className="py-4 px-5 bg-[#faf7f5] rounded-[2em] my-2 border-2 border-[#e7e2df]">
 			{/* Top row: rank + name placeholders */}
 			<Animated.View style={animatedStyle} className="flex-row items-center justify-between">
 				<View className="flex-row items-center gap-2">
-					<View className="w-10 h-10 bg-neutral-400 rounded-lg" />
-					<View className="w-32 h-6 bg-neutral-400 rounded-lg" />
+					<View className="w-10 h-10 bg-neutral-300 rounded-lg" />
+					<View className="w-32 h-6 bg-neutral-300 rounded-lg" />
 				</View>
-				<View className="w-24 h-6 bg-neutral-400 rounded-full" />
+				<View className="w-24 h-6 bg-neutral-300 rounded-full" />
 			</Animated.View>
 
 			{/* Bottom row: streak + gold stars placeholders */}
 			<Animated.View style={animatedStyle} className="flex-row gap-4 my-1">
 				<View
-					className="bg-slate-400 px-6 py-4 flex-col items-center rounded-[1.5em] gap-1"
+					className="bg-zinc-800 px-6 py-4 flex-col items-center rounded-[1.5em] gap-1"
 					style={{ flex: 1 }}
 				>
-					<View className="w-16 h-5 bg-neutral-300 rounded-lg" />
-					<View className="w-10 h-6 bg-neutral-300 rounded-lg" />
+					<View className="w-16 h-5 bg-zinc-600 rounded-lg" />
+					<View className="w-10 h-6 bg-zinc-600 rounded-lg" />
 				</View>
 				<View
-					className="bg-slate-400 px-6 py-4 flex-col items-center rounded-[1.5em] gap-1"
+					className="bg-zinc-800 px-6 py-4 flex-col items-center rounded-[1.5em] gap-1"
 					style={{ flex: 1 }}
 				>
-					<View className="w-16 h-5 bg-neutral-300 rounded-lg" />
-					<View className="w-10 h-6 bg-neutral-300 rounded-lg" />
+					<View className="w-16 h-5 bg-zinc-600 rounded-lg" />
+					<View className="w-10 h-6 bg-zinc-600 rounded-lg" />
 				</View>
 			</Animated.View>
 		</View>

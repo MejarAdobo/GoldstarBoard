@@ -9,6 +9,24 @@ type StationCardProps = {
 	gold_star_status?: "Gained" | "Lost" | `Since ${string}`;
 };
 
+const statusConfig: Record<string, { bg: string; text: string; tint: string }> = {
+	Lost: { bg: "bg-rose-500", text: "text-rose-950", tint: "#4d0218" },
+	Gained: { bg: "bg-emerald-500", text: "text-emerald-950", tint: "#002c21" },
+	default: { bg: "bg-neutral-400", text: "text-neutral-700", tint: "#404040" },
+};
+
+const rankColors: Record<number, string> = {
+	1: "text-[#D4A827]",
+	2: "text-[#8892A0]",
+	3: "text-[#C48E5E]",
+};
+
+const rankBorderColors: Record<number, string> = {
+	1: "border-[#D4A827]",
+	2: "border-[#8892A0]",
+	3: "border-[#C48E5E]",
+};
+
 export default function StationCard({
 	rank,
 	name,
@@ -16,73 +34,33 @@ export default function StationCard({
 	gold_stars,
 	gold_star_status,
 }: StationCardProps) {
+
+	// got claude to refactor it and this allow me to apply different style toward different status message
 	const renderStatus = () => {
-		if (gold_star_status === "Lost") {
-			return (
-				<View className="flex-row items-center bg-red-300 px-3 py-1 rounded-full gap-1">
-					<SymbolView
-						name={{
-							android: "star",
-							web: "star",
-						}}
-						size={18}
-						tintColor={"#b91c1c"}
-					/>
-					<Text className="font-semibold text-sm text-red-700">{gold_star_status}</Text>
-				</View>
-			);
-		}
-		if (gold_star_status === "Gained") {
-			return (
-				<View className="flex-row items-center bg-green-300 px-3 py-1 rounded-full gap-1">
-					<SymbolView
-						name={{
-							android: "star",
-							web: "star",
-						}}
-						size={18}
-						tintColor={"#15803d"}
-					/>
-					<Text className="font-semibold text-sm text-green-700">{gold_star_status}</Text>
-				</View>
-			);
-		}
-		if (gold_star_status) {
-			return (
-				<View className="flex-row items-center bg-neutral-400 px-3 py-1 rounded-full gap-1">
-					<SymbolView
-						name={{
-							android: "star",
-							web: "star",
-						}}
-						size={18}
-						tintColor={"#404040"}
-					/>
-					<Text className="font-semibold text-sm text-neutral-700">{gold_star_status}</Text>
-				</View>
-			);
-		}
-		return null;
+		if (!gold_star_status) return null;
+		const config = statusConfig[gold_star_status] ?? statusConfig.default;
+		return (
+			<View className={`flex-row items-center ${config.bg} px-3 py-1 rounded-full gap-1`}>
+				<SymbolView
+					name={{ android: "star", web: "star" }}
+					size={18}
+					tintColor={config.tint}
+				/>
+				<Text className={`font-semibold text-sm ${config.text}`}>{gold_star_status}</Text>
+			</View>
+		);
 	};
 
 	return (
-		<View className="py-4 px-5 bg-neutral-300 rounded-[2em] my-2">
+		<View className={`py-4 px-5 bg-[#faf7f5] rounded-[2em] my-2 border-2 ${rankBorderColors[rank] ?? "border-[#e7e2df]"}`}>
 			<View className="flex-row items-center justify-between">
 				<View className="flex-row items-center gap-4 mb-1">
 					<Text
-						className={`text-4xl font-bold ${
-							rank === 1
-								? "text-[#D4A827]"
-								: rank === 2
-									? "text-[#8892A0]"
-									: rank === 3
-										? "text-[#C48E5E]"
-										: "text-neutral-700"
-						}`}
+						className={`text-4xl font-bold ${rankColors[rank] ?? "text-[#291334]"}`}
 					>
 						{rank}
 					</Text>
-					<Text className="text-xl font-semibold">{name}</Text>
+					<Text className={`text-xl font-semibold ${rankColors[rank] ?? "text-[#291334]"}`}>{name}</Text>
 				</View>
 				{renderStatus()}
 			</View>
@@ -90,19 +68,19 @@ export default function StationCard({
 			<View className="flex-row gap-4 my-1">
 				{/* Streak Container */}
 				<View
-					className="bg-slate-400 px-6 py-4 flex-col items-center rounded-[1.5em]"
+					className="bg-zinc-800 px-6 py-4 flex-col items-center rounded-[1.5em]"
 					style={{ flex: 1 }}
 				>
-					<Text className="text-lg">Streak</Text>
-					<Text className="text-xl font-bold">{streak}</Text>
+					<Text className={`text-lg ${rankColors[rank] ?? "text-zinc-200"}`}>Streak</Text>
+					<Text className={`text-xl font-semibold ${rankColors[rank] ?? "text-zinc-200"}`}>{streak}</Text>
 				</View>
 				{/* Gold Star Container */}
 				<View
-					className="bg-slate-400 px-6 py-4 flex-col items-center rounded-[1.5em]"
+					className="bg-zinc-800 px-6 py-4 flex-col items-center rounded-[1.5em]"
 					style={{ flex: 1 }}
 				>
-					<Text className="text-lg">Gold Stars</Text>
-					<Text className="text-xl font-bold">{gold_stars}</Text>
+					<Text className={`text-lg ${rankColors[rank] ?? "text-zinc-200"}`}>Gold Stars</Text>
+					<Text className={`text-xl font-semibold ${rankColors[rank] ?? "text-zinc-200"}`}>{gold_stars}</Text>
 				</View>
 			</View>
 		</View>

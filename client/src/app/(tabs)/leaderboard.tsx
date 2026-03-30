@@ -31,11 +31,11 @@ export default function Leaderboard() {
 
 	return (
 		<SafeAreaProvider>
-			<View className="flex-1 px-4 py-2">
+			<View className="flex-1 px-4 py-2 bg-[#efeae6]">
 				<SafeAreaView className="flex-1">
 					<View className="py-1">
-						<Text className="font-bold text-4xl py-1">Leaderboard</Text>
-						<Text className="text-lg text-neutral-500 font-semibold">
+						<Text className="font-bold text-4xl py-1 text-[#291334]">Leaderboard</Text>
+						<Text className="text-lg text-[#291334] font-semibold">
 							{/*{stations.length} Stations*/} 4 Stations
 						</Text>
 					</View>
