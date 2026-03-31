@@ -36,10 +36,7 @@ class HourlyData(models.Model):
         Station, on_delete=models.CASCADE, related_name="hourly_data"
     )
     recorded_at = models.DateTimeField()
-    temperature = models.CharField()
-    dewpoint = models.CharField()
-    humidity = models.CharField()
-    rainfall = models.CharField()
+    weather_data = models.JSONField()
     has_gold_star = models.BooleanField(default=False)
 
     def __str__(self):

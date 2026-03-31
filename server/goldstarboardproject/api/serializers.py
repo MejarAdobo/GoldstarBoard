@@ -41,10 +41,7 @@ class HourlyDataSerializer(serializers.ModelSerializer):
         read_only_fields = (
             "station",
             "recorded_at",
-            "temperature",
-            "dewpoint",
-            "humidity",
-            "rainfall",
+            "weather_data",
             "has_gold_star",
         )
 
