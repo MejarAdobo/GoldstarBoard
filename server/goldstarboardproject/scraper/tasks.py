@@ -19,7 +19,7 @@ from .stats import (
 wu_link = "https://www.wunderground.com/dashboard/pws/"
 
 
-@cron("* * * * *")
+@cron("0 * * * *")
 @task
 def gather_hourly_data():
     """Gather hourly data for all stations."""

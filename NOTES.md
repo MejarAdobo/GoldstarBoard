@@ -5,8 +5,6 @@ also run this when running the django server:
 
 ---
 
-Link: https://www.wunderground.com/dashboard/pws/
-
 Weather Station Ids:
 ["Brandon"]="INANAI140"
 ["Darren"]="IGABRI5"
