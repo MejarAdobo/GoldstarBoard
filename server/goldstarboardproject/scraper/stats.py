@@ -1,18 +1,18 @@
-from models import Award
+from .models import Award
 
 # This function handle the total stars
 
 
 def add_star_day(station):
     """Add a star day to the total star days for a given station."""
-    station.total_star_days += 1
-    station.total_yearly_star_days += 1
+    station.total_gold_star += 1
+    station.total_yearly_gold_star += 1
     station.save()
 
 
 def reset_yearly_total_days(station):
     """Reset the yearly total star days for a given station."""
-    station.total_yearly_star_days = 0
+    station.total_yearly_gold_star = 0
     station.save()
 
 

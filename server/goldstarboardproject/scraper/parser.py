@@ -23,7 +23,7 @@ def parse_station(html: str) -> dict:
             temp = val.get_text(strip=True)
 
     gold_star_img = soup.find("img", class_="goldstar-station")
-    gold_star = True if gold_star_img else "N/A"
+    gold_star = bool(gold_star_img)
 
     return {
         "temperature": temp,

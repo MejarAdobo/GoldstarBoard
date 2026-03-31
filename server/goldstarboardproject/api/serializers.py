@@ -66,4 +66,4 @@ class AwardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Award
         fields = "__all__"
-        read_only_fields = ("station", "recorded_at", "gold_star_status")
+        read_only_fields = ("station", "award_name", "year")

@@ -7,7 +7,7 @@ class Station(models.Model):
     wu_link = models.CharField(max_length=200)
     total_gold_star = models.IntegerField(default=0)
     total_yearly_gold_star = models.IntegerField(default=0)
-    last_day_since_gold_star = models.DateField(null=True, blank=True)
+    last_day_since_gold_star = models.CharField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

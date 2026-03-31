@@ -19,7 +19,8 @@ from .stats import (
 wu_link = "https://www.wunderground.com/dashboard/pws/"
 
 
-@cron("0 * * * *")
+# @cron("0 * * * *")
+@cron("* * * * *")
 @task
 def gather_hourly_data():
     """Gather hourly data for all stations."""
@@ -31,14 +32,12 @@ def gather_hourly_data():
             data = parse_station(html)
             HourlyData.objects.create(
                 station=station,
-                defaults={
-                    "recorded_at": timezone.now().strftime("%Y-%m-%d %H:00"),
-                    "temperature": data["temperature"],
-                    "dewpoint": data["dewpoint"],
-                    "humidity": data["humidity"],
-                    "rainfall": data["rainfall"],
-                    "has_gold_star": data["has_gold_star"],
-                },
+                recorded_at=timezone.now().strftime("%Y-%m-%d %H:00"),
+                temperature=data["temperature"],
+                dewpoint=data["dewpoint"],
+                humidity=data["humidity"],
+                rainfall=data["rainfall"],
+                has_gold_star=data["has_gold_star"],
             )
 
 
@@ -60,16 +59,17 @@ def gather_daily_data():
             ).first()
             gold_star_status = "N/A"
 
-            if yday_data.has_gold_star and not data["has_gold_star"]:
-                gold_star_status = "Streak Lost"
-                station.last_day_since_gold_star = timezone.now().strftime("%B %d")
-                station.save()
+            if yday_data:
+                if yday_data.has_gold_star and not data["has_gold_star"]:
+                    gold_star_status = "Streak Lost"
+                    station.last_day_since_gold_star = timezone.now().strftime("%B %d")
+                    station.save()
 
-            if not yday_data.has_gold_star and data["has_gold_star"]:
-                gold_star_status = "Gained"
+                if not yday_data.has_gold_star and data["has_gold_star"]:
+                    gold_star_status = "Gained"
 
-            if not yday_data.has_gold_star and not data["has_gold_star"]:
-                gold_star_status = f"Since {station.last_day_since_gold_star}"
+                if not yday_data.has_gold_star and not data["has_gold_star"]:
+                    gold_star_status = f"Since {station.last_day_since_gold_star}"
 
             # add a gold star to total count and the streak
             if data["has_gold_star"]:
@@ -81,11 +81,9 @@ def gather_daily_data():
             # create a new DailyData for the current day
             DailyData.objects.create(
                 station=station,
-                defaults={
-                    "recorded_at": timezone.now().strftime("%Y-%m-%d"),
-                    "has_gold_star": data["has_gold_star"],
-                    "gold_star_status": gold_star_status,
-                },
+                recorded_at=timezone.now().strftime("%Y-%m-%d"),
+                has_gold_star=data["has_gold_star"],
+                gold_star_status=gold_star_status,
             )
 
 
@@ -103,15 +101,17 @@ def yearly_reset():
 @task
 def grant_yearly_awards():
     """Grant yearly awards to stations."""
-    hot_streaks = Streak.objects.all().order_by("longest_yearly_hot_streak")
-    cold_streaks = Streak.objects.all().order_by("longest_yearly_cold_streak")
-    total_gold_stars = Station.objects.all().order_by("total_yearly_gold_star")
+    hot_streak = Streak.objects.order_by("-longest_yearly_hot_streak").first()
+    cold_streak = Streak.objects.order_by("-longest_yearly_cold_streak").first()
+    top_gold_star = Station.objects.order_by("-total_yearly_gold_star").first()
 
-    awards_dict = {
-        "Longest Hot Streak": hot_streaks[0].station,
-        "Longest Cold Streak": cold_streaks[0].station,
-        "Most Gold Stars": total_gold_stars[0].station,
-    }
+    awards_dict = {}
+    if hot_streak:
+        awards_dict["Longest Hot Streak"] = hot_streak.station
+    if cold_streak:
+        awards_dict["Longest Cold Streak"] = cold_streak.station
+    if top_gold_star:
+        awards_dict["Most Gold Stars"] = top_gold_star
 
     for award, station in awards_dict.items():
         grant_yearly_award(

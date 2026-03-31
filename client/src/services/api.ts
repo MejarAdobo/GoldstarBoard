@@ -36,6 +36,10 @@ export interface HourlyData {
 	id: number;
 	station: number;
 	recorded_at: string;
+	temperature: string;
+	dewpoint: string;
+	humidity: string;
+	rainfall: string;
 	has_gold_star: boolean;
 }
 
