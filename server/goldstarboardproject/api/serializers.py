@@ -9,7 +9,6 @@ class StationSerializer(serializers.ModelSerializer):
         read_only_fields = [
             "name",
             "wu_id",
-            "wu_link",
             "total_gold_star",
             "total_yearly_gold_star",
             "last_day_since_gold_star",

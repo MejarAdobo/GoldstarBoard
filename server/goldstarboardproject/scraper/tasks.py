@@ -19,7 +19,6 @@ from .stats import (
 wu_link = "https://www.wunderground.com/dashboard/pws/"
 
 
-# @cron("0 * * * *")
 @cron("* * * * *")
 @task
 def gather_hourly_data():
@@ -29,15 +28,13 @@ def gather_hourly_data():
         url = f"{wu_link}{station.wu_id}"
         html = fetch_station(url)
         if html:
-            data = parse_station(html)
+            gold_star, weather_data = parse_station(html)
+
             HourlyData.objects.create(
                 station=station,
                 recorded_at=timezone.now().strftime("%Y-%m-%d %H:00"),
-                temperature=data["temperature"],
-                dewpoint=data["dewpoint"],
-                humidity=data["humidity"],
-                rainfall=data["rainfall"],
-                has_gold_star=data["has_gold_star"],
+                weather_data=weather_data,
+                has_gold_star=gold_star,
             )
 
 

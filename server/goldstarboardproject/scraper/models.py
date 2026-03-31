@@ -4,7 +4,6 @@ from django.db import models
 class Station(models.Model):
     name = models.CharField(max_length=50)
     wu_id = models.CharField(max_length=50, unique=True)
-    wu_link = models.CharField(max_length=200)
     total_gold_star = models.IntegerField(default=0)
     total_yearly_gold_star = models.IntegerField(default=0)
     last_day_since_gold_star = models.CharField(null=True, blank=True)
