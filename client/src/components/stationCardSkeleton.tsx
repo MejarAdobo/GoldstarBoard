@@ -51,6 +51,52 @@ export default function StationCardSkeleton() {
 					<View className="w-10 h-6 bg-zinc-600 rounded-lg" />
 				</View>
 			</Animated.View>
+
+			{/* Divider placeholder */}
+			<Animated.View style={animatedStyle}>
+				<View className="h-1 mt-4 mb-2 rounded bg-neutral-300" />
+			</Animated.View>
+
+			{/* Weather Conditions title placeholder */}
+			<Animated.View style={animatedStyle}>
+				<View className="w-40 h-5 bg-neutral-300 rounded-lg mb-2" />
+			</Animated.View>
+
+			{/* First weather row: temp + humidity placeholders */}
+			<Animated.View style={animatedStyle} className="flex-row gap-4 mb-2">
+				<View
+					className="bg-zinc-800 px-6 py-4 flex-col items-center rounded-[1.5em] gap-1"
+					style={{ flex: 1 }}
+				>
+					<View className="w-16 h-5 bg-zinc-600 rounded-lg" />
+					<View className="w-10 h-6 bg-zinc-600 rounded-lg" />
+				</View>
+				<View
+					className="bg-zinc-800 px-6 py-4 flex-col items-center rounded-[1.5em] gap-1"
+					style={{ flex: 1 }}
+				>
+					<View className="w-16 h-5 bg-zinc-600 rounded-lg" />
+					<View className="w-10 h-6 bg-zinc-600 rounded-lg" />
+				</View>
+			</Animated.View>
+
+			{/* Second weather row: rainfall + dewpoint placeholders */}
+			<Animated.View style={animatedStyle} className="flex-row gap-4 mb-1">
+				<View
+					className="bg-zinc-800 px-6 py-4 flex-col items-center rounded-[1.5em] gap-1"
+					style={{ flex: 1 }}
+				>
+					<View className="w-16 h-5 bg-zinc-600 rounded-lg" />
+					<View className="w-10 h-6 bg-zinc-600 rounded-lg" />
+				</View>
+				<View
+					className="bg-zinc-800 px-6 py-4 flex-col items-center rounded-[1.5em] gap-1"
+					style={{ flex: 1 }}
+				>
+					<View className="w-16 h-5 bg-zinc-600 rounded-lg" />
+					<View className="w-10 h-6 bg-zinc-600 rounded-lg" />
+				</View>
+			</Animated.View>
 		</View>
 	);
 }

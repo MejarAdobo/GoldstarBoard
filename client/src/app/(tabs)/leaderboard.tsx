@@ -71,7 +71,7 @@ export default function Leaderboard() {
               goldStars={142}
               goldStarStatus={"Gained"}
               weatherData={{ temp: "13", humidity: "49 %", rainfall: "0.00 mm", dewpoint: "0.6" }}
-            />
+						/>
           </ScrollView>
         </SafeAreaView>
       </View>
