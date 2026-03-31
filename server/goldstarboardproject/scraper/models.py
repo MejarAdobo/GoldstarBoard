@@ -35,7 +35,7 @@ class HourlyData(models.Model):
     station = models.ForeignKey(
         Station, on_delete=models.CASCADE, related_name="hourly_data"
     )
-    recorded_at = models.DateTimeField()
+    recorded_at = models.CharField()
     weather_data = models.JSONField()
     has_gold_star = models.BooleanField(default=False)
 
@@ -47,7 +47,7 @@ class DailyData(models.Model):
     station = models.ForeignKey(
         Station, on_delete=models.CASCADE, related_name="daily_data"
     )
-    recorded_at = models.DateField()
+    recorded_at = models.CharField()
     has_gold_star = models.BooleanField(default=False)
     gold_star_status = models.CharField()
 
