@@ -47,29 +47,29 @@ def gather_daily_data():
         url = f"{wu_link}{station.wu_id}"
         html = fetch_station(url)
         if html:
-            data = parse_station(html)
+            gold_star, weather_data = parse_station(html)
 
             # logic for granting the status
             previous_day = (timezone.now() - timedelta(days=1)).strftime("%Y-%m-%d")
             yday_data = DailyData.objects.filter(
                 station=station, recorded_at=previous_day
             ).first()
-            gold_star_status = "N/A"
+            gold_star_status = None
 
             if yday_data:
-                if yday_data.has_gold_star and not data["has_gold_star"]:
+                if yday_data.has_gold_star and not gold_star:
                     gold_star_status = "Streak Lost"
                     station.last_day_since_gold_star = timezone.now().strftime("%B %d")
                     station.save()
 
-                if not yday_data.has_gold_star and data["has_gold_star"]:
+                if not yday_data.has_gold_star and gold_star:
                     gold_star_status = "Gained"
 
-                if not yday_data.has_gold_star and not data["has_gold_star"]:
+                if not yday_data.has_gold_star and not gold_star:
                     gold_star_status = f"Since {station.last_day_since_gold_star}"
 
             # add a gold star to total count and the streak
-            if data["has_gold_star"]:
+            if gold_star:
                 add_star_day(station)
                 update_hot_streak(station)
             else:
@@ -79,7 +79,7 @@ def gather_daily_data():
             DailyData.objects.create(
                 station=station,
                 recorded_at=timezone.now().strftime("%Y-%m-%d"),
-                has_gold_star=data["has_gold_star"],
+                has_gold_star=gold_star,
                 gold_star_status=gold_star_status,
             )
 
