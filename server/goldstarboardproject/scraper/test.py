@@ -4,7 +4,7 @@ from scraper import fetch_station
 
 
 def test():
-    url = "https://www.wunderground.com/dashboard/pws/IGABRI5"
+    url = "https://www.wunderground.com/dashboard/pws/INANAI157"
     html = fetch_station(url)
 
     # print(html)
