@@ -55,5 +55,5 @@
 			}
 		}
 	],
-	"ignorePatterns": ["android/app/build", "dist/*"]
+	"ignorePatterns": ["android/app/build", "dist/*", "babel.config.js", "tailwind.config.js", "metro.config.js"]
 }
