@@ -30,11 +30,13 @@ def gather_hourly_data():
         if html:
             gold_star, weather_data = parse_station(html)
 
-            HourlyData.objects.create(
+            HourlyData.objects.update_or_create(
                 station=station,
-                recorded_at=timezone.now().strftime("%Y-%m-%d %H:00"),
-                weather_data=weather_data,
-                has_gold_star=gold_star,
+                defaults={
+                    "recorded_at": timezone.now().strftime("%Y-%m-%d %H:00"),
+                    "weather_data": weather_data,
+                    "has_gold_star": gold_star,
+                },
             )
 
 

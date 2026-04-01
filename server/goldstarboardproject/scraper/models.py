@@ -51,7 +51,7 @@ class DailyData(models.Model):
     )
     recorded_at = models.CharField()
     has_gold_star = models.BooleanField(default=False)
-    gold_star_status = models.CharField()
+    gold_star_status = models.CharField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.station.name} - {self.recorded_at}"
