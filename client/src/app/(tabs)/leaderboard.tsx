@@ -4,7 +4,7 @@ import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 
 import StationCard from "../../components/stationCard";
 import StationCardSkeleton from "../../components/stationCardSkeleton";
-import { fetchStations, fetchDailyData, fetchHourlyData, fetchStreaks } from "../../services/api";
+import { fetchStations, fetchDailyData } from "../../services/api";
 
 export default function Leaderboard() {
   // Task: Have a useEffect here to fetch Station, HourlyData, Streak, and DailyData
@@ -19,12 +19,18 @@ export default function Leaderboard() {
       try {
         // fetching from the apis
         const stations = await fetchStations();
-        const hourlyData = await fetchHourlyData();
         const dailyData = await fetchDailyData();
-        const streaks = await fetchStreaks();
 
         // sort the stations here
-        //
+        const stationStatsArr = [];
+
+        stations.forEach((station) => {
+          stationStatsArr.push({
+            name: station.name,
+            hotStreak: station.streak.current_hot_streak,
+            coldStreak: station.streak.current_cold_streak,
+          });
+        });
       } catch (err) {
         console.error(err);
       } finally {
@@ -56,17 +62,17 @@ export default function Leaderboard() {
               <StationCard
                 rank={1}
                 name={"Brandon Britt"}
-                streak={17}
-                goldStars={142}
+                streak={1}
+                goldStars={143}
                 goldStarStatus={"Gained"}
                 weatherData={{ temp: "13", humidity: "49 %", rainfall: "0.00 mm", dewpoint: "0.6" }}
               />
             )}
 
             <StationCard
-              rank={1}
-              name={"Brandon Britt"}
-              streak={17}
+              rank={2}
+              name={"Test"}
+              streak={1}
               goldStars={142}
               goldStarStatus={"Gained"}
               weatherData={{ temp: "13", humidity: "49 %", rainfall: "0.00 mm", dewpoint: "0.6" }}

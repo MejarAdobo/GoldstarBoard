@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class Station(models.Model):
@@ -32,7 +34,7 @@ class Streak(models.Model):
 
 
 class HourlyData(models.Model):
-    station = models.ForeignKey(
+    station = models.OneToOneField(
         Station, on_delete=models.CASCADE, related_name="hourly_data"
     )
     recorded_at = models.CharField()
@@ -62,3 +64,12 @@ class Award(models.Model):
 
     def __str__(self):
         return f"{self.station.name} - {self.year} - {self.award_name}"
+
+
+# functions
+
+
+@receiver(post_save, sender=Station)
+def create_streak(sender, instance, created, **kwargs):
+    if created:
+        Streak.objects.create(station=instance)

@@ -15,10 +15,8 @@ class HourlyDataViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = HourlyDataSerializer
 
 
-class StationViewSet(
-    viewsets.ModelViewSet
-):  # plan to make this need to be authenticated but not for now
-    queryset = Station.objects.all()
+class StationViewSet(viewsets.ModelViewSet):
+    queryset = Station.objects.prefetch_related("streak", "hourly_data").all()
     serializer_class = StationSerializer
     lookup_field = "wu_id"
 
