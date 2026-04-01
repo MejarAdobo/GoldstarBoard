@@ -1,16 +1,23 @@
 import { useState, useEffect } from "react";
-import { Text, View, FlatList, ScrollView } from "react-native";
+import { Text, View, FlatList } from "react-native";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 
 import StationCard from "../../components/stationCard";
 import StationCardSkeleton from "../../components/stationCardSkeleton";
-import { fetchStations, fetchDailyData } from "../../services/api";
+import { fetchStations, Station } from "../../services/api";
 
 export default function Leaderboard() {
-  // Task: Have a useEffect here to fetch Station, HourlyData, Streak, and DailyData
-  // Task: Make a new object containing thr require information that the stationCard prop need
-  // Task: Sort that station object by Streak and Total Gold Star later.
-  const [stations, setStations] = useState([]);
+  const [stations, setStations] = useState<
+    {
+      rank: number;
+      name: string;
+      hotStreak: number;
+      coldStreak: number;
+      goldStars: number;
+      goldStarStatus: "Gained" | "Streak Lost" | `Since ${string}` | null;
+      weatherData: { temp: string; humidity: string; rainfall: string; dewpoint: string };
+    }[]
+  >([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -19,18 +26,42 @@ export default function Leaderboard() {
       try {
         // fetching from the apis
         const stations = await fetchStations();
-        const dailyData = await fetchDailyData();
 
-        // sort the stations here
-        const stationStatsArr = [];
+        // sort station
+        const getMomentum = (s: Station) =>
+          s.streak.current_hot_streak - s.streak.current_cold_streak;
 
-        stations.forEach((station) => {
+        const sortedStations = stations
+          .sort((a, b) => getMomentum(b) - getMomentum(a))
+          .map((station, i, arr) => {
+            station.rank =
+              i === 0 || getMomentum(station) !== getMomentum(arr[i - 1]) ? i + 1 : arr[i - 1].rank;
+            return station;
+          });
+
+        const stationStatsArr: {
+          rank: number;
+          name: string;
+          hotStreak: number;
+          coldStreak: number;
+          goldStars: number;
+          goldStarStatus: "Gained" | "Streak Lost" | `Since ${string}` | null;
+          weatherData: { temp: string; humidity: string; rainfall: string; dewpoint: string };
+        }[] = [];
+
+        // assign the needed info
+        sortedStations.forEach((station) => {
           stationStatsArr.push({
+            rank: station.rank!,
             name: station.name,
             hotStreak: station.streak.current_hot_streak,
             coldStreak: station.streak.current_cold_streak,
+            goldStars: station.total_yearly_gold_star,
+            goldStarStatus: (station.latest_daily?.gold_star_status as "Gained" | "Streak Lost" | `Since ${string}`) ?? null,
+            weatherData: station.hourly_data.weather_data as { temp: string; humidity: string; rainfall: string; dewpoint: string },
           });
         });
+        setStations(stationStatsArr);
       } catch (err) {
         console.error(err);
       } finally {
@@ -46,38 +77,29 @@ export default function Leaderboard() {
         <SafeAreaView className="flex-1">
           <View className="py-1">
             <Text className="font-bold text-4xl py-1 text-[#291334]">Leaderboard</Text>
-            <Text className="text-lg text-[#291334] font-semibold">
-              {/*{stations.length} Stations*/}1 Station
-            </Text>
+            <Text className="text-lg text-[#291334] font-semibold">{stations.length} Stations</Text>
           </View>
-          <ScrollView
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ paddingBottom: 50 }}
-            className="rounded-[2em]"
-          >
-            {loading ? (
-              <StationCardSkeleton />
-            ) : (
-              // put flatlist here
-              <StationCard
-                rank={1}
-                name={"Brandon Britt"}
-                streak={1}
-                goldStars={143}
-                goldStarStatus={"Gained"}
-                weatherData={{ temp: "13", humidity: "49 %", rainfall: "0.00 mm", dewpoint: "0.6" }}
-              />
-            )}
-
-            <StationCard
-              rank={2}
-              name={"Test"}
-              streak={1}
-              goldStars={142}
-              goldStarStatus={"Gained"}
-              weatherData={{ temp: "13", humidity: "49 %", rainfall: "0.00 mm", dewpoint: "0.6" }}
+          {loading ? (
+            <StationCardSkeleton />
+          ) : (
+            <FlatList
+              data={stations}
+              keyExtractor={(item) => item.name}
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={{ paddingBottom: 50 }}
+              renderItem={({ item }) => (
+                <StationCard
+                  rank={item.rank}
+                  name={item.name}
+                  hotStreak={item.hotStreak}
+                  coldStreak={item.coldStreak}
+                  goldStars={item.goldStars}
+                  goldStarStatus={item.goldStarStatus}
+                  weatherData={item.weatherData}
+                />
+              )}
             />
-          </ScrollView>
+          )}
         </SafeAreaView>
       </View>
     </SafeAreaProvider>

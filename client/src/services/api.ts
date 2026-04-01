@@ -33,6 +33,7 @@ export interface HourlyData {
 
 export interface Station {
   id: number;
+  rank?: number;
   name: string;
   wu_id: string;
   total_gold_star: number;
@@ -40,6 +41,7 @@ export interface Station {
   last_day_since_gold_star: string | null;
   streak: Streak;
   hourly_data: HourlyData;
+  latest_daily: DailyData | null;
   created_at: string;
   updated_at: string;
 }
@@ -49,7 +51,7 @@ export interface DailyData {
   station: number;
   recorded_at: string;
   has_gold_star: boolean;
-  gold_star_status: string;
+  gold_star_status: string | null;
 }
 
 export interface Award {

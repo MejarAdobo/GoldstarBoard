@@ -31,9 +31,22 @@ class HourlyDataSerializer(serializers.ModelSerializer):
         )
 
 
+class DailyDataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DailyData
+        fields = "__all__"
+        read_only_fields = (
+            "station",
+            "recorded_at",
+            "has_gold_star",
+            "gold_star_status",
+        )
+
+
 class StationSerializer(serializers.ModelSerializer):
     streak = StreakSerializer(read_only=True)
     hourly_data = HourlyDataSerializer(read_only=True)
+    latest_daily = serializers.SerializerMethodField()
 
     class Meta:
         model = Station
@@ -48,17 +61,11 @@ class StationSerializer(serializers.ModelSerializer):
             "updated_at",
         ]
 
-
-class DailyDataSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = DailyData
-        fields = "__all__"
-        read_only_fields = (
-            "station",
-            "recorded_at",
-            "has_gold_star",
-            "gold_star_status",
-        )
+    def get_latest_daily(self, obj):
+        daily = obj.daily_data.order_by("-recorded_at").first()
+        if daily:
+            return DailyDataSerializer(daily).data
+        return None
 
 
 class AwardSerializer(serializers.ModelSerializer):

@@ -6,7 +6,8 @@ import StationInfoCard from "./stationInfoCard";
 type StationCardProps = {
   rank: number;
   name: string;
-  streak: number;
+  hotStreak: number;
+  coldStreak: number;
   goldStars: number;
   goldStarStatus?: "Gained" | "Streak Lost" | `Since ${string}` | null;
   weatherData: { temp: string; humidity: string; rainfall: string; dewpoint: string };
@@ -39,7 +40,8 @@ const rankBorderColors: Record<number, string> = {
 export default function StationCard({
   rank,
   name,
-  streak,
+  hotStreak,
+  coldStreak,
   goldStars,
   goldStarStatus,
   weatherData,
@@ -74,7 +76,14 @@ export default function StationCard({
       {/* Display Streak and Stars */}
       <View className="flex-row gap-4 my-1">
         {/* Streak Container */}
-        <StationInfoCard title="Streak" data={streak} rank={rank} />
+        {hotStreak > 0 ? (
+          <StationInfoCard title="Hot Streak" data={hotStreak} rank={rank} />
+        ) : coldStreak > 0 ? (
+          <StationInfoCard title="Cold Streak" data={coldStreak} rank={rank} />
+        ) : (
+          <StationInfoCard title="Streak" data={0} rank={rank} />
+        )}
+
         {/* Gold Star Container */}
         <StationInfoCard title="Gold Stars" data={goldStars} rank={rank} />
       </View>
