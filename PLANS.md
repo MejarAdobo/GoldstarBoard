@@ -1,16 +1,5 @@
 # Plans for the app
 
-## notes
-
-- another award is who lost the most gold star
-- longest cold streak
-- least gold star
-
-## Fonts
-
-- Bricolage Grotesque (Heading)
-- Fraunces
-
 ## Pages
 
 ---

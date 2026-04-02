@@ -1,16 +1,53 @@
 services:
   db:
     image: postgres
-    container_name: goldstarboard_postgres
+    container_name: ${CONTAINER_NAME}
     restart: always
     environment:
-      POSTGRES_USER: goldstarboard_admin
-      POSTGRES_PASSWORD: nogoldforbrandon
-      POSTGRES_DB: goldstarboard_db
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     ports:
-      - "5432:5432"
+      - "${DB_PORT}:5432"
     volumes:
       - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build:
+      context: .
+      dockerfile: goldstarboardproject/Dockerfile
+    container_name: goldstarboard_web
+    restart: always
+    ports:
+      - "${DJANGO_PORT}:${DJANGO_PORT}"
+    env_file:
+      - .env
+    environment:
+      DB_HOST: db
+    depends_on:
+      db:
+        condition: service_healthy
+
+  cron:
+    build:
+      context: .
+      dockerfile: goldstarboardproject/Dockerfile
+    container_name: goldstarboard_cron
+    restart: always
+    env_file:
+      - .env
+    environment:
+      DB_HOST: db
+    command: ["uv", "run", "manage.py", "crontask"]
+    depends_on:
+      web:
+        condition: service_started
+
 volumes:
   pgdata:
-    name: goldstarboard_postgres_volume
+    name: ${VOLUME_NAME}
