@@ -92,7 +92,7 @@ export default function Leaderboard() {
 					{loading ? (
 						<StationCardSkeleton />
 					) : stations.length === 0 ? (
-						<Text className="text-[#291334] font-bold Text-4xl">No stations found.</Text>
+						<Text className="text-[#291334] font-bold Text-4xl py-4 text-center">No stations found.</Text>
 					) : (
 						<FlatList
 							data={stations}

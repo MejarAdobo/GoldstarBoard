@@ -22,7 +22,7 @@ export default function TabLayout() {
 			}}
 		>
 			<Tabs.Screen
-				name="leaderboard"
+				name="index"
 				options={{
 					title: "Leaderboard",
 					tabBarAccessibilityLabel: "Leaderboard",
