@@ -59,14 +59,17 @@ def gather_daily_data():
             gold_star_status = None
 
             if yday_data:
+                # if you have a gold star the prievous day, and no gold star after the daily data task happen, you are granted this status
                 if yday_data.has_gold_star and not gold_star:
                     gold_star_status = "Streak Lost"
                     station.last_day_since_gold_star = timezone.now().strftime("%B %d")
                     station.save()
 
+                # No gold star yesterday, and have gold star today
                 if not yday_data.has_gold_star and gold_star:
                     gold_star_status = "Gained"
 
+                # No gold star yesterday, and today
                 if not yday_data.has_gold_star and not gold_star:
                     gold_star_status = f"Since {station.last_day_since_gold_star}"
 
