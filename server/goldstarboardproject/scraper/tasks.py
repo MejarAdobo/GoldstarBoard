@@ -66,11 +66,11 @@ def gather_daily_data():
                     station.save()
 
                 # No gold star yesterday, and have gold star today
-                if not yday_data.has_gold_star and gold_star:
+                elif not yday_data.has_gold_star and gold_star:
                     gold_star_status = "Gained"
 
                 # No gold star yesterday, and today
-                if not yday_data.has_gold_star and not gold_star:
+                elif not yday_data.has_gold_star and not gold_star:
                     gold_star_status = f"Since {station.last_day_since_gold_star}"
 
             # add a gold star to total count and the streak
@@ -99,7 +99,7 @@ def yearly_reset():
         reset_yearly_total_days(station)
 
 
-@cron("0 0 25 12 *")
+@cron("30 23 31 12 *")
 @task
 def grant_yearly_awards():
     """Grant yearly awards to stations."""
