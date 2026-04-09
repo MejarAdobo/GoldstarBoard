@@ -33,7 +33,7 @@ def gather_hourly_data():
             HourlyData.objects.update_or_create(
                 station=station,
                 defaults={
-                    "recorded_at": timezone.now().strftime("%Y-%m-%d %H:00"),
+                    "recorded_at": timezone.localtime().strftime("%Y-%m-%d %H:00"),
                     "weather_data": weather_data,
                     "has_gold_star": gold_star,
                 },
@@ -52,7 +52,7 @@ def gather_daily_data():
             gold_star, weather_data = parse_station(html)
 
             # logic for granting the status
-            previous_day = (timezone.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+            previous_day = (timezone.localtime() - timedelta(days=1)).strftime("%Y-%m-%d")
             yday_data = DailyData.objects.filter(
                 station=station, recorded_at=previous_day
             ).first()
@@ -62,7 +62,7 @@ def gather_daily_data():
                 # if you have a gold star the prievous day, and no gold star after the daily data task happen, you are granted this status
                 if yday_data.has_gold_star and not gold_star:
                     gold_star_status = "Streak Lost"
-                    station.last_day_since_gold_star = timezone.now().strftime("%B %d")
+                    station.last_day_since_gold_star = timezone.localtime().strftime("%B %d")
                     station.save()
 
                 # No gold star yesterday, and have gold star today
@@ -83,7 +83,7 @@ def gather_daily_data():
             # create a new DailyData for the current day
             DailyData.objects.create(
                 station=station,
-                recorded_at=timezone.now().strftime("%Y-%m-%d"),
+                recorded_at=timezone.localtime().strftime("%Y-%m-%d"),
                 has_gold_star=gold_star,
                 gold_star_status=gold_star_status,
             )
@@ -119,5 +119,5 @@ def grant_yearly_awards():
         grant_yearly_award(
             station,
             award,
-            timezone.now().year,
+            timezone.localtime().year,
         )
