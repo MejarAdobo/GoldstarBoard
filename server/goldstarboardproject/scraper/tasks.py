@@ -52,7 +52,9 @@ def gather_daily_data():
             gold_star, weather_data = parse_station(html)
 
             # logic for granting the status
-            previous_day = (timezone.localtime() - timedelta(days=1)).strftime("%Y-%m-%d")
+            previous_day = (timezone.localtime() - timedelta(days=1)).strftime(
+                "%Y-%m-%d"
+            )
             yday_data = DailyData.objects.filter(
                 station=station, recorded_at=previous_day
             ).first()
@@ -62,7 +64,9 @@ def gather_daily_data():
                 # if you have a gold star the prievous day, and no gold star after the daily data task happen, you are granted this status
                 if yday_data.has_gold_star and not gold_star:
                     gold_star_status = "Streak Lost"
-                    station.last_day_since_gold_star = timezone.localtime().strftime("%B %d")
+                    station.last_day_since_gold_star = timezone.localtime().strftime(
+                        "%B %d"
+                    )
                     station.save()
 
                 # No gold star yesterday, and have gold star today
