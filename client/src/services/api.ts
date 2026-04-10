@@ -54,11 +54,36 @@ export interface DailyData {
 	gold_star_status: string | null;
 }
 
-export interface Award {
+export interface HotStreakAward {
 	id: number;
-	station: number;
-	award_name: string;
 	year: number;
+	recipient: number;
+	place: number;
+	streak_length: number;
+}
+
+export interface ColdStreakAward {
+	id: number;
+	year: number;
+	recipient: number;
+	place: number;
+	streak_length: number;
+}
+
+export interface MostGoldStarAward {
+	id: number;
+	year: number;
+	recipient: number;
+	place: number;
+	total_gold_stars: number;
+}
+
+export interface LeastGoldStarAward {
+	id: number;
+	year: number;
+	recipient: number;
+	place: number;
+	total_gold_stars: number;
 }
 
 export const fetchStations = async (): Promise<Station[]> => {
@@ -76,8 +101,28 @@ export const fetchDailyData = async (): Promise<DailyData[]> => {
 	return response.data;
 };
 
-export const fetchAwards = async (): Promise<Award[]> => {
-	const response = await api.get<Award[]>("/award/");
+export const fetchHotStreakAwards = async (): Promise<HotStreakAward[]> => {
+	const response = await api.get<HotStreakAward[]>("/hotstreakaward/");
+	return response.data;
+};
+
+export const fetchColdStreakAwards = async (): Promise<ColdStreakAward[]> => {
+	const response = await api.get<ColdStreakAward[]>("/coldstreakaward/");
+	return response.data;
+};
+
+export const fetchMostGoldStarAwards = async (): Promise<
+	MostGoldStarAward[]
+> => {
+	const response = await api.get<MostGoldStarAward[]>("/mostgoldstaraward/");
+	return response.data;
+};
+
+export const fetchLeastGoldStarAwards = async (): Promise<
+	LeastGoldStarAward[]
+> => {
+	const response =
+		await api.get<LeastGoldStarAward[]>("/leastgoldstaraward/");
 	return response.data;
 };
 
