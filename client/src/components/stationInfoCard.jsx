@@ -1,18 +1,12 @@
 import { Text, View } from "react-native";
 
-type StationInfoCardProps = {
-	title: string;
-	data: string | number;
-	rank: number;
-};
-
-const rankColors: Record<number, string> = {
+const rankColors = {
 	1: "text-[#D4A827]",
 	2: "text-[#8892A0]",
 	3: "text-[#C48E5E]",
 };
 
-export default function StationInfoCard({ title, data, rank }: StationInfoCardProps) {
+export default function StationInfoCard({ title, data, rank }) {
 	return (
 		<View
 			className="bg-zinc-800 px-6 py-4 flex-col items-center rounded-[1.5em]"

@@ -4,20 +4,10 @@ import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 
 import StationCard from "../../components/stationCard";
 import StationCardSkeleton from "../../components/stationCardSkeleton";
-import { fetchStations, Station } from "../../services/api";
+import { fetchStations } from "../../services/api";
 
 export default function Leaderboard() {
-	const [stations, setStations] = useState<
-		{
-			rank: number;
-			name: string;
-			hotStreak: number;
-			coldStreak: number;
-			goldStars: number;
-			goldStarStatus: "Gained" | "Streak Lost" | `Since ${string}` | null;
-			weatherData: { temp: string; humidity: string; rainfall: string; dewpoint: string };
-		}[]
-	>([]);
+	const [stations, setStations] = useState([]);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -28,8 +18,7 @@ export default function Leaderboard() {
 				const stations = await fetchStations();
 
 				// sort station
-				const getMomentum = (s: Station) =>
-					s.streak.current_hot_streak - s.streak.current_cold_streak;
+				const getMomentum = (s) => s.streak.current_hot_streak - s.streak.current_cold_streak;
 
 				const sortedStations = stations
 					.sort((a, b) => getMomentum(b) - getMomentum(a))
@@ -39,35 +28,18 @@ export default function Leaderboard() {
 						return station;
 					});
 
-				const stationStatsArr: {
-					rank: number;
-					name: string;
-					hotStreak: number;
-					coldStreak: number;
-					goldStars: number;
-					goldStarStatus: "Gained" | "Streak Lost" | `Since ${string}` | null;
-					weatherData: { temp: string; humidity: string; rainfall: string; dewpoint: string };
-				}[] = [];
+				const stationStatsArr = [];
 
 				// assign the needed info
 				sortedStations.forEach((station) => {
 					stationStatsArr.push({
-						rank: station.rank!,
+						rank: station.rank,
 						name: station.name,
 						hotStreak: station.streak.current_hot_streak,
 						coldStreak: station.streak.current_cold_streak,
 						goldStars: station.total_yearly_gold_star,
-						goldStarStatus:
-							(station.latest_daily?.gold_star_status as
-								| "Gained"
-								| "Streak Lost"
-								| `Since ${string}`) ?? null,
-						weatherData: station.hourly_data.weather_data as {
-							temp: string;
-							humidity: string;
-							rainfall: string;
-							dewpoint: string;
-						},
+						goldStarStatus: station.latest_daily?.gold_star_status ?? null,
+						weatherData: station.hourly_data.weather_data,
 					});
 				});
 				setStations(stationStatsArr);
@@ -92,7 +64,9 @@ export default function Leaderboard() {
 					{loading ? (
 						<StationCardSkeleton />
 					) : stations.length === 0 ? (
-						<Text className="text-[#291334] font-bold Text-4xl py-4 text-center">No stations found.</Text>
+						<Text className="text-[#291334] font-bold Text-4xl py-4 text-center">
+							No stations found.
+						</Text>
 					) : (
 						<FlatList
 							data={stations}

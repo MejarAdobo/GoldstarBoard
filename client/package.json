@@ -11,20 +11,19 @@
 		"lint": "bunx oxlint",
 		"format": "bunx oxfmt .",
 		"format:check": "bunx oxfmt --check .",
-		"check": "bunx oxlint && bunx oxfmt --check . && tsc --noEmit",
-		"typecheck": "tsc --noEmit"
+		"check": "bunx oxlint && bunx oxfmt --check ."
 	},
 	"dependencies": {
 		"@expo/vector-icons": "^15.1.1",
 		"axios": "^1.15.0",
-		"expo": "~55.0.13",
+		"expo": "~55.0.14",
 		"expo-constants": "~55.0.13",
 		"expo-font": "~55.0.6",
 		"expo-haptics": "~55.0.14",
 		"expo-image": "~55.0.8",
 		"expo-linear-gradient": "~55.0.13",
 		"expo-linking": "~55.0.12",
-		"expo-router": "~55.0.11",
+		"expo-router": "~55.0.12",
 		"expo-splash-screen": "~55.0.17",
 		"expo-status-bar": "~55.0.5",
 		"expo-symbols": "~55.0.7",
@@ -44,9 +43,7 @@
 		"tailwindcss": "^3.4.19"
 	},
 	"devDependencies": {
-		"@types/react": "~19.2.14",
 		"oxfmt": "^0.41.0",
-		"oxlint": "^1.59.0",
-		"typescript": "~5.9.3"
+		"oxlint": "^1.59.0"
 	}
 }
