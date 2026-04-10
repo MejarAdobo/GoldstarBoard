@@ -25,7 +25,10 @@ router.register(r"hourlydata", views.HourlyDataViewSet)
 router.register(r"station", views.StationViewSet)
 router.register(r"streak", views.StreakViewSet)
 router.register(r"dailydata", views.DailyDataViewSet)
-router.register(r"award", views.AwardViewSet)
+router.register(r"coldstreakaward", views.ColdStreakAwardViewSet)
+router.register(r"hotstreakaward", views.HotStreakAwardViewSet)
+router.register(r"leastgoldstaraward", views.LeastGoldStarAwardViewSet)
+router.register(r"mostgoldstaraward", views.MostGoldStarAwardViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),

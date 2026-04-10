@@ -9,6 +9,7 @@ from .parser import parse_station
 from .scraper import fetch_station
 from .stats import (
     add_star_day,
+    get_award_winners,
     grant_yearly_award,
     reset_yearly_streak,
     reset_yearly_total_days,
@@ -107,21 +108,13 @@ def yearly_reset():
 @task
 def grant_yearly_awards():
     """Grant yearly awards to stations."""
-    hot_streak = Streak.objects.order_by("-longest_yearly_hot_streak").first()
-    cold_streak = Streak.objects.order_by("-longest_yearly_cold_streak").first()
-    top_gold_star = Station.objects.order_by("-total_yearly_gold_star").first()
+    award_winners = get_award_winners()
 
-    awards_dict = {}
-    if hot_streak:
-        awards_dict["Longest Hot Streak"] = hot_streak.station
-    if cold_streak:
-        awards_dict["Longest Cold Streak"] = cold_streak.station
-    if top_gold_star:
-        awards_dict["Most Gold Stars"] = top_gold_star
-
-    for award, station in awards_dict.items():
+    for key, data in award_winners.items():
         grant_yearly_award(
-            station,
-            award,
+            data["award_type"],
             timezone.localtime().year,
+            data["station"],
+            data["place"],
+            data["count"],
         )
