@@ -1,7 +1,8 @@
 import json
 
 from bs4 import BeautifulSoup
-from converters import f2c, get, in2mm, inhg2hpa, mph2kmh
+
+from .converters import f2c, get, in2mm, inhg2hpa, mph2kmh
 
 
 def parse_station(html):
