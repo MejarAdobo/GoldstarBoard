@@ -1,9 +1,9 @@
+import StationLink from "$lib/components/stationLink";
+import StationLinkSkeleton from "$lib/components/stationLinkSkeleton";
+import { loadStations } from "$lib/services/loadStations";
 import { useState, useEffect } from "react";
 import { Text, View, FlatList, RefreshControl } from "react-native";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
-
-import StationLink from "$lib/components/stationLink";
-import { loadStations } from "$lib/services/loadStations";
 
 export default function Stations() {
 	const [stations, setStations] = useState([]);
@@ -20,7 +20,7 @@ export default function Stations() {
 			setTimeout(() => {
 				setLoading(false);
 				setRefreshing(false);
-			}, 1100);
+			}, 1050);
 		}
 	};
 
@@ -43,7 +43,7 @@ export default function Stations() {
 					</View>
 
 					{loading || refreshing ? (
-						<StationCardSkeleton />
+						<StationLinkSkeleton />
 					) : stations.length === 0 ? (
 						<Text className="text-[#2C1F00] font-bold Text-4xl py-4 text-center">
 							No stations found.
@@ -55,11 +55,7 @@ export default function Stations() {
 							showsVerticalScrollIndicator={false}
 							contentContainerStyle={{ paddingBottom: 60 }}
 							refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-							renderItem={({ item }) => (
-								<StationLink
-									name={item.name}
-								/>
-							)}
+							renderItem={({ item }) => <StationLink name={item.name} />}
 						/>
 					)}
 				</SafeAreaView>

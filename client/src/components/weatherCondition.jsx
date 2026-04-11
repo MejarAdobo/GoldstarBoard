@@ -1,7 +1,6 @@
+import { formatWeatherCondition } from "$lib/utils/formatWeatherCondition";
 import { SymbolView } from "expo-symbols";
 import { View, Text } from "react-native";
-
-import { formatWeatherCondition } from "$lib/utils/formatWeatherCondition";
 
 export default function WeatherCondition({ data, theme }) {
 	const formattedWeather = formatWeatherCondition(data);

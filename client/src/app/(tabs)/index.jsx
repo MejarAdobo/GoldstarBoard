@@ -1,10 +1,9 @@
+import StationCard from "$lib/components/stationCard";
+import StationCardSkeleton from "$lib/components/stationCardSkeleton";
+import { loadStations, sortStationsByRank } from "$lib/services/loadStations";
 import { useState, useEffect } from "react";
 import { Text, View, FlatList, RefreshControl } from "react-native";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
-
-import StationCard from "$lib/components/stationCard";
-import StationCardSkeleton from "$lib/components/stationCardSkeleton";
-import { loadStations } from "$lib/services/loadStations";
 
 export default function Leaderboard() {
 	const [stations, setStations] = useState([]);
@@ -13,7 +12,7 @@ export default function Leaderboard() {
 
 	const fetchData = async () => {
 		try {
-			const data = await loadStations();
+			const data = sortStationsByRank(await loadStations());
 			setStations(data);
 		} catch (err) {
 			console.error(err);
