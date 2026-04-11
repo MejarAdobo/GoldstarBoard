@@ -11,8 +11,6 @@ import Animated, {
 
 import WeatherCondition from "./weatherCondition";
 
-
-
 export default function WeatherToggle({ data, theme }) {
 	const [open, setOpen] = useState(false);
 	const rotation = useSharedValue(0);

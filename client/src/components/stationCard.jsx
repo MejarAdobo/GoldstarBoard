@@ -4,12 +4,8 @@ import { Text, View } from "react-native";
 import { getRankColours } from "../utils/setRankColours";
 import StationStatCard from "./stationStatCard";
 import WeatherToggle from "./weatherToggle";
+import GoldStarStatus from "./goldStarStatus";
 
-const statusConfig = {
-	"Streak Lost": { bg: "bg-[#FDDDD6]", text: "text-[#BA1A1A]", tint: "#BA1A1A" },
-	Gained: { bg: "bg-[#D4F5D0]", text: "text-[#1A6B18]", tint: "#1A6B18" },
-	default: { bg: "bg-[#E2E2EA]", text: "text-[#44464F]", tint: "#44464F" },
-};
 
 export default function StationCard({
 	rank,
@@ -22,16 +18,6 @@ export default function StationCard({
 }) {
 	const theme = getRankColours(rank);
 
-	const renderStatus = () => {
-		if (!goldStarStatus) return null;
-		const config = statusConfig[goldStarStatus] ?? statusConfig.default;
-		return (
-			<View className={`flex-row items-center ${config.bg} px-3 py-1 rounded-full gap-1`}>
-				<SymbolView name={{ android: "star", web: "star" }} size={18} tintColor={config.tint} />
-				<Text className={`font-semibold text-sm ${config.text}`}>{goldStarStatus}</Text>
-			</View>
-		);
-	};
 
 	return (
 		<View className={`p-6 rounded-[1.75em] my-2 ${theme.container}`}>
@@ -59,18 +45,10 @@ export default function StationCard({
 			/>
 
 			{/* Display Weather Data */}
-
 			<WeatherToggle data={weatherData} theme={theme} />
 
-			{/* <View className="flex-row gap-4 mb-2">
-				<StationInfoCard title="Temp" data={weatherData.temperature.c} rank={rank} />
-				<StationInfoCard title="Humidity" data={weatherData.humidity.value} rank={rank} />
-			</View>
-
-			<View className="flex-row gap-4 mb-1">
-				<StationInfoCard title="Rainfall" data={weatherData.precip_rate.in} rank={rank} />
-				<StationInfoCard title="Dewpoint" data={weatherData.dewpoint.c} rank={rank} />
-			</View>*/}
+			{/* display status */}
+			{goldStarStatus ? <GoldStarStatus goldStarStatus={goldStarStatus} /> : null}
 		</View>
 	);
 }
