@@ -57,13 +57,53 @@ class DailyData(models.Model):
         return f"{self.station.name} - {self.recorded_at}"
 
 
-class Award(models.Model):
-    station = models.ForeignKey(Station, on_delete=models.CASCADE, related_name="award")
-    award_name = models.CharField(max_length=255)
+# Awards
+class HotStreakAward(models.Model):
     year = models.IntegerField()
+    recipient = models.ForeignKey(
+        Station, on_delete=models.CASCADE, related_name="hot_streak_awards"
+    )
+    place = models.IntegerField()
+    streak_length = models.IntegerField()
 
     def __str__(self):
-        return f"{self.station.name} - {self.year} - {self.award_name}"
+        return f"{self.year} - {self.recipient.name} - Place {self.place} - Streak {self.streak_length}"
+
+
+class ColdStreakAward(models.Model):
+    year = models.IntegerField()
+    recipient = models.ForeignKey(
+        Station, on_delete=models.CASCADE, related_name="cold_streak_awards"
+    )
+    place = models.IntegerField()
+    streak_length = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.year} - {self.recipient.name} - Place {self.place} - Streak {self.streak_length}"
+
+
+class MostGoldStarAward(models.Model):
+    year = models.IntegerField()
+    recipient = models.ForeignKey(
+        Station, on_delete=models.CASCADE, related_name="most_gold_star_awards"
+    )
+    place = models.IntegerField()
+    total_gold_stars = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.year} - {self.recipient.name} - Place {self.place} - Total Gold Stars {self.total_gold_stars}"
+
+
+class LeastGoldStarAward(models.Model):
+    year = models.IntegerField()
+    recipient = models.ForeignKey(
+        Station, on_delete=models.CASCADE, related_name="least_gold_star_awards"
+    )
+    place = models.IntegerField()
+    total_gold_stars = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.year} - {self.recipient.name} - Place {self.place} - Total Gold Stars {self.total_gold_stars}"
 
 
 # functions

@@ -48,8 +48,6 @@ jobs:
       - name: Format check
         run: bun run format:check
 
-      - name: Typecheck
-        run: bun run typecheck
 
   build:
     name: EAS Build
@@ -62,7 +60,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2

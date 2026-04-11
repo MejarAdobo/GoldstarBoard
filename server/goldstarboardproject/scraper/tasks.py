@@ -9,6 +9,7 @@ from .parser import parse_station
 from .scraper import fetch_station
 from .stats import (
     add_star_day,
+    get_award_winners,
     grant_yearly_award,
     reset_yearly_streak,
     reset_yearly_total_days,
@@ -33,7 +34,7 @@ def gather_hourly_data():
             HourlyData.objects.update_or_create(
                 station=station,
                 defaults={
-                    "recorded_at": timezone.now().strftime("%Y-%m-%d %H:00"),
+                    "recorded_at": timezone.localtime().strftime("%Y-%m-%d %H:00"),
                     "weather_data": weather_data,
                     "has_gold_star": gold_star,
                 },
@@ -52,22 +53,29 @@ def gather_daily_data():
             gold_star, weather_data = parse_station(html)
 
             # logic for granting the status
-            previous_day = (timezone.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+            previous_day = (timezone.localtime() - timedelta(days=1)).strftime(
+                "%Y-%m-%d"
+            )
             yday_data = DailyData.objects.filter(
                 station=station, recorded_at=previous_day
             ).first()
             gold_star_status = None
 
             if yday_data:
+                # if you have a gold star the prievous day, and no gold star after the daily data task happen, you are granted this status
                 if yday_data.has_gold_star and not gold_star:
                     gold_star_status = "Streak Lost"
-                    station.last_day_since_gold_star = timezone.now().strftime("%B %d")
+                    station.last_day_since_gold_star = timezone.localtime().strftime(
+                        "%B %d"
+                    )
                     station.save()
 
-                if not yday_data.has_gold_star and gold_star:
+                # No gold star yesterday, and have gold star today
+                elif not yday_data.has_gold_star and gold_star:
                     gold_star_status = "Gained"
 
-                if not yday_data.has_gold_star and not gold_star:
+                # No gold star yesterday, and today
+                elif not yday_data.has_gold_star and not gold_star:
                     gold_star_status = f"Since {station.last_day_since_gold_star}"
 
             # add a gold star to total count and the streak
@@ -80,7 +88,7 @@ def gather_daily_data():
             # create a new DailyData for the current day
             DailyData.objects.create(
                 station=station,
-                recorded_at=timezone.now().strftime("%Y-%m-%d"),
+                recorded_at=timezone.localtime().strftime("%Y-%m-%d"),
                 has_gold_star=gold_star,
                 gold_star_status=gold_star_status,
             )
@@ -96,25 +104,17 @@ def yearly_reset():
         reset_yearly_total_days(station)
 
 
-@cron("0 0 25 12 *")
+@cron("30 23 31 12 *")
 @task
 def grant_yearly_awards():
     """Grant yearly awards to stations."""
-    hot_streak = Streak.objects.order_by("-longest_yearly_hot_streak").first()
-    cold_streak = Streak.objects.order_by("-longest_yearly_cold_streak").first()
-    top_gold_star = Station.objects.order_by("-total_yearly_gold_star").first()
+    award_winners = get_award_winners()
 
-    awards_dict = {}
-    if hot_streak:
-        awards_dict["Longest Hot Streak"] = hot_streak.station
-    if cold_streak:
-        awards_dict["Longest Cold Streak"] = cold_streak.station
-    if top_gold_star:
-        awards_dict["Most Gold Stars"] = top_gold_star
-
-    for award, station in awards_dict.items():
+    for key, data in award_winners.items():
         grant_yearly_award(
-            station,
-            award,
-            timezone.now().year,
+            data["award_type"],
+            timezone.localtime().year,
+            data["station"],
+            data["place"],
+            data["count"],
         )

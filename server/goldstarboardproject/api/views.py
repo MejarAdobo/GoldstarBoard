@@ -1,10 +1,22 @@
 from rest_framework import viewsets
-from scraper.models import Award, DailyData, HourlyData, Station, Streak
+from scraper.models import (
+    ColdStreakAward,
+    DailyData,
+    HotStreakAward,
+    HourlyData,
+    LeastGoldStarAward,
+    MostGoldStarAward,
+    Station,
+    Streak,
+)
 
 from .serializers import (
-    AwardSerializer,
+    ColdStreakAwardSerializer,
     DailyDataSerializer,
+    HotStreakAwardSerializer,
     HourlyDataSerializer,
+    LeastGoldStarAwardSerializer,
+    MostGoldStarAwardSerializer,
     StationSerializer,
     StreakSerializer,
 )
@@ -31,6 +43,21 @@ class DailyDataViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = DailyDataSerializer
 
 
-class AwardViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Award.objects.all()
-    serializer_class = AwardSerializer
+class ColdStreakAwardViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = ColdStreakAward.objects.all()
+    serializer_class = ColdStreakAwardSerializer
+
+
+class HotStreakAwardViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = HotStreakAward.objects.all()
+    serializer_class = HotStreakAwardSerializer
+
+
+class LeastGoldStarAwardViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = LeastGoldStarAward.objects.all()
+    serializer_class = LeastGoldStarAwardSerializer
+
+
+class MostGoldStarAwardViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = MostGoldStarAward.objects.all()
+    serializer_class = MostGoldStarAwardSerializer

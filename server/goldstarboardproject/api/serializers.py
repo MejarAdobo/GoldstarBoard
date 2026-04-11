@@ -1,5 +1,14 @@
 from rest_framework import serializers
-from scraper.models import Award, DailyData, HourlyData, Station, Streak
+from scraper.models import (
+    ColdStreakAward,
+    DailyData,
+    HotStreakAward,
+    HourlyData,
+    LeastGoldStarAward,
+    MostGoldStarAward,
+    Station,
+    Streak,
+)
 
 
 class StreakSerializer(serializers.ModelSerializer):
@@ -68,8 +77,29 @@ class StationSerializer(serializers.ModelSerializer):
         return None
 
 
-class AwardSerializer(serializers.ModelSerializer):
+class HotStreakAwardSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Award
+        model = HotStreakAward
         fields = "__all__"
-        read_only_fields = ("station", "award_name", "year")
+        read_only_fields = ["year", "recipient", "place", "streak_length"]
+
+
+class ColdStreakAwardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ColdStreakAward
+        fields = "__all__"
+        read_only_fields = ["year", "recipient", "place", "streak_length"]
+
+
+class MostGoldStarAwardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MostGoldStarAward
+        fields = "__all__"
+        read_only_fields = ["year", "recipient", "place", "total_gold_stars"]
+
+
+class LeastGoldStarAwardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LeastGoldStarAward
+        fields = "__all__"
+        read_only_fields = ["year", "recipient", "place", "total_gold_stars"]

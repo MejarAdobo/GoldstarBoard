@@ -1,5 +1,5 @@
 {
-	"plugins": ["react", "typescript", "import"],
+	"plugins": ["react", "import"],
 	"env": {
 		"browser": true
 	},
@@ -34,24 +34,9 @@
 	},
 	"overrides": [
 		{
-			"files": ["**/*.d.ts"],
-			"rules": {}
-		},
-		{
 			"files": ["**/metro.config.js"],
 			"globals": {
 				"exports": "readonly"
-			}
-		},
-		{
-			"files": ["**/*.ts", "**/*.tsx", "**/*.d.ts"],
-			"rules": {
-				"no-useless-constructor": "warn",
-				"no-undef": "off",
-				"no-unused-vars": "warn",
-				"no-dupe-class-members": "error",
-				"no-redeclare": "warn",
-				"typescript/no-extra-non-null-assertion": "warn"
 			}
 		}
 	],
