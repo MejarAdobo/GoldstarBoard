@@ -12,12 +12,7 @@ export default function TabLayout() {
 					borderTopRightRadius: 30,
 					height: 100,
 					paddingTop: 10,
-					backgroundColor: "#efeae6",
-					shadowColor: "#000",
-					shadowOffset: { width: 0, height: 4 },
-					shadowOpacity: 0.5,
-					shadowRadius: 8,
-					elevation: 8,
+					backgroundColor: "#F5EDE0",
 				},
 			}}
 		>
@@ -26,8 +21,8 @@ export default function TabLayout() {
 				options={{
 					title: "Leaderboard",
 					tabBarAccessibilityLabel: "Leaderboard",
-					tabBarActiveTintColor: "#291334",
-					tabBarIcon: ({ color }) => (
+					tabBarActiveTintColor: "#2C1F00",
+					tabBarIcon: ({ color = "#6B5D3F" }) => (
 						<SymbolView
 							name={{
 								android: "social_leaderboard",
@@ -44,8 +39,8 @@ export default function TabLayout() {
 				options={{
 					title: "Stations",
 					tabBarAccessibilityLabel: "Stations",
-					tabBarActiveTintColor: "#291334",
-					tabBarIcon: ({ color }) => (
+					tabBarActiveTintColor: "#2C1F00",
+					tabBarIcon: ({ color = "#6B5D3F" }) => (
 						<SymbolView
 							name={{ android: "location_on", web: "location_on" }}
 							size={28}
@@ -59,8 +54,8 @@ export default function TabLayout() {
 				options={{
 					title: "Records",
 					tabBarAccessibilityLabel: "Records",
-					tabBarActiveTintColor: "#291334",
-					tabBarIcon: ({ color }) => (
+					tabBarActiveTintColor: "#2C1F00",
+					tabBarIcon: ({ color = "#6B5D3F" }) => (
 						<SymbolView
 							name={{ android: "leaderboard", web: "leaderboard" }}
 							size={28}
@@ -74,8 +69,8 @@ export default function TabLayout() {
 				options={{
 					title: "Settings",
 					tabBarAccessibilityLabel: "Settings",
-					tabBarActiveTintColor: "#291334",
-					tabBarIcon: ({ color }) => (
+					tabBarActiveTintColor: "#2C1F00",
+					tabBarIcon: ({ color = "#6B5D3F" }) => (
 						<SymbolView
 							name={{ android: "settings", web: "settings" }}
 							size={28}

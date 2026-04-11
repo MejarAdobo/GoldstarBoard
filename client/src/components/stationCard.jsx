@@ -1,11 +1,9 @@
-import { SymbolView } from "expo-symbols";
 import { Text, View } from "react-native";
 
 import { getRankColours } from "../utils/setRankColours";
+import GoldStarStatus from "./goldStarStatus";
 import StationStatCard from "./stationStatCard";
 import WeatherToggle from "./weatherToggle";
-import GoldStarStatus from "./goldStarStatus";
-
 
 export default function StationCard({
 	rank,
@@ -17,7 +15,6 @@ export default function StationCard({
 	weatherData,
 }) {
 	const theme = getRankColours(rank);
-
 
 	return (
 		<View className={`p-6 rounded-[1.75em] my-2 ${theme.container}`}>

@@ -54,17 +54,17 @@ export default function Leaderboard() {
 
 	return (
 		<SafeAreaProvider>
-			<View className="flex-1 px-4 py-2 bg-[#efeae6]">
+			<View className="flex-1 px-4 py-2 bg-[#FFF9F0]">
 				<SafeAreaView className="flex-1">
-					<View className="py-1">
-						<Text className="font-bold text-4xl py-1 text-[#291334]">Leaderboard</Text>
-						<Text className="text-lg text-[#291334] font-semibold">{stations.length} Stations</Text>
+					<View className="p-2">
+						<Text className="font-bold text-4xl py-1 text-[#2C1F00]">Leaderboard</Text>
+						<Text className="text-lg text-[#2C1F00] font-semibold">{stations.length} Stations</Text>
 					</View>
 
 					{loading ? (
 						<StationCardSkeleton />
 					) : stations.length === 0 ? (
-						<Text className="text-[#291334] font-bold Text-4xl py-4 text-center">
+						<Text className="text-[#2C1F00] font-bold Text-4xl py-4 text-center">
 							No stations found.
 						</Text>
 					) : (

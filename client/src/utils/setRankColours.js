@@ -38,15 +38,15 @@ export const getRankColours = (rank) => {
 			};
 		default:
 			return {
-				container: "bg-[#F0F0F5]",
-				containerText: "text-[#1B1B1F]",
-				badge: "bg-[#E0E0E8]",
-				badgeText: "text-[#44464F]",
-				statBg: "bg-[#F6F6FB]",
-				accentText: "text-[#5F6070]",
-				weatherBg: "bg-[#E2E2EA]",
-				weatherTiles: "bg-[#EEEEF4]",
-				icon: "#5F6070",
+				container: "bg-[#F5EDE0]",
+				containerText: "text-[#2C1F00]",
+				badge: "bg-[#E8DCC8]",
+				badgeText: "text-[#5C4D33]",
+				statBg: "bg-[#FAF4E8]",
+				accentText: "text-[#7A6B50]",
+				weatherBg: "bg-[#EAE0CE]",
+				weatherTiles: "bg-[#F2EADB]",
+				icon: "#7A6B50",
 			};
 	}
 };
