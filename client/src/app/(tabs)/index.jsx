@@ -36,7 +36,7 @@ export default function Leaderboard() {
 
 	return (
 		<SafeAreaProvider>
-			<View className="flex-1 px-4 py-2 bg-[#FFF9F0]">
+			<View className="flex-1 px-4 py-1 bg-[#FFF9F0]">
 				<SafeAreaView className="flex-1">
 					<View className="p-2">
 						<Text className="font-bold text-4xl py-1 text-[#2C1F00]">Leaderboard</Text>
@@ -54,7 +54,7 @@ export default function Leaderboard() {
 							data={stations}
 							keyExtractor={(item) => item.name}
 							showsVerticalScrollIndicator={false}
-							contentContainerStyle={{ paddingBottom: 50 }}
+							contentContainerStyle={{ paddingBottom: 60 }}
 							refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
 							renderItem={({ item }) => (
 								<StationCard

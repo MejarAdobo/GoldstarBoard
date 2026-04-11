@@ -10,8 +10,8 @@ export default function TabLayout() {
 					position: "absolute",
 					borderTopLeftRadius: 30,
 					borderTopRightRadius: 30,
-					height: 100,
-					paddingTop: 10,
+					height: 105,
+					paddingTop: 5,
 					backgroundColor: "#F5EDE0",
 				},
 			}}

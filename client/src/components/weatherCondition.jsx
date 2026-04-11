@@ -1,129 +1,32 @@
 import { SymbolView } from "expo-symbols";
 import { View, Text } from "react-native";
+import { formatWeatherCondition } from "../utils/formatWeatherCondition";
 
 export default function WeatherCondition({ data, theme }) {
+	const formattedWeather = formatWeatherCondition(data);
+
+	let measurementType = "imperial";
+
 	return (
 		<View className={`rounded-b-[20px] py-4 px-2 ${theme.weatherBg}`}>
 			<View className="flex-row flex-wrap gap-2 justify-center">
-				{/* temp */}
-				<View
-					className={`items-center py-3.5 px-2 rounded-[14px] ${theme.weatherTiles}`}
-					style={{ width: "31%" }}
-				>
-					<SymbolView
-						name={{ android: "thermostat", web: "thermostat" }}
-						size={26}
-						tintColor={theme.icon}
-					/>
-					<Text className={`text-[11px] font-bold mt-1 ${theme.containerText}`}>
-						{data.temperature.c}°C
-					</Text>
-					<Text className={`text-[9px] font-semibold mt-0.5 ${theme.accentText}`}>Temp</Text>
-				</View>
-				{/* humidity */}
-				<View
-					className={`items-center py-3.5 px-2 rounded-[14px] ${theme.weatherTiles}`}
-					style={{ width: "31%" }}
-				>
-					<SymbolView
-						name={{ android: "humidity_percentage", web: "humidity_percentage" }}
-						size={26}
-						tintColor={theme.icon}
-					/>
-					<Text className={`text-[11px] font-bold mt-1 ${theme.containerText}`}>
-						{data.humidity.value}%
-					</Text>
-					<Text className={`text-[9px] font-semibold mt-0.5 ${theme.accentText}`}>Humidity</Text>
-				</View>
-				{/* dewpoint */}
-				<View
-					className={`items-center py-3.5 px-2 rounded-[14px] ${theme.weatherTiles}`}
-					style={{ width: "31%" }}
-				>
-					<SymbolView
-						name={{ android: "dew_point", web: "dew_point" }}
-						size={26}
-						tintColor={theme.icon}
-					/>
-					<Text className={`text-[11px] font-bold mt-1 ${theme.containerText}`}>
-						{data.dewpoint.c}°C
-					</Text>
-					<Text className={`text-[9px] font-semibold mt-0.5 ${theme.accentText}`}>Dewpoint</Text>
-				</View>
-				{/* uv index*/}
-				<View
-					className={`items-center py-3.5 px-2 rounded-[14px] ${theme.weatherTiles}`}
-					style={{ width: "31%" }}
-				>
-					<SymbolView name={{ android: "sunny", web: "sunny" }} size={26} tintColor={theme.icon} />
-					<Text className={`text-[11px] font-bold mt-1 ${theme.containerText}`}>{data.uv}</Text>
-					<Text className={`text-[9px] font-semibold mt-0.5 ${theme.accentText}`}>UV Index</Text>
-				</View>
-				{/* wind speed */}
-				<View
-					className={`items-center py-3.5 px-2 rounded-[14px] ${theme.weatherTiles}`}
-					style={{ width: "31%" }}
-				>
-					<SymbolView name={{ android: "air", web: "air" }} size={26} tintColor={theme.icon} />
-					<Text className={`text-[11px] font-bold mt-1 ${theme.containerText}`}>
-						{data.wind.speed.kmh} kph
-					</Text>
-					<Text className={`text-[9px] font-semibold mt-0.5 ${theme.accentText}`}>Wind</Text>
-				</View>
-				{/* gust */}
-				<View
-					className={`items-center py-3.5 px-2 rounded-[14px] ${theme.weatherTiles}`}
-					style={{ width: "31%" }}
-				>
-					<SymbolView
-						name={{ android: "cyclone", web: "cyclone" }}
-						size={26}
-						tintColor={theme.icon}
-					/>
-					<Text className={`text-[11px] font-bold mt-1 ${theme.containerText}`}>
-						{data.wind.gust.kmh} kph
-					</Text>
-					<Text className={`text-[9px] font-semibold mt-0.5 ${theme.accentText}`}>Gust</Text>
-				</View>
-				{/* precip accum*/}
-				<View
-					className={`items-center py-3.5 px-2 rounded-[14px] ${theme.weatherTiles}`}
-					style={{ width: "31%" }}
-				>
-					<SymbolView
-						name={{ android: "water_drop", web: "water_drop" }}
-						size={26}
-						tintColor={theme.icon}
-					/>
-					<Text className={`text-[11px] font-bold mt-1 ${theme.containerText}`}>
-						{data.precip_accum.in} mm
-					</Text>
-					<Text className={`text-[9px] font-semibold mt-0.5 ${theme.accentText}`}>
-						Precip Accum
-					</Text>
-				</View>
-				{/* precip rate*/}
-				<View
-					className={`items-center py-3.5 px-2 rounded-[14px] ${theme.weatherTiles}`}
-					style={{ width: "31%" }}
-				>
-					<SymbolView name={{ android: "rainy", web: "rainy" }} size={26} tintColor={theme.icon} />
-					<Text className={`text-[11px] font-bold mt-1 ${theme.containerText}`}>
-						{data.precip_rate.in} mm
-					</Text>
-					<Text className={`text-[9px] font-semibold mt-0.5 ${theme.accentText}`}>Precip Rate</Text>
-				</View>
-				{/* pressure*/}
-				<View
-					className={`items-center py-3.5 px-2 rounded-[14px] ${theme.weatherTiles}`}
-					style={{ width: "31%" }}
-				>
-					<SymbolView name={{ android: "speed", web: "speed" }} size={26} tintColor={theme.icon} />
-					<Text className={`text-[11px] font-bold mt-1 ${theme.containerText}`}>
-						{data.pressure.hpa} hPa
-					</Text>
-					<Text className={`text-[9px] font-semibold mt-0.5 ${theme.accentText}`}>Pressure</Text>
-				</View>
+				{Object.values(formattedWeather).map((item, i) =>  (
+					<View
+						key={i}
+						className={`items-center py-3.5 px-2 rounded-[14px] ${theme.weatherTiles}`}
+						style={{ width: "31%" }}
+					>
+						<SymbolView
+							name={{ android: item.icon, web: item.icon }}
+							size={26}
+							tintColor={theme.icon}
+						/>
+						<Text className={`text-[11px] font-bold mt-1 ${theme.containerText}`}>
+							{measurementType === "metric" ? (item.metric ?? item.value) : measurementType === "imperial" ? (item.imperial ?? item.value) : item.value}
+						</Text>
+						<Text className={`text-[9px] font-semibold mt-0.5 ${theme.accentText}`}>{item.title}</Text>
+					</View>
+				))}
 			</View>
 		</View>
 	);
