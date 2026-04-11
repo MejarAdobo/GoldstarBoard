@@ -1,7 +1,7 @@
 import { Text, View, ScrollView } from "react-native";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 
-export default function Leaderboard() {
+export default function Settings() {
 	return (
 		<SafeAreaProvider>
 			<View className="flex-1 px-6 py-4">

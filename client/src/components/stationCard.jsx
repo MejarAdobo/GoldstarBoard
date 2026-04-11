@@ -1,102 +1,76 @@
 import { SymbolView } from "expo-symbols";
 import { Text, View } from "react-native";
 
-import StationInfoCard from "./stationInfoCard";
+import { getRankColours } from "../utils/setRankColours";
+import StationStatCard from "./stationStatCard";
+import WeatherToggle from "./weatherToggle";
 
 const statusConfig = {
-  "Streak Lost": { bg: "bg-rose-500", text: "text-rose-950", tint: "#4d0218" },
-  Gained: { bg: "bg-emerald-500", text: "text-emerald-950", tint: "#002c21" },
-  default: { bg: "bg-neutral-400", text: "text-neutral-700", tint: "#404040" },
-};
-
-const rankColors = {
-  1: "text-[#D4A827]",
-  2: "text-[#8892A0]",
-  3: "text-[#C48E5E]",
-};
-
-const rankBgColors = {
-  1: "bg-[#D4A827]",
-  2: "bg-[#8892A0]",
-  3: "bg-[#C48E5E]",
-};
-
-const rankBorderColors = {
-  1: "border-[#D4A827]",
-  2: "border-[#8892A0]",
-  3: "border-[#C48E5E]",
+	"Streak Lost": { bg: "bg-[#FDDDD6]", text: "text-[#BA1A1A]", tint: "#BA1A1A" },
+	Gained: { bg: "bg-[#D4F5D0]", text: "text-[#1A6B18]", tint: "#1A6B18" },
+	default: { bg: "bg-[#E2E2EA]", text: "text-[#44464F]", tint: "#44464F" },
 };
 
 export default function StationCard({
-  rank,
-  name,
-  hotStreak,
-  coldStreak,
-  goldStars,
-  goldStarStatus,
-  weatherData,
+	rank,
+	name,
+	hotStreak,
+	coldStreak,
+	goldStars,
+	goldStarStatus,
+	weatherData,
 }) {
-  const renderStatus = () => {
-    if (!goldStarStatus) return null;
-    const config = statusConfig[goldStarStatus] ?? statusConfig.default;
-    return (
-      <View className={`flex-row items-center ${config.bg} px-3 py-1 rounded-full gap-1`}>
-        <SymbolView name={{ android: "star", web: "star" }} size={18} tintColor={config.tint} />
-        <Text className={`font-semibold text-sm ${config.text}`}>{goldStarStatus}</Text>
-      </View>
-    );
-  };
+	const theme = getRankColours(rank);
 
-  return (
-    <View
-      className={`py-4 px-5 bg-[#faf7f5] rounded-[2em] my-2 border-2 ${rankBorderColors[rank] ?? "border-[#e7e2df]"}`}
-    >
-      <View className="flex-row items-center justify-between">
-        <View className="flex-row items-center gap-4 mb-1">
-          <Text className={`text-4xl font-bold ${rankColors[rank] ?? "text-[#291334]"}`}>
-            {rank}
-          </Text>
-          <Text className={`text-xl font-semibold ${rankColors[rank] ?? "text-[#291334]"}`}>
-            {name}
-          </Text>
-        </View>
-        {renderStatus()}
-      </View>
+	const renderStatus = () => {
+		if (!goldStarStatus) return null;
+		const config = statusConfig[goldStarStatus] ?? statusConfig.default;
+		return (
+			<View className={`flex-row items-center ${config.bg} px-3 py-1 rounded-full gap-1`}>
+				<SymbolView name={{ android: "star", web: "star" }} size={18} tintColor={config.tint} />
+				<Text className={`font-semibold text-sm ${config.text}`}>{goldStarStatus}</Text>
+			</View>
+		);
+	};
 
-      {/* Display Streak and Stars */}
-      <View className="flex-row gap-4 my-1">
-        {/* Streak Container */}
-        {hotStreak > 0 ? (
-          <StationInfoCard title="Hot Streak" data={hotStreak} rank={rank} />
-        ) : coldStreak > 0 ? (
-          <StationInfoCard title="Cold Streak" data={coldStreak} rank={rank} />
-        ) : (
-          <StationInfoCard title="Streak" data={0} rank={rank} />
-        )}
+	return (
+		<View className={`p-6 rounded-[1.75em] my-2 ${theme.container}`}>
+			{/* card title and rank*/}
+			<View className="flex-row items-center justify-between">
+				<View className="flex-row items-center gap-5 mb-2">
+					<Text
+						className={`text-4xl px-6 py-4 font-bold rounded-[16px] ${theme.badge} ${theme.badgeText}`}
+					>
+						{rank}
+					</Text>
+					<Text className={`text-2xl font-bold ${theme.containerText}`}>{name}</Text>
+				</View>
+			</View>
 
-        {/* Gold Star Container */}
-        <StationInfoCard title="Gold Stars" data={goldStars} rank={rank} />
-      </View>
+			{/* display the streak and gold stars */}
+			<StationStatCard
+				statBg={theme.statBg}
+				containerText={theme.containerText}
+				accentText={theme.accentText}
+				icon={theme.icon}
+				hotStreak={hotStreak}
+				coldStreak={coldStreak}
+				goldStars={goldStars}
+			/>
 
-      {/* Divider */}
-      <View className={`h-1 mt-4 mb-2 rounded ${rankBgColors[rank] ?? "bg-[#e7e2df]"}`} />
-      <Text className={`text-lg font-semibold mb-2 ${rankColors[rank] ?? "text-[#291334]"}`}>
-        Weather Conditions
-      </Text>
+			{/* Display Weather Data */}
 
-      {/* Display Weather Data */}
+			<WeatherToggle data={weatherData} theme={theme} />
 
-      {/* First Row */}
-      <View className="flex-row gap-4 mb-2">
-        <StationInfoCard title="Temp" data={weatherData.temperature.c} rank={rank} />
-        <StationInfoCard title="Humidity" data={weatherData.humidity.value} rank={rank} />
-      </View>
+			{/* <View className="flex-row gap-4 mb-2">
+				<StationInfoCard title="Temp" data={weatherData.temperature.c} rank={rank} />
+				<StationInfoCard title="Humidity" data={weatherData.humidity.value} rank={rank} />
+			</View>
 
-      {/* Second Row */}
-      <View className="flex-row gap-4 mb-1">
-        <StationInfoCard title="Rainfall" data={weatherData.precip_rate.in} rank={rank} />
-        <StationInfoCard title="Dewpoint" data={weatherData.dewpoint.c} rank={rank} />
-      </View>
-    </View>
-  );
+			<View className="flex-row gap-4 mb-1">
+				<StationInfoCard title="Rainfall" data={weatherData.precip_rate.in} rank={rank} />
+				<StationInfoCard title="Dewpoint" data={weatherData.dewpoint.c} rank={rank} />
+			</View>*/}
+		</View>
+	);
 }

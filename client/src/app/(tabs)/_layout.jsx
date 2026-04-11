@@ -40,6 +40,21 @@ export default function TabLayout() {
 				}}
 			/>
 			<Tabs.Screen
+				name="stations"
+				options={{
+					title: "Stations",
+					tabBarAccessibilityLabel: "Stations",
+					tabBarActiveTintColor: "#291334",
+					tabBarIcon: ({ color }) => (
+						<SymbolView
+							name={{ android: "location_on", web: "location_on" }}
+							size={28}
+							tintColor={color}
+						/>
+					),
+				}}
+			/>
+			<Tabs.Screen
 				name="records"
 				options={{
 					title: "Records",
