@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { Text, View, FlatList, RefreshControl } from "react-native";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 
-import StationCard from "../../components/stationCard";
-import StationCardSkeleton from "../../components/stationCardSkeleton";
-import { loadStations } from "../../services/loadStations";
+import StationCard from "$lib/components/stationCard";
+import StationCardSkeleton from "$lib/components/stationCardSkeleton";
+import { loadStations } from "$lib/services/loadStations";
 
 export default function Leaderboard() {
 	const [stations, setStations] = useState([]);
