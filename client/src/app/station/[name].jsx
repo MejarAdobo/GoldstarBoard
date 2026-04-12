@@ -1,5 +1,6 @@
 import StarCalendar from "$lib/components/starCalendar";
 import StarSummary, { StarLegend } from "$lib/components/starSummary";
+import { colors, bg } from "$lib/utils/theme";
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import { View } from "react-native";
@@ -46,18 +47,18 @@ export default function Station() {
 			<Stack.Screen
 				options={{
 					title: name,
-					headerStyle: { backgroundColor: "#FFF9F0" },
+					headerStyle: { backgroundColor: colors.pageBg },
 					headerTitleStyle: { fontSize: 30, fontWeight: "700" },
-					headerTintColor: "#2C1F00",
+					headerTintColor: colors.textPrimary,
 					headerShadowVisible: false,
 				}}
 			/>
 			<SafeAreaProvider>
-				<View className="flex-1 px-4 py-1 bg-[#FFF9F0]">
+				<View className={`flex-1 px-4 py-1 ${bg(colors.pageBg)}`}>
 					<SafeAreaView className="flex-1">
 						<StarSummary starData={dateData} />
 						<StarLegend />
-						<View className="mx-4 bg-[#F5EDE0] rounded-[22px] p-4">
+						<View className={`mx-4 rounded-[22px] p-4 ${bg(colors.surface)}`}>
 							<StarCalendar
 								starData={dateData}
 								currentMonth={currentMonth}

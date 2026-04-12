@@ -1,12 +1,6 @@
+import { colors, bg, text, statusColors } from "$lib/utils/theme";
 import { ChevronLeft, ChevronRight } from "lucide-react-native";
 import { Text, View, Pressable } from "react-native";
-
-const STATUS_COLOURS = {
-	gained: { bg: "#D4F5D0", text: "text-[#1A6B18]" },
-	maintained: { bg: "#FFF4D6", text: "text-[#7A5200]" },
-	lost: { bg: "#FDDDD6", text: "text-[#BA1A1A]" },
-	nostar: { bg: "#E8DCC8", text: "text-[#8B7355]" },
-};
 
 const WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
@@ -65,19 +59,19 @@ export default function StarCalendar({ starData, currentMonth, currentYear, onCh
 		<View>
 			{/* Header */}
 			<View className="flex-row items-center justify-between mb-2">
-				<Pressable onPress={() => onChangeMonth(-1)} className="bg-[#EAE0CE] rounded-[14px] p-2">
-					<ChevronLeft size={18} color="#6B5D3F" />
+				<Pressable onPress={() => onChangeMonth(-1)} className={`rounded-[14px] p-2 ${bg(colors.surfaceAlt)}`}>
+					<ChevronLeft size={18} color={colors.textSecondary} />
 				</Pressable>
 				<View className="flex-row gap-1">
-					<Text className="text-[#2C1F00] font-extrabold text-base">{MONTHS[currentMonth]}</Text>
-					<Text className="text-[#2C1F00] font-extrabold text-base">{currentYear}</Text>
+					<Text className={`font-extrabold text-base ${text(colors.textPrimary)}`}>{MONTHS[currentMonth]}</Text>
+					<Text className={`font-extrabold text-base ${text(colors.textPrimary)}`}>{currentYear}</Text>
 				</View>
 				<Pressable
 					onPress={() => canGoNext && onChangeMonth(1)}
-					className="bg-[#EAE0CE] rounded-[14px] p-2"
+					className={`rounded-[14px] p-2 ${bg(colors.surfaceAlt)}`}
 					style={{ opacity: canGoNext ? 1 : 0.3 }}
 				>
-					<ChevronRight size={18} color="#6B5D3F" />
+					<ChevronRight size={18} color={colors.textSecondary} />
 				</Pressable>
 			</View>
 
@@ -85,7 +79,7 @@ export default function StarCalendar({ starData, currentMonth, currentYear, onCh
 			<View className="flex-row mb-1">
 				{WEEKDAYS.map((wd) => (
 					<View key={wd} className="flex-1 items-center py-1">
-						<Text className="text-[#8B7355] text-[10px] font-semibold uppercase">{wd}</Text>
+						<Text className={`text-[10px] font-semibold uppercase ${text(colors.textSubtle)}`}>{wd}</Text>
 					</View>
 				))}
 			</View>
@@ -99,7 +93,7 @@ export default function StarCalendar({ starData, currentMonth, currentYear, onCh
 						}
 
 						const key = formatDateKey(currentYear, currentMonth, day);
-						const colours = STATUS_COLOURS[starData[key]];
+						const dayColors = statusColors[starData[key]];
 						const today = key === todayKey;
 
 						return (
@@ -116,13 +110,13 @@ export default function StarCalendar({ starData, currentMonth, currentYear, onCh
 										alignItems: "center",
 										justifyContent: "center",
 										borderRadius: 10,
-										backgroundColor: colours?.bg,
+										backgroundColor: dayColors?.bg,
 										borderWidth: today ? 2 : 0,
-										borderColor: today ? "#8B5E00" : "transparent",
+										borderColor: today ? colors.calendarTodayBorder : "transparent",
 									}}
 								>
 									<Text
-										className={`text-sm ${colours ? `${colours.text} font-semibold` : "text-[#C4B89A] font-semibold"} ${today ? "text-[#8B5E00] font-bold" : ""}`}
+										className={`text-sm ${dayColors ? `${dayColors.text} font-semibold` : `${text(colors.calendarNoDay)} font-semibold`} ${today ? `${text(colors.calendarTodayBorder)} font-bold` : ""}`}
 									>
 										{day}
 									</Text>

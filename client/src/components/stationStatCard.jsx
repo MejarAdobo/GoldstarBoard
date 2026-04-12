@@ -1,3 +1,4 @@
+import { colors } from "$lib/utils/theme";
 import { SymbolView } from "expo-symbols";
 import { Text, View } from "react-native";
 
@@ -18,7 +19,7 @@ export default function StationStatCard({
 					<SymbolView
 						name={{ android: "mode_heat", web: "mode_heat" }}
 						size={28}
-						tintColor={"#D84315"}
+						tintColor={colors.streakHot}
 					/>
 					<View className="flex-col items-start">
 						<Text className={`text-lg font-bold ${containerText}`}>{hotStreak} Days</Text>
@@ -30,7 +31,7 @@ export default function StationStatCard({
 					<SymbolView
 						name={{ android: "mode_cool", web: "mode_cool" }}
 						size={28}
-						tintColor={"#1565C0"}
+						tintColor={colors.streakCold}
 					/>
 					<View className="flex-col items-start">
 						<Text className={`text-lg font-bold ${containerText}`}>{coldStreak} Days</Text>

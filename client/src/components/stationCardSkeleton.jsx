@@ -1,3 +1,4 @@
+import { colors, bg } from "$lib/utils/theme";
 import { useEffect } from "react";
 import { View } from "react-native";
 import Animated, {
@@ -14,11 +15,11 @@ function SkeletonCard({ opacity }) {
 	}));
 
 	return (
-		<View className="p-6 rounded-[1.75em] my-2 bg-[#F5EDE0]">
+		<View className={`p-6 rounded-[1.75em] my-2 ${bg(colors.surface)}`}>
 			{/* Top row: rank badge + name */}
 			<Animated.View style={animatedStyle} className="flex-row items-center gap-5 mb-2">
-				<View className="w-16 h-14 bg-[#E8DCC8] rounded-[16px]" />
-				<View className="w-32 h-7 bg-[#E8DCC8] rounded-lg" />
+				<View className={`w-16 h-14 rounded-[16px] ${bg(colors.border)}`} />
+				<View className={`w-32 h-7 rounded-lg ${bg(colors.border)}`} />
 			</Animated.View>
 
 			{/* Stats row: streak + gold stars */}
@@ -26,30 +27,30 @@ function SkeletonCard({ opacity }) {
 				style={animatedStyle}
 				className="flex-row gap-4 my-1 items-center justify-center"
 			>
-				<View className="rounded-[16px] flex-row gap-2 items-center px-6 py-4 bg-[#FAF4E8]">
-					<View className="w-7 h-7 bg-[#EAE0CE] rounded-full" />
+				<View className={`rounded-[16px] flex-row gap-2 items-center px-6 py-4 ${bg(colors.surfaceMuted)}`}>
+					<View className={`w-7 h-7 rounded-full ${bg(colors.surfaceAlt)}`} />
 					<View className="flex-col items-start gap-1">
-						<View className="w-16 h-5 bg-[#EAE0CE] rounded-lg" />
-						<View className="w-10 h-4 bg-[#EAE0CE] rounded-lg" />
+						<View className={`w-16 h-5 rounded-lg ${bg(colors.surfaceAlt)}`} />
+						<View className={`w-10 h-4 rounded-lg ${bg(colors.surfaceAlt)}`} />
 					</View>
 				</View>
-				<View className="rounded-[16px] flex-row gap-2 items-center px-6 py-4 bg-[#FAF4E8]">
-					<View className="w-7 h-7 bg-[#EAE0CE] rounded-full" />
+				<View className={`rounded-[16px] flex-row gap-2 items-center px-6 py-4 ${bg(colors.surfaceMuted)}`}>
+					<View className={`w-7 h-7 rounded-full ${bg(colors.surfaceAlt)}`} />
 					<View className="flex-col items-start gap-1">
-						<View className="w-12 h-5 bg-[#EAE0CE] rounded-lg" />
-						<View className="w-16 h-4 bg-[#EAE0CE] rounded-lg" />
+						<View className={`w-12 h-5 rounded-lg ${bg(colors.surfaceAlt)}`} />
+						<View className={`w-16 h-4 rounded-lg ${bg(colors.surfaceAlt)}`} />
 					</View>
 				</View>
 			</Animated.View>
 
 			{/* Weather toggle placeholder */}
 			<Animated.View style={animatedStyle} className="mt-4">
-				<View className="flex-row items-center justify-between p-4 rounded-[20px] bg-[#EAE0CE]">
+				<View className={`flex-row items-center justify-between p-4 rounded-[20px] ${bg(colors.surfaceAlt)}`}>
 					<View className="flex-row items-center gap-2">
-						<View className="w-6 h-6 bg-[#E8DCC8] rounded-full" />
-						<View className="w-36 h-4 bg-[#E8DCC8] rounded-lg" />
+						<View className={`w-6 h-6 rounded-full ${bg(colors.border)}`} />
+						<View className={`w-36 h-4 rounded-lg ${bg(colors.border)}`} />
 					</View>
-					<View className="w-6 h-6 bg-[#E8DCC8] rounded-full" />
+					<View className={`w-6 h-6 rounded-full ${bg(colors.border)}`} />
 				</View>
 			</Animated.View>
 		</View>
