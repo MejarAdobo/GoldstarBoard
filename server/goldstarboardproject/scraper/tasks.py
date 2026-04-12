@@ -76,7 +76,9 @@ def gather_daily_data():
 
                 # No gold star yesterday, and today
                 elif not yday_data.has_gold_star and not gold_star:
-                    gold_star_status = f"Since {station.last_day_since_gold_star}"
+                    # hope this not assign 'Since None'
+                    if station.last_day_since_gold_star:
+                        gold_star_status = f"Since {station.last_day_since_gold_star}"
 
             # add a gold star to total count and the streak
             if gold_star:

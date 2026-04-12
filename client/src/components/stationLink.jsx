@@ -2,9 +2,15 @@ import { Link } from "expo-router";
 import { SymbolView } from "expo-symbols";
 import { Text, TouchableOpacity } from "react-native";
 
-export default function StationLink({ name }) {
+export default function StationLink({ name, data }) {
 	return (
-		<Link href={`/station/${name}`} asChild>
+		<Link
+			href={{
+				pathname: `/station/${name}`,
+				params: { dailyData: JSON.stringify(data) },
+			}}
+			asChild
+		>
 			<TouchableOpacity
 				className="py-8 px-6 my-2 bg-[#EAE0CE] active:bg-[#FFE7A0] rounded-[16px] flex-row justify-between items-center"
 				activeOpacity={0.7}

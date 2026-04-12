@@ -2,6 +2,7 @@ import { fetchStations } from "./api";
 
 function mapStation(station) {
 	return {
+		id: station.id,
 		name: station.name,
 		hotStreak: station.streak.current_hot_streak,
 		coldStreak: station.streak.current_cold_streak,

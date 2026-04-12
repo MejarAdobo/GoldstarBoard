@@ -31,7 +31,6 @@ const formatDateKey = (year, month, day) => {
 
 const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
 
-// 0=Sun, 1=Mon ... 6=Sat — shift so Monday=0
 const getStartDay = (year, month) => {
 	const day = new Date(year, month, 1).getDay();
 	return (day + 6) % 7;
@@ -43,7 +42,6 @@ export default function StarCalendar({ starData, currentMonth, currentYear, onCh
 
 	const now = new Date();
 	const todayKey = formatDateKey(now.getFullYear(), now.getMonth(), now.getDate());
-	const maxKey = todayKey;
 
 	const canGoNext =
 		currentYear < now.getFullYear() ||

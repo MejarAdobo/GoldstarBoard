@@ -1,5 +1,6 @@
 import StationLink from "$lib/components/stationLink";
 import StationLinkSkeleton from "$lib/components/stationLinkSkeleton";
+import { loadDailyData } from "$lib/services/loadDailyData";
 import { loadStations } from "$lib/services/loadStations";
 import { useState, useEffect } from "react";
 import { Text, View, FlatList, RefreshControl } from "react-native";
@@ -7,13 +8,16 @@ import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function Stations() {
 	const [stations, setStations] = useState([]);
+	const [dailyData, setDailyData] = useState({});
 	const [loading, setLoading] = useState(true);
 	const [refreshing, setRefreshing] = useState(false);
 
 	const fetchData = async () => {
 		try {
-			const data = await loadStations();
-			setStations(data);
+			const stationData = await loadStations();
+			const dailyData = await loadDailyData();
+			setStations(stationData);
+			setDailyData(dailyData);
 		} catch (err) {
 			console.error(err);
 		} finally {
@@ -55,7 +59,7 @@ export default function Stations() {
 							showsVerticalScrollIndicator={false}
 							contentContainerStyle={{ paddingBottom: 60 }}
 							refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-							renderItem={({ item }) => <StationLink name={item.name} />}
+							renderItem={({ item }) => <StationLink name={item.name} data={dailyData[item.id]} />}
 						/>
 					)}
 				</SafeAreaView>
