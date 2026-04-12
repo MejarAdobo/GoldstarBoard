@@ -1,4 +1,4 @@
-import { colors, bg, text, statusColors } from "$lib/utils/theme";
+import { colors, statusColors } from "$lib/utils/theme";
 import { ChevronLeft, ChevronRight } from "lucide-react-native";
 import { Text, View, Pressable } from "react-native";
 
@@ -59,17 +59,25 @@ export default function StarCalendar({ starData, currentMonth, currentYear, onCh
 		<View>
 			{/* Header */}
 			<View className="flex-row items-center justify-between mb-2">
-				<Pressable onPress={() => onChangeMonth(-1)} className={`rounded-[14px] p-2 ${bg(colors.surfaceAlt)}`}>
+				<Pressable
+					onPress={() => onChangeMonth(-1)}
+					className={`rounded-[14px] p-2`}
+					style={{ backgroundColor: colors.surfaceAlt }}
+				>
 					<ChevronLeft size={18} color={colors.textSecondary} />
 				</Pressable>
 				<View className="flex-row gap-1">
-					<Text className={`font-extrabold text-base ${text(colors.textPrimary)}`}>{MONTHS[currentMonth]}</Text>
-					<Text className={`font-extrabold text-base ${text(colors.textPrimary)}`}>{currentYear}</Text>
+					<Text className={`font-extrabold text-base`} style={{ color: colors.textPrimary }}>
+						{MONTHS[currentMonth]}
+					</Text>
+					<Text className={`font-extrabold text-base`} style={{ color: colors.textPrimary }}>
+						{currentYear}
+					</Text>
 				</View>
 				<Pressable
 					onPress={() => canGoNext && onChangeMonth(1)}
-					className={`rounded-[14px] p-2 ${bg(colors.surfaceAlt)}`}
-					style={{ opacity: canGoNext ? 1 : 0.3 }}
+					className={`rounded-[14px] p-2`}
+					style={{ backgroundColor: colors.surfaceAlt, opacity: canGoNext ? 1 : 0.3 }}
 				>
 					<ChevronRight size={18} color={colors.textSecondary} />
 				</Pressable>
@@ -79,7 +87,12 @@ export default function StarCalendar({ starData, currentMonth, currentYear, onCh
 			<View className="flex-row mb-1">
 				{WEEKDAYS.map((wd) => (
 					<View key={wd} className="flex-1 items-center py-1">
-						<Text className={`text-[10px] font-semibold uppercase ${text(colors.textSubtle)}`}>{wd}</Text>
+						<Text
+							className={`text-[10px] font-semibold uppercase`}
+							style={{ color: colors.textSubtle }}
+						>
+							{wd}
+						</Text>
 					</View>
 				))}
 			</View>
@@ -116,7 +129,7 @@ export default function StarCalendar({ starData, currentMonth, currentYear, onCh
 									}}
 								>
 									<Text
-										className={`text-sm ${dayColors ? `${dayColors.text} font-semibold` : `${text(colors.calendarNoDay)} font-semibold`} ${today ? `${text(colors.calendarTodayBorder)} font-bold` : ""}`}
+										className={`text-sm ${dayColors ? `text-[${dayColors.text}] font-semibold` : `bg-[${colors.calendarNoDay}] font-semibold`} ${today ? `border-[${colors.calendarTodayBorder}] font-bold` : ""}`}
 									>
 										{day}
 									</Text>

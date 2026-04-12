@@ -5,11 +5,7 @@ const UnitsContext = createContext(undefined);
 export function UnitsProvider({ children }) {
 	const [units, setUnits] = useState("metric");
 
-	return (
-		<UnitsContext.Provider value={{ units, setUnits }}>
-			{children}
-		</UnitsContext.Provider>
-	);
+	return <UnitsContext.Provider value={{ units, setUnits }}>{children}</UnitsContext.Provider>;
 }
 
 export function useUnits() {

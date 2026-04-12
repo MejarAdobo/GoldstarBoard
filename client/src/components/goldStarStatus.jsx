@@ -5,7 +5,10 @@ import { Text, View } from "react-native";
 export default function GoldStarStatus({ goldStarStatus }) {
 	const theme = goldStarStatusColors[goldStarStatus] ?? goldStarStatusColors.default;
 	return (
-		<View className={`flex-row items-start ${theme.bg} px-6 py-4 mt-4 rounded-full`}>
+		<View
+			className={`flex-row items-start  px-6 py-4 mt-4 rounded-full`}
+			style={{ backgroundColor: theme.bg }}
+		>
 			{goldStarStatus === "Gained" ? (
 				<View className="flex-row items-start gap-3">
 					<SymbolView
@@ -13,7 +16,9 @@ export default function GoldStarStatus({ goldStarStatus }) {
 						size={20}
 						tintColor={theme.icon}
 					/>
-					<Text className={`font-semibold text-sm ${theme.text}`}>Gained a Star</Text>
+					<Text className={`font-semibold text-sm`} style={{ color: theme.text }}>
+						Gained a Star
+					</Text>
 				</View>
 			) : goldStarStatus === "Streak Lost" ? (
 				<View className="flex-row items-start gap-3">
@@ -22,7 +27,9 @@ export default function GoldStarStatus({ goldStarStatus }) {
 						size={20}
 						tintColor={theme.icon}
 					/>
-					<Text className={`font-semibold text-sm ${theme.text}`}>Lost the Streak</Text>
+					<Text className={`font-semibold text-sm`} style={{ color: theme.text }}>
+						Lost the Streak
+					</Text>
 				</View>
 			) : (
 				<View className="flex-row items-start gap-3">
@@ -31,7 +38,9 @@ export default function GoldStarStatus({ goldStarStatus }) {
 						size={20}
 						tintColor={theme.icon}
 					/>
-					<Text className={`font-semibold text-sm ${theme.text}`}>Last Star {goldStarStatus}</Text>
+					<Text className={`font-semibold text-sm`} style={{ color: theme.text }}>
+						Last Star {goldStarStatus}
+					</Text>
 				</View>
 			)}
 		</View>

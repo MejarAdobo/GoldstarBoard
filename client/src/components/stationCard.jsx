@@ -17,16 +17,19 @@ export default function StationCard({
 	const theme = getRankColours(rank);
 
 	return (
-		<View className={`p-6 rounded-[1.75em] my-2 ${theme.container}`}>
+		<View className={`p-6 rounded-[1.75em] my-2`} style={{ backgroundColor: theme.container }}>
 			{/* card title and rank*/}
 			<View className="flex-row items-center justify-between">
 				<View className="flex-row items-center gap-5 mb-2">
 					<Text
-						className={`text-4xl px-6 py-4 font-bold rounded-[16px] ${theme.badge} ${theme.badgeText}`}
+						className={`text-4xl px-6 py-4 font-bold rounded-[16px]`}
+						style={{ backgroundColor: theme.badge, color: theme.badgeText }}
 					>
 						{rank}
 					</Text>
-					<Text className={`text-2xl font-bold ${theme.containerText}`}>{name}</Text>
+					<Text className={`text-2xl font-bold`} style={{ color: theme.containerText }}>
+						{name}
+					</Text>
 				</View>
 			</View>
 

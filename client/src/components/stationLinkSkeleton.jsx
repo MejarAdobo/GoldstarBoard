@@ -1,4 +1,4 @@
-import { colors, bg } from "$lib/utils/theme";
+import { colors } from "$lib/utils/theme";
 import { useEffect } from "react";
 import { View } from "react-native";
 import Animated, {
@@ -16,11 +16,14 @@ function SkeletonLink({ opacity }) {
 
 	return (
 		<Animated.View
-			style={animatedStyle}
-			className={`py-8 px-6 my-2 rounded-[16px] flex-row justify-between items-center ${bg(colors.surfaceAlt)}`}
+			style={[animatedStyle, { backgroundColor: colors.surfaceAlt }]}
+			className={`py-8 px-6 my-2 rounded-[16px] flex-row justify-between items-center`}
 		>
-			<View className={`w-40 h-7 rounded-lg ${bg(colors.skeletonShimmer)}`} />
-			<View className={`w-7 h-7 rounded-full ${bg(colors.skeletonShimmer)}`} />
+			<View className={`w-40 h-7 rounded-lg`} style={{ backgroundColor: colors.skeletonShimmer }} />
+			<View
+				className={`w-7 h-7 rounded-full`}
+				style={{ backgroundColor: colors.skeletonShimmer }}
+			/>
 		</Animated.View>
 	);
 }

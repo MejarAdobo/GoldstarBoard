@@ -1,6 +1,6 @@
 import "../../global.css";
-import { Stack } from "expo-router";
 import { UnitsProvider } from "$lib/contexts/unitsContext";
+import { Stack } from "expo-router";
 
 export default function Layout() {
 	return (
