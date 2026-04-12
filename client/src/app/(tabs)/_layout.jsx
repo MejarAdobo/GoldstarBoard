@@ -49,7 +49,8 @@ export default function TabLayout() {
 					),
 				}}
 			/>
-			<Tabs.Screen
+			{/* future feature */}
+			{/* <Tabs.Screen
 				name="records"
 				options={{
 					title: "Records",
@@ -63,7 +64,7 @@ export default function TabLayout() {
 						/>
 					),
 				}}
-			/>
+			/>*/}
 			<Tabs.Screen
 				name="settings"
 				options={{

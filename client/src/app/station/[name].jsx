@@ -2,7 +2,7 @@ import StarCalendar from "$lib/components/starCalendar";
 import StarSummary, { StarLegend } from "$lib/components/starSummary";
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useState } from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function Station() {

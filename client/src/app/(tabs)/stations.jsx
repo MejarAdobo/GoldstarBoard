@@ -42,7 +42,7 @@ export default function Stations() {
 			<View className="flex-1 px-4 py-1 bg-[#FFF9F0]">
 				<SafeAreaView className="flex-1">
 					<View className="p-2">
-						<Text className="font-bold text-4xl py-1 text-[#2C1F00]">Leaderboard</Text>
+						<Text className="font-bold text-4xl py-1 text-[#2C1F00]">Stations</Text>
 						<Text className="text-lg text-[#6B5D3F] font-semibold">{stations.length} Stations</Text>
 					</View>
 
