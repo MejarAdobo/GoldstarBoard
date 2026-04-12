@@ -1,11 +1,11 @@
 import { formatWeatherCondition } from "$lib/utils/formatWeatherCondition";
+import { useUnits } from "$lib/contexts/unitsContext";
 import { SymbolView } from "expo-symbols";
 import { View, Text } from "react-native";
 
 export default function WeatherCondition({ data, theme }) {
 	const formattedWeather = formatWeatherCondition(data);
-
-	let measurementType = "metric"; // plan to make it so setting control this
+	const { units: measurementType } = useUnits();
 
 	return (
 		<View className={`rounded-b-[20px] py-4 px-2 ${theme.weatherBg}`}>
