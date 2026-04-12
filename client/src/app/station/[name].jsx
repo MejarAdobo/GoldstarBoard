@@ -54,11 +54,14 @@ export default function Station() {
 				}}
 			/>
 			<SafeAreaProvider>
-				<View className={`flex-1 px-4 py-1 bg-[${colors.pageBg}]`}>
+				<View
+					className={`flex-1 px-4 py-1 `}
+					style={{ color: colors.textPrimary, backgroundColor: colors.pageBg }}
+				>
 					<SafeAreaView className="flex-1">
 						<StarSummary starData={dateData} />
 						<StarLegend />
-						<View className={`mx-4 rounded-[22px] p-4 bg-[${colors.surface}]`}>
+						<View className={`mx-4 rounded-[22px] p-4`} style={{ color: colors.textPrimary }}>
 							<StarCalendar
 								starData={dateData}
 								currentMonth={currentMonth}

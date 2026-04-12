@@ -56,7 +56,7 @@ export default function StarCalendar({ starData, currentMonth, currentYear, onCh
 	}
 
 	return (
-		<View>
+		<View style={{ backgroundColor: colors.surface }} className="p-4 rounded-[16px]">
 			{/* Header */}
 			<View className="flex-row items-center justify-between mb-2">
 				<Pressable
@@ -116,20 +116,22 @@ export default function StarCalendar({ starData, currentMonth, currentYear, onCh
 								style={{ aspectRatio: 1 }}
 							>
 								<View
-									// have to make it use pure css since nativewind render mess with the border radius
 									style={{
 										width: "100%",
 										height: "100%",
 										alignItems: "center",
 										justifyContent: "center",
 										borderRadius: 10,
-										backgroundColor: dayColors?.bg,
+										backgroundColor: dayColors ? dayColors.bg : "transparent",
 										borderWidth: today ? 2 : 0,
 										borderColor: today ? colors.calendarTodayBorder : "transparent",
 									}}
 								>
 									<Text
-										className={`text-sm ${dayColors ? `text-[${dayColors.text}] font-semibold` : `bg-[${colors.calendarNoDay}] font-semibold`} ${today ? `border-[${colors.calendarTodayBorder}] font-bold` : ""}`}
+										className={`text-sm font-semibold ${today ? "font-bold" : ""}`}
+										style={{
+											color: dayColors ? dayColors.textPrimary : colors.text,
+										}}
 									>
 										{day}
 									</Text>
