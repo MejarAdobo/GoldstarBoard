@@ -1,14 +1,9 @@
+import { goldStarStatusColors } from "$lib/utils/theme";
 import { SymbolView } from "expo-symbols";
 import { Text, View } from "react-native";
 
 export default function GoldStarStatus({ goldStarStatus }) {
-	const statusConfig = {
-		"Streak Lost": { bg: "bg-[#FDDDD6]", text: "text-[#BA1A1A]", icon: "#BA1A1A" },
-		Gained: { bg: "bg-[#D4F5D0]", text: "text-[#1A6B18]", icon: "#1A6B18" },
-		default: { bg: "bg-[#FFF4D6]", text: "text-[#6B4A00]", icon: "#6B4A00" },
-	};
-
-	const theme = statusConfig[goldStarStatus] ?? statusConfig.default;
+	const theme = goldStarStatusColors[goldStarStatus] ?? goldStarStatusColors.default;
 	return (
 		<View className={`flex-row items-start ${theme.bg} px-6 py-4 mt-4 rounded-full`}>
 			{goldStarStatus === "Gained" ? (

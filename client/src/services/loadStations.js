@@ -1,11 +1,26 @@
 import { fetchStations } from "./api";
 
+function mapStation(station) {
+	return {
+		id: station.id,
+		name: station.name,
+		hotStreak: station.streak.current_hot_streak,
+		coldStreak: station.streak.current_cold_streak,
+		goldStars: station.total_yearly_gold_star,
+		goldStarStatus: station.latest_daily?.gold_star_status ?? null,
+		weatherData: station.hourly_data.weather_data,
+	};
+}
+
 export async function loadStations() {
 	const stations = await fetchStations();
+	return stations.map(mapStation);
+}
 
-	const getMomentum = (s) => s.streak.current_hot_streak - s.streak.current_cold_streak;
+export function sortStationsByRank(stations) {
+	const getMomentum = (s) => s.hotStreak - s.coldStreak;
 
-	const sortedStations = stations
+	return [...stations]
 		.sort((a, b) => {
 			const diff = getMomentum(b) - getMomentum(a);
 			if (diff !== 0) return diff;
@@ -20,14 +35,4 @@ export async function loadStations() {
 			}
 			return station;
 		});
-
-	return sortedStations.map((station) => ({
-		rank: station.rank,
-		name: station.name,
-		hotStreak: station.streak.current_hot_streak,
-		coldStreak: station.streak.current_cold_streak,
-		goldStars: station.total_yearly_gold_star,
-		goldStarStatus: station.latest_daily?.gold_star_status ?? null,
-		weatherData: station.hourly_data.weather_data,
-	}));
 }

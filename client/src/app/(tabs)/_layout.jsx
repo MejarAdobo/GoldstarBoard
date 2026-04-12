@@ -1,3 +1,4 @@
+import { colors } from "$lib/utils/theme";
 import { Tabs } from "expo-router";
 import { SymbolView } from "expo-symbols";
 
@@ -10,9 +11,9 @@ export default function TabLayout() {
 					position: "absolute",
 					borderTopLeftRadius: 30,
 					borderTopRightRadius: 30,
-					height: 100,
-					paddingTop: 10,
-					backgroundColor: "#F5EDE0",
+					height: 105,
+					paddingTop: 5,
+					backgroundColor: colors.surface,
 				},
 			}}
 		>
@@ -21,8 +22,8 @@ export default function TabLayout() {
 				options={{
 					title: "Leaderboard",
 					tabBarAccessibilityLabel: "Leaderboard",
-					tabBarActiveTintColor: "#2C1F00",
-					tabBarIcon: ({ color = "#6B5D3F" }) => (
+					tabBarActiveTintColor: colors.textPrimary,
+					tabBarIcon: ({ color = colors.textSecondary }) => (
 						<SymbolView
 							name={{
 								android: "social_leaderboard",
@@ -39,8 +40,8 @@ export default function TabLayout() {
 				options={{
 					title: "Stations",
 					tabBarAccessibilityLabel: "Stations",
-					tabBarActiveTintColor: "#2C1F00",
-					tabBarIcon: ({ color = "#6B5D3F" }) => (
+					tabBarActiveTintColor: colors.textPrimary,
+					tabBarIcon: ({ color = colors.textSecondary }) => (
 						<SymbolView
 							name={{ android: "location_on", web: "location_on" }}
 							size={28}
@@ -49,13 +50,14 @@ export default function TabLayout() {
 					),
 				}}
 			/>
-			<Tabs.Screen
+			{/* future feature */}
+			{/* <Tabs.Screen
 				name="records"
 				options={{
 					title: "Records",
 					tabBarAccessibilityLabel: "Records",
-					tabBarActiveTintColor: "#2C1F00",
-					tabBarIcon: ({ color = "#6B5D3F" }) => (
+					tabBarActiveTintColor: colors.textPrimary,
+					tabBarIcon: ({ color = colors.textSecondary }) => (
 						<SymbolView
 							name={{ android: "leaderboard", web: "leaderboard" }}
 							size={28}
@@ -63,14 +65,14 @@ export default function TabLayout() {
 						/>
 					),
 				}}
-			/>
+			/>*/}
 			<Tabs.Screen
 				name="settings"
 				options={{
 					title: "Settings",
 					tabBarAccessibilityLabel: "Settings",
-					tabBarActiveTintColor: "#2C1F00",
-					tabBarIcon: ({ color = "#6B5D3F" }) => (
+					tabBarActiveTintColor: colors.textPrimary,
+					tabBarIcon: ({ color = colors.textSecondary }) => (
 						<SymbolView
 							name={{ android: "settings", web: "settings" }}
 							size={28}
