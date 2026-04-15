@@ -1,7 +1,3 @@
-// ── Helpers: build Tailwind classes from hex ──
-export const bg = (hex) => `bg-[${hex}]`;
-export const text = (hex) => `text-[${hex}]`;
-
 // ── Base palette (single source of truth) ──
 export const colors = {
 	// Backgrounds
@@ -50,50 +46,50 @@ export const colors = {
 // ── Rank palettes ──
 
 const goldRank = {
-	container: "bg-[#FFEDB8]",
-	containerText: "text-[#271900]",
-	badge: "bg-[#8B5E00]",
-	badgeText: "text-[#FFFFFF]",
-	statBg: "bg-[#FFF4D6]",
-	accentText: "text-[#B07800]",
-	weatherBg: "bg-[#FFE7A0]",
-	weatherTiles: "bg-[#FFF0CC]",
+	container: "#FFEDB8",
+	containerText: "#271900",
+	badge: "#8B5E00",
+	badgeText: "#FFFFFF",
+	statBg: "#FFF4D6",
+	accentText: "#B07800",
+	weatherBg: "#FFE7A0",
+	weatherTiles: "#FFF0CC",
 	icon: "#B07800",
 };
 
 const silverRank = {
-	container: "bg-[#E0E2EC]",
-	containerText: "text-[#191C23]",
-	badge: "bg-[#44474F]",
-	badgeText: "text-[#FFFFFF]",
-	statBg: "bg-[#EBEDF5]",
-	accentText: "text-[#5A5D66]",
-	weatherBg: "bg-[#D3D6E0]",
-	weatherTiles: "bg-[#E4E6EF]",
+	container: "#E0E2EC",
+	containerText: "#191C23",
+	badge: "#44474F",
+	badgeText: "#FFFFFF",
+	statBg: "#EBEDF5",
+	accentText: "#5A5D66",
+	weatherBg: "#D3D6E0",
+	weatherTiles: "#E4E6EF",
 	icon: "#5A5D66",
 };
 
 const bronzeRank = {
-	container: "bg-[#FFDCC5]",
-	containerText: "text-[#2C1600]",
-	badge: "bg-[#8B4513]",
-	badgeText: "text-[#FFFFFF]",
-	statBg: "bg-[#FFEEDD]",
-	accentText: "text-[#A05218]",
-	weatherBg: "bg-[#FFD4B0]",
-	weatherTiles: "bg-[#FFE8D5]",
+	container: "#FFDCC5",
+	containerText: "#2C1600",
+	badge: "#8B4513",
+	badgeText: "#FFFFFF",
+	statBg: "#FFEEDD",
+	accentText: "#A05218",
+	weatherBg: "#FFD4B0",
+	weatherTiles: "#FFE8D5",
 	icon: "#A05218",
 };
 
 const defaultRank = {
-	container: bg(colors.surface),
-	containerText: text(colors.textPrimary),
-	badge: bg(colors.border),
-	badgeText: text(colors.badgeText),
-	statBg: bg(colors.surfaceMuted),
-	accentText: text(colors.textMuted),
-	weatherBg: bg(colors.surfaceAlt),
-	weatherTiles: bg(colors.surfaceSubtle),
+	container: colors.surface,
+	containerText: colors.textPrimary,
+	badge: colors.border,
+	badgeText: colors.badgeText,
+	statBg: colors.surfaceMuted,
+	accentText: colors.textMuted,
+	weatherBg: colors.surfaceAlt,
+	weatherTiles: colors.surfaceSubtle,
 	icon: colors.textMuted,
 };
 
@@ -112,33 +108,50 @@ export const getRankColors = (rank) => {
 
 // ── Pre-built consumer objects ──
 
-// For starCalendar.jsx (bg is raw hex for style prop, text is Tailwind class)
+// For starCalendar.jsx
 export const statusColors = {
-	gained: { bg: colors.statusGainedBg, text: text(colors.statusGainedText) },
-	maintained: { bg: colors.statusMaintainedBg, text: text(colors.statusMaintainedText) },
-	lost: { bg: colors.statusLostBg, text: text(colors.statusLostText) },
-	nostar: { bg: colors.border, text: text(colors.textSubtle) },
+	gained: { bg: colors.statusGainedBg, text: colors.statusGainedText },
+	maintained: { bg: colors.statusMaintainedBg, text: colors.statusMaintainedText },
+	lost: { bg: colors.statusLostBg, text: colors.statusLostText },
+	nostar: { bg: colors.border, text: colors.textSubtle },
 };
 
-// For goldStarStatus.jsx (bg and text are Tailwind classes, icon is raw hex)
+// For goldStarStatus.jsx
 export const goldStarStatusColors = {
-	"Streak Lost": { bg: bg(colors.statusLostBg), text: text(colors.statusLostText), icon: colors.statusLostText },
-	Gained: { bg: bg(colors.statusGainedBg), text: text(colors.statusGainedText), icon: colors.statusGainedText },
-	default: { bg: bg(colors.statusMaintainedBg), text: text(colors.goldStarDefaultText), icon: colors.goldStarDefaultText },
+	"Streak Lost": {
+		bg: colors.statusLostBg,
+		text: colors.statusLostText,
+		icon: colors.statusLostText,
+	},
+	Gained: {
+		bg: colors.statusGainedBg,
+		text: colors.statusGainedText,
+		icon: colors.statusGainedText,
+	},
+	default: {
+		bg: colors.statusMaintainedBg,
+		text: colors.goldStarDefaultText,
+		icon: colors.goldStarDefaultText,
+	},
 };
 
 // For starSummary.jsx legend
 export const legend = [
-	{ color: bg(colors.legendGained), label: "Gained" },
-	{ color: bg(colors.legendMaintained), label: "Maintained" },
-	{ color: bg(colors.legendLost), label: "Lost Streak" },
-	{ color: bg(colors.legendNostar), label: "No star" },
+	{ color: colors.legendGained, label: "Gained" },
+	{ color: colors.legendMaintained, label: "Maintained" },
+	{ color: colors.legendLost, label: "Lost Streak" },
+	{ color: colors.legendNostar, label: "No star" },
 ];
 
 // For starSummary.jsx stat items
 export const statItems = [
-	{ key: "gained", label: "Gained", bg: bg(colors.statusGainedBg), text: text(colors.statusGainedText) },
-	{ key: "maintained", label: "Kept", bg: bg(colors.statusMaintainedBg), text: text(colors.statusMaintainedText) },
-	{ key: "lost", label: "Lost", bg: bg(colors.statusLostBg), text: text(colors.statusLostText) },
-	{ key: "nostar", label: "None", bg: bg(colors.border), text: text(colors.textSubtle) },
+	{ key: "gained", label: "Gained", bg: colors.statusGainedBg, text: colors.statusGainedText },
+	{
+		key: "maintained",
+		label: "Kept",
+		bg: colors.statusMaintainedBg,
+		text: colors.statusMaintainedText,
+	},
+	{ key: "lost", label: "Lost", bg: colors.statusLostBg, text: colors.statusLostText },
+	{ key: "nostar", label: "None", bg: colors.border, text: colors.textSubtle },
 ];

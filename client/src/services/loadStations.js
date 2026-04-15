@@ -28,11 +28,8 @@ export function sortStationsByRank(stations) {
 		})
 		.map((station, i, arr) => {
 			const momentum = getMomentum(station);
-			if (momentum <= 0) {
-				station.rank = 5;
-			} else {
-				station.rank = i === 0 || momentum !== getMomentum(arr[i - 1]) ? i + 1 : arr[i - 1].rank;
-			}
+			const lastOfGroup = arr.findLastIndex((s) => getMomentum(s) === momentum);
+			station.rank = lastOfGroup + 1;
 			return station;
 		});
 }

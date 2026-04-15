@@ -1,6 +1,6 @@
+import { colors } from "$lib/utils/theme";
 import { useState } from "react";
 import { View, Text, Pressable, Animated } from "react-native";
-import { colors, text } from "$lib/utils/theme";
 
 export default function UnitSwitch({ value = "metric", onChange }) {
 	const [isImperial, setIsImperial] = useState(value === "imperial");
@@ -35,18 +35,31 @@ export default function UnitSwitch({ value = "metric", onChange }) {
 
 	return (
 		<View className="flex-row items-center gap-2.5">
-			<Text className={`text-xs font-semibold ${!isImperial ? text(colors.textPrimary) : text(colors.textSubtle)}`}>
+			<Text
+				className="text-xs font-semibold"
+				style={{
+					color: !isImperial ? colors.textPrimary : colors.textSubtle,
+				}}
+			>
 				Metric
 			</Text>
 			<Pressable onPress={toggle}>
-				<Animated.View className="w-[52px] h-[30px] rounded-[15px] justify-center" style={{ backgroundColor: trackBg }}>
+				<Animated.View
+					className="w-[52px] h-[30px] rounded-[15px] justify-center"
+					style={{ backgroundColor: trackBg }}
+				>
 					<Animated.View
 						className="absolute w-6 h-6 rounded-full top-[3px]"
 						style={{ left: thumbLeft, backgroundColor: thumbBg }}
 					/>
 				</Animated.View>
 			</Pressable>
-			<Text className={`text-xs font-semibold ${isImperial ? text(colors.textPrimary) : text(colors.textSubtle)}`}>
+			<Text
+				className="text-xs font-semibold"
+				style={{
+					color: isImperial ? colors.textPrimary : colors.textSubtle,
+				}}
+			>
 				Imperial
 			</Text>
 		</View>

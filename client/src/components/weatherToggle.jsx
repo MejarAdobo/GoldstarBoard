@@ -30,12 +30,15 @@ export default function WeatherToggle({ data, theme }) {
 				onPress={toggleOpen}
 				className={`flex-row items-center justify-between p-4 ${
 					open ? "rounded-t-[20px]" : "rounded-[20px]"
-				} ${theme.weatherBg}`}
+				}`}
+				style={{ backgroundColor: theme.weatherBg }}
 				activeOpacity={0.7}
 			>
 				<View className="flex-row items-center gap-2">
 					<SymbolView name={{ android: "cloud", web: "cloud" }} size={24} tintColor={theme.icon} />
-					<Text className={`text-sm font-semibold ${theme.containerText}`}>Weather Conditions</Text>
+					<Text className={`text-sm font-semibold`} style={{ color: theme.containerText }}>
+						Weather Conditions
+					</Text>
 				</View>
 
 				<Animated.View style={animatedChevron}>

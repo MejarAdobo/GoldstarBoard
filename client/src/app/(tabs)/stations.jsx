@@ -2,7 +2,7 @@ import StationLink from "$lib/components/stationLink";
 import StationLinkSkeleton from "$lib/components/stationLinkSkeleton";
 import { loadDailyData } from "$lib/services/loadDailyData";
 import { loadStations } from "$lib/services/loadStations";
-import { colors, bg, text } from "$lib/utils/theme";
+import { colors } from "$lib/utils/theme";
 import { useState, useEffect } from "react";
 import { Text, View, FlatList, RefreshControl } from "react-native";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
@@ -40,17 +40,24 @@ export default function Stations() {
 
 	return (
 		<SafeAreaProvider>
-			<View className={`flex-1 px-4 py-1 ${bg(colors.pageBg)}`}>
+			<View className={`flex-1 px-4 py-1`} style={{ backgroundColor: colors.pageBg }}>
 				<SafeAreaView className="flex-1">
 					<View className="p-2">
-						<Text className={`font-bold text-4xl py-1 ${text(colors.textPrimary)}`}>Stations</Text>
-						<Text className={`text-lg font-semibold ${text(colors.textSecondary)}`}>{stations.length} Stations</Text>
+						<Text className={`font-bold text-4xl py-1 `} style={{ color: colors.textPrimary }}>
+							Stations
+						</Text>
+						<Text className={`text-lg font-semibold `} style={{ color: colors.textSecondary }}>
+							{stations.length} Stations
+						</Text>
 					</View>
 
 					{loading || refreshing ? (
 						<StationLinkSkeleton />
 					) : stations.length === 0 ? (
-						<Text className={`font-bold Text-4xl py-4 text-center ${text(colors.textPrimary)}`}>
+						<Text
+							className={`font-bold Text-4xl py-4 text-center`}
+							style={{ color: colors.textPrimary }}
+						>
 							No stations found.
 						</Text>
 					) : (
