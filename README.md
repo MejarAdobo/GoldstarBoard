@@ -36,14 +36,13 @@ The gold star badge is granted to a station by providing high quality data to [w
 
 - Swap between Metric or Imperial Measurements
 
-## Scraper
+### Scraper
 
 - Run hourly to get the station's data in weatherunderground
 - Run once a day at 11:50 P.M PST to assign gold star status 
 
 ## Tech Stack
 
----
 
 | Category | Technology |
 |-|-|
@@ -64,7 +63,6 @@ The gold star badge is granted to a station by providing high quality data to [w
 
 ## Getting Started
 
----
 
 ### Prerequisites
 
