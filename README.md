@@ -123,7 +123,7 @@ DJANGO_ALLOWED_HOSTS= # Use * to allow everyone
 DJANGO_PORT= # port the django server run on
 ```
 
-**6. Run docker-compose **
+**6. Run docker-compose**
 
 Inside server directory
 ```zsh
@@ -134,7 +134,7 @@ Wait until it build the container goldstarboard_web then you can detach.
 
 That is to ensure all the migrations happen before the next step.
 
-**7. Create a superuser **
+**7. Create a superuser**
 ```zsh
 docker exec -it goldstarboard_web uv run manage.py createsuperuser
 ```
