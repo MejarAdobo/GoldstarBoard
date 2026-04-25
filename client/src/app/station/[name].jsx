@@ -21,7 +21,7 @@ export default function Station() {
 			dateData[date.recorded_at] = "gained";
 		} else if (date.gold_star_status === "Streak Lost") {
 			dateData[date.recorded_at] = "lost";
-		} else if (date.gold_star_status === "" && date.has_gold_star) {
+		} else if (date.gold_star_status === null && date.has_gold_star) {
 			dateData[date.recorded_at] = "maintained";
 		} else {
 			dateData[date.recorded_at] = "nostar";
