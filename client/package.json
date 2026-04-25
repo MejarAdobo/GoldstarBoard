@@ -15,20 +15,20 @@
 	},
 	"dependencies": {
 		"@expo/vector-icons": "^15.1.1",
-		"axios": "^1.15.0",
+		"axios": "^1.15.2",
 		"babel-plugin-module-resolver": "^5.0.3",
-		"expo": "~55.0.14",
-		"expo-constants": "~55.0.13",
+		"expo": "~55.0.17",
+		"expo-constants": "~55.0.15",
 		"expo-font": "~55.0.6",
 		"expo-haptics": "~55.0.14",
-		"expo-image": "~55.0.8",
+		"expo-image": "~55.0.9",
 		"expo-linear-gradient": "~55.0.13",
-		"expo-linking": "~55.0.12",
-		"expo-router": "~55.0.12",
-		"expo-splash-screen": "~55.0.17",
+		"expo-linking": "~55.0.14",
+		"expo-router": "~55.0.13",
+		"expo-splash-screen": "~55.0.19",
 		"expo-status-bar": "~55.0.5",
 		"expo-symbols": "~55.0.7",
-		"expo-system-ui": "~55.0.15",
+		"expo-system-ui": "~55.0.16",
 		"expo-web-browser": "~55.0.14",
 		"lucide-react-native": "^0.577.0",
 		"nativewind": "^4.2.3",
@@ -45,6 +45,6 @@
 	},
 	"devDependencies": {
 		"oxfmt": "^0.41.0",
-		"oxlint": "^1.59.0"
+		"oxlint": "^1.61.0"
 	}
 }

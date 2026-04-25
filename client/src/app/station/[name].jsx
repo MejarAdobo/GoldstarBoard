@@ -2,9 +2,9 @@ import StarCalendar from "$lib/components/starCalendar";
 import StarSummary, { StarLegend } from "$lib/components/starSummary";
 import { colors } from "$lib/utils/theme";
 import { Stack, useLocalSearchParams } from "expo-router";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { View } from "react-native";
-import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Station() {
 	const { name, dailyData } = useLocalSearchParams();
@@ -12,21 +12,17 @@ export default function Station() {
 	const [currentMonth, setCurrentMonth] = useState(now.getMonth());
 	const [currentYear, setCurrentYear] = useState(now.getFullYear());
 
-	const parsedDailyData = JSON.parse(dailyData);
-
-	// make a json with date as a key, and status as the values
-	const dateData = {};
-	parsedDailyData.forEach((date) => {
-		if (date.gold_star_status === "Gained") {
-			dateData[date.recorded_at] = "gained";
-		} else if (date.gold_star_status === "Streak Lost") {
-			dateData[date.recorded_at] = "lost";
-		} else if (date.gold_star_status === "" && date.has_gold_star) {
-			dateData[date.recorded_at] = "maintained";
-		} else {
-			dateData[date.recorded_at] = "nostar";
-		}
-	});
+	const dateData = useMemo(() => {
+		const parsed = JSON.parse(dailyData);
+		const out = {};
+		parsed.forEach((d) => {
+			if (d.gold_star_status === "Gained") out[d.recorded_at] = "gained";
+			else if (d.gold_star_status === "Streak Lost") out[d.recorded_at] = "lost";
+			else if (d.gold_star_status === null && d.has_gold_star) out[d.recorded_at] = "maintained";
+			else out[d.recorded_at] = "nostar";
+		});
+		return out;
+	}, [dailyData]);
 
 	const handleChangeMonth = (delta) => {
 		let newMonth = currentMonth + delta;
@@ -53,25 +49,23 @@ export default function Station() {
 					headerShadowVisible: false,
 				}}
 			/>
-			<SafeAreaProvider>
-				<View
-					className={`flex-1 px-4 py-1 `}
-					style={{ color: colors.textPrimary, backgroundColor: colors.pageBg }}
-				>
-					<SafeAreaView className="flex-1">
-						<StarSummary starData={dateData} />
-						<StarLegend />
-						<View className={`mx-4 rounded-[22px] p-4`} style={{ color: colors.textPrimary }}>
-							<StarCalendar
-								starData={dateData}
-								currentMonth={currentMonth}
-								currentYear={currentYear}
-								onChangeMonth={handleChangeMonth}
-							/>
-						</View>
-					</SafeAreaView>
-				</View>
-			</SafeAreaProvider>
+			<View
+				className={`flex-1 px-4 py-1 `}
+				style={{ color: colors.textPrimary, backgroundColor: colors.pageBg }}
+			>
+				<SafeAreaView className="flex-1">
+					<StarSummary starData={dateData} />
+					<StarLegend />
+					<View className={`mx-4 rounded-[22px] p-4`} style={{ color: colors.textPrimary }}>
+						<StarCalendar
+							starData={dateData}
+							currentMonth={currentMonth}
+							currentYear={currentYear}
+							onChangeMonth={handleChangeMonth}
+						/>
+					</View>
+				</SafeAreaView>
+			</View>
 		</>
 	);
 }
