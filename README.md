@@ -6,6 +6,17 @@
   />
 </p>
 
+<p align="center">
+  <strong>A leaderboard for weather stations</strong><br>
+</p>
+
+
+<p align="center">
+  <img src="media/images/screenshot1.jpg" alt="Screenshot 1" width="200" style="border-radius:26px;"/>
+  <img src="media/images/screenshot2.jpg" alt="Screenshot 2" width="200" style="border-radius:26px;"/>
+  <img src="media/images/screenshot3.jpg" alt="Screenshot 3" width="200" style="border-radius:26px;"/>
+</p>
+
 ## Description
 
 ---
