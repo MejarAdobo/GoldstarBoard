@@ -19,8 +19,6 @@
 
 ## Description
 
----
-
 This is my final project for ITAS 274 - Mobile Development II.
 
 This is a leaderboard app for weather station.
@@ -30,8 +28,6 @@ Each station are ranked by how many days they held a gold star badge.
 The gold star badge is granted to a station by providing high quality data to [weatherunderground](https://www.wunderground.com/) in which they dislay the gold star badge on the weather station page.
 
 ## Current Features
-
----
 
 ### Leaderboard
 
