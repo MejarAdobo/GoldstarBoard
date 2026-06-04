@@ -13,7 +13,7 @@ export default function Station() {
 	const [currentYear, setCurrentYear] = useState(now.getFullYear());
 
 	const dateData = useMemo(() => {
-		const parsed = JSON.parse(dailyData);
+		const parsed = JSON.parse(dailyData ?? "[]");
 		const out = {};
 		parsed.forEach((d) => {
 			if (d.gold_star_status === "Gained") out[d.recorded_at] = "gained";

@@ -50,7 +50,7 @@ export default function WeatherToggle({ data, theme }) {
 				</Animated.View>
 			</TouchableOpacity>
 
-			{open && (
+			{open && data?.temperature && (
 				<Animated.View entering={FadeIn.duration(100)} exiting={FadeOut.duration(50)}>
 					<WeatherCondition data={data} theme={theme} />
 				</Animated.View>
