@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "https://weather.itas.ca/api";
+const URL = "https://gsb-old.onrender.com/api";
 
 const api = axios.create({
 	baseURL: URL,
