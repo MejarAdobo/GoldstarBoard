@@ -17,8 +17,8 @@
   <img src="media/images/screenshot3.jpg" alt="Screenshot 3" width="200" style="border-radius:26px;"/>
 </p>
 
-[!NOTE]
-The API routes is now working since I migrated the server into Render. [URL](https://gsb-old.onrender.com/api)
+> [!NOTE]
+> The API routes is now working since I migrated the server into Render. [URL](https://gsb-old.onrender.com/api)
 
 ## Description
 
