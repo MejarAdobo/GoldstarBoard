@@ -8,7 +8,7 @@ function mapStation(station) {
 		coldStreak: station.streak.current_cold_streak,
 		goldStars: station.total_yearly_gold_star,
 		goldStarStatus: station.latest_daily?.gold_star_status ?? null,
-		weatherData: station.hourly_data.weather_data,
+		weatherData: station.hourly_data?.weather_data ?? null,
 	};
 }
 

@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "scraper",
     "api",
+    "django_tasks_db",
 ]
 
 MIDDLEWARE = [
@@ -120,7 +121,9 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-TASKS = {"default": {"BACKEND": "django.tasks.backends.immediate.ImmediateBackend"}}
+# TASKS = {"default": {"BACKEND": "django.tasks.backends.immediate.ImmediateBackend"}}
+
+TASKS = {"default": {"BACKEND": "django_tasks.backends.database.DatabaseBackend"}}
 
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": [
