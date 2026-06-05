@@ -123,7 +123,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # TASKS = {"default": {"BACKEND": "django.tasks.backends.immediate.ImmediateBackend"}}
 
-TASKS = {"default": {"BACKEND": "django_tasks.backends.database.DatabaseBackend"}}
+TASKS = {"default": {"BACKEND": "django_tasks_db.backends.database.DatabaseBackend"}}
 
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": [
