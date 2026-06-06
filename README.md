@@ -18,7 +18,7 @@
 </p>
 
 > [!NOTE]
-> The API routes is now working since I migrated the server into Render. [URL](https://gsb-old.onrender.com/api)
+> Server is down. 
 
 ## Description
 
