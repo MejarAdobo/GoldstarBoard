@@ -1,0 +1,2 @@
+- use turborepo
+- backend is go and instead of scraping the site html, just fetch where it get the info
