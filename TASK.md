@@ -1,4 +1,2 @@
 - use turborepo
 - backend is go and instead of scraping the site html, just fetch where it get the info
-  - scraper: have to fetch html for gold star but can fetch the api for weather data
-  - scraper: use gorm for an orm
