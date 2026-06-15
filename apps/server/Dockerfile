@@ -1,11 +1,11 @@
 FROM oven/bun:latest
 
+ENV TZ=Canada/Vancouver
+
 WORKDIR /app
 
-COPY package*.json bun.lock ./
+COPY package.json bun.lock* ./
 RUN bun install --production
 COPY . .
 
-ENV TZ=Canada/Vancouver
-
-CMD ["bun", "src/index.ts"]
+CMD ["bun", "src/server.ts"]
