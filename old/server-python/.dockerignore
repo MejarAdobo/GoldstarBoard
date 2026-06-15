@@ -1,7 +1,0 @@
-.git
-.gitignore
-.gitattributes
-.env
-.venv
-*.sqlite3
-__pycache__

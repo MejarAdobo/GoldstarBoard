@@ -1,4 +1,0 @@
-- Seperate REST APIs and Scraper stuff
-- Only fetch HTML for gold star img
-- Fetch the public API instead for weather data
-- Redo tables again

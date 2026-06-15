@@ -23,29 +23,35 @@ Made this since I want to try to make a scraper app in JavaScript and also remem
 ## API Routes
 
 **Stations**
+
 - http://localhost/api/awards
-- http://localhost/api/awards/:id 
+- http://localhost/api/awards/:id
 - http://localhost/api/awards/station/:id
 
 **Daily Data**
+
 - http://localhost/api/dailydata
-- http://localhost/api/dailydata/:id 
-- http://localhost/api/dailydata/station/:id 
+- http://localhost/api/dailydata/:id
+- http://localhost/api/dailydata/station/:id
 
 **Gold Stars**
+
 - http://localhost/api/goldstars
-- http://localhost/api/goldstars/:id 
+- http://localhost/api/goldstars/:id
 
 **Hourly Data**
+
 - http://localhost/api/hourlydata
-- http://localhost/api/hourlydata/:id 
-- http://localhost/api/hourlydata/station/:id 
+- http://localhost/api/hourlydata/:id
+- http://localhost/api/hourlydata/station/:id
 
 **Stations**
+
 - http://localhost/api/stations
-- http://localhost/api/stations/:id 
+- http://localhost/api/stations/:id
 
 **Streaks**
+
 - http://localhost/api/streaks
 - http://localhost/api/streaks/:id
 

@@ -7,6 +7,9 @@
     "allowImportingTsExtensions": true,
     "noEmit": true,
     "baseUrl": ".",
+    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "target": "ESNext",
     "paths": {
       "@/*": ["./src/*"],
       "@configs": ["./src/configs"],
@@ -14,7 +17,7 @@
       "@services": ["./src/services"],
       "@db": ["./src/db"],
       "@db/*": ["./src/db/*"],
-      "@jobs": ["./src/jobs"],
-    },
-  },
+      "@jobs": ["./src/jobs"]
+    }
+  }
 }

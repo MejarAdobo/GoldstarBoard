@@ -1,14 +1,10 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "license": "MIT",
-  "author": "MejarAdobo <momoy.dev@proton.me>",
-  "repository": {
-    "url": "https://github.com/MejarAdobo/gsb-server"
-  },
   "type": "module",
   "scripts": {
     "dev": "bun run --hot src/index.ts",
+    "build": "bun vite build",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "lint": "oxlint",
@@ -25,11 +21,13 @@
     "pg": "^8.21.0"
   },
   "devDependencies": {
+    "@hono/vite-build": "^1.11.1",
     "@types/bun": "^1.3.14",
     "@types/pg": "^8.20.0",
     "drizzle-kit": "^1.0.0-rc.4-ca0f029",
     "oxfmt": "^0.49.0",
     "oxlint": "^1.69.0",
-    "tsx": "^4.22.4"
+    "tsx": "^4.22.4",
+    "vite": "^8.0.16"
   }
 }

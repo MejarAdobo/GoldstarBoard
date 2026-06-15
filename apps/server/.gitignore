@@ -17,3 +17,6 @@ vite.config.ts.timestamp-*
 # drizzle
 .drizzle
 drizzle
+
+# build
+dist
