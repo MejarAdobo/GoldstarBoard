@@ -1,4 +1,4 @@
-import { dbConfig } from "@configs";
+import { dbConfig } from "@goldstarboard/configs";
 import { drizzle } from "drizzle-orm/node-postgres";
 
 import { relations } from "./relations";

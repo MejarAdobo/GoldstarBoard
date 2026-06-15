@@ -1,4 +1,4 @@
-import { db } from "@db";
+import { db } from "@goldstarboard/db";
 
 // get all gold stars data
 async function getAll() {
@@ -44,7 +44,7 @@ async function getOne(id: number) {
   try {
     const goldStars = await db.query.goldStars.findMany({
       where: {
-        id: id,
+        stationId: id,
       },
       with: {
         station: true,

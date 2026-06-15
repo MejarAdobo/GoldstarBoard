@@ -1,4 +1,4 @@
-import { db } from "@db";
+import { db } from "@goldstarboard/db";
 
 // get all daily data
 async function getAll() {

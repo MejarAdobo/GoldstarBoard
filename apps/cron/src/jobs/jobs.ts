@@ -1,5 +1,5 @@
-import { db } from "@db";
-import { hourlyData } from "@db/schema";
+import { db } from "@goldstarboard/db";
+import { hourlyData } from "@goldstarboard/db/src/schema";
 import { lt } from "drizzle-orm";
 
 import type { StreakRow, GoldStarRow } from "./helper";

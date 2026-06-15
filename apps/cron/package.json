@@ -1,0 +1,23 @@
+{
+  "name": "cron",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "oxfmt": "^0.55.0",
+    "oxlint": "^1.70.0"
+  },
+  "peerDependencies": {
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "@goldstarboard/db": "workspace:*",
+    "axios": "^1.18.0",
+    "cheerio": "^1.2.0",
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^1.0.0-rc.4-5d5b77c",
+    "pg": "^8.21.0"
+
+  }
+}

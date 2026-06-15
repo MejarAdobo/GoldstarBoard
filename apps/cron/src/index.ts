@@ -4,7 +4,7 @@ import {
   updateStationsStreak,
   updateStationsGoldStar,
   deleteOldHourlyData,
-} from "@jobs";
+} from "./jobs/index";
 
 Bun.cron("@hourly", gatherHourlyData);
 Bun.cron("@midnight", deleteOldHourlyData);

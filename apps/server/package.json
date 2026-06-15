@@ -18,7 +18,10 @@
     "drizzle-orm": "^1.0.0-rc.4-5d5b77c",
     "hono": "^4.12.25",
     "hono-rate-limiter": "^0.5.3",
-    "pg": "^8.21.0"
+    "pg": "^8.21.0",
+    "@goldstarboard/db": "workspace:*",
+    "@goldstarboard/configs": "workspace:*"
+
   },
   "devDependencies": {
     "@hono/vite-build": "^1.11.1",

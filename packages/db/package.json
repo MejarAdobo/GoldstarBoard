@@ -1,0 +1,23 @@
+{
+  "name": "@goldstarboard/db",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^1.0.0-rc.4-5d5b77c",
+    "pg": "^8.21.0",
+    "@goldstarboard/configs": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.14",
+    "@types/pg": "^8.20.0",
+    "drizzle-kit": "^1.0.0-rc.4-ca0f029",
+    "oxfmt": "^0.49.0",
+    "oxlint": "^1.70.0",
+    "tsx": "^4.22.4"
+  }
+
+}

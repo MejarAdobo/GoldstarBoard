@@ -1,4 +1,4 @@
-import { db } from "@db";
+import { db } from "@goldstarboard/db";
 
 // get all streaks
 async function getAll() {
@@ -21,7 +21,7 @@ async function getAll() {
 // get all streaks of a specific station
 async function getAllByStation(id: number) {
   try {
-    const streaks = await db.query.streaks.findMany({
+    const allStreaks = await db.query.streaks.findMany({
       where: {
         stationId: id,
       },
@@ -29,7 +29,7 @@ async function getAllByStation(id: number) {
         station: true,
       },
     });
-    return streaks;
+    return allStreaks;
   } catch (error) {
     if (error instanceof Error) {
       return `Failed to fetch all streaks: ${error.message}`;
@@ -44,7 +44,7 @@ async function getOne(id: number) {
   try {
     const streak = await db.query.streaks.findMany({
       where: {
-        id: id,
+        stationId: id,
       },
       with: {
         station: true,

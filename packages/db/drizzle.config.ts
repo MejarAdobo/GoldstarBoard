@@ -1,4 +1,4 @@
-import { dbConfig } from "@configs";
+import { dbConfig } from "@goldstarboard/configs";
 import { defineConfig } from "drizzle-kit";
 
 const databaseUrl = dbConfig.connectionString;
