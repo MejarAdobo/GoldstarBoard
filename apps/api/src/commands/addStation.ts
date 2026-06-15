@@ -1,5 +1,5 @@
-import { db } from "@db";
-import { stations, goldStars, streaks } from "@db/schema";
+import { db } from "@goldstarboard/db";
+import { stations, goldStars, streaks } from "@goldstarboard/db/src/schema";
 
 const dialouge = () => {
   console.log("-- Adding a New Station --");

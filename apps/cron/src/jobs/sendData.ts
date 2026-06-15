@@ -1,5 +1,5 @@
-import { db } from "@db";
-import { hourlyData, dailyData } from "@db/schema";
+import { db } from "@goldstarboard/db";
+import { hourlyData, dailyData } from "@goldstarboard/db/src/schema";
 
 type ParsedData = {
   temp: string;

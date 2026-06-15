@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "bun run --hot src/server.ts && bun run --hot src/cronJobs.ts",
+    "dev": "bun run --hot src/index.ts",
     "build": "bun vite build",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",

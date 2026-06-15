@@ -1,4 +1,4 @@
-import { db } from "@db";
+import { db } from "@goldstarboard/db";
 
 import type { GoldStarStatus } from "./sendData";
 

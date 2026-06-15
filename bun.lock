@@ -8,6 +8,31 @@
         "turbo": "^2.9.18",
       },
     },
+    "apps/api": {
+      "name": "server",
+      "version": "1.0.0",
+      "dependencies": {
+        "@goldstarboard/configs": "workspace:*",
+        "@goldstarboard/db": "workspace:*",
+        "axios": "^1.18.0",
+        "cheerio": "^1.2.0",
+        "dotenv": "^17.4.2",
+        "drizzle-orm": "^1.0.0-rc.4-5d5b77c",
+        "hono": "^4.12.25",
+        "hono-rate-limiter": "^0.5.3",
+        "pg": "^8.21.0",
+      },
+      "devDependencies": {
+        "@hono/vite-build": "^1.11.1",
+        "@types/bun": "^1.3.14",
+        "@types/pg": "^8.20.0",
+        "drizzle-kit": "^1.0.0-rc.4-ca0f029",
+        "oxfmt": "^0.49.0",
+        "oxlint": "^1.70.0",
+        "tsx": "^4.22.4",
+        "vite": "^8.0.16",
+      },
+    },
     "apps/cron": {
       "name": "cron",
       "dependencies": {
@@ -58,31 +83,6 @@
       "devDependencies": {
         "@types/react": "~19.2.17",
         "typescript": "~6.0.3",
-      },
-    },
-    "apps/server": {
-      "name": "server",
-      "version": "1.0.0",
-      "dependencies": {
-        "@goldstarboard/configs": "workspace:*",
-        "@goldstarboard/db": "workspace:*",
-        "axios": "^1.18.0",
-        "cheerio": "^1.2.0",
-        "dotenv": "^17.4.2",
-        "drizzle-orm": "^1.0.0-rc.4-5d5b77c",
-        "hono": "^4.12.25",
-        "hono-rate-limiter": "^0.5.3",
-        "pg": "^8.21.0",
-      },
-      "devDependencies": {
-        "@hono/vite-build": "^1.11.1",
-        "@types/bun": "^1.3.14",
-        "@types/pg": "^8.20.0",
-        "drizzle-kit": "^1.0.0-rc.4-ca0f029",
-        "oxfmt": "^0.49.0",
-        "oxlint": "^1.70.0",
-        "tsx": "^4.22.4",
-        "vite": "^8.0.16",
       },
     },
     "apps/web": {
@@ -1400,7 +1400,7 @@
 
     "serve-static": ["serve-static@1.16.3", "", { "dependencies": { "encodeurl": "~2.0.0", "escape-html": "~1.0.3", "parseurl": "~1.3.3", "send": "~0.19.1" } }, "sha512-x0RTqQel6g5SY7Lg6ZreMmsOzncHFU7nhnRWkKgWuMTu5NN0DR5oruckMqRvacAN9d5w6ARnRBXl9xhDCgfMeA=="],
 
-    "server": ["server@workspace:apps/server"],
+    "server": ["server@workspace:apps/api"],
 
     "server-only": ["server-only@0.0.1", "", {}, "sha512-qepMx2JxAa5jjfzxG79yPPq+8BuFToHd1hm7kI+Z4zAq1ftQiP7HcxMhDDItrbtwVeLg/cY2JnKnrcFkmiswNA=="],
 

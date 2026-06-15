@@ -1,5 +1,5 @@
-import { db } from "@db";
-import { streaks, goldStars } from "@db/schema";
+import { db } from "@goldstarboard/db";
+import { streaks, goldStars } from "@goldstarboard/db/src/schema";
 import { eq } from "drizzle-orm";
 
 // update a station streak
