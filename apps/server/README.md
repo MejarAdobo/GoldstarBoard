@@ -9,6 +9,7 @@ Made this since I want to try to make a scraper app in JavaScript and also remem
 - Scrape the weather underground profile of a personal weather station
 - Send the scraped data into a Postgres Database (Currently using supabase) using Drizzle ORM
 - Have RESTFUL APIs for the scraped data. Only allows GET Request due to me not wanting to create an admin dashboard and doing CRUD operations in the database instead.
+- Currently have it so that you can only add new station through the cmd I created or through the db
 
 ## Tech Stack
 
