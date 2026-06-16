@@ -1,0 +1,20 @@
+{
+  "name": "cron",
+  "private": true,
+  "type": "module",
+  "module": "index.ts",
+  "scripts": {
+    "dev": "bun --hot --watch run src/index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "axios": "^1.18.0",
+    "cheerio": "^1.2.0",
+    "@goldstarboard/ts-config": "workspace:*"
+  }
+}

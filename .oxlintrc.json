@@ -1,0 +1,18 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "import", "promise"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "perf": "warn",
+    "style": "warn"
+  },
+  "options": {
+    "typeAware": true,
+    "typeCheck": true
+  },
+  "rules": { "import/no-cycle": ["error", { "maxDepth": 3 }] },
+  "env": {
+    "builtin": true
+  }
+}

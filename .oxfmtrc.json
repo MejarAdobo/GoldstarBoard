@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "ignorePatterns": [],
+  "printWidth": 110,
+  "sortImports": {
+    "newlinesBetween": false,
+    "groups": [
+      ["value-builtin", "value-external"],
+      ["value-internal", "value-parent", "value-sibling", "value-index"],
+      { "newlinesBetween": true },
+      "type-import",
+      "unknown"
+    ]
+  },
+  "sortTailwindcss": {
+    "stylesheet": "./path/to/stylesheet.css",
+    "functions": ["clsx", "cn"],
+    "preserveWhitespace": true
+  },
+  "embeddedLanguageFormatting": "auto"
+}
