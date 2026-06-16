@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["typescript", "unicorn", "oxc", "import", "promise"],
+  "plugins": ["typescript", "unicorn", "oxc"],
   "categories": {
     "correctness": "error",
     "suspicious": "warn",
@@ -13,9 +13,8 @@
   },
   "rules": {
     "import/no-cycle": ["error", { "maxDepth": 3 }],
-    "import/no-named-export": "off",
-    "import/prefer-default-export": "off",
-    "sort-keys": "off"
+    "sort-keys": "off",
+    "no-magic-numbers": "off"
   },
   "env": {
     "builtin": true

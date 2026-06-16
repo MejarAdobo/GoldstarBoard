@@ -6,7 +6,7 @@ export const parseHTML = (html: string) => {
 
   let haveGoldStar = false;
 
-  if ($("img.goldstar-station")) {
+  if ($("img.goldstar-station").length > 0) {
     haveGoldStar = true;
   }
 
