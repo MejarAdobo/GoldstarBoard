@@ -12,16 +12,15 @@
     "new-station": "bun src/commands/addStation.ts"
   },
   "dependencies": {
+    "@goldstarboard/configs": "workspace:*",
+    "@goldstarboard/db": "workspace:*",
     "axios": "^1.18.0",
     "cheerio": "^1.2.0",
     "dotenv": "^17.4.2",
     "drizzle-orm": "^1.0.0-rc.4-5d5b77c",
     "hono": "^4.12.25",
     "hono-rate-limiter": "^0.5.3",
-    "pg": "^8.21.0",
-    "@goldstarboard/db": "workspace:*",
-    "@goldstarboard/configs": "workspace:*"
-
+    "pg": "^8.21.0"
   },
   "devDependencies": {
     "@hono/vite-build": "^1.11.1",

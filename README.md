@@ -10,7 +10,6 @@
   <strong>A leaderboard for weather stations</strong><br>
 </p>
 
-
 <p align="center">
   <img src="media/images/screenshot1.jpg" alt="Screenshot 1" width="200" style="border-radius:26px;"/>
   <img src="media/images/screenshot2.jpg" alt="Screenshot 2" width="200" style="border-radius:26px;"/>
@@ -18,7 +17,7 @@
 </p>
 
 > [!NOTE]
-> Server is down. 
+> Server is down.
 
 ## Description
 
@@ -49,61 +48,64 @@ The gold star badge is granted to a station by providing high quality data to [w
 ### Scraper
 
 - Run hourly to get the station's data in weatherunderground
-- Run once a day at 11:50 P.M PST to assign gold star status 
+- Run once a day at 11:50 P.M PST to assign gold star status
 
 ## Tech Stack
 
-
-| Category | Technology |
-|-|-|
-| Language | JavaScript & Python |
-| Mobile Framework | React Native (Expo) |
-| Styling | TailwindCSS & NativeWind v4 |
-| Icons | Lucide React Native |
-| Routing | Expo Router |
-| HTTP Client | Axios |
-| Package Manager (Client) | Bun |
-| Linter/Formatter | oxlint & oxfmt |
-| Backend Framework | Django & Django REST Framework |
-| Task Scheduling | Django CronTask |
-| Database | PostgreSQL |
-| Containerization | Docker & Docker Compose |
-| Server | Gunicorn |
-| Package Manager (Server) | uv |
+| Category                 | Technology                     |
+| ------------------------ | ------------------------------ |
+| Language                 | JavaScript & Python            |
+| Mobile Framework         | React Native (Expo)            |
+| Styling                  | TailwindCSS & NativeWind v4    |
+| Icons                    | Lucide React Native            |
+| Routing                  | Expo Router                    |
+| HTTP Client              | Axios                          |
+| Package Manager (Client) | Bun                            |
+| Linter/Formatter         | oxlint & oxfmt                 |
+| Backend Framework        | Django & Django REST Framework |
+| Task Scheduling          | Django CronTask                |
+| Database                 | PostgreSQL                     |
+| Containerization         | Docker & Docker Compose        |
+| Server                   | Gunicorn                       |
+| Package Manager (Server) | uv                             |
 
 ## Getting Started
 
-
 ### Prerequisites
 
-- [bun](https://bun.sh/) 
+- [bun](https://bun.sh/)
 - [uv](https://docs.astral.sh/uv/getting-started/installation/#__tabbed_1_2)
 - [Expo Go v55](https://github.com/expo/expo-go-releases/releases)
 - [docker](https://docs.docker.com/)
 
 **1. Clone the repo**
+
 ```zsh
 git clone https://github.com/MejarAdobo/goldstarboard.git
 ```
 
 **2. Install mobile dependencies**
+
 ```zsh
 cd client
 bun install
 ```
 
 **3. Set up virtual environment**
+
 ```zsh
 cd server
 uv venv
 ```
 
 Linux & macOS
+
 ```zsh
 source .venv/bin/activate
 ```
 
 Windows
+
 ```zsh
 .venv\Scripts\activate
 ```
@@ -111,6 +113,7 @@ Windows
 **4. Install server dependencies**
 
 Still inside the server directory
+
 ```zsh
 uv sync
 ```
@@ -136,6 +139,7 @@ DJANGO_PORT= # port the django server run on
 **6. Run docker-compose**
 
 Inside server directory
+
 ```zsh
 docker compose up --build
 ```
@@ -145,6 +149,7 @@ Wait until it build the container goldstarboard_web then you can detach.
 That is to ensure all the migrations happen before the next step.
 
 **7. Create a superuser**
+
 ```zsh
 docker exec -it goldstarboard_web uv run manage.py createsuperuser
 ```
@@ -168,6 +173,7 @@ The station field are:
 After the stations are added, wait until the start of the next hour for the data to be scraped. (The interval can be edited in in tasks.py inside the scraper app)
 
 **10. Run the client**
+
 ```zsh
 cd client
 bun start
@@ -178,8 +184,9 @@ Scan the QR code with Expo Go in your phone (This application required Expo Go 5
 If your having issue scanning the QR code.
 
 Try running:
+
 ```zsh
 bun start --tunnel
 ```
 
-and add ```-c``` to clear the cache
+and add `-c` to clear the cache

@@ -168,3 +168,13 @@ const changeGoldStar = async (hasGoldStar: boolean, goldStarRow: GoldStarRow, id
 };
 
 export { getParsedData, grantStatus, changeStreak, changeGoldStar };
+
+// make the api full url
+type WeatherUnit = "m" | "i";
+
+export const getWeatherUrl = (stationId: string, unit: WeatherUnit) => {
+  const baseUrl = process.env.PUBLIC_WU_API_URL;
+  const apiKey = process.env.PUBLIC_WU_API_KEY;
+
+  return `${baseUrl}${apiKey}&stationId=${stationId}&numericPrecision=decimal&format=json&units=${unit}`;
+};

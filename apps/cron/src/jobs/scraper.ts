@@ -1,5 +1,11 @@
 import axios from "axios";
 
+import { getWeatherUrl } from "./helper";
+
+type WeatherUnit = "m" | "i";
+
+export async function fetchAPI(stationId: string, unit: WeatherUnit) {}
+
 export async function fetchHTML(url: string) {
   try {
     const config = {
