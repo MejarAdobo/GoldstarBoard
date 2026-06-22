@@ -1,13 +1,12 @@
-import * as schema from "./schema";
-/* Oxc-ignore-next-line sort-imports */
 import { defineRelations } from "drizzle-orm";
+import * as schema from "./schema";
 
 export const relations = defineRelations(schema, (r) => ({
   historicalStats: {
     station: r.one.stations({
       from: r.historicalStats.stationId,
-      to: r.stations.id
-    })
+      to: r.stations.id,
+    }),
   },
   dailyData: {
     station: r.one.stations({

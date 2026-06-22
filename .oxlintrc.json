@@ -14,7 +14,9 @@
   "rules": {
     "sort-keys": "off",
     "no-magic-numbers": "off",
-    "id-length": "off"
+    "id-length": "off",
+    "sort-imports": "off",
+    "max-params": "off"
   },
   "env": {
     "builtin": true

@@ -7,8 +7,10 @@
     "dev": "bun --hot --watch run src/index.ts"
   },
   "dependencies": {
+    "@goldstarboard/db": "workspace:*",
     "@goldstarboard/ts-config": "workspace:*",
-    "axios": "^1.18.0",
+    "@goldstarboard/types": "workspace:*",
+    "axios": "^1.18.1",
     "cheerio": "^1.2.0"
   },
   "devDependencies": {

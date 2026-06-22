@@ -25,10 +25,10 @@ export const stats = p.pgTable("stats", {
     .integer()
     .primaryKey()
     .references(() => stations.id, { onDelete: "cascade" }),
-  goldStars: p.integer().default(0).notNull(),
+  star: p.integer().default(0).notNull(),
   hotStreak: p.integer().default(0).notNull(),
   coldStreak: p.integer().default(0).notNull(),
-  lastDaySinceStar: p.date().notNull(),
+  lastDaySinceStar: p.date({ mode: "string" }).notNull(),
   ...timestamps(),
 });
 
@@ -50,7 +50,7 @@ export const historicalStats = p.pgTable(
     id: p.integer().primaryKey().generatedByDefaultAsIdentity(),
     stationId: p.integer().references(() => stations.id, { onDelete: "cascade" }),
     year: p.integer().notNull(),
-    goldStars: p.integer().default(0).notNull(),
+    star: p.integer().default(0).notNull(),
     hotStreak: p.integer().default(0).notNull(),
     coldStreak: p.integer().default(0).notNull(),
     ...timestamps(),
@@ -64,7 +64,7 @@ export const dailyData = p.pgTable(
   {
     id: p.integer().primaryKey().generatedByDefaultAsIdentity(),
     stationId: p.integer().references(() => stations.id, { onDelete: "cascade" }),
-    goldStarStatus: p.varchar({ enum: ["gain", "loss", "maintain", "none"] }),
+    starStatus: p.varchar({ enum: ["gain", "loss", "maintain", "none"] }),
     ...timestamps(),
   },
   (table) => [p.index("daily_data_station_id_idx").on(table.stationId)],
@@ -76,6 +76,7 @@ export const awards = p.pgTable(
   {
     id: p.integer().primaryKey().generatedByDefaultAsIdentity(),
     stationId: p.integer().references(() => stations.id, { onDelete: "cascade" }),
+    year: p.integer().notNull(),
     title: p.varchar({ length: 50 }).notNull(),
     type: p.varchar({ enum: ["hot_streak", "cold_streak", "most_stars", "least_stars"] }),
     ...timestamps(),

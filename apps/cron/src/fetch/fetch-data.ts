@@ -1,46 +1,6 @@
 import axios, { isAxiosError } from "axios";
 
-// Todo: add all of this interface in type package
-interface ApiError {
-  message: string;
-  code: number;
-}
-
-interface Metric {
-  temp: number;
-  heatIndex: number;
-  dewpt: number;
-  windChill: number;
-  windSpeed: number;
-  windGust: number;
-  pressure: number;
-  precipRate: number;
-  precipTotal: number;
-  elev: number;
-}
-
-interface Observation {
-  stationID: string;
-  obsTimeUtc: string;
-  obsTimeLocal: string;
-  neighborhood: string;
-  softwareType: string;
-  country: string;
-  solarRadiation: number;
-  lon: number;
-  realtimeFrequency: null;
-  epoch: number;
-  lat: number;
-  uv: number;
-  winddir: number;
-  humidity: number;
-  qcStatus: number;
-  metric: Metric;
-}
-
-interface WeatherResponse {
-  observations: Observation[];
-}
+import type { ApiError, WeatherResponse } from "@goldstarboard/types";
 
 export const fetchData = async (url: string) => {
   // Todo: add to config package
