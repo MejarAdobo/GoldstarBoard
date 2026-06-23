@@ -79,6 +79,8 @@ export const awards = p.pgTable(
     year: p.integer().notNull(),
     title: p.varchar({ length: 50 }).notNull(),
     type: p.varchar({ enum: ["hot_streak", "cold_streak", "most_stars", "least_stars"] }),
+    rank: p.integer().notNull(),
+    score: p.integer().notNull(),
     ...timestamps(),
   },
   (table) => [p.index("awards_station_id_idx").on(table.stationId)],
