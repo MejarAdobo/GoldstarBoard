@@ -1,5 +1,5 @@
-import { db } from "@goldstarboard/db";
-import { dailyData } from "@goldstarboard/db/src/schema";
+import { db } from "@goldstarboard/db/client";
+import { dailyData } from "@goldstarboard/db/schema";
 import { eq } from "drizzle-orm";
 
 // Get one dailyData

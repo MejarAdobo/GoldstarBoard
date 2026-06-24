@@ -13,5 +13,15 @@
     "@types/pg": "^8.20.0",
     "drizzle-kit": "^1.0.0-beta.22",
     "tsx": "^4.22.4"
+  },
+  "exports": {
+    "./client": {
+      "types": "./src/client.ts",
+      "default": "./dist/client.ts"
+    },
+    "./schema": {
+      "types": "./src/schema.ts",
+      "default": "./dist/schema.ts"
+    }
   }
 }

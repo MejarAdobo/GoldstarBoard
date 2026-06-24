@@ -1,9 +1,0 @@
-{
-  "name": "@goldstarboard/types",
-  "version": "1.0.0",
-  "private": true,
-  "license": "MIT",
-  "devDependencies": {
-    "@goldstarboard/ts-config": "workspace:*"
-  }
-}

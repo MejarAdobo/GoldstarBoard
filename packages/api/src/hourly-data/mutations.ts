@@ -1,8 +1,8 @@
-import { db } from "@goldstarboard/db";
-import { hourlyData } from "@goldstarboard/db/src/schema";
+import { db } from "@goldstarboard/db/client";
+import { hourlyData } from "@goldstarboard/db/schema";
 import { eq } from "drizzle-orm";
 
-import type { WeatherData } from "@goldstarboard/types";
+import type { WeatherData } from "@goldstarboard/shared-types/interfaces";
 
 // Create a hourly data
 export const createHourlyData = async (id: number, metricData: WeatherData, imperialData: WeatherData) =>

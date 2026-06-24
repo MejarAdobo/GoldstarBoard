@@ -1,8 +1,8 @@
-import { db } from "@goldstarboard/db";
-import { dailyData } from "@goldstarboard/db/src/schema";
+import { db } from "@goldstarboard/db/client";
+import { dailyData } from "@goldstarboard/db/schema";
 import { eq } from "drizzle-orm";
 
-import type { starStatusEnum } from "@goldstarboard/types";
+import type { starStatusEnum } from "@goldstarboard/shared-types/types";
 
 // Create a daily data
 export const createDailyData = async (id: number, starStatus: starStatusEnum) =>

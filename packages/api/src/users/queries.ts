@@ -1,5 +1,5 @@
-import { db } from "@goldstarboard/db";
-import { users } from "@goldstarboard/db/src/schema";
+import { db } from "@goldstarboard/db/client";
+import { users } from "@goldstarboard/db/schema";
 import { eq } from "drizzle-orm";
 
 // Get one user

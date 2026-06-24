@@ -1,0 +1,18 @@
+{
+  "name": "@goldstarboard/shared-types",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "devDependencies": {
+    "@goldstarboard/ts-config": "workspace:*"
+  },
+  "exports": {
+    "./types": {
+      "types": "./src/types.ts",
+      "default": "./dist/types.ts"
+    }, "./interfaces": {
+      "types": "./src/interfaces.ts",
+      "default": "./dist/interfaces.ts"
+    }
+  }
+}
