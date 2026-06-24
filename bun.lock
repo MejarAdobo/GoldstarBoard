@@ -16,6 +16,7 @@
     "apps/cron": {
       "name": "cron",
       "dependencies": {
+        "@goldstarboard/api": "workspace:*",
         "@goldstarboard/db": "workspace:*",
         "@goldstarboard/shared-types": "workspace:*",
         "axios": "^1.18.1",

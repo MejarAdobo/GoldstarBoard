@@ -9,6 +9,7 @@
   "dependencies": {
     "@goldstarboard/db": "workspace:*",
     "@goldstarboard/shared-types": "workspace:*",
+    "@goldstarboard/api": "workspace:*",
     "axios": "^1.18.1",
     "cheerio": "^1.2.0",
     "drizzle-orm": "^1.0.0-beta.22"

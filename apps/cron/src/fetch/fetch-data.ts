@@ -1,6 +1,6 @@
 import axios, { isAxiosError } from "axios";
 
-import type { ApiError, WeatherResponse } from "@goldstarboard/types";
+import type { ApiError, WeatherResponse } from "@goldstarboard/shared-types/interfaces";
 
 export const fetchData = async (url: string) => {
   // Todo: add to config package

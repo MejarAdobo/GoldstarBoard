@@ -56,4 +56,12 @@ interface WeatherData {
   humidity: number | null;
 }
 
-export type { ApiError, Metric, Observation, WeatherData, WeatherResponse };
+// Station
+interface Station {
+  id: number;
+  name: string;
+  wuId: string;
+}
+
+
+export type { ApiError, Metric, Observation, Station, WeatherData, WeatherResponse };
