@@ -3,16 +3,17 @@
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
+  "exports": {
+    "./enums": {
+      "types": "./src/enums.ts",
+      "default": "./dist/enums.js"
+    },
+    "./interfaces": {
+      "types": "./src/interfaces.ts",
+      "default": "./dist/interfaces.js"
+    }
+  },
   "devDependencies": {
     "@goldstarboard/ts-config": "workspace:*"
-  },
-  "exports": {
-    "./types": {
-      "types": "./src/types.ts",
-      "default": "./dist/types.ts"
-    }, "./interfaces": {
-      "types": "./src/interfaces.ts",
-      "default": "./dist/interfaces.ts"
-    }
   }
 }

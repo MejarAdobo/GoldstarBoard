@@ -5,6 +5,6 @@ type starStatusEnum = "gain" | "loss" | "maintain" | "none";
 type awardTypeEnum = "hot_streak" | "cold_streak" | "most_stars" | "least_stars";
 
 // For user role
-type UserRole = "user" | "admin";
+type UserRoleEnum = "user" | "admin";
 
-export type { awardTypeEnum, starStatusEnum, UserRole };
+export type { awardTypeEnum, starStatusEnum, UserRoleEnum };

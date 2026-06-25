@@ -16,7 +16,9 @@
     "no-magic-numbers": "off",
     "id-length": "off",
     "sort-imports": "off",
-    "max-params": "off"
+    "max-params": "off",
+    "unicorn/no-null": "off",
+    "max-statements": "off"
   },
   "env": {
     "builtin": true

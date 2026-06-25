@@ -1,6 +1,6 @@
 import axios, { isAxiosError } from "axios";
 
-import type { ApiError, WeatherResponse } from "@goldstarboard/shared-types/interfaces";
+import type { ApiError } from "@goldstarboard/shared-types/interfaces";
 
 export const fetchData = async (url: string) => {
   // Todo: add to config package
@@ -15,7 +15,7 @@ export const fetchData = async (url: string) => {
   };
 
   try {
-    const resp = await axios.get<string | WeatherResponse>(url, config);
+    const resp = await axios.get(url, config);
 
     if (!resp.data) {
       throw new Error(`No data returned from [${url}]`);

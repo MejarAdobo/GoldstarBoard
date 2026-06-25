@@ -4,7 +4,7 @@ import { eq } from "drizzle-orm";
 
 // Create a historicalStats
 export const createHistoricalStats = async (
-  stationId: number,
+  stationId: string,
   year: number,
   star: number,
   hotStreak: number,
@@ -13,8 +13,7 @@ export const createHistoricalStats = async (
 
 // Update a historicalStats
 export const updateHistoricalStats = async (
-  id: number,
-  stationId: number,
+  stationId: string,
   year: number,
   star: number,
   hotStreak: number,
@@ -23,12 +22,16 @@ export const updateHistoricalStats = async (
   db
     .update(historicalStats)
     .set({ stationId, year, star, hotStreak, coldStreak })
-    .where(eq(historicalStats.id, id))
+    .where(eq(historicalStats.stationId, stationId))
     .returning();
 
 // Delete a historicalStats
-export const deleteHistoricalStats = async (id: number) =>
-  db.delete(historicalStats).where(eq(historicalStats.id, id)).returning();
+export const deleteHistoricalStats = async (stationId: string) =>
+  db.delete(historicalStats).where(eq(historicalStats.stationId, stationId)).returning();
+
+// Delete all historicalStats of a specific station
+export const deleteAllHistoricalStatsByStation = async (stationId: string) =>
+  db.delete(historicalStats).where(eq(historicalStats.stationId, stationId)).returning();
 
 // Delete all historicalStats
 export const deleteAllHistoricalStats = async () => db.delete(historicalStats).returning();
