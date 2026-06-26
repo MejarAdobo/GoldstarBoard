@@ -2,7 +2,7 @@ import { db } from "@goldstarboard/db/client";
 import { dailyData } from "@goldstarboard/db/schema";
 import { eq } from "drizzle-orm";
 
-import type { starStatusEnum } from "@goldstarboard/shared-types/types";
+import type { starStatusEnum } from "@goldstarboard/shared-types/enums";
 
 // Create a daily data
 export const createDailyData = async (stationId: string, starStatus: starStatusEnum) =>

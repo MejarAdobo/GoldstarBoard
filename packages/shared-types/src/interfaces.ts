@@ -59,9 +59,6 @@ interface Station {
   id: number;
   name: string;
   wuId: string;
-  dailyData: {
-    starStatus: starStatusEnum;
-  };
 }
 
 // Hourly Data
@@ -77,4 +74,13 @@ interface DailyData {
   starStatus: starStatusEnum;
 }
 
-export type { ApiError, DailyData, HourlyData, Observation, Station, WeatherData, WeatherMeasurements };
+// Stats
+interface Stats {
+  stationId: string;
+  star: number;
+  hotStreak: number;
+  coldStreak: number;
+  lastDaySinceStar: string;
+}
+
+export type { ApiError, DailyData, HourlyData, Observation, Station, Stats, WeatherData, WeatherMeasurements };

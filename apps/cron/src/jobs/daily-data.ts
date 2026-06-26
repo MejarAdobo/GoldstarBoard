@@ -1,5 +1,6 @@
 import { fetchData } from "@fetch/fetch-data";
 import { createDailyData } from "@goldstarboard/api/daily-data/mutations";
+import { getYesterdayData } from "@helpers/get-yesterday";
 import { parseHTML } from "@parsers/parse-html";
 
 import type { starStatusEnum } from "@goldstarboard/shared-types/enums";
@@ -15,7 +16,8 @@ export const getDailyData = async (stations: Station[]) => {
     const stationHTML = await fetchData(stationURL);
     const haveGoldStar = parseHTML(stationHTML);
 
-    const previousStatus = station.dailyData?.starStatus;
+    const yesterdayData = await getYesterdayData(station.wuId);
+    const previousStatus = yesterdayData?.starStatus;
     let newStatus: starStatusEnum = "none";
 
     // Refactor in the future

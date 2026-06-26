@@ -2,7 +2,7 @@ import { db } from "@goldstarboard/db/client";
 import { awards } from "@goldstarboard/db/schema";
 import { eq } from "drizzle-orm";
 
-import type { awardTypeEnum } from "@goldstarboard/shared-types/types";
+import type { awardTypeEnum } from "@goldstarboard/shared-types/enums";
 
 // Create an award
 export const createAward = async (
