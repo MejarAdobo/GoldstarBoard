@@ -6,11 +6,11 @@
   "exports": {
     "./client": {
       "types": "./src/client.ts",
-      "default": "./dist/client.js"
+      "default": "./src/client.ts"
     },
     "./schema": {
       "types": "./src/schema.ts",
-      "default": "./dist/schema.js"
+      "default": "./src/schema.ts"
     }
   },
   "dependencies": {

@@ -83,4 +83,13 @@ interface Stats {
   lastDaySinceStar: string;
 }
 
-export type { ApiError, DailyData, HourlyData, Observation, Station, Stats, WeatherData, WeatherMeasurements };
+export type {
+  ApiError,
+  DailyData,
+  HourlyData,
+  Observation,
+  Station,
+  Stats,
+  WeatherData,
+  WeatherMeasurements,
+};

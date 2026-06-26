@@ -6,11 +6,11 @@
   "exports": {
     "./enums": {
       "types": "./src/enums.ts",
-      "default": "./dist/enums.js"
+      "default": "./src/enums.ts"
     },
     "./interfaces": {
       "types": "./src/interfaces.ts",
-      "default": "./dist/interfaces.js"
+      "default": "./src/interfaces.ts"
     }
   },
   "devDependencies": {

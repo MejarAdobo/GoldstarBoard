@@ -21,8 +21,14 @@ export const relations = defineRelations(schema, (r) => ({
     }),
   },
   stations: {
-    stats: r.one.stats(),
-    hourlyData: r.one.hourlyData(),
+    stats: r.one.stats({
+      from: r.stations.id,
+      to: r.stats.stationId,
+    }),
+    hourlyData: r.one.hourlyData({
+      from: r.stations.id,
+      to: r.hourlyData.stationId,
+    }),
     historicalStats: r.many.historicalStats(),
     dailyData: r.many.dailyData(),
     awards: r.many.awards(),

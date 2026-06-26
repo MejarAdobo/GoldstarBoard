@@ -6,59 +6,59 @@
   "exports": {
     "./awards/mutations": {
       "types": "./src/awards/mutations.ts",
-      "default": "./dist/awards/mutations.js"
+      "default": "./src/awards/mutations.ts"
     },
     "./awards/queries": {
       "types": "./src/awards/queries.ts",
-      "default": "./dist/awards/queries.js"
+      "default": "./src/awards/queries.ts"
     },
     "./daily-data/mutations": {
       "types": "./src/daily-data/mutations.ts",
-      "default": "./dist/daily-data/mutations.js"
+      "default": "./src/daily-data/mutations.ts"
     },
     "./daily-data/queries": {
       "types": "./src/daily-data/queries.ts",
-      "default": "./dist/daily-data/queries.js"
+      "default": "./src/daily-data/queries.ts"
     },
     "./historical-data/mutations": {
       "types": "./src/historical-data/mutations.ts",
-      "default": "./dist/historical-data/mutations.js"
+      "default": "./src/historical-data/mutations.ts"
     },
     "./historical-data/queries": {
       "types": "./src/historical-data/queries.ts",
-      "default": "./dist/historical-data/queries.js"
+      "default": "./src/historical-data/queries.ts"
     },
     "./hourly-data/mutations": {
       "types": "./src/hourly-data/mutations.ts",
-      "default": "./dist/hourly-data/mutations.js"
+      "default": "./src/hourly-data/mutations.ts"
     },
     "./hourly-data/queries": {
       "types": "./src/hourly-data/queries.ts",
-      "default": "./dist/hourly-data/queries.js"
+      "default": "./src/hourly-data/queries.ts"
     },
     "./stations/mutations": {
       "types": "./src/stations/mutations.ts",
-      "default": "./dist/stations/mutations.js"
+      "default": "./src/stations/mutations.ts"
     },
     "./stations/queries": {
       "types": "./src/stations/queries.ts",
-      "default": "./dist/stations/queries.js"
+      "default": "./src/stations/queries.ts"
     },
     "./stats/mutations": {
       "types": "./src/stats/mutations.ts",
-      "default": "./dist/stats/mutations.js"
+      "default": "./src/stats/mutations.ts"
     },
     "./stats/queries": {
       "types": "./src/stats/queries.ts",
-      "default": "./dist/stats/queries.js"
+      "default": "./src/stats/queries.ts"
     },
     "./users/mutations": {
       "types": "./src/users/mutations.ts",
-      "default": "./dist/users/mutations.js"
+      "default": "./src/users/mutations.ts"
     },
     "./users/queries": {
       "types": "./src/users/queries.ts",
-      "default": "./dist/users/queries.js"
+      "default": "./src/users/queries.ts"
     }
   },
   "dependencies": {

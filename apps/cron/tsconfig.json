@@ -6,7 +6,7 @@
       "@/*": ["./src/*"],
       "@helpers/*": ["./src/helpers/*"],
       "@fetch/*": ["./src/fetch/*"],
-      "@jobs/*": ["./src/jobs/*"],
+      "@tasks/*": ["./src/tasks/*"],
       "@parsers/*": ["./src/parsers/*"]
     }
   }
