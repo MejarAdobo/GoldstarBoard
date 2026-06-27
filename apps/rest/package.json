@@ -1,0 +1,19 @@
+{
+  "name": "api",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts"
+  },
+  "dependencies": {
+    "@goldstarboard/api": "workspace:*",
+    "@goldstarboard/shared-types": "workspace:*",
+    "@hono/swagger-ui": "^0.6.1",
+    "@hono/zod-openapi": "^1.4.0",
+    "@scalar/hono-api-reference": "^0.11.6",
+    "hono": "^4.12.27",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@goldstarboard/ts-config": "workspace:*",
+    "@types/bun": "latest"
+  }
+}
