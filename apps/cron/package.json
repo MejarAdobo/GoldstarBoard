@@ -4,11 +4,11 @@
   "type": "module",
   "module": "index.ts",
   "scripts": {
-    "dev": "bun --hot --watch run src/index.ts"
+    "dev": "bun --hot --watch run src/index.ts",
+    "newStation": "bun run src/cmds/new-station.ts"
   },
   "dependencies": {
     "@goldstarboard/api": "workspace:*",
-    "@goldstarboard/db": "workspace:*",
     "@goldstarboard/shared-types": "workspace:*",
     "@js-temporal/polyfill": "^0.5.1",
     "axios": "^1.18.1",
@@ -17,8 +17,7 @@
   },
   "devDependencies": {
     "@goldstarboard/ts-config": "workspace:*",
-    "@types/bun": "latest",
-    "drizzle-kit": "^1.0.0-rc.4-ca0f029"
+    "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.9.2"

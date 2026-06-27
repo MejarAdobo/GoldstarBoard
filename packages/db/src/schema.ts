@@ -29,7 +29,7 @@ export const stats = p.pgTable("stats", {
   star: p.integer().default(0).notNull(),
   hotStreak: p.integer("hot_streak").default(0).notNull(),
   coldStreak: p.integer("cold_streak").default(0).notNull(),
-  lastDaySinceStar: p.date("last_day_since_star", { mode: "string" }).notNull(),
+  lastDaySinceStar: p.date("last_day_since_star", { mode: "string" }),
   ...timestamps(),
 });
 

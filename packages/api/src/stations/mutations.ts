@@ -11,7 +11,8 @@ export const updateStation = async (id: number, name: string, wuId: string) =>
   db.update(stations).set({ name, wuId }).where(eq(stations.id, id)).returning();
 
 // Delete a station
-export const deleteStation = async (id: number) => db.delete(stations).where(eq(stations.id, id)).returning();
+export const deleteStation = async (wuId: string) =>
+  db.delete(stations).where(eq(stations.wuId, wuId)).returning();
 
 // Delete all stations
 export const deleteAllStations = async () => db.delete(stations).returning();

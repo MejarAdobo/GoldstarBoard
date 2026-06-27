@@ -8,7 +8,7 @@ export const createStats = async (
   star: number,
   hotStreak: number,
   coldStreak: number,
-  lastDaySinceStar: string,
+  lastDaySinceStar: string | undefined,
 ) => db.insert(stats).values({ stationId, star, hotStreak, coldStreak, lastDaySinceStar }).returning();
 
 // Update a stats
@@ -17,7 +17,7 @@ export const updateStats = async (
   star: number,
   hotStreak: number,
   coldStreak: number,
-  lastDaySinceStar: string,
+  lastDaySinceStar: string | null,
 ) =>
   db
     .update(stats)

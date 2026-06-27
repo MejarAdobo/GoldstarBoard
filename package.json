@@ -19,7 +19,7 @@
     "oxfmt": "^0.55.0",
     "oxlint": "^1.71.0",
     "oxlint-tsgolint": "^0.23.0",
-    "turbo": "^2.9.18",
+    "turbo": "^2.10.0",
     "typescript": "5.9.2"
   },
   "engines": {

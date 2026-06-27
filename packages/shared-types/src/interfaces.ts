@@ -80,7 +80,7 @@ interface Stats {
   star: number;
   hotStreak: number;
   coldStreak: number;
-  lastDaySinceStar: string;
+  lastDaySinceStar: string | null;
 }
 
 export type {
