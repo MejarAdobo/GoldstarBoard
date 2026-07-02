@@ -8,7 +8,7 @@
     "newStation": "bun run src/cmds/new-station.ts"
   },
   "dependencies": {
-    "@goldstarboard/api": "workspace:*",
+    "@goldstarboard/db-services": "workspace:*",
     "@goldstarboard/shared-types": "workspace:*",
     "@js-temporal/polyfill": "^0.5.1",
     "axios": "^1.18.1",

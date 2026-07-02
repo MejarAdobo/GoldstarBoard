@@ -1,16 +1,6 @@
 import * as p from "drizzle-orm/pg-core";
 import { timestamps } from "./utils";
 
-// Users
-export const users = p.pgTable("users", {
-  id: p.integer().primaryKey().generatedByDefaultAsIdentity(),
-  name: p.varchar({ length: 25 }).notNull(),
-  email: p.varchar({ length: 255 }).notNull(),
-  password: p.varchar({ length: 255 }).notNull(),
-  role: p.varchar({ enum: ["user", "admin"] }).notNull(),
-  ...timestamps(),
-});
-
 // Stations
 export const stations = p.pgTable("stations", {
   id: p.integer().primaryKey().generatedByDefaultAsIdentity(),

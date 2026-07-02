@@ -1,5 +1,5 @@
 import { fetchData } from "@fetch/fetch-data";
-import { createDailyData } from "@goldstarboard/api/daily-data/mutations";
+import { createDailyData } from "@goldstarboard/db-services/daily-data/mutations";
 import { getYesterdayData } from "@helpers/get-yesterday";
 import { parseHTML } from "@parsers/parse-html";
 

@@ -1,7 +1,9 @@
-import { createHourlyData, deleteHourlyData } from "@goldstarboard/api/hourly-data/mutations";
-import { createStation, deleteStation } from "@goldstarboard/api/stations/mutations";
-import { createStats, deleteStats } from "@goldstarboard/api/stats/mutations";
+import { createHourlyData, deleteHourlyData } from "@goldstarboard/db-services/hourly-data/mutations";
+import { createStation, deleteStation } from "@goldstarboard/db-services/stations/mutations";
+import { createStats, deleteStats } from "@goldstarboard/db-services/stats/mutations";
 import { getHourlyData } from "@tasks/hourly-data";
+
+// Will remove if admin page is created
 
 const dialouge = () => {
   console.log("-- Adding a New Station --");

@@ -1,5 +1,5 @@
 import { fetchData } from "@fetch/fetch-data";
-import { createHourlyData } from "@goldstarboard/api/hourly-data/mutations";
+import { createHourlyData } from "@goldstarboard/db-services/hourly-data/mutations";
 import { buildURL } from "@helpers/build-url";
 import { formatHourlyData } from "@helpers/format-hourly-data";
 
