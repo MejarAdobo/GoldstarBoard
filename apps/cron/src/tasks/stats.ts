@@ -1,5 +1,5 @@
-import { updateStats as updtStats } from "@goldstarboard/api/stats/mutations";
-import { getYesterdayData } from "@helpers/get-yesterday";
+import { updateStats as updtStats } from "@goldstarboard/db-services/stat/mutations";
+import { getYesterdayData } from "@helpers/getYesterday";
 import { Temporal } from "@js-temporal/polyfill";
 
 import type { Stats } from "@goldstarboard/shared-types/interfaces";

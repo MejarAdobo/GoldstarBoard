@@ -2,7 +2,7 @@
   "name": "api",
   "scripts": {
     "dev": "bun run --hot src/index.ts",
-    "docs": "bunx @rcmade/hono-docs generate --config ./hono-docs.ts"
+    "docs": "bunx @rcmade/hono-docs generate --config ./honoDocs.ts"
   },
   "dependencies": {
     "@goldstarboard/db-services": "workspace:*",

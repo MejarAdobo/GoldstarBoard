@@ -1,7 +1,7 @@
-import { fetchData } from "@fetch/fetch-data";
-import { createDailyData } from "@goldstarboard/db-services/daily-data/mutations";
-import { getYesterdayData } from "@helpers/get-yesterday";
-import { parseHTML } from "@parsers/parse-html";
+import { fetchData } from "@fetch/fetchData";
+import { createDailyData } from "@goldstarboard/db-services/dailyData/mutations";
+import { getYesterdayData } from "@helpers/getYesterday";
+import { parseHTML } from "@parsers/parseHtml";
 
 import type { starStatusEnum } from "@goldstarboard/shared-types/enums";
 import type { DailyData, Station } from "@goldstarboard/shared-types/interfaces";

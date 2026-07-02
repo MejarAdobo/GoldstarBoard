@@ -1,7 +1,7 @@
-import { getAllStations } from "@goldstarboard/db-services/stations/queries";
-import { getAllStats } from "@goldstarboard/db-services/stats/queries";
-import { getDailyData, sendDailyData } from "@tasks/daily-data";
-import { getAllHourlyData, sendHourlyData } from "@tasks/hourly-data";
+import { getAllStations } from "@goldstarboard/db-services/station/queries";
+import { getAllStats } from "@goldstarboard/db-services/stat/queries";
+import { getDailyData, sendDailyData } from "@tasks/dailyData";
+import { getAllHourlyData, sendHourlyData } from "@tasks/hourlyData";
 import { updateStats } from "@tasks/stats";
 
 const stations = await getAllStations();

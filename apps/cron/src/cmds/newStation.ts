@@ -1,7 +1,7 @@
-import { createHourlyData, deleteHourlyData } from "@goldstarboard/db-services/hourly-data/mutations";
-import { createStation, deleteStation } from "@goldstarboard/db-services/stations/mutations";
-import { createStats, deleteStats } from "@goldstarboard/db-services/stats/mutations";
-import { getHourlyData } from "@tasks/hourly-data";
+import { createHourlyData, deleteHourlyData } from "@goldstarboard/db-services/hourlyData/mutations";
+import { createStation, deleteStation } from "@goldstarboard/db-services/station/mutations";
+import { createStats, deleteStats } from "@goldstarboard/db-services/stat/mutations";
+import { getHourlyData } from "@tasks/hourlyData";
 
 // Will remove if admin page is created
 

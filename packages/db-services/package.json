@@ -4,53 +4,53 @@
   "private": true,
   "license": "MIT",
   "exports": {
-    "./awards/mutations": {
-      "types": "./src/awards/mutations.ts",
-      "default": "./src/awards/mutations.ts"
+    "./award/mutations": {
+      "types": "./src/award/mutations.ts",
+      "default": "./src/award/mutations.ts"
     },
-    "./awards/queries": {
-      "types": "./src/awards/queries.ts",
-      "default": "./src/awards/queries.ts"
+    "./award/queries": {
+      "types": "./src/award/queries.ts",
+      "default": "./src/award/queries.ts"
     },
-    "./daily-data/mutations": {
-      "types": "./src/daily-data/mutations.ts",
-      "default": "./src/daily-data/mutations.ts"
+    "./dailyData/mutations": {
+      "types": "./src/dailyData/mutations.ts",
+      "default": "./src/dailyData/mutations.ts"
     },
-    "./daily-data/queries": {
-      "types": "./src/daily-data/queries.ts",
-      "default": "./src/daily-data/queries.ts"
+    "./dailyData/queries": {
+      "types": "./src/dailyData/queries.ts",
+      "default": "./src/dailyData/queries.ts"
     },
-    "./historical-data/mutations": {
-      "types": "./src/historical-data/mutations.ts",
-      "default": "./src/historical-data/mutations.ts"
+    "./historicalStat/mutations": {
+      "types": "./src/historicalStat/mutations.ts",
+      "default": "./src/historicalStat/mutations.ts"
     },
-    "./historical-data/queries": {
-      "types": "./src/historical-data/queries.ts",
-      "default": "./src/historical-data/queries.ts"
+    "./historicalStat/queries": {
+      "types": "./src/historicalStat/queries.ts",
+      "default": "./src/historicalStat/queries.ts"
     },
-    "./hourly-data/mutations": {
-      "types": "./src/hourly-data/mutations.ts",
-      "default": "./src/hourly-data/mutations.ts"
+    "./hourlyData/mutations": {
+      "types": "./src/hourlyData/mutations.ts",
+      "default": "./src/hourlyData/mutations.ts"
     },
-    "./hourly-data/queries": {
-      "types": "./src/hourly-data/queries.ts",
-      "default": "./src/hourly-data/queries.ts"
+    "./hourlyData/queries": {
+      "types": "./src/hourlyData/queries.ts",
+      "default": "./src/hourlyData/queries.ts"
     },
-    "./stations/mutations": {
-      "types": "./src/stations/mutations.ts",
-      "default": "./src/stations/mutations.ts"
+    "./station/mutations": {
+      "types": "./src/station/mutations.ts",
+      "default": "./src/station/mutations.ts"
     },
-    "./stations/queries": {
-      "types": "./src/stations/queries.ts",
-      "default": "./src/stations/queries.ts"
+    "./station/queries": {
+      "types": "./src/station/queries.ts",
+      "default": "./src/station/queries.ts"
     },
-    "./stats/mutations": {
-      "types": "./src/stats/mutations.ts",
-      "default": "./src/stats/mutations.ts"
+    "./stat/mutations": {
+      "types": "./src/stat/mutations.ts",
+      "default": "./src/stat/mutations.ts"
     },
-    "./stats/queries": {
-      "types": "./src/stats/queries.ts",
-      "default": "./src/stats/queries.ts"
+    "./stat/queries": {
+      "types": "./src/stat/queries.ts",
+      "default": "./src/stat/queries.ts"
     },
     "./users/mutations": {
       "types": "./src/users/mutations.ts",

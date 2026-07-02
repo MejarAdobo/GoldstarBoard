@@ -5,7 +5,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@helpers/*": ["./src/helpers/*"],
-      "@fetch/*": ["./src/fetch/*"],
+      "@fetch/*": ["./src/fetches/*"],
       "@tasks/*": ["./src/tasks/*"],
       "@parsers/*": ["./src/parsers/*"]
     }

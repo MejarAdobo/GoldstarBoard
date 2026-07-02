@@ -1,4 +1,4 @@
-import { getDailyDataByStation } from "@goldstarboard/db-services/daily-data/queries";
+import { getDailyDataByStation } from "@goldstarboard/db-services/dailyData/queries";
 
 export const getYesterdayData = async (id: string) => {
   const allData = await getDailyDataByStation(id);

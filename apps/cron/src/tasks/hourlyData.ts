@@ -1,7 +1,7 @@
-import { fetchData } from "@fetch/fetch-data";
-import { createHourlyData } from "@goldstarboard/db-services/hourly-data/mutations";
-import { buildURL } from "@helpers/build-url";
-import { formatHourlyData } from "@helpers/format-hourly-data";
+import { fetchData } from "@fetch/fetchData";
+import { createHourlyData } from "@goldstarboard/db-services/hourlyData/mutations";
+import { buildURL } from "@helpers/buildUrl";
+import { formatHourlyData } from "@helpers/formatHourlyData";
 
 import type { HourlyData, Station } from "@goldstarboard/shared-types/interfaces";
 
