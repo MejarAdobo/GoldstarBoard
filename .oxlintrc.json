@@ -18,7 +18,18 @@
     "sort-imports": "off",
     "max-params": "off",
     "unicorn/no-null": "off",
-    "max-statements": "off"
+    "max-statements": "off",
+    "unicorn/filename-case": [
+      "error",
+      {
+        "cases": {
+          "camelCase": true,
+          "kebabCase": false,
+          "snakeCase": false,
+          "pascalCase": false
+        }
+      }
+    ]
   },
   "env": {
     "builtin": true

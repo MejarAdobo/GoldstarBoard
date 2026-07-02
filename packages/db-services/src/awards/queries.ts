@@ -3,8 +3,7 @@ import { awards } from "@goldstarboard/db/schema";
 import { eq } from "drizzle-orm";
 
 // Get one award
-export const getAward = async (id: number) =>
-  db.select().from(awards).where(eq(awards.id, id));
+export const getAward = async (id: number) => db.select().from(awards).where(eq(awards.id, id));
 
 // Get all awards of a specific station
 export const getAllAwardsByStation = async (stationId: string) =>

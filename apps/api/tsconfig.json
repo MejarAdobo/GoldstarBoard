@@ -1,6 +1,10 @@
 {
   "extends": "@goldstarboard/ts-config/base.json",
   "compilerOptions": {
-    "noEmit": true
+    "noEmit": true,
+    "preserveSymlinks": true,
+    "paths": {
+      "@routes/*": ["./src/routes/*"]
+    }
   }
 }
