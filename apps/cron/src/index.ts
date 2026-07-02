@@ -1,5 +1,5 @@
-import { getAllStations } from "@goldstarboard/db-services/station/queries";
 import { getAllStats } from "@goldstarboard/db-services/stat/queries";
+import { getAllStations } from "@goldstarboard/db-services/station/queries";
 import { getDailyData, sendDailyData } from "@tasks/dailyData";
 import { getAllHourlyData, sendHourlyData } from "@tasks/hourlyData";
 import { updateStats } from "@tasks/stats";

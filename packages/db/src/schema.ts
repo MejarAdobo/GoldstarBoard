@@ -1,4 +1,5 @@
 import * as p from "drizzle-orm/pg-core";
+import { createSelectSchema } from "drizzle-orm/zod";
 import { timestamps } from "./utils";
 
 // Stations
@@ -8,6 +9,8 @@ export const stations = p.pgTable("stations", {
   wuId: p.varchar("wu_id", { length: 12 }).notNull().unique(),
   ...timestamps(),
 });
+
+export const stationSelectSchema = createSelectSchema(stations);
 
 // Stats
 export const stats = p.pgTable("stats", {
@@ -23,6 +26,8 @@ export const stats = p.pgTable("stats", {
   ...timestamps(),
 });
 
+export const statSelectSchema = createSelectSchema(stats);
+
 // Hourly Data
 export const hourlyData = p.pgTable("hourly_data", {
   id: p.integer().primaryKey().generatedByDefaultAsIdentity(),
@@ -34,6 +39,8 @@ export const hourlyData = p.pgTable("hourly_data", {
   imperialData: p.jsonb("imperial_data").notNull(),
   ...timestamps(),
 });
+
+export const hourlyDataSelectSchema = createSelectSchema(hourlyData);
 
 // Historical Stats
 export const historicalStats = p.pgTable(
@@ -53,6 +60,8 @@ export const historicalStats = p.pgTable(
   (table) => [p.index("historical_stats_station_id_idx").on(table.stationId)],
 );
 
+export const historicalStatSelectSchema = createSelectSchema(historicalStats);
+
 // Daily Data
 export const dailyData = p.pgTable(
   "daily_data",
@@ -67,6 +76,8 @@ export const dailyData = p.pgTable(
   },
   (table) => [p.index("daily_data_station_id_idx").on(table.stationId)],
 );
+
+export const dailyDataSelectSchema = createSelectSchema(dailyData);
 
 // Awards
 export const awards = p.pgTable(
@@ -86,3 +97,5 @@ export const awards = p.pgTable(
   },
   (table) => [p.index("awards_station_id_idx").on(table.stationId)],
 );
+
+export const awardSelectSchema = createSelectSchema(awards);

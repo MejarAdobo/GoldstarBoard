@@ -1,21 +1,20 @@
 {
   "name": "api",
   "scripts": {
-    "dev": "bun run --hot src/index.ts",
-    "docs": "bunx @rcmade/hono-docs generate --config ./honoDocs.ts"
+    "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
+    "@goldstarboard/db": "workspace:*",
     "@goldstarboard/db-services": "workspace:*",
     "@goldstarboard/shared-types": "workspace:*",
     "@hono/zod-openapi": "^1.4.0",
     "@scalar/hono-api-reference": "^0.11.7",
-    "drizzle-orm": "^1.0.0-rc.4",
     "hono": "^4.12.27",
     "zod": "^4.4.3"
   },
   "devDependencies": {
     "@goldstarboard/ts-config": "workspace:*",
-    "@rcmade/hono-docs": "^1.1.0",
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "drizzle-orm": "^1.0.0-rc.4"
   }
 }
