@@ -40,3 +40,4 @@ yarn-error.log*
 # Drizzle
 .drizzle
 drizzle
+apps/admin/.venv/

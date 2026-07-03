@@ -1,0 +1,7 @@
+{
+  "name": "admin_page",
+  "private": true,
+  "scripts": {
+    "dev": "uv run manage.py runserver"
+  }
+}
