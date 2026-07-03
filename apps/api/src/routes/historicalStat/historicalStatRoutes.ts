@@ -1,14 +1,12 @@
-import { historicalStatSelectSchema as historicalStatSchema } from "@goldstarboard/db/schema";
-import { createRoute } from "@hono/zod-openapi";
+import { historicalStatSelectSchema } from "@goldstarboard/db/schema";
+import { createRoute, type RouteConfig } from "@hono/zod-openapi";
 import { z } from "zod";
 
-const historicalStatSelectSchema = z.object(historicalStatSchema.shape);
-
-export const list = createRoute({
+export const list: RouteConfig = createRoute({
   method: "get",
   path: "/historical-stat",
   request: {
-    query: historicalStatSelectSchema,
+    query: z.array(historicalStatSelectSchema),
   },
   responses: {
     200: {
@@ -18,11 +16,18 @@ export const list = createRoute({
           schema: historicalStatSelectSchema,
         },
       },
+    },404: {
+      description: "Not found",
+      content: {
+        "application/json": {
+          schema: z.object({ error: z.string() }),
+        },
+      },
     },
   },
 });
 
-export const getOne = createRoute({
+export const getOne: RouteConfig = createRoute({
   method: "get",
   path: "/historical-stat/{id}",
   request: {
@@ -36,11 +41,18 @@ export const getOne = createRoute({
           schema: historicalStatSelectSchema,
         },
       },
+    },404: {
+      description: "Not found",
+      content: {
+        "application/json": {
+          schema: z.object({ error: z.string() }),
+        },
+      },
     },
   },
 });
 
-export const getAllByStation = createRoute({
+export const getAllByStation: RouteConfig = createRoute({
   method: "get",
   path: "/historical-stat/station/{stationId}",
   request: {
@@ -51,7 +63,14 @@ export const getAllByStation = createRoute({
       description: "Get all historical stats by stationId",
       content: {
         "application/json": {
-          schema: historicalStatSelectSchema,
+          schema: z.array(historicalStatSelectSchema),
+        },
+      },
+    },404: {
+      description: "Not found",
+      content: {
+        "application/json": {
+          schema: z.object({ error: z.string() }),
         },
       },
     },

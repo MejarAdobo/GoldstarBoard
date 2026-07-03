@@ -1,8 +1,6 @@
-import { stationSelectSchema as stationSchema } from "@goldstarboard/db/schema";
+import { stationSelectSchema } from "@goldstarboard/db/schema";
 import { createRoute, type RouteConfig } from "@hono/zod-openapi";
 import { z } from "zod";
-
-const stationSelectSchema = z.object(stationSchema.shape);
 
 export const list: RouteConfig = createRoute({
   method: "get",
@@ -12,7 +10,14 @@ export const list: RouteConfig = createRoute({
       description: "List all stations",
       content: {
         "application/json": {
-          schema: stationSelectSchema,
+          schema: z.array(stationSelectSchema),
+        },
+      },
+    },404: {
+      description: "Not found",
+      content: {
+        "application/json": {
+          schema: z.object({ error: z.string() }),
         },
       },
     },
@@ -31,6 +36,13 @@ export const getOne: RouteConfig = createRoute({
       content: {
         "application/json": {
           schema: stationSelectSchema,
+        },
+      },
+    },404: {
+      description: "Not found",
+      content: {
+        "application/json": {
+          schema: z.object({ error: z.string() }),
         },
       },
     },

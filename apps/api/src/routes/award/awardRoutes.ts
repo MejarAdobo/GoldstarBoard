@@ -1,10 +1,8 @@
-import { awardSelectSchema as awardSchema } from "@goldstarboard/db/schema";
-import { createRoute } from "@hono/zod-openapi";
+import { awardSelectSchema } from "@goldstarboard/db/schema";
+import { createRoute, type RouteConfig } from "@hono/zod-openapi";
 import { z } from "zod";
 
-const awardSelectSchema = z.object(awardSchema.shape);
-
-export const list = createRoute({
+export const list: RouteConfig = createRoute({
   method: "get",
   path: "/awards",
   responses: {
@@ -12,14 +10,22 @@ export const list = createRoute({
       description: "List all awards",
       content: {
         "application/json": {
-          schema: awardSelectSchema,
+          schema: z.array(awardSelectSchema),
+        },
+      },
+    },
+    404: {
+      description: "Not found",
+      content: {
+        "application/json": {
+          schema: z.object({ error: z.string() }),
         },
       },
     },
   },
 });
 
-export const getOne = createRoute({
+export const getOne: RouteConfig = createRoute({
   method: "get",
   path: "/awards/{id}",
   request: {
@@ -36,10 +42,18 @@ export const getOne = createRoute({
         },
       },
     },
+    404: {
+      description: "Not found",
+      content: {
+        "application/json": {
+          schema: z.object({ error: z.string() }),
+        },
+      },
+    },
   },
 });
 
-export const getAllByStation = createRoute({
+export const getAllByStation: RouteConfig = createRoute({
   method: "get",
   path: "/awards/station/{stationId}",
   request: {
@@ -52,7 +66,15 @@ export const getAllByStation = createRoute({
       description: "List of awards by stationId",
       content: {
         "application/json": {
-          schema: awardSelectSchema,
+          schema: z.array(awardSelectSchema),
+        },
+      },
+    },
+    404: {
+      description: "Not found",
+      content: {
+        "application/json": {
+          schema: z.object({ error: z.string() }),
         },
       },
     },

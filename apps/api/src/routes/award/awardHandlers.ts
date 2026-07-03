@@ -1,11 +1,11 @@
 import { getAllAwards, getAllAwardsByStation, getAward } from "@goldstarboard/db-services/award/queries";
 
-import type { GetAllByStationRoute, GetOneRoute, ListRoute } from "./awardRoutes";
 import type { RouteHandler } from "@hono/zod-openapi";
+import type { GetAllByStationRoute, GetOneRoute, ListRoute } from "./awardRoutes";
 
 export const list: RouteHandler<ListRoute> = async (c) => {
   const awards = await getAllAwards();
-  return c.json(awards);
+  return c.json(awards, 200);
 };
 
 export const getOne: RouteHandler<GetOneRoute> = async (c) => {
@@ -16,7 +16,7 @@ export const getOne: RouteHandler<GetOneRoute> = async (c) => {
     return c.json({ error: "Award not found" }, 404);
   }
 
-  return c.json(award);
+  return c.json(award, 200);
 };
 
 export const getAllByStation: RouteHandler<GetAllByStationRoute> = async (c) => {
@@ -27,5 +27,5 @@ export const getAllByStation: RouteHandler<GetAllByStationRoute> = async (c) => 
     return c.json({ error: "No awards found for this station" }, 404);
   }
 
-  return c.json(awards);
+  return c.json(awards, 200);
 };

@@ -1,8 +1,6 @@
-import { hourlyDataSelectSchema as hourlyDataSchema } from "@goldstarboard/db/schema";
+import { hourlyDataSelectSchema } from "@goldstarboard/db/schema";
 import { createRoute, type RouteConfig } from "@hono/zod-openapi";
 import { z } from "zod";
-
-const hourlyDataSelectSchema = z.object(hourlyDataSchema.shape);
 
 export const list: RouteConfig = createRoute({
   method: "get",
@@ -12,7 +10,39 @@ export const list: RouteConfig = createRoute({
       description: "List all hourly data",
       content: {
         "application/json": {
+          schema: z.array(hourlyDataSelectSchema),
+        },
+      },
+    },404: {
+      description: "Not found",
+      content: {
+        "application/json": {
+          schema: z.object({ error: z.string() }),
+        },
+      },
+    },
+  },
+});
+
+export const getStationHourlyData: RouteConfig = createRoute({
+  method: "get",
+  path: "/hourly-data/station/{stationId}",
+  request: {
+    params: z.object({ stationId: z.string() }),
+  },
+  responses: {
+    200: {
+      description: "Get a station's hourly data",
+      content: {
+        "application/json": {
           schema: hourlyDataSelectSchema,
+        },
+      },
+    },404: {
+      description: "Not found",
+      content: {
+        "application/json": {
+          schema: z.object({ error: z.string() }),
         },
       },
     },
@@ -33,9 +63,17 @@ export const getOne: RouteConfig = createRoute({
           schema: hourlyDataSelectSchema,
         },
       },
+    },404: {
+      description: "Not found",
+      content: {
+        "application/json": {
+          schema: z.object({ error: z.string() }),
+        },
+      },
     },
   },
 });
 
 export type ListRoute = typeof list;
+export type GetStationHourlyDataRoute = typeof getStationHourlyData;
 export type GetOneRoute = typeof getOne;

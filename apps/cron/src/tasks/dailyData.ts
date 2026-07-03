@@ -8,7 +8,7 @@ import type { DailyData, Station } from "@goldstarboard/shared-types/interfaces"
 
 export const getDailyData = async (stations: Station[]) => {
   const dailyData: DailyData[] = [];
-  const URL = process.env["PWS_URL"]!;
+  const URL = Bun.env["PWS_URL"]!;
 
   const promises = stations.map(async (station: Station) => {
     const stationURL = `${URL}${station.wuId}`;

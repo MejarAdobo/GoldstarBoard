@@ -27,4 +27,9 @@ routes.forEach((route) => {
 });
 
 export type AppType = (typeof routes)[number];
-export default app;
+
+export default {
+  port: Bun.env["PORT"]! || 8000,
+  host: Bun.env["HOST"]! || "0.0.0.0",
+  fetch: app.fetch,
+};

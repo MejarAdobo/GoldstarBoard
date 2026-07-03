@@ -1,15 +1,10 @@
-import { dailyDataSelectSchema as dailyDataSchema } from "@goldstarboard/db/schema";
-import { createRoute } from "@hono/zod-openapi";
+import { dailyDataSelectSchema } from "@goldstarboard/db/schema";
+import { createRoute, type RouteConfig } from "@hono/zod-openapi";
 import { z } from "zod";
 
-const dailyDataSelectSchema = z.object(dailyDataSchema.shape);
-
-export const list = createRoute({
+export const list: RouteConfig = createRoute({
   method: "get",
   path: "/dailyData",
-  request: {
-    query: dailyDataSelectSchema,
-  },
   responses: {
     200: {
       description: "List all daily data",
@@ -18,11 +13,18 @@ export const list = createRoute({
           schema: z.array(dailyDataSelectSchema),
         },
       },
+    },404: {
+      description: "Not found",
+      content: {
+        "application/json": {
+          schema: z.object({ error: z.string() }),
+        },
+      },
     },
   },
 });
 
-export const getOne = createRoute({
+export const getOne: RouteConfig = createRoute({
   method: "get",
   path: "/dailyData/{id}",
   request: {
@@ -36,11 +38,18 @@ export const getOne = createRoute({
           schema: dailyDataSelectSchema,
         },
       },
+    },404: {
+      description: "Not found",
+      content: {
+        "application/json": {
+          schema: z.object({ error: z.string() }),
+        },
+      },
     },
   },
 });
 
-export const getAllByStation = createRoute({
+export const getAllByStation: RouteConfig = createRoute({
   method: "get",
   path: "/dailyData/stat/{stationId}",
   request: {
@@ -52,6 +61,13 @@ export const getAllByStation = createRoute({
       content: {
         "application/json": {
           schema: z.array(dailyDataSelectSchema),
+        },
+      },
+    },404: {
+      description: "Not found",
+      content: {
+        "application/json": {
+          schema: z.object({ error: z.string() }),
         },
       },
     },

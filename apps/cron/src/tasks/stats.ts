@@ -19,8 +19,7 @@ export const updateStats = async (stats: Stats[]) => {
         hotStreak = 0;
 
         if (yesterdayData?.starStatus == "loss" && yesterdayData.createdAt) {
-          const instant = Temporal.Instant.fromEpochMilliseconds(yesterdayData.createdAt.getTime());
-
+          const instant = Temporal.Instant.from(yesterdayData.createdAt);
           lastDaySinceStar = instant.toZonedDateTimeISO("UTC").toPlainDate().toString();
         }
       }
