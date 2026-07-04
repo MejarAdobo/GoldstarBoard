@@ -11,7 +11,7 @@ COPY pyproject.toml uv.lock entrypoint.sh manage.py ./
 
 RUN uv sync --no-dev
 
-COPY admin_panel/ ./admin_panel/
+COPY . .
 
 RUN chmod +x /app/entrypoint.sh
 
