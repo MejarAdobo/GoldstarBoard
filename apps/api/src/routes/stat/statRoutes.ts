@@ -29,7 +29,7 @@ export const getStationStat: RouteConfig = createRoute({
   method: "get",
   path: "/stat/station/{stationId}",
   request: {
-    params: z.object({ stationId: z.int() }),
+    params: z.object({ stationId: z.string() }),
   },
   responses: {
     200: {
