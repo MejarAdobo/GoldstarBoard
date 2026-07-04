@@ -7,7 +7,7 @@ ENV PYTHONUNBUFFERED=1
 
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
-COPY pyproject.toml uv.lock ./
+COPY pyproject.toml uv.lock entrypoint.sh ./
 RUN uv sync --no-dev
 
 COPY admin_panel/ .
