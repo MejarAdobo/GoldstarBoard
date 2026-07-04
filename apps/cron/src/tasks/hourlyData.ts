@@ -14,11 +14,16 @@ export const getHourlyData = async (wuId: string) => {
   const metricData = await fetchData(metricURL);
   const imperialData = await fetchData(imperialURL);
 
-  const [metricObservation, imperialObservation] = [metricData.observations[0], imperialData.observations[0]];
+  const metricObservations = metricData?.observations ?? [];
+  const imperialObservations = imperialData?.observations ?? [];
 
-  if (!metricObservation || !imperialObservation) {
+  if (metricObservations.length === 0 || imperialObservations.length === 0) {
+    console.warn(`[Task] Skipping station ${wuId} - No active observations found.`);
     return undefined;
   }
+
+  const [metricObservation] = metricObservations;
+  const [imperialObservation] = imperialObservations;
 
   const formattedData = formatHourlyData(metricObservation, imperialObservation);
   return formattedData;
@@ -36,13 +41,18 @@ export const getAllHourlyData = async (stations: Station[]) => {
   });
 
   await Promise.all(promises);
-
   return hourlyData;
 };
 
 export const sendHourlyData = async (hourlyData: HourlyData[]) => {
-  hourlyData.forEach(async (data) => {
-    await updateHourlyData(data.station, data.metric, data.imperial);
-    console.log(`Updated hourly data for station ${data.station}`);
+  const promises = hourlyData.map(async (data) => {
+    try {
+      await updateHourlyData(data.station, data.metric, data.imperial);
+      console.log(`Updated hourly data for station ${data.station}`);
+    } catch (dbError) {
+      console.error(`Failed to update DB for station ${data.station}:`, dbError);
+    }
   });
+
+  await Promise.all(promises);
 };

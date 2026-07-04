@@ -3,7 +3,6 @@ import axios, { isAxiosError } from "axios";
 import type { ApiError } from "@goldstarboard/shared-types/interfaces";
 
 export const fetchData = async (url: string) => {
-  // Todo: add to config package
   const config = {
     headers: {
       "User-Agent":
@@ -15,18 +14,27 @@ export const fetchData = async (url: string) => {
   };
 
   try {
-    const resp = await axios.get(url, config);
+      const resp = await axios.get(url, config);
 
-    if (!resp.data) {
-      throw new Error(`No data returned from [${url}]`);
-    }
+      if (resp.status === 204) {
+        console.warn(`[Warning] Station returned 204 No Content (offline): ${url}`);
+        return null;
+      }
 
-    return resp.data;
-  } catch (error) {
-    if (isAxiosError<ApiError>(error)) {
-      console.error(error.response?.data.message);
-      console.error(error.response?.status);
+      if (resp.data === undefined || resp.data === null || resp.data === "") {
+        console.warn(`[Warning] Received empty payload from: ${url}`);
+        return null;
+      }
+
+      return resp.data;
+    } catch (error) {
+      if (isAxiosError<ApiError>(error)) {
+        console.error("Axios Error Message:", error.response?.data?.message || error.message);
+        console.error("Status Code:", error.response?.status);
+      } else {
+        console.error("Unexpected Error:", error);
+      }
+
+      return null;
     }
-    throw error;
-  }
-};
+  };
