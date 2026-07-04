@@ -18,7 +18,7 @@ app.doc("/doc", {
 });
 
 // eslint-disable-next-line new-cap
-app.get("/", Scalar({ url: "/api/doc", theme: "kepler", layout: "classic" }));
+app.get("/", Scalar({ url: "/api/doc", theme: "laserwave", layout: "modern", title: "GoldstarBoard API", slug: "gsb-api", telemetry: false }));
 
 const routes = [stat, station, hourlyData, historicalStat, dailyData, award] as const;
 

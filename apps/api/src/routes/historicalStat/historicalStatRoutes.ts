@@ -5,9 +5,6 @@ import { z } from "zod";
 export const list: RouteConfig = createRoute({
   method: "get",
   path: "/historical-stat",
-  request: {
-    query: z.array(historicalStatSelectSchema),
-  },
   responses: {
     200: {
       description: "List all historical stats",

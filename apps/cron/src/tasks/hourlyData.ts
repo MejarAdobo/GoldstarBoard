@@ -1,5 +1,5 @@
 import { fetchData } from "@fetch/fetchData";
-import { createHourlyData } from "@goldstarboard/db-services/hourlyData/mutations";
+import { updateHourlyData } from "@goldstarboard/db-services/hourlyData/mutations";
 import { buildURL } from "@helpers/buildUrl";
 import { formatHourlyData } from "@helpers/formatHourlyData";
 
@@ -42,6 +42,7 @@ export const getAllHourlyData = async (stations: Station[]) => {
 
 export const sendHourlyData = async (hourlyData: HourlyData[]) => {
   hourlyData.forEach(async (data) => {
-    await createHourlyData(data.station, data.metric, data.imperial);
+    await updateHourlyData(data.station, data.metric, data.imperial);
+    console.log(`Updated hourly data for station ${data.station}`);
   });
 };

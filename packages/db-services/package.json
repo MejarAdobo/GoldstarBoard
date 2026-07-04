@@ -64,7 +64,7 @@
   "dependencies": {
     "@goldstarboard/db": "workspace:*",
     "@goldstarboard/shared-types": "workspace:*",
-    "drizzle-orm": "^1.0.0-rc.4"
+    "drizzle-orm": "^1.0.0-rc.4-5d5b77c"
   },
   "devDependencies": {
     "@goldstarboard/ts-config": "workspace:*"

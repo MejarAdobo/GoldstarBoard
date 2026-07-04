@@ -49,5 +49,6 @@ export const getDailyData = async (stations: Station[]) => {
 export const sendDailyData = async (dailyData: DailyData[]) => {
   dailyData.forEach(async (data: DailyData) => {
     await createDailyData(data.stationId, data.starStatus);
+    console.log(`Updated daily data for station ${data.stationId}`);
   });
 };
