@@ -1,0 +1,72 @@
+{
+  "name": "@goldstarboard/db-services",
+  "version": "1.0.1",
+  "private": true,
+  "license": "MIT",
+  "exports": {
+    "./award/mutations": {
+      "types": "./src/award/mutations.ts",
+      "default": "./src/award/mutations.ts"
+    },
+    "./award/queries": {
+      "types": "./src/award/queries.ts",
+      "default": "./src/award/queries.ts"
+    },
+    "./dailyData/mutations": {
+      "types": "./src/dailyData/mutations.ts",
+      "default": "./src/dailyData/mutations.ts"
+    },
+    "./dailyData/queries": {
+      "types": "./src/dailyData/queries.ts",
+      "default": "./src/dailyData/queries.ts"
+    },
+    "./historicalStat/mutations": {
+      "types": "./src/historicalStat/mutations.ts",
+      "default": "./src/historicalStat/mutations.ts"
+    },
+    "./historicalStat/queries": {
+      "types": "./src/historicalStat/queries.ts",
+      "default": "./src/historicalStat/queries.ts"
+    },
+    "./hourlyData/mutations": {
+      "types": "./src/hourlyData/mutations.ts",
+      "default": "./src/hourlyData/mutations.ts"
+    },
+    "./hourlyData/queries": {
+      "types": "./src/hourlyData/queries.ts",
+      "default": "./src/hourlyData/queries.ts"
+    },
+    "./station/mutations": {
+      "types": "./src/station/mutations.ts",
+      "default": "./src/station/mutations.ts"
+    },
+    "./station/queries": {
+      "types": "./src/station/queries.ts",
+      "default": "./src/station/queries.ts"
+    },
+    "./stat/mutations": {
+      "types": "./src/stat/mutations.ts",
+      "default": "./src/stat/mutations.ts"
+    },
+    "./stat/queries": {
+      "types": "./src/stat/queries.ts",
+      "default": "./src/stat/queries.ts"
+    },
+    "./users/mutations": {
+      "types": "./src/users/mutations.ts",
+      "default": "./src/users/mutations.ts"
+    },
+    "./users/queries": {
+      "types": "./src/users/queries.ts",
+      "default": "./src/users/queries.ts"
+    }
+  },
+  "dependencies": {
+    "@goldstarboard/db": "workspace:*",
+    "@goldstarboard/shared-types": "workspace:*",
+    "drizzle-orm": "^1.0.0-rc.4-5d5b77c"
+  },
+  "devDependencies": {
+    "@goldstarboard/ts-config": "workspace:*"
+  }
+}

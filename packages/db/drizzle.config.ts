@@ -1,18 +1,13 @@
-import { dbConfig } from "@goldstarboard/configs";
 import { defineConfig } from "drizzle-kit";
 
-const databaseUrl = dbConfig.connectionString;
-
-if (!databaseUrl) {
-  throw new Error("DATABASE_URL is not set");
-}
+const dbURL = process.env["DATABASE_URL"]!;
 
 export default defineConfig({
+  schema: "./src/schema.ts",
+  out: "./drizzle",
   dialect: "postgresql",
-  schema: "./src/db/schema.ts",
-  out: ".drizzle",
   dbCredentials: {
-    url: databaseUrl,
+    url: dbURL,
   },
   schemaFilter: ["public"],
 });

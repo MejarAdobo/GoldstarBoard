@@ -1,52 +1,45 @@
-import { honoConfig } from "@goldstarboard/configs";
-import { api } from "@routes";
-import { Hono } from "hono";
-import { rateLimiter } from "hono-rate-limiter";
-import { cors } from "hono/cors";
-import { prettyJSON } from "hono/pretty-json";
+import { OpenAPIHono } from "@hono/zod-openapi";
+import award from "@routes/award";
+import dailyData from "@routes/dailyData";
+import historicalStat from "@routes/historicalStat";
+import hourlyData from "@routes/hourlyData";
+import stat from "@routes/stat";
+import station from "@routes/station";
+import { Scalar } from "@scalar/hono-api-reference";
 
-const app = new Hono();
+const app = new OpenAPIHono().basePath("/api");
 
-// render health checks
-app.get("/healthz", (c) => {
-  return c.text(":)", 200);
+app.doc("/doc", {
+  openapi: "3.0.0",
+  info: {
+    title: "GoldstarBoard API",
+    version: "1.0.0",
+  },
 });
 
-// rate-limiter middleware
-app.use(
-  rateLimiter({
-    windowMs: 30 * 60 * 1000, // 30 mins
-    limit: 50,
-    keyGenerator: (c) => c.req.header("x-forwarded-for") ?? "",
-    message: { error: "Too many requests", retryAfter: "30 minutes" },
-    statusCode: 429,
-    skipFailedRequests: true,
+// eslint-disable-next-line new-cap
+app.get(
+  "/",
+  Scalar({
+    url: "/api/doc",
+    theme: "laserwave",
+    layout: "modern",
+    title: "GoldstarBoard API",
+    slug: "gsb-api",
+    telemetry: false,
   }),
 );
 
-// cors middleware
-app.use("/api/*", cors({ allowMethods: ["GET"] }));
+const routes = [stat, station, hourlyData, historicalStat, dailyData, award] as const;
 
-// pretty json middleware
-app.use(prettyJSON());
-
-// api routes
-app.route("/api", api);
-
-// not found
-app.notFound((c) => {
-  return c.json(
-    {
-      error: "Not Found",
-      path: c.req.path,
-      method: c.req.method,
-    },
-    404,
-  );
+routes.forEach((route) => {
+  app.route("/", route);
 });
 
+export type AppType = (typeof routes)[number];
+
 export default {
-  port: honoConfig.port || 3000,
-  hostname: "0.0.0.0",
+  port: Bun.env["PORT"]! || 8000,
+  host: Bun.env["HOST"]! || "0.0.0.0",
   fetch: app.fetch,
 };

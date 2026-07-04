@@ -1,23 +1,10 @@
 import { defineRelations } from "drizzle-orm";
-
 import * as schema from "./schema";
 
 export const relations = defineRelations(schema, (r) => ({
-  goldStars: {
+  historicalStats: {
     station: r.one.stations({
-      from: r.goldStars.stationId,
-      to: r.stations.id,
-    }),
-  },
-  streaks: {
-    station: r.one.stations({
-      from: r.streaks.stationId,
-      to: r.stations.id,
-    }),
-  },
-  hourlyData: {
-    station: r.one.stations({
-      from: r.hourlyData.stationId,
+      from: r.historicalStats.stationId,
       to: r.stations.id,
     }),
   },
@@ -34,7 +21,15 @@ export const relations = defineRelations(schema, (r) => ({
     }),
   },
   stations: {
-    hourlyData: r.many.hourlyData(),
+    stats: r.one.stats({
+      from: r.stations.id,
+      to: r.stats.stationId,
+    }),
+    hourlyData: r.one.hourlyData({
+      from: r.stations.id,
+      to: r.hourlyData.stationId,
+    }),
+    historicalStats: r.many.historicalStats(),
     dailyData: r.many.dailyData(),
     awards: r.many.awards(),
   },

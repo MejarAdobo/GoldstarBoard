@@ -1,28 +1,25 @@
 {
   "name": "cron",
+  "private": true,
   "type": "module",
   "module": "index.ts",
   "scripts": {
-    "dev": "bun run --hot src/index.ts",
-    "fmt": "oxfmt",
-    "fmt:check": "oxfmt --check",
-    "lint": "oxlint",
-    "lint:fix": "oxlint --fix"
+    "dev": "bun --hot --watch run src/index.ts",
+    "newStation": "bun run src/cmds/newStation.ts"
   },
   "dependencies": {
-    "@goldstarboard/db": "workspace:*",
-    "axios": "^1.18.0",
+    "@goldstarboard/db-services": "workspace:*",
+    "@goldstarboard/shared-types": "workspace:*",
+    "@js-temporal/polyfill": "^0.5.1",
+    "axios": "^1.18.1",
     "cheerio": "^1.2.0",
-    "dotenv": "^17.4.2",
-    "drizzle-orm": "^1.0.0-rc.4-5d5b77c",
-    "pg": "^8.21.0"
+    "drizzle-orm": "^1.0.0-rc.4-5d5b77c"
   },
   "devDependencies": {
-    "@types/bun": "latest",
-    "oxfmt": "^0.55.0",
-    "oxlint": "^1.70.0"
+    "@goldstarboard/ts-config": "workspace:*",
+    "@types/bun": "latest"
   },
   "peerDependencies": {
-    "typescript": "^6.0.3"
+    "typescript": "^5.9.2"
   }
 }

@@ -1,23 +1,10 @@
 {
+  "extends": "@goldstarboard/ts-config/base.json",
   "compilerOptions": {
-    "strict": true,
-    "types": ["@types/bun"],
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "allowImportingTsExtensions": true,
     "noEmit": true,
-    "baseUrl": ".",
-    "moduleResolution": "bundler",
-    "module": "ESNext",
-    "target": "ESNext",
+    "preserveSymlinks": true,
     "paths": {
-      "@/*": ["./src/*"],
-      "@configs": ["./src/configs"],
-      "@routes": ["./src/routes"],
-      "@services": ["./src/services"],
-      "@db": ["./src/db"],
-      "@db/*": ["./src/db/*"],
-      "@jobs": ["./src/jobs"]
+      "@routes/*": ["./src/routes/*"]
     }
   }
 }

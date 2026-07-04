@@ -1,99 +1,101 @@
-import {
-  jsonb,
-  integer,
-  boolean,
-  pgTable,
-  varchar,
-  timestamp,
-  pgEnum,
-  date,
-  index,
-} from "drizzle-orm/pg-core";
+import * as p from "drizzle-orm/pg-core";
+import { createSelectSchema } from "drizzle-orm/zod";
+import { timestamps } from "./utils";
 
-// enums
-export const goldStarStatusEnum = pgEnum("gold_star_status", ["gain", "lose", "maintain", "none"]);
-export const awardTypeEnum = pgEnum("award_type", [
-  "hot_streak",
-  "cold_streak",
-  "most_gold_star",
-  "least_gold_star",
-]);
-
-// stations
-export const stations = pgTable("stations", {
-  id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  name: varchar({ length: 255 }).notNull(),
-  wuId: varchar({ length: 255 }).notNull().unique(),
-  createdAt: date().notNull().defaultNow(),
+// Stations
+export const stations = p.pgTable("stations", {
+  id: p.integer().primaryKey().generatedByDefaultAsIdentity(),
+  name: p.varchar({ length: 25 }).notNull(),
+  wuId: p.varchar("wu_id", { length: 12 }).notNull().unique(),
+  ...timestamps(),
 });
 
-// goldstars
-export const goldStars = pgTable(
-  "goldstars",
+export const stationSelectSchema = createSelectSchema(stations);
+
+// Stats
+export const stats = p.pgTable("stats", {
+  id: p.integer().primaryKey().generatedByDefaultAsIdentity(),
+  stationId: p
+    .varchar("station_id")
+    .references(() => stations.wuId, { onDelete: "cascade" })
+    .notNull(),
+  star: p.integer().default(0).notNull(),
+  hotStreak: p.integer("hot_streak").default(0).notNull(),
+  coldStreak: p.integer("cold_streak").default(0).notNull(),
+  lastDaySinceStar: p.date("last_day_since_star", { mode: "string" }),
+  ...timestamps(),
+});
+
+export const statSelectSchema = createSelectSchema(stats);
+
+// Hourly Data
+export const hourlyData = p.pgTable("hourly_data", {
+  id: p.integer().primaryKey().generatedByDefaultAsIdentity(),
+  stationId: p
+    .varchar("station_id")
+    .references(() => stations.wuId, { onDelete: "cascade" })
+    .notNull(),
+  metricData: p.jsonb("metric_data").notNull(),
+  imperialData: p.jsonb("imperial_data").notNull(),
+  ...timestamps(),
+});
+
+export const hourlyDataSelectSchema = createSelectSchema(hourlyData);
+
+// Historical Stats
+export const historicalStats = p.pgTable(
+  "historical_stats",
   {
-    stationId: integer("stationId")
-      .primaryKey()
-      .references(() => stations.id, { onDelete: "cascade" }),
-    totalGoldStars: integer().notNull().default(0),
-    totalYearlyGoldStars: integer().notNull().default(0),
-    lastDaySinceGoldStar: date(),
-    createdAt: date().notNull().defaultNow(),
+    id: p.integer().primaryKey().generatedByDefaultAsIdentity(),
+    stationId: p
+      .varchar("station_id")
+      .references(() => stations.wuId, { onDelete: "cascade" })
+      .notNull(),
+    year: p.integer().notNull(),
+    star: p.integer().default(0).notNull(),
+    hotStreak: p.integer("hot_streak").default(0).notNull(),
+    coldStreak: p.integer("cold_streak").default(0).notNull(),
+    ...timestamps(),
   },
-  (table) => [index("gold_stars_station_id_idx").on(table.stationId)],
+  (table) => [p.index("historical_stats_station_id_idx").on(table.stationId)],
 );
 
-// streaks
-export const streaks = pgTable(
-  "streaks",
-  {
-    stationId: integer("stationId")
-      .primaryKey()
-      .references(() => stations.id, { onDelete: "cascade" }),
-    currentStreak: integer().notNull().default(0),
-    longestHotStreak: integer().notNull().default(0),
-    longestHotYearlyStreak: integer().notNull().default(0),
-    longestColdStreak: integer().notNull().default(0),
-    longestColdYearlyStreak: integer().notNull().default(0),
-    createdAt: date().notNull().defaultNow(),
-  },
-  (table) => [index("streaks_station_id_idx").on(table.stationId)],
-);
+export const historicalStatSelectSchema = createSelectSchema(historicalStats);
 
-// hourly data
-export const hourlyData = pgTable(
-  "hourly_data",
-  {
-    id: integer().primaryKey().generatedAlwaysAsIdentity(),
-    stationId: integer("stationId").references(() => stations.id, { onDelete: "cascade" }),
-    weatherData: jsonb().notNull(),
-    hasGoldStar: boolean().notNull().default(false),
-    recordedAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
-  },
-  (table) => [index("hourly_data_station_id_idx").on(table.stationId)],
-);
-
-// daily data
-export const dailyData = pgTable(
+// Daily Data
+export const dailyData = p.pgTable(
   "daily_data",
   {
-    id: integer().primaryKey().generatedAlwaysAsIdentity(),
-    stationId: integer("stationId").references(() => stations.id, { onDelete: "cascade" }),
-    goldStarStatus: goldStarStatusEnum("gold_star_status").notNull().default("none"),
-    recordedAt: date({ mode: "date" }).notNull().defaultNow(),
+    id: p.integer().primaryKey().generatedByDefaultAsIdentity(),
+    stationId: p
+      .varchar("station_id")
+      .references(() => stations.wuId, { onDelete: "cascade" })
+      .notNull(),
+    starStatus: p.varchar("star_status", { enum: ["gain", "loss", "maintain", "none"] }),
+    ...timestamps(),
   },
-  (table) => [index("daily_data_station_id_idx").on(table.stationId)],
+  (table) => [p.index("daily_data_station_id_idx").on(table.stationId)],
 );
 
-// award
-export const awards = pgTable(
+export const dailyDataSelectSchema = createSelectSchema(dailyData);
+
+// Awards
+export const awards = p.pgTable(
   "awards",
   {
-    id: integer().primaryKey().generatedAlwaysAsIdentity(),
-    title: varchar().notNull(),
-    year: integer().notNull(),
-    awardType: awardTypeEnum("award_type").notNull(),
-    stationId: integer("stationId").references(() => stations.id, { onDelete: "cascade" }),
-    createdAt: date().notNull().defaultNow(),
+    id: p.integer().primaryKey().generatedByDefaultAsIdentity(),
+    stationId: p
+      .varchar("station_id")
+      .references(() => stations.wuId, { onDelete: "cascade" })
+      .notNull(),
+    year: p.integer().notNull(),
+    title: p.varchar({ length: 50 }).notNull(),
+    type: p.varchar({ enum: ["hot_streak", "cold_streak", "most_stars", "least_stars"] }),
+    rank: p.integer().notNull(),
+    score: p.integer().notNull(),
+    ...timestamps(),
   },
-  (table) => [index("awards_station_id_idx").on(table.stationId)],
+  (table) => [p.index("awards_station_id_idx").on(table.stationId)],
 );
+
+export const awardSelectSchema = createSelectSchema(awards);
