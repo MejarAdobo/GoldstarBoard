@@ -16,8 +16,10 @@ Including another URLconf
 """
 
 from django.contrib import admin
+from django.http import HttpResponse
 from django.urls import path
 
 urlpatterns = [
+    path("admin/healthz", lambda request: HttpResponse("OK")),
     path("admin/", admin.site.urls),
 ]
