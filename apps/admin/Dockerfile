@@ -7,10 +7,11 @@ ENV PYTHONUNBUFFERED=1
 
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
-COPY pyproject.toml uv.lock entrypoint.sh ./
+COPY pyproject.toml uv.lock entrypoint.sh manage.py ./
+
 RUN uv sync --no-dev
 
-COPY admin_panel/ .
+COPY admin_panel/ ./admin_panel/
 
 RUN chmod +x /app/entrypoint.sh
 
