@@ -53,7 +53,7 @@ export const getOne: RouteConfig = createRoute({
 
 export const getAllByStation: RouteConfig = createRoute({
   method: "get",
-  path: "/dailyData/stat/{stationId}",
+  path: "/dailyData/station/{stationId}",
   request: {
     params: z.object({ stationId: z.string() }),
   },
