@@ -55,7 +55,7 @@ export const getOne: RouteConfig = createRoute({
   method: "get",
   path: "/stat/{id}",
   request: {
-    params: z.object({ id: z.int() }),
+    params: z.object({ id: z.coerce.number().int({ message: "ID must be a whole number" }) }),
   },
   responses: {
     200: {
