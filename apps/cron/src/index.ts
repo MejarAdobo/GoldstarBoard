@@ -13,11 +13,13 @@ Bun.cron("@hourly", async () => {
 });
 
 // Daily job
-Bun.cron("50 18 * * *", async () => {
+// This run at 6 in the morning at UTC, and run at near midnight in Pacific Time Zone
+Bun.cron("50 6 * * *", async () => {
   await sendDailyData(await getDailyData(stations));
 });
 
 // Stats job
-Bun.cron("55 18 * * *", async () => {
+// This run at 6 in the morning at UTC, and run at near midnight in Pacific Time Zone
+Bun.cron("55 6 * * *", async () => {
   await updateStats(stats);
 });
