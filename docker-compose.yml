@@ -1,0 +1,9 @@
+services:
+  cron:
+    build:
+      context: .
+      dockerfile: apps/cron/Dockerfile
+    container_name: gsb-cron
+    restart: always
+    env_file:
+      - apps/cron/.env

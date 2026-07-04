@@ -42,3 +42,4 @@ yarn-error.log*
 drizzle
 apps/admin/.venv/
 apps/admin/.ruff_cache/
+.zed/
