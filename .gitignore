@@ -43,3 +43,4 @@ drizzle
 apps/admin/.venv/
 apps/admin/.ruff_cache/
 .zed/
+__pycache__
