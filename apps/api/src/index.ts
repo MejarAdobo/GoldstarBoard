@@ -6,6 +6,7 @@ import hourlyData from "@routes/hourlyData";
 import stat from "@routes/stat";
 import station from "@routes/station";
 import { Scalar } from "@scalar/hono-api-reference";
+import { rateLimiter } from "hono-rate-limiter";
 
 const app = new OpenAPIHono().basePath("/api");
 
@@ -35,6 +36,21 @@ const routes = [stat, station, hourlyData, historicalStat, dailyData, award] as 
 routes.forEach((route) => {
   app.route("/", route);
 });
+
+// Health check
+app.get("/healthz", (c) => c.text(":)", 200));
+
+// Rate limiting
+app.use(
+  rateLimiter({
+    windowMs: 30 * 60 * 1000, // 30 mins
+    limit: 50,
+    keyGenerator: (c) => c.req.header("x-forwarded-for") ?? "",
+    message: { error: "Too many requests", retryAfter: "30 minutes" },
+    statusCode: 429,
+    skipFailedRequests: true,
+  }),
+);
 
 export type AppType = (typeof routes)[number];
 
