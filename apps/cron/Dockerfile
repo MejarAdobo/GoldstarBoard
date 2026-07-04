@@ -6,4 +6,4 @@ COPY . .
 
 RUN bun install --production
 
-CMD ["bun", "apps/api/src/index.ts"]
+CMD ["bun", "apps/cron/src/index.ts"]
