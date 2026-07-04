@@ -13,7 +13,8 @@ export const list: RouteConfig = createRoute({
           schema: z.array(hourlyDataSelectSchema),
         },
       },
-    },404: {
+    },
+    404: {
       description: "Not found",
       content: {
         "application/json": {
@@ -38,7 +39,8 @@ export const getStationHourlyData: RouteConfig = createRoute({
           schema: hourlyDataSelectSchema,
         },
       },
-    },404: {
+    },
+    404: {
       description: "Not found",
       content: {
         "application/json": {
@@ -63,7 +65,8 @@ export const getOne: RouteConfig = createRoute({
           schema: hourlyDataSelectSchema,
         },
       },
-    },404: {
+    },
+    404: {
       description: "Not found",
       content: {
         "application/json": {

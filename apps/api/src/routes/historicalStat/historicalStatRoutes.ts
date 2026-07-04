@@ -13,7 +13,8 @@ export const list: RouteConfig = createRoute({
           schema: historicalStatSelectSchema,
         },
       },
-    },404: {
+    },
+    404: {
       description: "Not found",
       content: {
         "application/json": {
@@ -38,7 +39,8 @@ export const getOne: RouteConfig = createRoute({
           schema: historicalStatSelectSchema,
         },
       },
-    },404: {
+    },
+    404: {
       description: "Not found",
       content: {
         "application/json": {
@@ -63,7 +65,8 @@ export const getAllByStation: RouteConfig = createRoute({
           schema: z.array(historicalStatSelectSchema),
         },
       },
-    },404: {
+    },
+    404: {
       description: "Not found",
       content: {
         "application/json": {

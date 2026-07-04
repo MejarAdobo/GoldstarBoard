@@ -1,7 +1,7 @@
 import { getAllStats, getStat, getStationStat as gss } from "@goldstarboard/db-services/stat/queries";
 
-import type { RouteHandler } from "@hono/zod-openapi";
 import type { GetOneRoute, GetStationStatRoute, ListRoute } from "./statRoutes";
+import type { RouteHandler } from "@hono/zod-openapi";
 
 export const list: RouteHandler<ListRoute> = async (c) => {
   const stats = await getAllStats();

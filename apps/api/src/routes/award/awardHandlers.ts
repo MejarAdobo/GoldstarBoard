@@ -1,7 +1,7 @@
 import { getAllAwards, getAllAwardsByStation, getAward } from "@goldstarboard/db-services/award/queries";
 
-import type { RouteHandler } from "@hono/zod-openapi";
 import type { GetAllByStationRoute, GetOneRoute, ListRoute } from "./awardRoutes";
+import type { RouteHandler } from "@hono/zod-openapi";
 
 export const list: RouteHandler<ListRoute> = async (c) => {
   const awards = await getAllAwards();

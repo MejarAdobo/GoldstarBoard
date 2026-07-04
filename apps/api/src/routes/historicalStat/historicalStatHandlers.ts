@@ -1,11 +1,11 @@
 import {
-    getAllHistoricalStats,
-    getHistoricalStats,
-    getHistoricalStatsByStation,
+  getAllHistoricalStats,
+  getHistoricalStats,
+  getHistoricalStatsByStation,
 } from "@goldstarboard/db-services/historicalStat/queries";
 
-import type { RouteHandler } from "@hono/zod-openapi";
 import type { GetAllByStationRoute, GetOneRoute, ListRoute } from "./historicalStatRoutes";
+import type { RouteHandler } from "@hono/zod-openapi";
 
 export const list: RouteHandler<ListRoute> = async (c) => {
   const historicalStats = await getAllHistoricalStats();

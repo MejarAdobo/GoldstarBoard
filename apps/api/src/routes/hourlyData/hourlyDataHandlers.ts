@@ -1,7 +1,11 @@
-import { getAllHourlyData, getHourlyData, getStationHourlyData as gshr } from "@goldstarboard/db-services/hourlyData/queries";
+import {
+  getAllHourlyData,
+  getHourlyData,
+  getStationHourlyData as gshr,
+} from "@goldstarboard/db-services/hourlyData/queries";
 
-import type { RouteHandler } from "@hono/zod-openapi";
 import type { GetOneRoute, GetStationHourlyDataRoute, ListRoute } from "./hourlyDataRoutes";
+import type { RouteHandler } from "@hono/zod-openapi";
 
 export const list: RouteHandler<ListRoute> = async (c) => {
   const hourlyData = await getAllHourlyData();
