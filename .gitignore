@@ -41,3 +41,4 @@ yarn-error.log*
 .drizzle
 drizzle
 apps/admin/.venv/
+apps/admin/.ruff_cache/
