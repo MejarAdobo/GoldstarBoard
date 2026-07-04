@@ -1,5 +1,6 @@
 import { historicalStatSelectSchema } from "@goldstarboard/db/schema";
 import { createRoute, type RouteConfig } from "@hono/zod-openapi";
+import { errorResponse } from "@utils/errorResponse";
 import { z } from "zod";
 
 export const list: RouteConfig = createRoute({
@@ -14,14 +15,9 @@ export const list: RouteConfig = createRoute({
         },
       },
     },
-    404: {
-      description: "Not found",
-      content: {
-        "application/json": {
-          schema: z.object({ error: z.string() }),
-        },
-      },
-    },
+    404: errorResponse("List of historical stats not found"),
+    400: errorResponse("Invalid request"),
+    500: errorResponse("Internal server error"),
   },
 });
 
@@ -40,14 +36,9 @@ export const getOne: RouteConfig = createRoute({
         },
       },
     },
-    404: {
-      description: "Not found",
-      content: {
-        "application/json": {
-          schema: z.object({ error: z.string() }),
-        },
-      },
-    },
+    404: errorResponse("Historical stat not found"),
+    400: errorResponse("Invalid request"),
+    500: errorResponse("Internal server error"),
   },
 });
 
@@ -66,14 +57,9 @@ export const getAllByStation: RouteConfig = createRoute({
         },
       },
     },
-    404: {
-      description: "Not found",
-      content: {
-        "application/json": {
-          schema: z.object({ error: z.string() }),
-        },
-      },
-    },
+    404: errorResponse("Historical stats not found"),
+    400: errorResponse("Invalid request"),
+    500: errorResponse("Internal server error"),
   },
 });
 
