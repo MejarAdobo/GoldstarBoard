@@ -3,6 +3,7 @@ import award from "@routes/award";
 import dailyData from "@routes/dailyData";
 import historicalStat from "@routes/historicalStat";
 import hourlyData from "@routes/hourlyData";
+import leaderboard from "@routes/leaderboard";
 import stat from "@routes/stat";
 import station from "@routes/station";
 import { Scalar } from "@scalar/hono-api-reference";
@@ -31,7 +32,7 @@ app.get(
   }),
 );
 
-const routes = [stat, station, hourlyData, historicalStat, dailyData, award] as const;
+const routes = [stat, station, hourlyData, historicalStat, dailyData, award, leaderboard] as const;
 
 routes.forEach((route) => {
   app.route("/", route);
