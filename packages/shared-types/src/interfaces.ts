@@ -59,6 +59,12 @@ interface Station {
   id: number;
   name: string;
   wuId: string;
+  rank?: number;
+  stats?: {
+    hotStreak: number;
+    coldStreak: number;
+    star: number;
+  };
 }
 
 // Hourly Data

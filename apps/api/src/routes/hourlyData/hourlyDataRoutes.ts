@@ -3,7 +3,6 @@ import { createRoute, type RouteConfig } from "@hono/zod-openapi";
 import { errorResponse } from "@utils/errorResponse";
 import { z } from "zod";
 
-
 export const list: RouteConfig = createRoute({
   method: "get",
   path: "/hourly-data",

@@ -14,27 +14,27 @@ export const fetchData = async (url: string) => {
   };
 
   try {
-      const resp = await axios.get(url, config);
+    const resp = await axios.get(url, config);
 
-      if (resp.status === 204) {
-        console.warn(`[Warning] Station returned 204 No Content (offline): ${url}`);
-        return null;
-      }
-
-      if (resp.data === undefined || resp.data === null || resp.data === "") {
-        console.warn(`[Warning] Received empty payload from: ${url}`);
-        return null;
-      }
-
-      return resp.data;
-    } catch (error) {
-      if (isAxiosError<ApiError>(error)) {
-        console.error("Axios Error Message:", error.response?.data?.message || error.message);
-        console.error("Status Code:", error.response?.status);
-      } else {
-        console.error("Unexpected Error:", error);
-      }
-
+    if (resp.status === 204) {
+      console.warn(`[Warning] Station returned 204 No Content (offline): ${url}`);
       return null;
     }
-  };
+
+    if (resp.data === undefined || resp.data === null || resp.data === "") {
+      console.warn(`[Warning] Received empty payload from: ${url}`);
+      return null;
+    }
+
+    return resp.data;
+  } catch (error) {
+    if (isAxiosError<ApiError>(error)) {
+      console.error("Axios Error Message:", error.response?.data?.message || error.message);
+      console.error("Status Code:", error.response?.status);
+    } else {
+      console.error("Unexpected Error:", error);
+    }
+
+    return null;
+  }
+};

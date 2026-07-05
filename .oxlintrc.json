@@ -29,7 +29,8 @@
           "pascalCase": false
         }
       }
-    ]
+    ],
+    "prefer-object-spread": "off"
   },
   "env": {
     "builtin": true

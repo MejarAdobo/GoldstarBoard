@@ -5,3 +5,6 @@ export const getStation = async (id: number) => db.query.stations.findFirst({ wh
 
 // Get all stations
 export const getAllStations = async () => db.query.stations.findMany();
+
+// Get all stations and needed data for my leaderboard stuff
+export const getAllStationsForLeaderboard = async () => db.query.stations.findMany({ with: { stats: true } });
