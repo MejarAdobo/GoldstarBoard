@@ -14,7 +14,7 @@ const rankingSchema = z.object({
 export const streakRanking: RouteConfig = createRoute({
   method: "GET",
   path: "/streak-ranking",
-  response: {
+  responses: {
     200: {
       description: "Leaderboard based on Streak",
       content: {
@@ -32,7 +32,7 @@ export const streakRanking: RouteConfig = createRoute({
 export const starRanking: RouteConfig = createRoute({
   method: "GET",
   path: "/star-ranking",
-  response: {
+  responses: {
     200: {
       description: "Leaderboard based on Star amount",
       content: {
