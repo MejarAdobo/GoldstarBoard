@@ -14,7 +14,8 @@ export const rankByStars = async () => {
   }
 
   return sorted.map((station, _, arr) => {
-    const rank = arr.filter((s) => s.stats!.star > station.stats!.star).length + 1;
+    const rank = arr.filter((s) => s.stats!.star > station.stats!.star).length +
+      arr.filter((s) => s.stats!.star === station.stats!.star).length;
     return Object.assign({}, station, { rank }) as RankedStation;
   });
 };
@@ -47,7 +48,12 @@ export const rankByStreak = async () => {
           s.stats!.hotStreak > station.stats!.hotStreak ||
           (s.stats!.hotStreak === station.stats!.hotStreak &&
             s.stats!.coldStreak < station.stats!.coldStreak),
-      ).length + 1;
+      ).length +
+      arr.filter(
+        (s) =>
+          s.stats!.hotStreak === station.stats!.hotStreak &&
+          s.stats!.coldStreak === station.stats!.coldStreak,
+      ).length;
     return Object.assign({}, station, { rank }) as RankedStation;
   });
 };

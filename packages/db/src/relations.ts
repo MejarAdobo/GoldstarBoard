@@ -22,7 +22,7 @@ export const relations = defineRelations(schema, (r) => ({
   },
   stations: {
     stats: r.one.stats({
-      from: r.stations.id,
+      from: r.stations.wuId,
       to: r.stats.stationId,
     }),
     hourlyData: r.one.hourlyData({
