@@ -26,6 +26,7 @@ app.get(
     url: "/api/doc",
     theme: "laserwave",
     layout: "modern",
+    pageTitle: "GoldstarBoard API",
     title: "GoldstarBoard API",
     slug: "gsb-api",
     telemetry: false,
