@@ -1,0 +1,7 @@
+{
+  "extends": "@goldstarboard/ts-config/base.json",
+  "compilerOptions": {
+    "emitDeclarationOnly": true,
+    "outDir": "./dist"
+  }
+}

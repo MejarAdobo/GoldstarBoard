@@ -1,0 +1,13 @@
+{
+  "extends": "@goldstarboard/ts-config/base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@helpers/*": ["./src/helpers/*"],
+      "@fetch/*": ["./src/fetches/*"],
+      "@tasks/*": ["./src/tasks/*"],
+      "@parsers/*": ["./src/parsers/*"]
+    }
+  }
+}

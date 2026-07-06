@@ -1,0 +1,21 @@
+{
+  "name": "api",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts"
+  },
+  "dependencies": {
+    "@goldstarboard/db": "workspace:*",
+    "@goldstarboard/db-services": "workspace:*",
+    "@goldstarboard/shared-types": "workspace:*",
+    "@hono/zod-openapi": "^1.4.0",
+    "@scalar/hono-api-reference": "^0.11.8",
+    "drizzle-orm": "^1.0.0-rc.4-5d5b77c",
+    "hono": "^4.12.27",
+    "hono-rate-limiter": "^0.5.3",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@goldstarboard/ts-config": "workspace:*",
+    "@types/bun": "^1.3.14"
+  }
+}
