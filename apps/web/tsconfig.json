@@ -1,5 +1,14 @@
 {
-  "extends": "astro/tsconfigs/strict",
+  "extends": ["astro/tsconfigs/strict", "@goldstarboard/ts-config/base.json"],
   "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"]
+  "exclude": ["dist"],
+  "compilerOptions": {
+    "noEmit": true,
+    "paths": {
+      "@src/*": ["./src/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@components/*": ["./src/components/*"],
+      "@styles/*": ["./src/styles/*"]
+    }
+  }
 }

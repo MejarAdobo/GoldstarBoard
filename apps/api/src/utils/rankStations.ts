@@ -14,7 +14,8 @@ export const rankByStars = async () => {
   }
 
   return sorted.map((station, _, arr) => {
-    const rank = arr.filter((s) => s.stats!.star > station.stats!.star).length +
+    const rank =
+      arr.filter((s) => s.stats!.star > station.stats!.star).length +
       arr.filter((s) => s.stats!.star === station.stats!.star).length;
     return Object.assign({}, station, { rank }) as RankedStation;
   });

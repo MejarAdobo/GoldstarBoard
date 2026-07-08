@@ -3,7 +3,6 @@ import { updateStats as updtStats } from "@goldstarboard/db-services/stat/mutati
 import { getYesterdayData } from "@helpers/getYesterday";
 import { Temporal } from "@js-temporal/polyfill";
 
-
 import type { Stats } from "@goldstarboard/shared-types/interfaces";
 
 export const updateStats = async (stats: Stats[]) => {

@@ -4,6 +4,6 @@ import * as routes from "./leaderboardRoutes";
 
 const router = new OpenAPIHono()
   .openapi(routes.streakRanking, handlers.streakRanking)
-  .openapi(routes.starRanking, handlers.starRanking)
+  .openapi(routes.starRanking, handlers.starRanking);
 
 export default router;

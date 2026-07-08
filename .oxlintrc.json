@@ -26,7 +26,7 @@
           "camelCase": true,
           "kebabCase": false,
           "snakeCase": false,
-          "pascalCase": false
+          "pascalCase": true
         }
       }
     ],
