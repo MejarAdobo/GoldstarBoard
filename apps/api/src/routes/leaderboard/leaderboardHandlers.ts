@@ -1,7 +1,7 @@
 import { rankByStars, rankByStreak } from "@utils/rankStations";
 
-import type { RouteHandler } from "@hono/zod-openapi";
 import type { starRankingRoute, streakRankingRoute } from "./leaderboardRoutes";
+import type { RouteHandler } from "@hono/zod-openapi";
 
 export const streakRanking: RouteHandler<streakRankingRoute> = async (c) => {
   const stations = await rankByStreak();

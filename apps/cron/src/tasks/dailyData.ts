@@ -14,7 +14,7 @@ export const getDailyData = async (stations: Station[]) => {
     const stationURL = `${URL}${station.wuId}`;
 
     const stationHTML = await fetchData(stationURL);
-    const haveGoldStar = parseHTML(stationHTML);
+    const { haveGoldStar } = parseHTML(stationHTML);
 
     const yesterdayData = await getYesterdayData(station.wuId);
     const previousStatus = yesterdayData?.starStatus;

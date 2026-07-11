@@ -9,17 +9,19 @@ export const createHourlyData = async (
   stationId: string,
   metricData: WeatherData,
   imperialData: WeatherData,
-) => db.insert(hourlyData).values({ stationId, metricData, imperialData }).returning();
+  status: boolean,
+) => db.insert(hourlyData).values({ stationId, metricData, imperialData, status }).returning();
 
 // Update a hourly data
 export const updateHourlyData = async (
   stationId: string,
   metricData: WeatherData,
   imperialData: WeatherData,
+  status: boolean,
 ) =>
   db
     .update(hourlyData)
-    .set({ metricData, imperialData })
+    .set({ metricData, imperialData, status })
     .where(eq(hourlyData.stationId, stationId))
     .returning();
 

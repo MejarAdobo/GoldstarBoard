@@ -29,7 +29,9 @@ const newStation = async () => {
 
     const hourlyData = await getHourlyData(wuId);
     if (hourlyData) {
-      await createHourlyData(wuId, hourlyData.metric, hourlyData.imperial);
+      const { formattedData, status } = hourlyData;
+
+      await createHourlyData(wuId, formattedData.metric, formattedData.imperial, status);
     }
 
     await createStats(wuId, 0, 0, 0, undefined);

@@ -37,6 +37,7 @@ export const hourlyData = p.pgTable("hourly_data", {
     .notNull(),
   metricData: p.jsonb("metric_data").notNull(),
   imperialData: p.jsonb("imperial_data").notNull(),
+  status: p.boolean().default(true).notNull(),
   ...timestamps(),
 });
 
