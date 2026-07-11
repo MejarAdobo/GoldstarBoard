@@ -13,7 +13,7 @@
     "@goldstarboard/shared-types": "workspace:*",
     "@playform/compress": "^0.2.3",
     "@tailwindcss/vite": "^4.3.2",
-    "astro": "^7.0.6",
+    "astro": "^7.0.7",
     "gsap": "^3.15.0",
     "svelte": "^5.56.4",
     "swup": "^4.9.2",

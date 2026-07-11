@@ -8,7 +8,7 @@ const rankingSchema = z.object({
   stars: z.number(),
   hotStreak: z.number(),
   coldStreak: z.number(),
-  lastDaySinceStart: z.string(),
+  lastDaySinceStar: z.string(),
 });
 
 export const streakRanking: RouteConfig = createRoute({
