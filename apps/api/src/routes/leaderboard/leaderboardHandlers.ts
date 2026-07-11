@@ -23,7 +23,7 @@ export const starRanking: RouteHandler<starRankingRoute> = async (c) => {
 
   const result = stations.map((s) => ({
     ranking: s.rank,
-    stationName: s.name,
+    name: s.name,
     stars: s.stats?.star,
     hotStreak: s.stats?.hotStreak,
     coldStreak: s.stats?.coldStreak,
