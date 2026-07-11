@@ -4,11 +4,11 @@ import { z } from "zod";
 
 const rankingSchema = z.object({
   ranking: z.number(),
-  stationName: z.string(),
+  name: z.string(),
   stars: z.number(),
   hotStreak: z.number(),
   coldStreak: z.number(),
-  lastDaySinceStart: z.string(),
+  lastDaySinceStar: z.string(),
 });
 
 export const streakRanking: RouteConfig = createRoute({

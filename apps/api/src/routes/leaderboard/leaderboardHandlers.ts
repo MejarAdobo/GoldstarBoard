@@ -1,14 +1,34 @@
-import type { RouteHandler } from "@hono/zod-openapi";
 import { rankByStars, rankByStreak } from "@utils/rankStations";
-import type { starRankingRoute, streakRankingRoute } from "./leaderboardRoutes";
 
+import type { RouteHandler } from "@hono/zod-openapi";
+import type { starRankingRoute, streakRankingRoute } from "./leaderboardRoutes";
 
 export const streakRanking: RouteHandler<streakRankingRoute> = async (c) => {
   const stations = await rankByStreak();
-  return c.json(stations);
-}
+
+  const result = stations.map((s) => ({
+    ranking: s.rank,
+    name: s.name,
+    stars: s.stats?.star,
+    hotStreak: s.stats?.hotStreak,
+    coldStreak: s.stats?.coldStreak,
+    lastDaySinceStar: s.stats?.lastDaySinceStar ?? "",
+  }));
+
+  return c.json(result);
+};
 
 export const starRanking: RouteHandler<starRankingRoute> = async (c) => {
   const stations = await rankByStars();
-  return c.json(stations);
-}
+
+  const result = stations.map((s) => ({
+    ranking: s.rank,
+    name: s.name,
+    stars: s.stats?.star,
+    hotStreak: s.stats?.hotStreak,
+    coldStreak: s.stats?.coldStreak,
+    lastDaySinceStar: s.stats?.lastDaySinceStar ?? "",
+  }));
+
+  return c.json(result);
+};

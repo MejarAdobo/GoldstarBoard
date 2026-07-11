@@ -84,3 +84,8 @@ __screenshots__/
 
 # Vite
 *.timestamp-*-*.mjs
+
+# build output
+dist/
+# generated types
+.astro/

@@ -12,6 +12,8 @@
     "typeCheck": true
   },
   "rules": {
+    "prefer-const": "off",
+    "no-ternary": "off",
     "sort-keys": "off",
     "no-magic-numbers": "off",
     "id-length": "off",
@@ -26,7 +28,7 @@
           "camelCase": true,
           "kebabCase": false,
           "snakeCase": false,
-          "pascalCase": false
+          "pascalCase": true
         }
       }
     ],

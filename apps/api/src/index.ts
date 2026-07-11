@@ -8,9 +8,19 @@ import stat from "@routes/stat";
 import station from "@routes/station";
 import { Scalar } from "@scalar/hono-api-reference";
 import { rateLimiter } from "hono-rate-limiter";
+import { cors } from "hono/cors";
 
 const app = new OpenAPIHono().basePath("/api");
 
+// Cors, only allowing origin to all since this is all Get APIs
+app.use(
+  "*",
+  cors({
+    origin: "*",
+  }),
+);
+
+// Documentation
 app.doc("/doc", {
   openapi: "3.0.0",
   info: {
@@ -26,6 +36,7 @@ app.get(
     url: "/api/doc",
     theme: "laserwave",
     layout: "modern",
+    pageTitle: "GoldstarBoard API",
     title: "GoldstarBoard API",
     slug: "gsb-api",
     telemetry: false,

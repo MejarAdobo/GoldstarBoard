@@ -7,4 +7,7 @@ type awardTypeEnum = "hot_streak" | "cold_streak" | "most_stars" | "least_stars"
 // For user role
 type UserRoleEnum = "user" | "admin";
 
-export type { awardTypeEnum, starStatusEnum, UserRoleEnum };
+// For rank toggle
+type rankTypeEnum = "streak" | "stars";
+
+export type { awardTypeEnum, rankTypeEnum, starStatusEnum, UserRoleEnum };
