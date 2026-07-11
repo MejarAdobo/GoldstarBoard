@@ -26,7 +26,6 @@
         ]);
         streakData = streakResp || [];
         starData = starResp || [];
-        console.log("streakData", streakData, "starData", starData);
     });
 
 </script>
