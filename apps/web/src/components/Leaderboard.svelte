@@ -1,30 +1,41 @@
 <script lang="ts">
-    import LeaderboardSwitch from './LeaderboardSwitch.svelte'
+    import { onMount } from 'svelte';
+    import LeaderboardList from './LeaderboardList.svelte';
+    import LeaderboardSwitch from './LeaderboardSwitch.svelte';
+
+    let streakData = $state([]);
+    let starData = $state([]);
+    let switchState = $state("streaks");
+
 
     const fetchAPI = async (url: string) => {
       try {
         const resp = await fetch(url)
         return await resp.json()
       } catch (error) {
-        console.error(error)
-        return null
+        console.error("Fetch failed:", error);        return [];
       }
     }
 
-    const apiUrl = import.meta.env["PUBLIC_API_URL"]
-    console.log(apiUrl)
-    const streakResp = await fetchAPI(`${apiUrl}/streak-ranking`)
-    const starResp = await fetchAPI(`${apiUrl}/star-ranking`)
-    const streakData = streakResp
-    const starData = starResp
+    onMount(async () => {
+        const apiUrl = import.meta.env["PUBLIC_API_URL"]
+        const [streakResp, starResp] = await Promise.all([
+                    fetchAPI(`${apiUrl}/streak-ranking`),
+                    fetchAPI(`${apiUrl}/star-ranking`)
+        ]);
+        streakData = streakResp || [];
+        starData = starResp || [];
+        console.log("streakData:", streakData, "starData:", starData)
+    });
 
-    let switchState = $state("streaks");
 </script>
 
-<div class="max-w-4xl mx-auto py-4 rounded-2xl bg-red-300">
+<div class="max-w-4xl mx-auto py-4 rounded-2xl bg-red-300 flex flex-col gap-4">
     <div class="mx-4">
         <LeaderboardSwitch bind:value={switchState} />
-        <p>{switchState}</p>
+    </div>
+    <div class="mx-4">
+        <LeaderboardList switchState={switchState} streakData={streakData} starData={starData} />
     </div>
 </div>
 

@@ -4,7 +4,7 @@
     let { streakData, starData, switchState } = $props();
 </script>
 
-<div>
+<div class="">
     {#if switchState === 'streaks'}
         {#each streakData as station}
             <LeaderboardCard station={station} />
