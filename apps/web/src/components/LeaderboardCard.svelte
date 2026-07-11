@@ -13,6 +13,6 @@
         <p>0</p>
         {/if}
     {:else}
-    <p>{station.star}</p>
+    <p>{station.stars}</p>
     {/if}
 </div>

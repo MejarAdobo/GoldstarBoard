@@ -13,7 +13,8 @@
         const resp = await fetch(url)
         return await resp.json()
       } catch (error) {
-        console.error("Fetch failed:", error);        return [];
+        console.error("Fetch failed:", error);
+        return [];
       }
     }
 
