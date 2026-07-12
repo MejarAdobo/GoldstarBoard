@@ -1,91 +1,90 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# Dependencies
-node_modules
-.pnp
-.pnp.js
-
-# Local env files
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Testing
-coverage
-
-# Turbo
-.turbo
-
-# Vercel
-.vercel
-
-# Build Outputs
-.next/
-out/
-build
-dist
-
-
-# Debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Misc
+# ==============================================================================
+# System & Editor Files
+# ==============================================================================
 .DS_Store
-*.pem
-
-# Drizzle
-.drizzle
-drizzle
-apps/admin/.venv/
-apps/admin/.ruff_cache/
-.zed/
-__pycache__
-
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-.DS_Store
-dist
-dist-ssr
-coverage
-*.local
-
-# Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
+.zed/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
-*.tsbuildinfo
-
+# ==============================================================================
+# Dependencies & Package Managers
+# ==============================================================================
+node_modules/
+.pnp
+.pnp.js
 .eslintcache
 
-# Cypress
-/cypress/videos/
-/cypress/screenshots/
-
-# Vitest
-__screenshots__/
-
-# Vite
+# ==============================================================================
+# Build & Tooling Outputs
+# ==============================================================================
+dist/
+dist-ssr/
+build/
+out/
+web-build/
+.next/
+.turbo/
+.vercel/
+.astro/
+*.tsbuildinfo
 *.timestamp-*-*.mjs
 
-# build output
-dist/
-# generated types
-.astro/
+# ==============================================================================
+# Environment & Security
+# ==============================================================================
+.env
+.env*.local
+*.pem
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# ==============================================================================
+# Testing & Debugging
+# ==============================================================================
+coverage/
+__screenshots__/
+/cypress/videos/
+/cypress/screenshots/
+.metro-health-check*
+
+# Logs
+logs/
+*.log
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ==============================================================================
+# Framework & Language Specifics
+# ==============================================================================
+
+# Python / Backend
+__pycache__/
+apps/admin/.venv/
+apps/admin/.ruff_cache/
+
+# Drizzle ORM
+.drizzle
+drizzle
+
+# Expo & Mobile Native
+.expo/
+expo-env.d.ts
+.kotlin/
+*.orig.*
+/ios/
+/android/
+
+# Miscellaneous
+example
