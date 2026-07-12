@@ -69,7 +69,7 @@ interface Station {
 
 // Hourly Data
 interface HourlyData {
-  station: string;
+  stationId: string;
   metric: WeatherData;
   imperial: WeatherData;
   status: boolean;
@@ -91,12 +91,13 @@ interface Stats {
 }
 
 export type {
-  ApiError,
-  DailyData,
-  HourlyData,
-  Observation,
-  Station,
-  Stats,
-  WeatherData,
-  WeatherMeasurements,
+    ApiError,
+    DailyData,
+    HourlyData,
+    Observation,
+    Station,
+    Stats,
+    WeatherData,
+    WeatherMeasurements
 };
+

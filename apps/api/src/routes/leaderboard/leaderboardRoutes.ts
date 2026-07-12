@@ -5,6 +5,7 @@ import { z } from "zod";
 const rankingSchema = z.object({
   ranking: z.number(),
   name: z.string(),
+  wuId: z.string(),
   stars: z.number(),
   hotStreak: z.number(),
   coldStreak: z.number(),
