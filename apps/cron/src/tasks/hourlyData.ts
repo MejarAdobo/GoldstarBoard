@@ -47,7 +47,7 @@ export const getAllHourlyData = async (stations: Station[]) => {
 
     const { formattedData, status } = result;
 
-    hourlyData.push({ station: station.wuId, ...formattedData, status });
+    hourlyData.push({ stationId: station.wuId, ...formattedData, status });
   });
 
   await Promise.all(promises);
@@ -57,10 +57,10 @@ export const getAllHourlyData = async (stations: Station[]) => {
 export const sendHourlyData = async (hourlyData: HourlyData[]) => {
   const promises = hourlyData.map(async (data) => {
     try {
-      await updateHourlyData(data.station, data.metric, data.imperial, data.status);
-      console.log(`Updated hourly data for station ${data.station}`);
+      await updateHourlyData(data.stationId, data.metric, data.imperial, data.status);
+      console.log(`Updated hourly data for station ${data.stationId}`);
     } catch (dbError) {
-      console.error(`Failed to update DB for station ${data.station}:`, dbError);
+      console.error(`Failed to update DB for station ${data.stationId}:`, dbError);
     }
   });
 

@@ -1,6 +1,8 @@
 <script lang="ts">
-    let { station, switchState } = $props();
-    // console.log(station);
+    import { IconCircleFilled } from '@tabler/icons-svelte/IconCircleFilled.svelte';
+
+
+    let { station, hourlyData, switchState } = $props();
 </script>
 
 <div class="bg-white shadow-md rounded-lg p-4 my-1 flex gap-2 w-full justify-between">
@@ -10,9 +12,12 @@
             <p class="text-4xl font-bold text-black">{station.ranking}</p>
         </div>
         <!-- Station Name -->
-        <div class="flex items-center">
+        <div class="flex flex-col">
             <h2 class="text-2xl font-bold text-black">{station.name}</h2>
-            <p class="text-lg text-black">{station.status}</p>
+            <div class="flex items-center gap-2">
+                <IconCircleFilled />
+                <p class="text-md text-black">{hourlyData.status ? "Online" : "Offline"}</p>
+            </div>
         </div>
     </div>
     <div class="flex items-center bg-amber-200">
