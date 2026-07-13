@@ -32,7 +32,7 @@
 
     </script>
 
-<div class="max-w-4xl mx-auto py-4 rounded-2xl bg-red-300 flex flex-col gap-4">
+<div class="max-w-xl mx-auto py-4 rounded-2xl bg-red-300 flex flex-col gap-4">
     <div class="mx-4">
         <LeaderboardSwitch bind:value={switchState} />
     </div>

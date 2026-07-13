@@ -7,7 +7,7 @@
     const getStationHourlyData = (id: string) => hourlyData.find((s: HourlyData) => s.stationId === id);
 </script>
 
-<div class="">
+<div>
     {#if switchState === 'streaks'}
         {#each streakData as station}
             <LeaderboardCard station={station} switchState={switchState} hourlyData={getStationHourlyData(station.wuId)} />

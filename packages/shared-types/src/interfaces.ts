@@ -91,13 +91,12 @@ interface Stats {
 }
 
 export type {
-    ApiError,
-    DailyData,
-    HourlyData,
-    Observation,
-    Station,
-    Stats,
-    WeatherData,
-    WeatherMeasurements
+  ApiError,
+  DailyData,
+  HourlyData,
+  Observation,
+  Station,
+  Stats,
+  WeatherData,
+  WeatherMeasurements,
 };
-
