@@ -1,20 +1,21 @@
 <script lang="ts">
-    import type { HourlyData } from '@goldstarboard/shared-types/interfaces';
-    import LeaderboardCard from './LeaderboardCard.svelte';
+  import LeaderboardCard from "./LeaderboardCard.svelte";
 
-    let { streakData, starData, hourlyData, switchState } = $props();
+  import type { HourlyData } from "@goldstarboard/shared-types/interfaces";
 
-    const getStationHourlyData = (id: string) => hourlyData.find((s: HourlyData) => s.stationId === id);
+  let { streakData, starData, hourlyData, switchState } = $props();
+
+  const getStationHourlyData = (id: string) => hourlyData.find((s: HourlyData) => s.stationId === id);
 </script>
 
-<div class="">
-    {#if switchState === 'streaks'}
-        {#each streakData as station}
-            <LeaderboardCard station={station} switchState={switchState} hourlyData={getStationHourlyData(station.wuId)} />
-        {/each}
-    {:else}
-    {#each starData as station}
-        <LeaderboardCard station={station} switchState={switchState} hourlyData={getStationHourlyData(station.wuId)} />
+<div>
+  {#if switchState === "streaks"}
+    {#each streakData as station}
+      <LeaderboardCard {station} {switchState} hourlyData={getStationHourlyData(station.wuId)} />
     {/each}
-    {/if}
+  {:else}
+    {#each starData as station}
+      <LeaderboardCard {station} {switchState} hourlyData={getStationHourlyData(station.wuId)} />
+    {/each}
+  {/if}
 </div>
