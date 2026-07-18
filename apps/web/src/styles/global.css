@@ -1,1 +1,119 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@source inline("rank-gold rank-silver rank-bronze");
+
+@theme inline {
+  --color-text: var(--text);
+  --color-text-secondary: var(--text-secondary);
+  --color-background: var(--background);
+  --color-background-alt: var(--background-alt);
+  --color-container-background: var(--container-background);
+  --color-container-text: var(--container-text);
+  --color-icon: var(--icon);
+  --color-badge: var(--badge);
+  --color-badge-text: var(--badge-text);
+  --color-stats-background: var(--stats-background);
+  --color-stats-text: var(--stats-text);
+  --color-weather-background: var(--weather-background);
+  --color-weather-tiles: var(--weather-tiles);
+}
+
+:root {
+  --text: oklch(0.2484 0.0508 85.93);
+  --text-secondary: oklch(0.5707 0.0526 72.67);
+  --background: oklch(0.9393 0.0217 83.26);
+  --background-alt: oklch(0.9098 0.0264 82.38);
+  --container-background: oklch(94.27% 0.012 80.44);
+  --container-text: oklch(0.2484 0.0508 85.93);
+  --icon: oklch(0.5707 0.0526 72.67);
+  --badge: oklch(89.26% 0.019 82.01);
+  --badge-text: oklch(0.2484 0.0508 85.93);
+  --stats-background: oklch(96.34% 0.009 84.45);
+  --stats-text: oklch(0.5707 0.0526 72.67);
+  --weather-background: oklch(90.54% 0.017 80.59);
+  --weather-tiles: oklch(93.44% 0.014 81.3);
+}
+
+.dark {
+  --text: oklch(74.61% 0.03 79.42);
+  --text-secondary: oklch(60% 0.02 80);
+  --background: oklch(17.73% 0.008 95.51);
+  --background-alt: oklch(22% 0.01 95);
+  --container-background: oklch(23% 0.012 82);
+  --container-text: oklch(88% 0.015 84);
+  --icon: oklch(70% 0.02 80);
+  --badge: oklch(32% 0.015 82);
+  --badge-text: oklch(92% 0.01 84);
+  --stats-background: oklch(19% 0.01 82);
+  --stats-text: oklch(85% 0.015 84);
+  --weather-background: oklch(21% 0.015 82);
+  --weather-tiles: oklch(26% 0.012 82);
+}
+
+.rank-gold {
+  --container-background: oklch(94.49% 0.041 85.57);
+  --container-text: oklch(28% 0.08 82);
+  --icon: oklch(56.76% 0.124 81.28);
+  --badge: oklch(45.15% 0.103 80.66);
+  --badge-text: oklch(100% 0 0);
+  --stats-background: oklch(96.53% 0.026 86.63);
+  --stats-text: oklch(56.76% 0.124 81.28);
+  --weather-background: oklch(92.83% 0.054 85.08);
+  --weather-tiles: oklch(95.43% 0.034 86.13);
+}
+.dark .rank-gold {
+  --container-background: oklch(22% 0.025 82);
+  --container-text: oklch(90% 0.045 86);
+  --icon: oklch(78% 0.09 84);
+  --badge: oklch(38% 0.06 82);
+  --badge-text: oklch(94% 0.04 86);
+  --stats-background: oklch(18% 0.02 82);
+  --stats-text: oklch(85% 0.04 86);
+  --weather-background: oklch(20% 0.03 82);
+  --weather-tiles: oklch(25% 0.03 84);
+}
+.rank-silver {
+  --container-background: oklch(90.62% 0.013 252.17);
+  --container-text: oklch(22% 0.02 252);
+  --icon: oklch(44.49% 0.015 250.77);
+  --badge: oklch(36.19% 0.013 252.79);
+  --badge-text: oklch(100% 0 0);
+  --stats-background: oklch(94.13% 0.01 254.43);
+  --stats-text: oklch(44.49% 0.015 250.77);
+  --weather-background: oklch(86.58% 0.015 251.15);
+  --weather-tiles: oklch(92.17% 0.011 253.25);
+}
+.dark .rank-silver {
+  --container-background: oklch(23% 0.012 250);
+  --container-text: oklch(90% 0.015 252);
+  --icon: oklch(74% 0.02 250);
+  --badge: oklch(36% 0.02 250);
+  --badge-text: oklch(93% 0.01 252);
+  --stats-background: oklch(19% 0.01 250);
+  --stats-text: oklch(86% 0.015 252);
+  --weather-background: oklch(21% 0.015 250);
+  --weather-tiles: oklch(26% 0.012 250);
+}
+.rank-bronze {
+  --container-background: oklch(91.13% 0.033 53.6);
+  --container-text: oklch(24% 0.06 50);
+  --icon: oklch(51.35% 0.103 52.41);
+  --badge: oklch(42.54% 0.098 48.9);
+  --badge-text: oklch(100% 0 0);
+  --stats-background: oklch(95.27% 0.021 61.27);
+  --stats-text: oklch(51.35% 0.103 52.41);
+  --weather-background: oklch(88.58% 0.046 59.97);
+  --weather-tiles: oklch(93.57% 0.026 62.5);
+}
+.dark .rank-bronze {
+  --container-background: oklch(22% 0.022 50);
+  --container-text: oklch(90% 0.035 55);
+  --icon: oklch(75% 0.07 52);
+  --badge: oklch(36% 0.05 48);
+  --badge-text: oklch(93% 0.03 55);
+  --stats-background: oklch(18% 0.015 50);
+  --stats-text: oklch(86% 0.035 55);
+  --weather-background: oklch(20% 0.025 50);
+  --weather-tiles: oklch(25% 0.025 52);
+}
