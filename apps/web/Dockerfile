@@ -1,22 +1,44 @@
-FROM oven/bun:1 AS base
+# FROM oven/bun:1 AS base
+# WORKDIR /app
+# RUN bun add -g turbo
+
+# FROM base AS prepare
+# COPY . .
+# RUN turbo prune web --docker
+
+# FROM base AS builder
+# COPY --from=prepare /app/out/json/ .
+# RUN bun install --frozen-lockfile
+
+# COPY --from=prepare /app/out/full/ .
+# RUN bun turbo run build --filter=web
+
+# FROM oven/bun:1-slim AS runtime
+# WORKDIR /app
+
+# COPY --from=builder /app/apps/web/dist ./dist
+
+# ENV HOST=0.0.0.0
+
+# CMD ["bun", "./dist/server/entry.mjs"]
+
+FROM oven/bun:1 AS builder
 WORKDIR /app
-RUN bun add -g turbo
 
-FROM base AS prepare
-COPY . .
-RUN turbo prune web --docker
+ARG PUBLIC_API_URL
 
-FROM base AS builder
-COPY --from=prepare /app/out/json/ .
+ENV PUBLIC_API_URL=$PUBLIC_API_URL
+
+COPY package.json bun.lock* ./
 RUN bun install --frozen-lockfile
 
-COPY --from=prepare /app/out/full/ .
-RUN bun turbo run build --filter=web
+COPY . .
+RUN bun run build
 
 FROM oven/bun:1-slim AS runtime
 WORKDIR /app
 
-COPY --from=builder /app/apps/web/dist ./dist
+COPY --from=builder /app/dist ./dist
 
 ENV HOST=0.0.0.0
 
