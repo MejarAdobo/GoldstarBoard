@@ -5,9 +5,14 @@ import { Temporal } from "@js-temporal/polyfill";
 
 import type { Stats } from "@goldstarboard/shared-types/interfaces";
 
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export const updateStats = async (stats: Stats[]) => {
   await Promise.all(
-    stats.map(async (stat) => {
+    stats.map(async (stat, index) => {
+
+      await delay(index * 200);
+
       const yesterdayData = await getYesterdayData(stat.stationId);
       let { star, hotStreak, coldStreak, lastDaySinceStar } = stat;
 
