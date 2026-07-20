@@ -58,9 +58,9 @@ export const sendHourlyData = async (hourlyData: HourlyData[]) => {
   const promises = hourlyData.map(async (data) => {
     try {
       await updateHourlyData(data.stationId, data.metric, data.imperial, data.status);
-      console.log(`Updated hourly data for station ${data.stationId}`);
+      console.log(`\nUpdated hourly data for station ${data.stationId}\n`);
     } catch (dbError) {
-      console.error(`Failed to update DB for station ${data.stationId}:`, dbError);
+      console.error(`\nFailed to update DB for station ${data.stationId}:`, dbError);
     }
   });
 

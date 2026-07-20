@@ -47,6 +47,10 @@ export const updateStats = async (stats: Stats[]) => {
       }
 
       await updtStats(stat.stationId, star, hotStreak, coldStreak, lastDaySinceStar);
+
+      // Log
+      console.log(`\nUpdated stats for station ${stat.stationId}`);
+      console.log(`Star: ${star}, Hot Streak: ${hotStreak}, Cold Streak: ${coldStreak}, Last Day Since Star: ${lastDaySinceStar}\n`);
     }),
   );
 };
