@@ -7,5 +7,5 @@ export const getYesterdayData = async (id: string) => {
     return undefined;
   }
 
-  return allData[allData.length - 1];
+  return allData[0];
 };

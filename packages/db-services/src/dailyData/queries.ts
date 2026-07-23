@@ -14,6 +14,7 @@ export const getDailyDataByStation = async (stationId: string) =>
     where: {
       stationId,
     },
+    orderBy: (fields, order) => [order.desc(fields.createdAt)],
   });
 
 // Get all dailyData

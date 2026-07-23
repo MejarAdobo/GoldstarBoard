@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
+
 @source inline("rank-gold rank-silver rank-bronze");
 
 @theme inline {
