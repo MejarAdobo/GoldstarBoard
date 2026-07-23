@@ -10,7 +10,6 @@ const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 export const updateStats = async (stats: Stats[]) => {
   await Promise.all(
     stats.map(async (stat, index) => {
-
       await delay(index * 200);
 
       const yesterdayData = await getYesterdayData(stat.stationId);
@@ -50,7 +49,9 @@ export const updateStats = async (stats: Stats[]) => {
 
       // Log
       console.log(`\nUpdated stats for station ${stat.stationId}`);
-      console.log(`Star: ${star}, Hot Streak: ${hotStreak}, Cold Streak: ${coldStreak}, Last Day Since Star: ${lastDaySinceStar}\n`);
+      console.log(
+        `Star: ${star}, Hot Streak: ${hotStreak}, Cold Streak: ${coldStreak}, Last Day Since Star: ${lastDaySinceStar}\n`,
+      );
     }),
   );
 };
