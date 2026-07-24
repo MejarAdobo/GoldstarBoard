@@ -10,6 +10,14 @@ export const getDailyData = async (stations: Station[]) => {
   const dailyData: DailyData[] = [];
   const URL = Bun.env["PWS_URL"]!;
 
+  console.log(`
+  =======================================================
+    Fetching daily data for ${stations.length} stations
+    Date: ${new Date().toLocaleDateString("en-CA")}
+  =======================================================
+  \n
+  `);
+
   const promises = stations.map(async (station: Station) => {
     const stationURL = `${URL}${station.wuId}`;
 
@@ -47,8 +55,37 @@ export const getDailyData = async (stations: Station[]) => {
 };
 
 export const sendDailyData = async (dailyData: DailyData[]) => {
-  dailyData.forEach(async (data: DailyData) => {
-    await createDailyData(data.stationId, data.starStatus);
-    console.log(`\nUpdated daily data for station ${data.stationId}\n`);
+  const promises = dailyData.map(async (data) => {
+    try {
+      await createDailyData(data.stationId, data.starStatus);
+
+      console.log(`
+      ====================================================
+        Created daily data for station ${data.stationId}
+      ====================================================
+        Star Status: ${data.starStatus}
+      ====================================================
+      \n
+      `)
+    }
+    catch (error) {
+      console.error(`\nDB Create Failed for Station: ${data.stationId}`, {
+        stationId: data.stationId,
+        error: error instanceof Error ? error.message : error,
+        payload: data,
+        rawError: error,
+        timestamp: new Date().toLocaleString("en-CA", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+        }),
+      });
+    }
   });
+
+  await Promise.all(promises)
+
 };
