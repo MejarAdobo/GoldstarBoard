@@ -38,6 +38,15 @@ export const getHourlyData = async (wuId: string) => {
 export const getAllHourlyData = async (stations: Station[]) => {
   const hourlyData: HourlyData[] = [];
 
+  console.log(`
+  =======================================================
+   Fetching hourly data for ${stations.length} stations =
+   Time (UTC):       ${new Date().toLocaleTimeString("en-GB", { timeZone: "UTC", timeStyle: "short" })}
+   Time (Vancouver): ${new Date().toLocaleTimeString("en-GB", { timeZone: "America/Vancouver", timeStyle: "short" })}
+  =======================================================
+  \n
+  `);
+
   const promises = stations.map(async (station: Station) => {
     const result = await getHourlyData(station.wuId);
 
@@ -58,9 +67,35 @@ export const sendHourlyData = async (hourlyData: HourlyData[]) => {
   const promises = hourlyData.map(async (data) => {
     try {
       await updateHourlyData(data.stationId, data.metric, data.imperial, data.status);
-      console.log(`\nUpdated hourly data for station ${data.stationId}\n`);
-    } catch (dbError) {
-      console.error(`\nFailed to update DB for station ${data.stationId}:`, dbError);
+      console.log(`
+      ====================================================
+        Created daily data for station ${data.stationId}
+      ====================================================
+        Metric:
+        ${JSON.stringify(data.metric, null, 4)}
+
+          Imperial:
+        ${JSON.stringify(data.imperial, null, 4)}
+
+        Status: ${data.status}
+      ====================================================
+      \n
+      `);
+    } catch (error) {
+      console.error(`\nDB Update Failed for Station: ${data.stationId}`, {
+        stationId: data.stationId,
+        error: error instanceof Error ? error.message : error,
+        payload: data,
+        rawError: error,
+        timestamp: new Date().toLocaleString("en-CA", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+        }),
+      });
     }
   });
 

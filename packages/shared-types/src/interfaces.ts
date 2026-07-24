@@ -79,6 +79,7 @@ interface HourlyData {
 interface DailyData {
   stationId: string;
   starStatus: starStatusEnum;
+  createdAt?: string;
 }
 
 // Stats

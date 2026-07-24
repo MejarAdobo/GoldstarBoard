@@ -15,6 +15,11 @@ export const updateStats = async (stats: Stats[]) => {
       const yesterdayData = await getYesterdayData(stat.stationId);
       let { star, hotStreak, coldStreak, lastDaySinceStar } = stat;
 
+      // This is for logging purposes
+      const logStar = star;
+      const logHotStreak = hotStreak;
+      const logColdStreak = coldStreak;
+
       if (yesterdayData) {
         if (yesterdayData?.starStatus == "gain" || yesterdayData?.starStatus == "maintain") {
           star += 1;
@@ -47,11 +52,19 @@ export const updateStats = async (stats: Stats[]) => {
 
       await updtStats(stat.stationId, star, hotStreak, coldStreak, lastDaySinceStar);
 
-      // Log
-      console.log(`\nUpdated stats for station ${stat.stationId}`);
-      console.log(
-        `Star: ${star}, Hot Streak: ${hotStreak}, Cold Streak: ${coldStreak}, Last Day Since Star: ${lastDaySinceStar}\n`,
-      );
+      console.log(`
+      =========================================
+        Updating stats for station ${stat.stationId}
+      =========================================
+        Star:
+          From ${logStar} to ${star}
+        Hot Streak:
+          From ${logHotStreak} to ${hotStreak}
+        Cold Streak:
+          From ${logColdStreak} to ${coldStreak}
+        Last Day Since Star: ${lastDaySinceStar}
+      `)
+
     }),
   );
 };
