@@ -63,8 +63,7 @@ export const updateStats = async (stats: Stats[]) => {
         Cold Streak:
           From ${logColdStreak} to ${coldStreak}
         Last Day Since Star: ${lastDaySinceStar}
-      `)
-
+      `);
     }),
   );
 };

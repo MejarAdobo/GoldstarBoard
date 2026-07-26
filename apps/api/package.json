@@ -8,9 +8,9 @@
     "@goldstarboard/db-services": "workspace:*",
     "@goldstarboard/shared-types": "workspace:*",
     "@hono/zod-openapi": "^1.5.1",
-    "@scalar/hono-api-reference": "^0.11.10",
-    "drizzle-orm": "^1.0.0-rc.4-5d5b77c",
-    "hono": "^4.12.30",
+    "@scalar/hono-api-reference": "^0.11.11",
+    "drizzle-orm": "^1.0.0-rc.4-de6c356",
+    "hono": "^4.12.32",
     "hono-rate-limiter": "^0.5.3",
     "zod": "^4.4.3"
   },

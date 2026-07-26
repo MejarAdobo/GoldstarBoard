@@ -66,9 +66,8 @@ export const sendDailyData = async (dailyData: DailyData[]) => {
         Star Status: ${data.starStatus}
       ====================================================
       \n
-      `)
-    }
-    catch (error) {
+      `);
+    } catch (error) {
       console.error(`\nDB Create Failed for Station: ${data.stationId}`, {
         stationId: data.stationId,
         error: error instanceof Error ? error.message : error,
@@ -86,6 +85,5 @@ export const sendDailyData = async (dailyData: DailyData[]) => {
     }
   });
 
-  await Promise.all(promises)
-
+  await Promise.all(promises);
 };
