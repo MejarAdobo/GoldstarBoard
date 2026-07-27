@@ -1,10 +1,40 @@
 ---
-import Leaderboard from '@components/Leaderboard.svelte';
-import Layout from '@layouts/Layout.astro';
+import Leaderboard from "@components/Leaderboard.svelte";
+import Layout from "@layouts/Layout.astro";
+import { API_URL } from "astro:env/server";
+import type {
+  RankingData,
+  HourlyData,
+} from "@goldstarboard/shared-types/interfaces";
+
+let streakData: RankingData[] = [];
+let starData: RankingData[] = [];
+let hourlyData: HourlyData[] = [];
+
+await Promise.try(async () => {
+  const [streakResp, starResp, hourlyResp] = await Promise.all([
+    fetch(`${API_URL}/streak-ranking`),
+    fetch(`${API_URL}/star-ranking`),
+    fetch(`${API_URL}/hourly-data`),
+  ]);
+
+  [streakData, starData, hourlyData] = await Promise.all([
+    streakResp.json(),
+    starResp.json(),
+    hourlyResp.json(),
+  ]);
+}).catch((error) => {
+  console.error("Failed to fetch rankings:", error);
+});
 ---
 
 <Layout title="Leaderboard">
-    <div class="py-15">
-        <Leaderboard  client:load/>
-    </div>
+  <div class="py-15">
+    <Leaderboard
+      client:load
+      streakData={streakData}
+      starData={starData}
+      hourlyData={hourlyData}
+    />
+  </div>
 </Layout>

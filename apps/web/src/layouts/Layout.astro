@@ -1,15 +1,27 @@
 ---
-import "@styles/global.css"
+import "@styles/global.css";
 
-const { title } = Astro.props
+const { title } = Astro.props;
 ---
+
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
   </head>
-  <body class="bg-primary">
-    <slot></slot>
+  <body class="bg-primary mx-5 my-2 flex flex-col gap-2 min-h-[98vh]">
+    <div class="flex justify-between items-center mx-2 my-1">
+      <a class="font-semibold text-[1.75em]" href="/">GoldStarboard</a>
+      <!-- Plan: Make this into a component and also create another component for hamburger nav (for mobile) -->
+      <nav class="flex gap-4 text-medium font-semibold">
+        <a href="/" class="text-muted-text hover:text-text">Leaderboard</a>
+        <a href="/awards" class="text-muted-text hover:text-text">Awards</a>
+        <!-- add a dark and light mode switch here -->
+      </nav>
+    </div>
+    <div class="bg-secondary rounded-[.67em] md:flex-1">
+      <slot />
+    </div>
   </body>
 </html>

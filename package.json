@@ -10,8 +10,8 @@
     "dev": "turbo run dev",
     "lint": "oxlint .",
     "lint:fix": "oxlint --fix --fix-suggestions .",
-    "format": "oxfmt --check",
-    "format:fix": "oxfmt .",
+    "format": "oxfmt --check && prettier --check \"**/*.astro\"",
+    "format:fix": "oxfmt . && prettier --write \"**/*.astro\"",
     "check-types": "turbo run check-types"
   },
   "dependencies": {
@@ -24,6 +24,8 @@
     "oxfmt": "^0.55.0",
     "oxlint": "^1.75.0",
     "oxlint-tsgolint": "^0.23.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1",
     "svelte": "^5.56.8",
     "turbo": "^2.10.7",
     "typescript": "5.9.2"

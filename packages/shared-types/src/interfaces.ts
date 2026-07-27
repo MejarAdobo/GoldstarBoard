@@ -91,11 +91,23 @@ interface Stats {
   lastDaySinceStar: string | null;
 }
 
+// Ranking Data for Streak and Star
+interface RankingData {
+  ranking: number;
+  name: string;
+  wuId: string;
+  stars: number;
+  hotStreak: number;
+  coldStreak: number;
+  lastDaySinceStar: string | null;
+}
+
 export type {
   ApiError,
   DailyData,
   HourlyData,
   Observation,
+  RankingData,
   Station,
   Stats,
   WeatherData,
