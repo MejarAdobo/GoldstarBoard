@@ -6,14 +6,18 @@
 
   const getRankColour = (rank: number) => {
     switch (rank) {
-      case 1:
+      case 1: {
         return "rank-gold";
-      case 2:
+      }
+      case 2: {
         return "rank-silver";
-      case 3:
+      }
+      case 3: {
         return "rank-bronze";
-      default:
+      }
+      default: {
         return "";
+      }
     }
   };
 </script>
@@ -21,7 +25,7 @@
 <div
   class="{getRankColour(
     station.ranking,
-  )} my-3 flex w-full justify-between gap-2 rounded-lg bg-rank-primary p-4 shadow-md"
+  )} my-3 flex w-full justify-between gap-2 rounded-lg bg-rank-primary p-4"
 >
   <div class="flex items-center justify-between gap-4">
     <!-- Ranking -->
@@ -37,21 +41,21 @@
       </div>
     </div>
   </div>
-  <div class="my-2 flex flex-col gap-1 rounded-xl bg-rank-secondary px-3 py-2">
+  <div class="my-2 flex flex-col gap-1 rounded-xl bg-rank-secondary px-4 py-2">
     <h3 class="text-xl font-semibold text-rank-text">{switchState === "streaks" ? "Streak" : "Stars"}</h3>
     {#if switchState === "streaks"}
       {#if station.hotStreak > 0}
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1">
           <Flame size={24} class="text-amber-500" />
-          <p class="text-lg font-semibold text-rank-text">{station.hotStreak}</p>
+          <p class="text-lg font-semibold text-rank-text">{station.hotStreak} Days</p>
         </div>
       {:else if station.coldStreak > 0}
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1">
           <Snowflake size={24} class="text-sky-500" />
-          <p class="text-lg font-semibold text-rank-text">{station.coldStreak}</p>
+          <p class="text-lg font-semibold text-rank-text">{station.coldStreak} Days</p>
         </div>
       {:else}
-        <p class="text-lg font-semibold text-rank-text">0</p>
+        <p class="text-lg font-semibold text-rank-text">0 Day</p>
       {/if}
     {:else}
       <div class="flex items-center gap-2">

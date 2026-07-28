@@ -17,6 +17,11 @@
   --color-rank-muted-text: var(--rank-muted-text);
 }
 
+body {
+  background-color: var(--primary);
+  color: var(--text);
+}
+
 :root {
   --primary: oklch(0.9703 0.007 88.64);
   --secondary: oklch(0.8915 0.0044 17.24);

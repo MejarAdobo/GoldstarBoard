@@ -6,7 +6,7 @@
   let switchState = $state("streaks");
 </script>
 
-<div class="mx-auto flex max-w-2xl flex-col gap-4 py-4">
+<div class="flex flex-col gap-4">
   <div class="flex justify-between">
     <h2 class="text-4xl font-semibold text-text">{switchState === "streaks" ? "Streaks" : "Stars"}</h2>
     <LeaderboardSwitch bind:value={switchState} />
