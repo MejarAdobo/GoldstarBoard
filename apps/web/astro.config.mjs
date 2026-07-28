@@ -3,7 +3,7 @@ import svelte from "@astrojs/svelte";
 import playformCompress from "@playform/compress";
 import tailwindcss from "@tailwindcss/vite";
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig, envField, memoryCache } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,10 +11,19 @@ export default defineConfig({
   adapter: node({
     mode: "standalone",
   }),
-
   vite: {
     plugins: [tailwindcss()],
   },
-
   integrations: [svelte(), playformCompress()],
+  env: {
+    schema: {
+      API_URL: envField.string({
+        context: "server",
+        access: "secret",
+      }),
+    },
+  },
+  cache: {
+    provider: memoryCache(),
+  },
 });

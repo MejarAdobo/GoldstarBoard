@@ -1,15 +1,37 @@
 ---
-import "@styles/global.css"
-
-const { title } = Astro.props
+import Toggle from "@components/Toggle.svelte";
+import "@styles/global.css";
+const { title } = Astro.props;
 ---
+
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+
+    <script is:inline>
+      const theme = globalThis.localStorage?.getItem("theme");
+      const prefersDark = globalThis.matchMedia?.(
+        "(prefers-color-scheme: dark)",
+      ).matches;
+      const isDark = theme === "dark" || (!theme && prefersDark);
+
+      document.documentElement.classList.toggle("dark", isDark);
+    </script>
   </head>
-  <body class="bg-background">
-    <slot></slot>
-  </body>
 </html>
+<body class="bg-primary mx-10 my-2 flex flex-col gap-2 min-h-[98vh]">
+  <div class="flex justify-between items-center mx-2 my-1">
+    <a class="font-semibold text-[1.75em]" href="/">GoldStarboard</a>
+    <!-- Plan: Make this into a component and also create another component for hamburger nav (for mobile) -->
+    <nav class="flex gap-4 text-medium font-semibold items-center">
+      <a href="/" class="text-muted-text hover:text-text">Leaderboard</a>
+      <a href="/awards" class="text-muted-text hover:text-text">Awards</a>
+      <Toggle client:visible />
+    </nav>
+  </div>
+  <div class="bg-secondary rounded-[.67em] md:flex-1">
+    <slot />
+  </div>
+</body>
