@@ -3,5 +3,28 @@ import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout title="500 Server Error">
-  <div></div>
+  <main
+    class="min-h-[80vh] flex flex-col justify-center items-center text-center px-4"
+  >
+    <span
+      class="text-8xl sm:text-9xl font-extrabold text-text tracking-tight opacity-20 select-none"
+    >
+      500
+    </span>
+
+    <h1 class="text-3xl sm:text-4xl font-semibold text-text mt-6 mb-3">
+      Something went wrong
+    </h1>
+
+    <p class="text-text/70 text-base sm:text-lg max-w-md mb-8">
+      Our servers hit an unexpected bump. Please try returning to the main page.
+    </p>
+
+    <a
+      href="/"
+      class="bg-primary hover:bg-tertiary hover:text-primary text-text text-lg px-6 py-3 rounded-[0.67em] font-semibold transition-colors duration-200 shadow-sm"
+    >
+      Go to Leaderboard
+    </a>
+  </main>
 </Layout>

@@ -7,8 +7,8 @@ COPY . .
 RUN turbo prune web --docker
 
 FROM base AS builder
-ARG PUBLIC_API_URL
-ENV PUBLIC_API_URL=$PUBLIC_API_URL
+ARG API_URL
+ENV API_URL=$API_URL
 
 COPY --from=prepare /app/out/json/ .
 RUN bun install --frozen-lockfile

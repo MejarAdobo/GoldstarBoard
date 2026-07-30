@@ -25,12 +25,12 @@ body {
 :root {
   --primary: oklch(0.9703 0.007 88.64);
   --secondary: oklch(0.8915 0.0044 17.24);
-  --tertiary: oklch(0.5966 0.1604 148.67);
+  --tertiary: oklch(0.22 0.005 164);
   --text: oklch(0.1703 0.0038 164.54);
   --muted-text: oklch(0.5058 0.0068 153.65);
   --rank-primary: oklch(0.9703 0.007 88.64);
   --rank-secondary: oklch(0.8915 0.0044 17.24);
-  --rank-tertiary: oklch(0.5966 0.1604 148.67);
+  --rank-tertiary: oklch(0.22 0.005 164);
   --rank-text: oklch(0.1703 0.0038 164.54);
   --rank-muted-text: oklch(0.5058 0.0068 153.65);
 }
@@ -38,12 +38,12 @@ body {
 .dark {
   --primary: oklch(0.252 0 0);
   --secondary: oklch(0.1703 0.0038 164.54);
-  --tertiary: oklch(0.8265 0.2368 145.63);
+  --tertiary: oklch(0.92 0.01 101);
   --text: oklch(0.9863 0.0353 101.83);
   --muted-text: oklch(0.5824 0.0193 106.99);
   --rank-primary: oklch(0.252 0 0);
   --rank-secondary: oklch(0.1703 0.0038 164.54);
-  --rank-tertiary: oklch(0.8265 0.2368 145.63);
+  --rank-tertiary: oklch(0.92 0.01 101);
   --rank-text: oklch(0.9863 0.0353 101.83);
   --rank-muted-text: oklch(0.5824 0.0193 106.99);
 }

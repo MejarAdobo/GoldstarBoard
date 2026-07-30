@@ -5,8 +5,8 @@ import type {
   RankingData,
 } from "@goldstarboard/shared-types/interfaces";
 import Layout from "@layouts/Layout.astro";
-import { API_URL } from "astro:env/server";
 import { getSecondsUntilNextUpdate } from "@utils/cache";
+import { API_URL } from "astro:env/server";
 
 export const prerender = false;
 
@@ -34,7 +34,7 @@ await Promise.try(async () => {
 ---
 
 <Layout title="Leaderboard">
-  <div class="py-6 px-8">
+  <div class="lg:py-6 lg:px-8 py-3 px-4">
     <Leaderboard
       client:load
       streakData={streakData}
