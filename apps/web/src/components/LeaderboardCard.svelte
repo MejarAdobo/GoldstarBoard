@@ -37,30 +37,38 @@
       <h2 class="text-2xl font-bold text-rank-text">{station.name}</h2>
       <div class="flex items-center gap-2">
         <IconCircleFilled size={15} class={hourlyData.status ? "text-[#0AE448]" : "text-[#F25570]"} />
-        <p class="text-md text-rank-text">{hourlyData.status ? "Online" : "Offline"}</p>
+        <p class="text-md font text-rank-text">{hourlyData.status ? "Online" : "Offline"}</p>
       </div>
     </div>
   </div>
-  <div class="my-2 flex flex-col gap-1 rounded-xl bg-rank-secondary px-4 py-2">
-    <h3 class="text-xl font-semibold text-rank-text">{switchState === "streaks" ? "Streak" : "Stars"}</h3>
+  <div class="my-2 flex flex-col gap-1 rounded-xl bg-rank-secondary p-3">
     {#if switchState === "streaks"}
       {#if station.hotStreak > 0}
-        <div class="flex items-center gap-1">
-          <Flame size={24} class="text-amber-500" />
-          <p class="text-lg font-semibold text-rank-text">{station.hotStreak} Days</p>
+        <div class="flex items-center gap-1.5">
+          <Flame size={32} class="text-amber-500" />
+          <div>
+            <p class="text-lg font-semibold text-rank-text">{station.hotStreak} Days</p>
+            <p class="text-sm font-semibold text-rank-muted-text">Streak</p>
+          </div>
         </div>
       {:else if station.coldStreak > 0}
-        <div class="flex items-center gap-1">
-          <Snowflake size={24} class="text-sky-500" />
-          <p class="text-lg font-semibold text-rank-text">{station.coldStreak} Days</p>
+        <div class="flex items-center gap-1.5">
+          <Snowflake size={32} class="text-sky-500" />
+          <div>
+            <p class="text-lg font-semibold text-rank-text">{station.coldStreak} Days</p>
+            <p class="text-sm font-semibold text-rank-muted-text">Streak</p>
+          </div>
         </div>
       {:else}
-        <p class="text-lg font-semibold text-rank-text">0 Day</p>
+        <p class="text-lg font-semibold text-rank-text">No Streak</p>
       {/if}
     {:else}
-      <div class="flex items-center gap-2">
-        <Star size={24} class="text-yellow-500" />
-        <p class="text-lg font-semibold text-rank-text">{station.stars}</p>
+      <div class="flex items-center gap-1.5">
+        <Star size={32} class="text-yellow-500" />
+        <div>
+          <p class="text-lg font-semibold text-rank-text">{station.stars}</p>
+          <p class="text-sm font-semibold text-rank-muted-text">Stars</p>
+        </div>
       </div>
     {/if}
   </div>
