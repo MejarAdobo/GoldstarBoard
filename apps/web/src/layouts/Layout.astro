@@ -4,6 +4,7 @@ import "@styles/global.css";
 const { title } = Astro.props;
 ---
 
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -20,13 +21,13 @@ const { title } = Astro.props;
       document.documentElement.classList.toggle("dark", isDark);
     </script>
   </head>
+  <body class="bg-primary mx-10 my-2 flex flex-col gap-2 min-h-[98vh]">
+    <div class="flex justify-between items-center mx-2 my-1">
+      <a class="font-semibold text-[1.75em]" href="/">GoldStarboard</a>
+      <NavBar />
+    </div>
+    <div class="bg-secondary rounded-[.67em] flex-1">
+      <slot />
+    </div>
+  </body>
 </html>
-<body class="bg-primary mx-10 my-2 flex flex-col gap-2 min-h-[98vh]">
-  <div class="flex justify-between items-center mx-2 my-1">
-    <a class="font-semibold text-[1.75em]" href="/">GoldStarboard</a>
-    <NavBar />
-  </div>
-  <div class="bg-secondary rounded-[.67em] md:flex-1">
-    <slot />
-  </div>
-</body>
