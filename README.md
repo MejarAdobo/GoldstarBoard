@@ -12,8 +12,9 @@ The project started with only an Expo React Native App, and a Django backend (RE
 
 I have currently finish these apps:
 
-- cron app: which is running in a docker container on a Virtual Machine in VIU
+- cron app: which is running in a docker container on a Digital Ocean Server
 - api app: currently deployed in render inside a docker container, will also moved to VM if nginx issue has been fixed, you can check out the api server [here](https://api-35if.onrender.com/api)
 - admin app: same thing as api
+- web app (in progress): [https://https://goldstarboard.onrender.com](https://goldstarboard.onrender.com)
 
 To check out the old code, switch to the old branch
