@@ -1,5 +1,5 @@
 ---
-import Leaderboard from "@components/Leaderboard.svelte";
+import Leaderboard from "@components/leaderboard/Leaderboard.svelte";
 import type {
   HourlyData,
   RankingData,
@@ -34,7 +34,7 @@ await Promise.try(async () => {
 ---
 
 <Layout title="Leaderboard">
-  <div class="lg:py-6 lg:px-8 py-3 px-4">
+  <div class="lg:py-6 lg:px-8 p-3">
     <Leaderboard
       client:load
       streakData={streakData}

@@ -1,0 +1,52 @@
+---
+import HamburgerMenu from "./HamburgerMenu.svelte";
+import Toggle from "./Toggle.svelte";
+
+// Define links once to keep HTML clean
+const links = [
+  { name: "Leaderboard", url: "/" },
+  { name: "Awards", url: "/awards" },
+];
+---
+
+<header class="flex justify-between items-center mx-2 my-1">
+  <a class="font-semibold lg:text-[1.75em] text-2xl" href="/">GoldStarboard</a>
+
+  <!-- Desktop Nav -->
+  <nav class="desktop-nav items-center gap-6 font-semibold">
+    {
+      links.map((link) => (
+        <a href={link.url} class="hover:text-amber-500 transition-colors">
+          {link.name}
+        </a>
+      ))
+    }
+    <Toggle client:load />
+  </nav>
+
+  <!-- Mobile Nav -->
+  <HamburgerMenu client:load>
+    {
+      links.map((link) => (
+        <a href={link.url} class="hover:text-amber-500 block">
+          {link.name}
+        </a>
+      ))
+    }
+    <div class="pt-4 border-t border-border">
+      <Toggle client:load />
+    </div>
+  </HamburgerMenu>
+</header>
+
+<style>
+  .desktop-nav {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .desktop-nav {
+      display: flex;
+    }
+  }
+</style>

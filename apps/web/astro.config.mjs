@@ -1,6 +1,5 @@
 import node from "@astrojs/node";
 import svelte from "@astrojs/svelte";
-import playformCompress from "@playform/compress";
 import tailwindcss from "@tailwindcss/vite";
 // @ts-check
 import { defineConfig, envField, memoryCache } from "astro/config";
@@ -14,7 +13,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  integrations: [svelte(), playformCompress()],
+  integrations: [svelte()],
   env: {
     schema: {
       API_URL: envField.string({
