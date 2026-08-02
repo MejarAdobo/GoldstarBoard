@@ -1,4 +1,4 @@
-FROM oven/bun:1 AS base
+FROM oven/bun:1-slim AS base
 WORKDIR /app
 RUN bun add -g turbo
 
@@ -19,8 +19,11 @@ RUN bun turbo run build --filter=web
 FROM oven/bun:1-slim AS runtime
 WORKDIR /app
 
-COPY --from=builder /app/apps/web/dist ./dist
+COPY --from=builder /app/apps/web/build ./build
 
 ENV HOST=0.0.0.0
+ENV PORT=3000
 
-CMD ["bun", "./dist/server/entry.mjs"]
+EXPOSE 3000
+
+CMD ["bun", "./build/index.js"]

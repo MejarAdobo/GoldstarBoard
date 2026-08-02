@@ -7,7 +7,7 @@
   };
 </script>
 
-<button onclick={toggle} class="rounded-[.67em] bg-secondary p-1.5" aria-label="Toggle dark mode">
+<button onclick={toggle} class="bg-secondary rounded-[.67em] p-1.5" aria-label="Toggle dark mode">
   <span class="hidden dark:inline">
     <Moon size={20} class="text-muted-text hover:text-text" />
   </span>
