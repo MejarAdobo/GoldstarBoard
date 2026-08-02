@@ -102,11 +102,17 @@ interface RankingData {
   lastDaySinceStar: string | null;
 }
 
+interface PageData {
+  streakData: RankingData[];
+  starData: RankingData[];
+  hourlyData: HourlyData[];
+}
 export type {
   ApiError,
   DailyData,
   HourlyData,
   Observation,
+  PageData,
   RankingData,
   Station,
   Stats,

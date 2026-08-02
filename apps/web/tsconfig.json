@@ -1,16 +1,21 @@
 {
-  "extends": ["astro/tsconfigs/strict", "@goldstarboard/ts-config/base.json"],
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"],
+  "extends": ["./.svelte-kit/tsconfig.json", "@goldstarboard/ts-config/base.json"],
   "compilerOptions": {
     "noEmit": true,
-    "paths": {
-      "@src/*": ["./src/*"],
-      "@layouts/*": ["./src/layouts/*"],
-      "@components/*": ["./src/components/*"],
-      "@styles/*": ["./src/styles/*"],
-      "@stores/*": ["./src/stores/*"],
-      "@utils/*": ["./src/utils/*"]
-    }
+    "rewriteRelativeImportExtensions": true,
+    "allowJs": true,
+    "checkJs": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "moduleResolution": "bundler"
   }
+  // Path aliases are handled by https://svelte.dev/docs/kit/configuration#alias
+  // except $lib which is handled by https://svelte.dev/docs/kit/configuration#files
+  //
+  // To make changes to top-level options such as include and exclude, we recommend extending
+  // the generated config; see https://svelte.dev/docs/kit/configuration#typescript
 }
