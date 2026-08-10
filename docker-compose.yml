@@ -61,21 +61,6 @@ services:
     depends_on:
       api:
         condition: service_started
-  admin:
-    build:
-      context: ./apps/admin
-      dockerfile: Dockerfile
-    container_name: gsb-admin
-    restart: always
-    env_file:
-      - apps/admin/.env
-    ports:
-      - "8081:8081"
-    networks:
-      - internal
-    depends_on:
-      api:
-        condition: service_started
   caddy:
     image: caddy:alpine
     container_name: gsb-caddy

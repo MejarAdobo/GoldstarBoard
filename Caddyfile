@@ -3,10 +3,6 @@
 		reverse_proxy gsb-api:3000
 	}
 
-	handle_path /admin/* {
-		reverse_proxy gsb-admin:8081
-	}
-	
 	handle {
 		reverse_proxy gsb-web:8080
 	}
