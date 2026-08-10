@@ -25,7 +25,7 @@
         streakData={data.streakData}
         starData={data.starData}
         hourlyData={data.hourlyData}
-        switchState={switchState}
+        {switchState}
       />
     </div>
   </div>

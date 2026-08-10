@@ -1,8 +1,8 @@
 <script lang="ts">
-    import { page } from '$app/state';
+  import { page } from "$app/state";
 
-    let title = $state("");
-    let desc = $state("");
+  let title = $state("");
+  let desc = $state("");
 
   if (page.status === 500) {
     title = "Something went wrong";
