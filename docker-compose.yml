@@ -1,4 +1,23 @@
 services:
+  db:
+    image: postgres:latest
+    container_name: gsb-db
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: gsb_postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d gsb_postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
   cron:
     build:
       context: .
@@ -7,3 +26,61 @@ services:
     restart: always
     env_file:
       - apps/cron/.env
+    networks:
+      - internal
+    depends_on:
+      db:
+        condition: service_started
+  api:
+    build:
+      context: .
+      dockerfile: apps/cron/api
+    container_name: gsb-api
+    restart: always
+    env_file:
+      - apps/cron/api/.env
+    ports:
+      - "3000:3000"
+    networks:
+      - internal
+    depends_on:
+      cron:
+        condition: service_started
+  web:
+    build:
+      context: .
+      dockerfile: apps/cron/web
+    container_name: gsb-web
+    restart: always
+    env_file:
+      - apps/cron/web/.env
+    ports:
+      - "8080:8080"
+    networks:
+      - internal
+    depends_on:
+      api:
+        condition: service_started
+  admin:
+    build:
+      context: .
+      dockerfile: apps/cron/admin
+    container_name: gsb-admin
+    restart: always
+    env_file:
+      - apps/cron/admin/.env
+    ports:
+      - "8081:8081"
+    networks:
+      - internal
+    depends_on:
+      api:
+        condition: service_started
+
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  pgdata:
+    name: gsb_volume
