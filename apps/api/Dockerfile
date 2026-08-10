@@ -20,6 +20,5 @@ RUN bun install --production --no-cache
 
 COPY --from=pruner /app/out/full/ .
 
-RUN chmod +x apps/api/entrypoint.sh
+CMD ["bun", "apps/api/src/index.ts"]
 
-CMD ["/app/apps/api/entrypoint.sh"]
