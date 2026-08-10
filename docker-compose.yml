@@ -30,7 +30,7 @@ services:
       - internal
     depends_on:
       db:
-        condition: service_started
+        condition: service_healthy
   api:
     build:
       context: .
@@ -76,7 +76,21 @@ services:
     depends_on:
       api:
         condition: service_started
-
+  caddy:
+    image: caddy:alpine
+    container_name: gsb-caddy
+    restart: always
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    networks:
+      - internal
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    restart: always
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
+    networks:
+      - internal
 networks:
   internal:
     driver: bridge
