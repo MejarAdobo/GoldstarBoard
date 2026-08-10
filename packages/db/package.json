@@ -15,14 +15,14 @@
   },
   "dependencies": {
     "dotenv": "^17.4.2",
-    "drizzle-orm": "^1.0.0-rc.4-5d5b77c",
+    "drizzle-orm": "^0.45.2",
     "pg": "^8.22.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {
     "@goldstarboard/ts-config": "workspace:*",
     "@types/pg": "^8.20.0",
-    "drizzle-kit": "^1.0.0-rc.4-ca0f029",
+    "drizzle-kit": "1.0.0-rc.4-ca0f029",
     "tsx": "^4.23.0"
   }
 }

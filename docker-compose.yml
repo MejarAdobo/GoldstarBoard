@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres:latest
+    image: postgres:alpine
     container_name: gsb-db
     restart: always
     environment:
@@ -34,11 +34,11 @@ services:
   api:
     build:
       context: .
-      dockerfile: apps/cron/api
+      dockerfile: apps/api/Dockerfile
     container_name: gsb-api
     restart: always
     env_file:
-      - apps/cron/api/.env
+      - apps/api/.env
     ports:
       - "3000:3000"
     networks:
@@ -49,11 +49,11 @@ services:
   web:
     build:
       context: .
-      dockerfile: apps/cron/web
+      dockerfile: apps/web/Dockerfile
     container_name: gsb-web
     restart: always
     env_file:
-      - apps/cron/web/.env
+      - apps/web/.env
     ports:
       - "8080:8080"
     networks:
@@ -63,12 +63,12 @@ services:
         condition: service_started
   admin:
     build:
-      context: .
-      dockerfile: apps/cron/admin
+      context: ./apps/admin
+      dockerfile: Dockerfile
     container_name: gsb-admin
     restart: always
     env_file:
-      - apps/cron/admin/.env
+      - apps/admin/.env
     ports:
       - "8081:8081"
     networks:
