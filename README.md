@@ -1,8 +1,8 @@
 # GoldstarBoard
 
 <p align="center">
-  <img src="media/images/streak_dark_mode.png" alt="Streak Leaderboard" width="250" style="border-radius:26px;"/>
-  <img src="media/images/stars_light_mode.png" alt="Star Leaderboard" width="250" style="border-radius:26px;"/>
+  <img src="media/images/streak_dark_mode.png" alt="Streak Leaderboard" width="400" style="border-radius:26px;"/>
+  <img src="media/images/stars_light_mode.png" alt="Star Leaderboard" width="400" style="border-radius:26px;"/>
 </p>
 
 ## About
