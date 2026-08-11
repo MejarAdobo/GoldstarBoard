@@ -1,20 +1,20 @@
 # GoldstarBoard
 
+<p align="center">
+  <img src="media/images/streak_dark_mode.png" alt="Streak Leaderboard" width="250" style="border-radius:26px;"/>
+  <img src="media/images/stars_light_mode.png" alt="Star Leaderboard" width="250" style="border-radius:26px;"/>
+</p>
+
 ## About
 
-This started as my final project for my mobile course in Information Technology and Applied System: Web and Mobile Development Program in Vancouver Island University.
+This project started as my final project for my mobile course in ITAS: Web and Mobile Development Program at Vancouver Island University.
 
-This project was to create a leaderboard app for my instructors and technicians for their personal weather station.
+It use to consist of an Expo React app as my mobile client and a Django app ad my REST API server and scraper.
 
-The ranking was based on wheter the weather underground website have granted their weather station a gold star depending on the data that they send.
+After I graduated from VIU. I have decided to turn this into a monorepo which contains a web app, an api app, a cron app, and a plan mobile app.
 
-The project started with only an Expo React Native App, and a Django backend (REST API, and a Cron job). Then I decided to restart this project and make a monorepo that I plan to consist of a web app, mobile app, admin app, cron app, and api app.
+These apps are deployed in my homelab using docker, and cloudflare tunnel.
 
-I have currently finish these apps:
+## Links
 
-- cron app: which is running in a docker container on a Digital Ocean Server
-- api app: currently deployed in render inside a docker container, will also moved to VM if nginx issue has been fixed, you can check out the api server [here](https://api-35if.onrender.com/api)
-- admin app: same thing as api
-- web app (in progress): [https://https://goldstarboard.onrender.com](https://goldstarboard.onrender.com)
-
-To check out the old code, switch to the old branch
+- [Website](https://gsb.momoy.ca)
