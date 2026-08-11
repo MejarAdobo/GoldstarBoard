@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres:alpine
+    image: postgres:latest
     container_name: gsb-db
     restart: always
     environment:
