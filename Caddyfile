@@ -1,9 +1,9 @@
 :80 {
 	handle_path /api/* {
-		reverse_proxy gsb-api:3000
+		reverse_proxy gsb-api:8000
 	}
 
 	handle {
-		reverse_proxy gsb-web:8080
+		reverse_proxy gsb-web:3000
 	}
 }
