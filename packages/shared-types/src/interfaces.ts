@@ -73,6 +73,7 @@ interface HourlyData {
   metric: WeatherData;
   imperial: WeatherData;
   status: boolean;
+  updatedAt?: string;
 }
 
 // Daily Data

@@ -9,13 +9,17 @@
 </script>
 
 <div>
-  {#if switchState === "streaks"}
-    {#each streakData as station}
-      <LeaderboardCard {station} {switchState} hourlyData={getStationHourlyData(station.wuId)} />
-    {/each}
-  {:else}
-    {#each starData as station}
-      <LeaderboardCard {station} {switchState} hourlyData={getStationHourlyData(station.wuId)} />
-    {/each}
-  {/if}
-</div>
+    {#if streakData.length === 0 && starData.length === 0}
+        <p class="font-semibold lg:text-5xl text-xl text-center py-10">No Station in the leaderboard</p>
+    {:else}
+        {#if switchState === "streaks"}
+            {#each streakData as station}
+                <LeaderboardCard {station} {switchState} hourlyData={getStationHourlyData(station.wuId)} />
+            {/each}
+        {:else}
+            {#each starData as station}
+                <LeaderboardCard {station} {switchState} hourlyData={getStationHourlyData(station.wuId)} />
+            {/each}
+        {/if}
+    {/if}
+  </div>

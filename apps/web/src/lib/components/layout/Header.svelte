@@ -14,7 +14,7 @@
   <!-- Desktop Nav -->
   <nav class="hidden items-center gap-6 font-semibold lg:flex">
     {#each links as link}
-      <a href={link.url} class="transition-colors hover:text-amber-500">
+      <a href={link.url} class="transition-colors hover:text-text text-muted-text">
         {link.name}
       </a>
     {/each}
@@ -24,7 +24,7 @@
   <!-- Mobile Nav -->
   <HamburgerMenu>
     {#each links as link}
-      <a href={link.url} class="transition-colors hover:text-amber-500">
+      <a href={link.url} class="transition-colors hover:text-text text-muted-text">
         {link.name}
       </a>
     {/each}
