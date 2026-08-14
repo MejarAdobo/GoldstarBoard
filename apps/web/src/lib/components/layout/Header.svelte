@@ -4,7 +4,7 @@
 
   const links = [
     { name: "Leaderboard", url: "/" },
-    { name: "Awards", url: "/awards" },
+    { name: "Award", url: "/award" },
   ];
 </script>
 
@@ -33,15 +33,3 @@
     </div>
   </HamburgerMenu>
 </header>
-
-<!-- <style>
-  .desktop-nav {
-    display: none;
-  }
-
-  @media (min-width: 1024px) {
-    .desktop-nav {
-      display: flex;
-    }
-  }
-</style> -->

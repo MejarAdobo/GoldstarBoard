@@ -22,12 +22,10 @@ export const load: PageServerLoad = async ({ setHeaders, fetch }) => {
   let hourlyData: HourlyData[] = [];
 
   await Promise.try(async () => {
-    const baseUrl = API_URL || "http://gsb-api:3000";
-
     const [streakRes, starRes, hourlyRes] = await Promise.all([
-      fetch(`${baseUrl}/streak-ranking`),
-      fetch(`${baseUrl}/star-ranking`),
-      fetch(`${baseUrl}/hourly-data`),
+      fetch(`${API_URL}/streak-ranking`),
+      fetch(`${API_URL}/star-ranking`),
+      fetch(`${API_URL}/hourly-data`),
     ]);
 
     streakData = (await streakRes.json()) as RankingData[];

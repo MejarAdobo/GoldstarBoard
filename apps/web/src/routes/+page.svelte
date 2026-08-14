@@ -2,9 +2,9 @@
   import LeaderboardList from "$lib/components/leaderboard/LeaderboardList.svelte";
   import LeaderboardSwitch from "$lib/components/leaderboard/LeaderboardSwitch.svelte";
 
-  import type { PageData } from "@goldstarboard/shared-types/interfaces";
+  import type { LeaderboardData } from "@goldstarboard/shared-types/interfaces";
 
-  let { data }: { data: PageData } = $props();
+  let { data }: { data: LeaderboardData } = $props();
   let switchState = $state("streaks");
 
   let lastUpdate = $derived(data.hourlyData[0]?.updatedAt);
