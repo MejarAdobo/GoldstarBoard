@@ -61,14 +61,6 @@ services:
     depends_on:
       api:
         condition: service_started
-  caddy:
-    image: caddy:alpine
-    container_name: gsb-caddy
-    restart: always
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-    networks:
-      - internal
   cloudflared:
     image: cloudflare/cloudflared:latest
     container_name: cloudflared
