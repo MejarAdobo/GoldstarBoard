@@ -1,1 +1,1 @@
-<p class="font-semibold text-5xl text-center py-10">Nothing for Now</p>
+<p class="py-10 text-center text-5xl font-semibold">Nothing for Now</p>

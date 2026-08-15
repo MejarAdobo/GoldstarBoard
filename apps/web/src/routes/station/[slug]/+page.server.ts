@@ -2,12 +2,8 @@ import { env } from "$env/dynamic/private";
 import { getSecondsUntilNextUpdate } from "$lib/utils/cache";
 import { error } from "@sveltejs/kit";
 
-import type {
-  HourlyData,
-  Station,
-  Stats,
-} from "@goldstarboard/shared-types/interfaces";
 import type { PageServerLoad } from "./$types";
+import type { DailyData, HourlyData, Station, Stats } from "@goldstarboard/shared-types/interfaces";
 
 export const prerender = false;
 
@@ -30,14 +26,18 @@ export const load: PageServerLoad = async ({ setHeaders, fetch, params }) => {
   }
 
   const statsRes = await fetch(`${API_URL}/stat/station/${station.id}`);
-  const hourlyRes = await fetch(`${API_URL}/hourly-data/station/${station.id}`);
+  const hourlyRes = await fetch(`${API_URL}/hourly-data/station/${station.wuId}`);
+  // Note: Had to fix the api route name to use a dash
+  const dailyRes = await fetch(`${API_URL}/dailyData/station/${station.wuId}`);
 
   const stats: Stats = (await statsRes.json()) as Stats;
   const hourly: HourlyData = (await hourlyRes.json()) as HourlyData;
+  const daily: DailyData[] = (await dailyRes.json()) as DailyData[];
 
   return {
     station,
     stats,
     hourly,
+    daily,
   };
 };

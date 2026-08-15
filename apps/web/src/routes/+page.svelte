@@ -18,22 +18,20 @@
 <div class="p-3 lg:px-8 lg:py-6">
   <div class="flex flex-col gap-1 lg:gap-4">
     <div class="flex items-center justify-between">
-    <div class="flex flex-col">
+      <div class="flex flex-col">
         <h2 class="text-text text-2xl font-semibold lg:text-4xl">
           {switchState === "streaks" ? "Streaks" : "Stars"}
         </h2>
-        <p class="text-text text-base font-medium lg:text-lg">Last Updated: {dateOnly} UTC</p>
-    </div>
+        <p class="text-text text-base font-medium lg:text-lg">Last Update: {dateOnly} UTC</p>
+      </div>
       <LeaderboardSwitch bind:value={switchState} />
     </div>
-    <div>
-      <LeaderboardList
-        streakData={data.streakData}
-        starData={data.starData}
-        hourlyData={data.hourlyData}
-        {switchState}
-      />
-    </div>
+    <LeaderboardList
+      streakData={data.streakData}
+      starData={data.starData}
+      hourlyData={data.hourlyData}
+      {switchState}
+    />
   </div>
 </div>
 

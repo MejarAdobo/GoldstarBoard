@@ -1,11 +1,8 @@
 import { env } from "$env/dynamic/private";
 import { getSecondsUntilNextUpdate } from "$lib/utils/cache";
 
-import type {
-  HourlyData,
-  RankingData,
-} from "@goldstarboard/shared-types/interfaces";
 import type { PageServerLoad } from "./$types";
+import type { HourlyData, RankingData } from "@goldstarboard/shared-types/interfaces";
 
 export const prerender = false;
 

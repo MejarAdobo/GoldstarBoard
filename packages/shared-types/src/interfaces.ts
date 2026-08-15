@@ -110,6 +110,14 @@ interface LeaderboardData {
   starData: RankingData[];
   hourlyData: HourlyData[];
 }
+
+interface StationData {
+  station: Station;
+  stats: Stats;
+  hourly: HourlyData[];
+  daily: DailyData[];
+}
+
 export type {
   ApiError,
   DailyData,
@@ -118,6 +126,7 @@ export type {
   Observation,
   RankingData,
   Station,
+  StationData,
   Stats,
   WeatherData,
   WeatherMeasurements,
