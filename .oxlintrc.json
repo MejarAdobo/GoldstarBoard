@@ -21,6 +21,7 @@
     "max-params": "off",
     "unicorn/no-null": "off",
     "max-statements": "off",
+    "one-var": "off",
     "unicorn/filename-case": [
       "error",
       {

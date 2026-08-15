@@ -65,6 +65,8 @@ interface Station {
     coldStreak: number;
     star: number;
   };
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 // Hourly Data
@@ -73,6 +75,7 @@ interface HourlyData {
   metric: WeatherData;
   imperial: WeatherData;
   status: boolean;
+  updatedAt?: string;
 }
 
 // Daily Data
@@ -102,19 +105,28 @@ interface RankingData {
   lastDaySinceStar: string | null;
 }
 
-interface PageData {
+interface LeaderboardData {
   streakData: RankingData[];
   starData: RankingData[];
   hourlyData: HourlyData[];
 }
+
+interface StationData {
+  station: Station;
+  stats: Stats;
+  hourly: HourlyData[];
+  daily: DailyData[];
+}
+
 export type {
   ApiError,
   DailyData,
   HourlyData,
+  LeaderboardData,
   Observation,
-  PageData,
   RankingData,
   Station,
+  StationData,
   Stats,
   WeatherData,
   WeatherMeasurements,

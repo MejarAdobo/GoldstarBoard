@@ -4,7 +4,7 @@
 
   const links = [
     { name: "Leaderboard", url: "/" },
-    { name: "Awards", url: "/awards" },
+    { name: "Award", url: "/award" },
   ];
 </script>
 
@@ -14,7 +14,7 @@
   <!-- Desktop Nav -->
   <nav class="hidden items-center gap-6 font-semibold lg:flex">
     {#each links as link}
-      <a href={link.url} class="transition-colors hover:text-amber-500">
+      <a href={link.url} class="hover:text-text text-muted-text transition-colors">
         {link.name}
       </a>
     {/each}
@@ -24,7 +24,7 @@
   <!-- Mobile Nav -->
   <HamburgerMenu>
     {#each links as link}
-      <a href={link.url} class="transition-colors hover:text-amber-500">
+      <a href={link.url} class="hover:text-text text-muted-text transition-colors">
         {link.name}
       </a>
     {/each}
@@ -33,15 +33,3 @@
     </div>
   </HamburgerMenu>
 </header>
-
-<!-- <style>
-  .desktop-nav {
-    display: none;
-  }
-
-  @media (min-width: 1024px) {
-    .desktop-nav {
-      display: flex;
-    }
-  }
-</style> -->
