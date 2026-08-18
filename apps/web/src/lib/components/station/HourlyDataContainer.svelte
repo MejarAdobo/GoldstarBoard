@@ -1,24 +1,19 @@
 <script lang="ts">
+  import UnitSwitch from "./UnitSwitch.svelte";
+  import WeatherWidget from "./WeatherWidget.svelte";
   let { hourlyData } = $props();
   const metricData = $derived(hourlyData[0]?.metricData);
   const imperialData = $derived(hourlyData[0]?.imperialData);
-  import { Cloud } from "@lucide/svelte";
-  import WeatherWidget from "./WeatherWidget.svelte";
-
-  // Note: Add this line into a setting or a switch
-  let unitMeasurement = "metric";
+  let unitMeasurement = $state("metric");
 
   const weatherData = $derived(unitMeasurement === "imperial" ? imperialData : metricData);
-  let lastUpdate = $derived(hourlyData[0]?.updatedAt);
-  const hour = $derived(lastUpdate?.split(" ")[1].split(":")[0]);
 </script>
 
 <div class="bg-primary mt-4 rounded-[.67em] p-6">
-  <div class="flex gap-2">
-    <Cloud class="text-text h-8 w-8 items-center" />
-    <h2 class="text-md mb-2 font-bold sm:text-xl lg:text-2xl">Weather Conditions</h2>
+  <div class="mb-3 flex items-center justify-between gap-2">
+    <h2 class="text-md font-bold sm:text-xl lg:text-2xl">Weather Conditions</h2>
+    <UnitSwitch bind:value={unitMeasurement} />
   </div>
-  <p class="text-text text-lg mb-3">Last Update: {hour}:00 UTC</p>
   <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">
     {#if weatherData}
       <WeatherWidget

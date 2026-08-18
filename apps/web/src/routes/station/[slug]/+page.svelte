@@ -1,5 +1,8 @@
 <script lang="ts">
   import HourlyDataContainer from "$lib/components/station/HourlyDataContainer.svelte";
+
+  import type { StationData } from "@goldstarboard/shared-types/interfaces";
+
   let { data }: { data: StationData } = $props();
 
   let { station, stats, hourly, daily } = $derived(data);
