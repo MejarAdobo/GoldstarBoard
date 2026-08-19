@@ -4,12 +4,16 @@ import { eq } from "drizzle-orm";
 
 // Create a historicalStats
 export const createHistoricalStats = async (
-  stationId: string,
+  stationId: number,
   year: number,
   star: number,
   hotStreak: number,
   coldStreak: number,
-) => db.insert(historicalStats).values({ stationId, year, star, hotStreak, coldStreak }).returning();
+) =>
+  db
+    .insert(historicalStats)
+    .values({ stationId, year, star, hotStreak, coldStreak })
+    .returning();
 
 // Update a historicalStats
 export const updateHistoricalStats = async (
@@ -27,11 +31,18 @@ export const updateHistoricalStats = async (
 
 // Delete a historicalStats
 export const deleteHistoricalStats = async (stationId: string) =>
-  db.delete(historicalStats).where(eq(historicalStats.stationId, stationId)).returning();
+  db
+    .delete(historicalStats)
+    .where(eq(historicalStats.stationId, stationId))
+    .returning();
 
 // Delete all historicalStats of a specific station
 export const deleteAllHistoricalStatsByStation = async (stationId: string) =>
-  db.delete(historicalStats).where(eq(historicalStats.stationId, stationId)).returning();
+  db
+    .delete(historicalStats)
+    .where(eq(historicalStats.stationId, stationId))
+    .returning();
 
 // Delete all historicalStats
-export const deleteAllHistoricalStats = async () => db.delete(historicalStats).returning();
+export const deleteAllHistoricalStats = async () =>
+  db.delete(historicalStats).returning();

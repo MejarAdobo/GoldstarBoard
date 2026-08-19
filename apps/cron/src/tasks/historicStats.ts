@@ -1,6 +1,14 @@
-import { updateHistoricalStats } from "@goldstarboard/db-services/historicalStat/mutations";
+import {
+  createHistoricalStats,
+  updateHistoricalStats,
+} from "@goldstarboard/db-services/historicalStat/mutations";
+import { Temporal } from "@js-temporal/polyfill";
 
-import type { HistStats, Stats } from "@goldstarboard/shared-types/interfaces";
+import type {
+  HistStats,
+  Station,
+  Stats,
+} from "@goldstarboard/shared-types/interfaces";
 
 export const updateHistoricStats = async (
   histStats: HistStats[],
@@ -25,6 +33,15 @@ export const updateHistoricStats = async (
           coldStreak,
         );
       }
+    }),
+  );
+};
+
+export const createNewHistoricalStats = async (stations: Station[]) => {
+  await Promise.all(
+    stations.map(async (station) => {
+      const currentYear = Temporal.Now.plainDateISO().year;
+      await createHistoricalStats(station.wuId, currentYear, 0, 0, 0);
     }),
   );
 };
