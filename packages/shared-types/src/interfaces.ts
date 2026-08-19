@@ -118,9 +118,18 @@ interface StationData {
   daily: DailyData[];
 }
 
+interface HistStats {
+  stationId: string;
+  year: number;
+  star: number;
+  hotStreak: number;
+  coldStreak: number;
+}
+
 export type {
   ApiError,
   DailyData,
+  HistStats,
   HourlyData,
   LeaderboardData,
   Observation,

@@ -11,9 +11,9 @@
     "@goldstarboard/db-services": "workspace:*",
     "@goldstarboard/shared-types": "workspace:*",
     "@js-temporal/polyfill": "^0.5.1",
-    "axios": "^1.18.1",
+    "axios": "^1.19.0",
     "cheerio": "^1.2.0",
-    "drizzle-orm": "^1.0.0-rc.4-5d5b77c"
+    "drizzle-orm": "^1.0.0-rc.5-ab785fc"
   },
   "devDependencies": {
     "@goldstarboard/ts-config": "workspace:*",

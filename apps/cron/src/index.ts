@@ -1,6 +1,9 @@
+import { getAllHistoricalStats } from "@goldstarboard/db-services/historicalStat/queries";
 import { getAllStats } from "@goldstarboard/db-services/stat/queries";
 import { getAllStations } from "@goldstarboard/db-services/station/queries";
+import { Temporal } from "@js-temporal/polyfill";
 import { getDailyData, sendDailyData } from "@tasks/dailyData";
+import { updateHistoricStats } from "@tasks/historicStats";
 import { getAllHourlyData, sendHourlyData } from "@tasks/hourlyData";
 import { updateStats } from "@tasks/stats";
 
@@ -22,4 +25,14 @@ Bun.cron("50 6 * * *", async () => {
 Bun.cron("55 6 * * *", async () => {
   const stats = await getAllStats();
   await updateStats(stats);
+});
+
+// Histitorical Stats job
+// This run at 6 in the morning at UTC, and run at near midnight in Pacific Time Zone
+Bun.cron("58 6 * * *", async () => {
+  const currentYear = Temporal.Now.plainDateISO().year;
+  const histStats = await getAllHistoricalStats();
+  const filteredStats = histStats.filter((s) => s.year === currentYear);
+  const stats = await getAllStats();
+  await updateHistoricStats(filteredStats, stats);
 });
