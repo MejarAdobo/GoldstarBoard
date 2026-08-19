@@ -34,8 +34,9 @@
     </div>
     <!-- Station Name -->
     <div class="flex flex-col">
-      <a class="text-rank-text text-base font-bold lg:text-2xl" href={`/station/${station.wuId}`}
-        >{station.name}</a
+      <a
+        class="text-rank-text cursor-pointer text-base font-bold lg:text-2xl"
+        href={`/station/${station.wuId}`}>{station.name}</a
       >
       <div class="flex items-center gap-1.5">
         <IconCircleFilled size={12} class={hourlyData.status ? "text-[#0AE448]" : "text-[#F25570]"} />
