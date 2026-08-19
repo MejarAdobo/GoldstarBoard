@@ -5,13 +5,12 @@
   const metricData = $derived(hourlyData[0]?.metricData);
   const imperialData = $derived(hourlyData[0]?.imperialData);
   let unitMeasurement = $state("metric");
-
   const weatherData = $derived(unitMeasurement === "imperial" ? imperialData : metricData);
 </script>
 
 <div class="bg-primary mt-4 rounded-[.67em] p-6">
   <div class="mb-3 flex items-center justify-between gap-2">
-    <h2 class="text-md font-bold sm:text-xl lg:text-2xl">Weather Conditions</h2>
+    <h2 class="text-md font-bold sm:text-lg lg:text-2xl">Weather Conditions</h2>
     <UnitSwitch bind:value={unitMeasurement} />
   </div>
   <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">

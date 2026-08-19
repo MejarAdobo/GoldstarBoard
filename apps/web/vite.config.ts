@@ -9,8 +9,12 @@ export default defineConfig({
     sveltekit({
       adapter: adapter(),
       compilerOptions: {
-        runes: ({ filename }) => (filename.split(/[/\\]/).includes("node_modules") ? undefined : true),
+        runes: ({ filename }) =>
+          filename.split(/[/\\]/).includes("node_modules") ? undefined : true,
       },
     }),
   ],
+  optimizeDeps: {
+    include: ["bits-ui"],
+  },
 });
