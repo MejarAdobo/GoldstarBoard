@@ -3,10 +3,7 @@ import { getAllStats } from "@goldstarboard/db-services/stat/queries";
 import { getAllStations } from "@goldstarboard/db-services/station/queries";
 import { Temporal } from "@js-temporal/polyfill";
 import { getDailyData, sendDailyData } from "@tasks/dailyData";
-import {
-  createNewHistoricalStats,
-  updateHistoricStats,
-} from "@tasks/historicStats";
+import { createNewHistoricalStats, updateHistoricStats } from "@tasks/historicStats";
 import { getAllHourlyData, sendHourlyData } from "@tasks/hourlyData";
 import { updateStats } from "@tasks/stats";
 

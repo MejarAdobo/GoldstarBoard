@@ -8,7 +8,7 @@
 </script>
 
 <Calendar.Root
-  class="bg-primary mt-6 rounded-[.67em] p-5.5 border-none"
+  class="bg-primary mt-6 rounded-[.67em] border-none p-5.5"
   weekdayFormat="short"
   fixedWeeks={true}
   type="single"
@@ -17,13 +17,13 @@
   {#snippet children({ months, weekdays })}
     <Calendar.Header class="flex items-center justify-between">
       <Calendar.PrevButton
-        class="rounded-[.67em] hover:bg-secondary inline-flex size-10 items-center justify-center active:scale-[0.98] active:transition-all"
+        class="hover:bg-secondary inline-flex size-10 items-center justify-center rounded-[.67em] active:scale-[0.98] active:transition-all"
       >
         <ChevronLeft class="size-6" />
       </Calendar.PrevButton>
       <Calendar.Heading class="text-[15px] font-medium" />
       <Calendar.NextButton
-        class="rounded-[.67em] hover:bg-secondary inline-flex size-10 items-center justify-center active:scale-[0.98] active:transition-all"
+        class="hover:bg-secondary inline-flex size-10 items-center justify-center rounded-[.67em] active:scale-[0.98] active:transition-all"
       >
         <ChevronRight class="size-6" />
       </Calendar.NextButton>
@@ -46,7 +46,7 @@
                 {#each weekDates as date, i (i)}
                   <Calendar.Cell {date} month={month.value} class="relative size-10 p-0! text-center text-sm">
                     <Calendar.Day
-                      class="rounded-[.67em] text-text data-selected:bg-secondary/75 data-disabled:text-muted-text data-selected:text-background data-unavailable:text-green-400 group relative inline-flex size-10 items-center justify-center p-0 text-sm font-normal whitespace-nowrap data-disabled:pointer-events-none data-outside-month:pointer-events-none data-selected:font-medium data-unavailable:line-through"
+                      class="text-text data-selected:bg-secondary/75 data-disabled:text-muted-text data-selected:text-background group relative inline-flex size-10 items-center justify-center rounded-[.67em] p-0 text-sm font-normal whitespace-nowrap data-disabled:pointer-events-none data-outside-month:pointer-events-none data-selected:font-medium data-unavailable:text-green-400 data-unavailable:line-through"
                     >
                       {date.day}
                     </Calendar.Day>
